@@ -20,26 +20,52 @@ public class MainAppFXMLController {
     private final static Logger logger = LoggerFactory.getLogger(MainAppFXMLController.class);
 
     @FXML
-    Button btnPlay;
+    Button btnMomentum;
     @FXML
-    Button btnSwitchScene;
-
+    Button btnForces;
+    @FXML
+    Button btnEnergy;
+    @FXML
+    Button btnKinematics;
+    
+    int ctr = 0;
+    
     @FXML
     public void initialize() {
         logger.info("Initializing MainAppController...");
-        btnPlay.setOnAction(this::handleClickMe);
-        btnSwitchScene.setOnAction(this::loadSecondaryScene);
+
+        btnMomentum.setOnAction((event)->{
+            ctr=1;
+            loadSecondaryScene(event);           
+        });
+        
+        btnForces.setOnAction((event)->{
+            ctr=2;
+            loadSecondaryScene(event);           
+        });
+        
+        btnEnergy.setOnAction((event)->{
+            ctr=3;
+            loadSecondaryScene(event);           
+        });
+        
+        btnKinematics.setOnAction((event)->{
+            ctr=4;
+            loadSecondaryScene(event);           
+        });
+        
         addFontIcons();
     }
 
-    private void handleClickMe(Event e) {
-        System.out.println("Playing...");
-        logger.info("Play button has been clicked...");
-    }
-
     private void loadSecondaryScene(Event e) {
-        MainApp.switchScene(MainApp.SECONDARY_SCENE);
-        logger.info("Loaded the secondary scene...");
+        switch(ctr){
+            case 1:MainApp.switchScene(MainApp.MOMENTUM_SCENE);System.out.println("s");break;
+            case 2:MainApp.switchScene(MainApp.FORCES_SCENE);break;
+            case 3:MainApp.switchScene(MainApp.ENERGY_SCENE);break;
+            case 4:MainApp.switchScene(MainApp.KINEMATICS_SCENE);break;
+            default:;
+        }
+        //logger.info("Loaded the secondary scene...");
     }
 
     private void addFontIcons() {
@@ -49,10 +75,8 @@ public class MainAppFXMLController {
         // @see: https://kordamp.org/ikonli/#_materialdesign2_latest
         // @see: https://kordamp.org/ikonli/cheat-sheet-medicons.html
         //FontIcon searchIcon = new FontIcon(MaterialDesignA.ATOM);
-        btnPlay.setGraphic(playIcon);
-        btnPlay.setStyle("-fx-font-size: 16px;");
         FontIcon switchIcon = new FontIcon(MaterialDesignA.ATOM);
-        btnSwitchScene.setGraphic(switchIcon);
-        btnSwitchScene.setStyle("-fx-font-size: 16px;");
+       // btnSwitchScene.setGraphic(switchIcon);
+        //btnSwitchScene.setStyle("-fx-font-size: 16px;");
     }
 }

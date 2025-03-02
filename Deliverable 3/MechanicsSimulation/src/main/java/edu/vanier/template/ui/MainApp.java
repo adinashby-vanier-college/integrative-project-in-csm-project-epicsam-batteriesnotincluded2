@@ -1,8 +1,11 @@
 package edu.vanier.template.ui;
 
+import edu.vanier.template.controllers.EnergyFXMLController;
+import edu.vanier.template.controllers.ForcesFXMLController;
+import edu.vanier.template.controllers.KinematicsFXMLController;
 import edu.vanier.template.controllers.MainAppFXMLController;
+import edu.vanier.template.controllers.MomentumFXMLController;
 import edu.vanier.template.controllers.SceneController;
-import edu.vanier.template.controllers.SecondaryFXMLController;
 import edu.vanier.template.helpers.FxUIHelper;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -28,6 +31,11 @@ public class MainApp extends Application {
     public static final String MAINAPP_SCENE = "MainApp_layout";
     // The FXML file name of the secondary scene.
     public static final String SECONDARY_SCENE = "secondary_layout";
+    public static final String MOMENTUM_SCENE = "Momentum_layout";
+    public static final String FORCES_SCENE = "Forces_layout";
+    public static final String ENERGY_SCENE = "Energy_layout";
+    public static final String KINEMATICS_SCENE = "Kinematics_layout";
+
     private final static Logger logger = LoggerFactory.getLogger(MainApp.class);
     private static Scene scene;
     private static SceneController sceneController;
@@ -45,7 +53,7 @@ public class MainApp extends Application {
             logger.info("Bootstrapping the application...");
             // Load the scene of the primary stage.
             Parent root = FxUIHelper.loadFXML(MAINAPP_SCENE, new MainAppFXMLController());
-            scene = new Scene(root, 640, 480);
+            scene = new Scene(root, 1200, 800);
             // Add the primary scene to the scene-switching controller.
             sceneController = new SceneController(scene);
             sceneController.addScene(MAINAPP_SCENE, root);
@@ -79,15 +87,36 @@ public class MainApp extends Application {
                 // was already done in the start method.                
                 sceneController.activateScene(fxmlFileName);
 
-            } else if (fxmlFileName.equals(SECONDARY_SCENE)) {
+            } else if (fxmlFileName.equals(MOMENTUM_SCENE)) {
                 if (!sceneController.sceneExists(fxmlFileName)) {
-                    // Instantiate the corresponding FXML controller if the 
-                    // specified scene is being loaded for the frist time.
-                    SecondaryFXMLController controller = new SecondaryFXMLController();
+                    MomentumFXMLController controller = new MomentumFXMLController();
                     Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
-                    sceneController.addScene(SECONDARY_SCENE, root);
+                    sceneController.addScene(MOMENTUM_SCENE, root);
                 }
-                // The scene has been previously added, we active it.
+                sceneController.activateScene(fxmlFileName);
+                
+            } else if (fxmlFileName.equals(FORCES_SCENE)) {
+                if (!sceneController.sceneExists(fxmlFileName)) {
+                    ForcesFXMLController controller = new ForcesFXMLController();
+                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                    sceneController.addScene(FORCES_SCENE, root);
+                }
+                sceneController.activateScene(fxmlFileName);
+                
+            } else if (fxmlFileName.equals(ENERGY_SCENE)) {
+                if (!sceneController.sceneExists(fxmlFileName)) {
+                    EnergyFXMLController controller = new EnergyFXMLController();
+                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                    sceneController.addScene(ENERGY_SCENE, root);
+                }
+                sceneController.activateScene(fxmlFileName);
+                
+            } else if (fxmlFileName.equals(KINEMATICS_SCENE)) {
+                if (!sceneController.sceneExists(fxmlFileName)) {
+                    KinematicsFXMLController controller = new KinematicsFXMLController();
+                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                    sceneController.addScene(KINEMATICS_SCENE, root);
+                }
                 sceneController.activateScene(fxmlFileName);
             }
             //TODO: You can register or activate additional scenes here, 
