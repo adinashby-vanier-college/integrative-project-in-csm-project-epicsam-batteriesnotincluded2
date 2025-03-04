@@ -10,14 +10,16 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="btnBack" layoutX="1132.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
+      <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
+      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -29,7 +31,7 @@
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
                   <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back" />
@@ -70,17 +72,26 @@
       <Button fx:id="btnDelete" disable="true" layoutX="1086.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Delete Vector" />
       <Slider layoutX="960.0" layoutY="271.0" />
       <Label layoutX="958.0" layoutY="247.0" text="Mass of object: 10 kg" />
-      <PieChart fx:id="pieForceDistribution" layoutX="966.0" layoutY="563.0" prefHeight="182.0" prefWidth="205.0" title="force distribution" />
-      <Label layoutX="970.0" layoutY="425.0" text="100+2+3+40+5-6-7+8=ma" />
-      <Label layoutX="970.0" layoutY="400.0" text="Fx=ma" />
-      <Label layoutX="970.0" layoutY="450.0" prefWidth="28.0" text="b" />
-      <Label layoutX="970.0" layoutY="500.0" text="c" />
-      <Label layoutX="970.0" layoutY="475.0" text="a" />
+      <PieChart fx:id="pieForceDistribution" layoutX="966.0" layoutY="563.0" legendSide="TOP" prefHeight="182.0" prefWidth="205.0" title="Force Distribution" />
       <MenuButton layoutX="965.0" layoutY="320.0" mnemonicParsing="false" text="Show Calculations">
         <items>
           <MenuItem mnemonicParsing="false" text="Calculate Fx" />
           <MenuItem mnemonicParsing="false" text="Calculate Fy" />
         </items>
       </MenuButton>
+      <VBox layoutX="956.0" layoutY="359.0" prefHeight="200.0" prefWidth="238.0" spacing="25.0">
+         <children>
+            <Label text="Fx=ma" />
+            <Label text="100+2+3+40+5-6-7+8=ma" />
+            <Label text="a" />
+            <Label prefWidth="28.0" text="b" />
+            <Label text="c" />
+         </children>
+      </VBox>
+      <Label layoutX="976.0" layoutY="616.0" prefHeight="98.0" prefWidth="186.0" text="Pie chart here">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
