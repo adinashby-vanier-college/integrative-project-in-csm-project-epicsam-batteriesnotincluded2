@@ -28,7 +28,7 @@
                   <Circle fill="#d0d7dd" mouseTransparent="true" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
                   <ImageView fx:id="ivPlayPause" fitHeight="51.0" fitWidth="41.0" mouseTransparent="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../carsim/src/main/resources/Images/play.png" />
+                        <Image url="@../Images/play.png" />
                      </image>
                   </ImageView>
                </children>
@@ -39,7 +39,7 @@
                   <Circle fill="#d0d7dd" mouseTransparent="true" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
                   <ImageView fitHeight="65.0" fitWidth="57.0" mouseTransparent="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../carsim/src/main/resources/Images/reloadArrow.png" />
+                        <Image url="@../Images/reloadArrow.png" />
                      </image>
                   </ImageView>
                </children>

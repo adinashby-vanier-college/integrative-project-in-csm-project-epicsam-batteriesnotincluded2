@@ -59,9 +59,9 @@ public class MainApp extends Application {
             sceneController.addScene(MAINAPP_SCENE, root);
             primaryStage.setScene(scene);
             primaryStage.sizeToScene();
-            primaryStage.setTitle("An FX Project Template!");
+            primaryStage.setTitle("Mechanics Simulation");
             // Request putting this appliation's main window on top of other 
-            // already-opened windows upon launching t he app.
+            // already-opened windows upon launching the app.
             primaryStage.setAlwaysOnTop(true);
             primaryStage.show();
             primaryStage.setAlwaysOnTop(false);

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnBack" layoutX="1084.0" layoutY="735.0" mnemonicParsing="false" text="Back" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="137.0" layoutX="517.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91faff" height="98.0" layoutX="33.0" layoutY="679.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Label layoutX="40.0" layoutY="686.0" text="Force Arrows Box   (drag to take arrows)" />
+      <Label layoutX="40.0" layoutY="752.0" text="Arrows left: 8" />
+      <StackPane layoutX="161.0" layoutY="691.0" prefHeight="82.0" prefWidth="252.0" rotate="-15.5" scaleX="0.8" scaleY="0.8" scaleZ="0.6">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000000" height="35.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
+            <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="726.0" layoutY="437.0" prefHeight="82.0" prefWidth="252.0">
+         <children>
+            <Rectangle fill="#ff000000" height="35.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
+            <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
+         </children>
+      </StackPane>
+   </children>
+</Pane>
