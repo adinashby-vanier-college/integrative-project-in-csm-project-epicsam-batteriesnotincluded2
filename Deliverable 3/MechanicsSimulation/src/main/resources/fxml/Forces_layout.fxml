@@ -19,7 +19,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
-      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
