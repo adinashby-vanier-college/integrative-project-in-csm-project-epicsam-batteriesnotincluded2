@@ -19,11 +19,11 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
-      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="mitExport" mnemonicParsing="false" text="Export" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -91,6 +91,16 @@
       <Label layoutX="976.0" layoutY="616.0" prefHeight="98.0" prefWidth="186.0" text="Pie chart here">
          <font>
             <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetForce" layoutX="830.0" layoutY="34.0" prefHeight="17.0" prefWidth="111.0" text="Net Force: 0N">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetDir" layoutX="830.0" layoutY="64.0" text="Direction: 0°">
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
    </children>
