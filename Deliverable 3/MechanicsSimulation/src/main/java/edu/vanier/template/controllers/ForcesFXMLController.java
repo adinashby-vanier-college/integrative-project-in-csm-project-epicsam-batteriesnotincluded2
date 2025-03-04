@@ -8,6 +8,7 @@ import edu.vanier.template.ui.MainApp;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 
 /**
  *
@@ -18,8 +19,12 @@ public class ForcesFXMLController {
     Button btnBack;
     
     @FXML
+    MenuItem mitBack;
+    
+    @FXML
     public void initialize() {
-        btnBack.setOnAction(this::loadPrimaryScene);
+        mitBack.setOnAction(this::loadPrimaryScene);
+        btnBack.setOnAction(Event -> {btnBack.setText("GO TO HELP!");});
     }
 
     private void loadPrimaryScene(Event e) {
