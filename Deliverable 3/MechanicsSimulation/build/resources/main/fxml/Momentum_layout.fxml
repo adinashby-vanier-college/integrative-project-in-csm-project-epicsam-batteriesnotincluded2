@@ -3,6 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
@@ -17,9 +20,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7d8389" height="60.0" stroke="BLACK" strokeType="INSIDE" width="1200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="560.0" layoutX="15.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" width="818.0" />
-      <Pane layoutX="25.0" layoutY="80.0" prefHeight="537.0" prefWidth="798.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="592.0" layoutX="15.0" layoutY="39.0" stroke="BLACK" strokeType="INSIDE" width="818.0" />
+      <Pane layoutX="25.0" layoutY="51.0" prefHeight="566.0" prefWidth="798.0" />
       <HBox layoutX="710.0" layoutY="626.0" prefHeight="100.0" prefWidth="169.0" spacing="20.0" translateX="-50.0">
          <children>
             <StackPane prefHeight="72.0" prefWidth="66.0">
@@ -74,17 +76,17 @@
             <Slider />
          </children>
       </VBox>
-      <CheckBox layoutX="856.0" layoutY="65.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" text="Friction">
+      <CheckBox layoutX="856.0" layoutY="43.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" text="Friction">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="992.0" layoutY="65.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Directional vectors">
+      <CheckBox layoutX="994.0" layoutY="43.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Directional vectors">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="856.0" layoutY="116.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Vector magnitudes">
+      <CheckBox layoutX="854.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Vector magnitudes" translateX="2.0" translateY="-20.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -123,25 +125,6 @@
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="25.0" layoutY="-5.0" prefHeight="57.0" prefWidth="1195.0" translateX="-24.0" translateY="9.0">
-         <children>
-            <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="51.0" prefWidth="89.0" text="Back">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnBack1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="89.0" text="Tips">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnBack11" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="89.0" text="Save">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
       <VBox layoutX="469.0" layoutY="583.0" prefHeight="200.0" prefWidth="155.0" translateX="-2.0" translateY="40.0">
          <children>
             <Label prefHeight="61.0" prefWidth="216.0" text="Playback speed">
@@ -173,5 +156,25 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <MenuBar fx:id="menuBar" layoutY="1.0">
+        <menus>
+          <Menu fx:id="menu" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="mitAbout" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="mitTips" mnemonicParsing="false" text="Tips" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </Pane>
