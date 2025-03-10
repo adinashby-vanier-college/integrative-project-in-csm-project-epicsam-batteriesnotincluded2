@@ -36,6 +36,8 @@ public class MainApp extends Application {
     public static final String ENERGY_SCENE = "Energy_layout";
     public static final String KINEMATICS_SCENE = "Kinematics_layout";
 
+    public static Stage priStage;
+    
     private final static Logger logger = LoggerFactory.getLogger(MainApp.class);
     private static Scene scene;
     private static SceneController sceneController;
@@ -50,6 +52,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            this.priStage = primaryStage;
             logger.info("Bootstrapping the application...");
             // Load the scene of the primary stage.
             Parent root = FxUIHelper.loadFXML(MAINAPP_SCENE, new MainAppFXMLController());
@@ -77,10 +80,11 @@ public class MainApp extends Application {
      * existing scene or loads the specified FXML scene for the first time and
      * adds it to the scene controller.
      *
+     * @param primaryStage
      * @param fxmlFileName the name of the FXML file that represents the scene
      * to switch to.
      */
-    public static void switchScene(String fxmlFileName) {
+    public static void switchScene(Stage primaryStage, String fxmlFileName) {
         try {
             if (fxmlFileName.equals(MAINAPP_SCENE)) {
                 // No need to register the primary scene as it 
@@ -91,6 +95,7 @@ public class MainApp extends Application {
                 if (!sceneController.sceneExists(fxmlFileName)) {
                     MomentumFXMLController controller = new MomentumFXMLController();
                     Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                    controller.setStage(primaryStage);
                     sceneController.addScene(MOMENTUM_SCENE, root);
                 }
                 sceneController.activateScene(fxmlFileName);

@@ -23,6 +23,6 @@ public class EnergyFXMLController {
     }
 
     private void loadPrimaryScene(Event e) {
-        MainApp.switchScene(MainApp.MAINAPP_SCENE);
+        MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
     }
 }

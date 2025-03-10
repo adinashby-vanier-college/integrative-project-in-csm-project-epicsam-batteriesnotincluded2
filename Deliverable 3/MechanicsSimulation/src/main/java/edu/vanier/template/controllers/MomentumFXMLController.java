@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 
 /**
  *
@@ -23,13 +24,19 @@ public class MomentumFXMLController {
     MenuBar menuBar;
     
     @FXML
-    Menu menuFile, menuEdit, menuHelp;
+    Menu menuFile, menuEdit, menuHelp, menuBack;
     
     @FXML
-    MenuItem mitBack;    
+    MenuItem mitBack, mitClose;    
         
     @FXML
     MenuItem mitAbout, mitTips;
+    
+    Stage stg;
+    
+    public void setStage(Stage stage){
+    this.stg = stage;
+    }
     
     @FXML
     public void initialize() {
@@ -39,6 +46,9 @@ public class MomentumFXMLController {
     private void initMenu(){//initializes the buttons in the menu bar
         //File
         mitBack.setOnAction(this::loadPrimaryScene);
+        mitClose.setOnAction((event)->{
+        stg.close();
+        });
         //Edit
         //Help
         mitAbout.setOnAction((event)->{
@@ -58,6 +68,6 @@ public class MomentumFXMLController {
     }
     
     private void loadPrimaryScene(Event e) {
-        MainApp.switchScene(MainApp.MAINAPP_SCENE);
+        MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
     }
 }

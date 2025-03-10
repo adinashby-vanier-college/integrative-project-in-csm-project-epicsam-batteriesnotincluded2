@@ -158,11 +158,7 @@
       </Label>
       <MenuBar fx:id="menuBar" layoutY="1.0">
         <menus>
-          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
-            </items>
-          </Menu>
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File" />
           <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
@@ -174,6 +170,12 @@
                   <MenuItem fx:id="mitTips" mnemonicParsing="false" text="Tips" />
             </items>
           </Menu>
+            <Menu fx:id="menuBack" mnemonicParsing="false" text="Back">
+               <items>
+                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
+                  <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close the simulation" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </children>

@@ -59,10 +59,10 @@ public class MainAppFXMLController {
 
     private void loadSecondaryScene(Event e) {
         switch(ctr){
-            case 1:MainApp.switchScene(MainApp.MOMENTUM_SCENE);System.out.println("s");break;
-            case 2:MainApp.switchScene(MainApp.FORCES_SCENE);break;
-            case 3:MainApp.switchScene(MainApp.ENERGY_SCENE);break;
-            case 4:MainApp.switchScene(MainApp.KINEMATICS_SCENE);break;
+            case 1:MainApp.switchScene(MainApp.priStage, MainApp.MOMENTUM_SCENE);System.out.println("s");break;
+            case 2:MainApp.switchScene(MainApp.priStage, MainApp.FORCES_SCENE);break;
+            case 3:MainApp.switchScene(MainApp.priStage, MainApp.ENERGY_SCENE);break;
+            case 4:MainApp.switchScene(MainApp.priStage, MainApp.KINEMATICS_SCENE);break;
             default:;
         }
         //logger.info("Loaded the secondary scene...");

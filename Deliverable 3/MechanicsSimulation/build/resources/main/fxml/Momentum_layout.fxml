@@ -96,7 +96,7 @@
             <Font size="72.0" />
          </font>
       </Label>
-      <HBox layoutX="848.0" layoutY="234.0" prefHeight="45.0" prefWidth="337.0" spacing="30.0">
+      <HBox layoutX="849.0" layoutY="188.0" prefHeight="45.0" prefWidth="337.0" spacing="30.0">
          <children>
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="1">
                <font>
@@ -141,28 +141,24 @@
             <Spinner prefHeight="38.0" prefWidth="149.0" />
          </children>
       </VBox>
-      <Label layoutX="850.0" layoutY="192.0" text="Calculations of balls">
+      <Label layoutX="849.0" layoutY="141.0" text="Calculations of balls">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="863.0" layoutY="304.0" text="P = mv">
+      <Label layoutX="856.0" layoutY="249.0" text="P = mv">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="867.0" layoutY="336.0" text="P=(x)(d)">
+      <Label layoutX="852.0" layoutY="286.0" text="P=(x)(d)">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <MenuBar fx:id="menuBar" layoutY="1.0">
         <menus>
-          <Menu fx:id="menu" mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
-            </items>
-          </Menu>
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File" />
           <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
@@ -174,6 +170,12 @@
                   <MenuItem fx:id="mitTips" mnemonicParsing="false" text="Tips" />
             </items>
           </Menu>
+            <Menu fx:id="menuBack" mnemonicParsing="false" text="Back">
+               <items>
+                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
+                  <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close the simulation" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </children>
