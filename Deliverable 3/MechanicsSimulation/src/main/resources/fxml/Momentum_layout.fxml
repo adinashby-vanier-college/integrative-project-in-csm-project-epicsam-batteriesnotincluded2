@@ -21,7 +21,6 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="592.0" layoutX="15.0" layoutY="39.0" stroke="BLACK" strokeType="INSIDE" width="818.0" />
-      <Pane layoutX="25.0" layoutY="51.0" prefHeight="566.0" prefWidth="798.0" />
       <HBox layoutX="710.0" layoutY="626.0" prefHeight="100.0" prefWidth="169.0" spacing="20.0" translateX="-50.0">
          <children>
             <StackPane prefHeight="72.0" prefWidth="66.0">
@@ -132,13 +131,13 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Spinner prefHeight="38.0" prefWidth="149.0" />
+            <Spinner fx:id="spPlayBack" prefHeight="38.0" prefWidth="149.0" />
             <Label text="Number of balls:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Spinner prefHeight="38.0" prefWidth="149.0" />
+            <Spinner fx:id="spBalls" prefHeight="38.0" prefWidth="149.0" />
          </children>
       </VBox>
       <Label layoutX="849.0" layoutY="141.0" text="Calculations of balls">
@@ -178,5 +177,7 @@
             </Menu>
         </menus>
       </MenuBar>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="584.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="810.0" />
+      <Pane fx:id="momRoot" layoutX="19.0" layoutY="47.0" prefHeight="578.0" prefWidth="810.0" />
    </children>
 </Pane>
