@@ -46,8 +46,11 @@ public class MomentumFXMLController {
     Spinner <Double> spPlayBack;
             
     @FXML
-    Button btnPlayPause;    
+    Button btnPlayPause, btnReset;    
             
+    @FXML
+    Button btnB1, btnB2, btnB3, btnB4, btnB5;
+    
     @FXML
     ImageView ivPlayPause;        
             
@@ -76,6 +79,15 @@ public class MomentumFXMLController {
         setUpSpinners();
         setUpButtons();
         generateBalls();
+        initSetup();
+    }
+    
+    //all relevant variable setups to be initialized
+    private void initSetup(){
+        btnB2.setDisable(true);
+        btnB3.setDisable(true);
+        btnB4.setDisable(true);
+        btnB5.setDisable(true);
     }
     
     private void generateBalls(){
@@ -85,11 +97,11 @@ public class MomentumFXMLController {
         b4 = new Momentum(180,180,2,3);
         b5 = new Momentum(230,230,2,3);
         
-        c1 = new Circle(b1.getPositionX(),b1.getPositionY(),10);
-        c2 = new Circle(b2.getPositionX(),b2.getPositionY(),10);
-        c3 = new Circle(b3.getPositionX(),b3.getPositionY(),10);
-        c4 = new Circle(b4.getPositionX(),b4.getPositionY(),10);
-        c5 = new Circle(b5.getPositionX(),b5.getPositionY(),10);
+        c1 = new Circle(b1.getPositionX(),b1.getPositionY(),20);
+        c2 = new Circle(b2.getPositionX(),b2.getPositionY(),20);
+        c3 = new Circle(b3.getPositionX(),b3.getPositionY(),20);
+        c4 = new Circle(b4.getPositionX(),b4.getPositionY(),20);
+        c5 = new Circle(b5.getPositionX(),b5.getPositionY(),20);
 
         momRoot.getChildren().add(c1);
         momRoot.getChildren().add(c2);
@@ -128,19 +140,19 @@ public class MomentumFXMLController {
        spBalls.valueProperty().addListener((event)->{
            switch (balls.getValue()) {
                case 1: 
-                   setBallsVisible(false, false, false, false);
+                   setUIsVisible(false, false, false, false);
                    break;
                case 2:
-                   setBallsVisible(true, false, false, false);
+                   setUIsVisible(true, false, false, false);
                    break;
                case 3:
-                   setBallsVisible(true, true, false, false);
+                   setUIsVisible(true, true, false, false);
                    break;
                case 4:
-                   setBallsVisible(true, true, true, false);
+                   setUIsVisible(true, true, true, false);
                    break;
                case 5:
-                   setBallsVisible(true, true, true, true);
+                   setUIsVisible(true, true, true, true);
                    break;
                default:
                    System.out.println("Error");
@@ -151,11 +163,31 @@ public class MomentumFXMLController {
     
     //to disable/enable UIs with flags based on how many balls there are
     //c1 will always be visible
-    private void setBallsVisible(boolean f2, boolean f3, boolean f4, boolean f5){
+    private void setUIsVisible(boolean f2, boolean f3, boolean f4, boolean f5){
         c2.setVisible(f2);
         c3.setVisible(f3);
         c4.setVisible(f4);
         c5.setVisible(f5);
+        
+        //the reverse of the inputted booleans for functions with effects reversive of "setVisible"
+        boolean rev2, rev3, rev4, rev5;
+        
+        if(f2==false){rev2 = true;}
+        else{rev2 = false;}
+        
+        if(f3==false){rev3 = true;}
+        else{rev3 = false;}
+        
+        if(f4==false){rev4 = true;}
+        else{rev4 = false;}
+        
+        if(f5==false){rev5 = true;}
+        else{rev5 = false;}
+        
+        btnB2.setDisable(rev2);
+        btnB3.setDisable(rev3);
+        btnB4.setDisable(rev4);
+        btnB5.setDisable(rev5);
     }
     
     private void setUpButtons() {

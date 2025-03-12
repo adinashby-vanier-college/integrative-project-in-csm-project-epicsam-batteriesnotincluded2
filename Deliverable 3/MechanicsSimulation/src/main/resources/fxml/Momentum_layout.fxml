@@ -95,29 +95,29 @@
             <Font size="72.0" />
          </font>
       </Label>
-      <HBox layoutX="849.0" layoutY="188.0" prefHeight="45.0" prefWidth="337.0" spacing="30.0">
+      <HBox layoutX="849.0" layoutY="188.0" prefHeight="45.0" prefWidth="337.0" spacing="30.0" translateX="-2.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="1">
+            <Button fx:id="btnB1" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="2">
+            <Button fx:id="btnB2" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="2">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="3">
+            <Button fx:id="btnB3" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="3">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="4">
+            <Button fx:id="btnB4" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="4">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="5">
+            <Button fx:id="btnB5" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="5">
                <font>
                   <Font size="20.0" />
                </font>
@@ -140,7 +140,7 @@
             <Spinner fx:id="spBalls" prefHeight="38.0" prefWidth="149.0" />
          </children>
       </VBox>
-      <Label layoutX="849.0" layoutY="141.0" text="Calculations of balls">
+      <Label layoutX="849.0" layoutY="141.0" text="Data of balls">
          <font>
             <Font size="20.0" />
          </font>
