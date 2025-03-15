@@ -86,46 +86,51 @@ public class MainApp extends Application {
      */
     public static void switchScene(Stage primaryStage, String fxmlFileName) {
         try {
-            if (fxmlFileName.equals(MAINAPP_SCENE)) {
-                // No need to register the primary scene as it 
-                // was already done in the start method.                
-                sceneController.activateScene(fxmlFileName);
 
-            } else if (fxmlFileName.equals(MOMENTUM_SCENE)) {
-                if (!sceneController.sceneExists(fxmlFileName)) {
-                    MomentumFXMLController controller = new MomentumFXMLController();
-                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
-                    controller.setStage(primaryStage);
-                    sceneController.addScene(MOMENTUM_SCENE, root);
-                }
-                sceneController.activateScene(fxmlFileName);
-                
-            } else if (fxmlFileName.equals(FORCES_SCENE)) {
-                if (!sceneController.sceneExists(fxmlFileName)) {
-                    ForcesFXMLController controller = new ForcesFXMLController();
-                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
-                    sceneController.addScene(FORCES_SCENE, root);
-                }
-                sceneController.activateScene(fxmlFileName);
-                
-            } else if (fxmlFileName.equals(ENERGY_SCENE)) {
-                if (!sceneController.sceneExists(fxmlFileName)) {
-                    EnergyFXMLController controller = new EnergyFXMLController();
-                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
-                    sceneController.addScene(ENERGY_SCENE, root);
-                }
-                sceneController.activateScene(fxmlFileName);
-                
-            } else if (fxmlFileName.equals(KINEMATICS_SCENE)) {
-                if (!sceneController.sceneExists(fxmlFileName)) {
-                    KinematicsFXMLController controller = new KinematicsFXMLController();
-                    Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
-                    sceneController.addScene(KINEMATICS_SCENE, root);
-                }
-                sceneController.activateScene(fxmlFileName);
+            switch(fxmlFileName) {
+                case MAINAPP_SCENE:
+                    // No need to register the primary scene as it
+                    // was already done in the start method.
+                    sceneController.activateScene(fxmlFileName);
+                    break;
+
+                case MOMENTUM_SCENE:
+                    if (!sceneController.sceneExists(fxmlFileName)) {
+                        MomentumFXMLController controller = new MomentumFXMLController();
+                        Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                        controller.setStage(primaryStage);
+                        sceneController.addScene(MOMENTUM_SCENE, root);
+                    }
+                    sceneController.activateScene(fxmlFileName);
+                    break;
+
+                case FORCES_SCENE:
+                    if (!sceneController.sceneExists(fxmlFileName)) {
+                        ForcesFXMLController controller = new ForcesFXMLController();
+                        Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                        sceneController.addScene(FORCES_SCENE, root);
+                    }
+                    sceneController.activateScene(fxmlFileName);
+                    break;
+
+                case ENERGY_SCENE:
+                    if (!sceneController.sceneExists(fxmlFileName)) {
+                        EnergyFXMLController controller = new EnergyFXMLController();
+                        Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                        sceneController.addScene(ENERGY_SCENE, root);
+                    }
+                    sceneController.activateScene(fxmlFileName);
+                    break;
+
+                case KINEMATICS_SCENE:
+                    if (!sceneController.sceneExists(fxmlFileName)) {
+                        KinematicsFXMLController controller = new KinematicsFXMLController();
+                        Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                        sceneController.addScene(KINEMATICS_SCENE, root);
+                    }
+                    sceneController.activateScene(fxmlFileName);
+                    break;
             }
-            //TODO: You can register or activate additional scenes here, 
-            //      based on the logic used to add the secondary scene (as shown above).            
         } catch (IOException ex) {
             logger.error(ex.getMessage(), ex);
         }
