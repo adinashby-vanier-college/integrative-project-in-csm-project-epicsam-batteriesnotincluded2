@@ -130,7 +130,7 @@ public class MainApp extends Application {
                     }
                     sceneController.activateScene(fxmlFileName);
                     break;
-                    //test
+                    //test 2
             }
         } catch (IOException ex) {
             logger.error(ex.getMessage(), ex);
