@@ -4,8 +4,8 @@ For our integrative project, we have decided to do a Mechanics Simulation that w
 
 ## Who worked on what
 - Kinematics - [**ReactorFailure**](https://github.com/ReactorFailure)
-- Energy - [**Andy123451**](https://github.com/Andy123451)
-- Forces - [**Ilyasistriggered**](https://github.com/Ilyasistriggered)
+- Forces - [**Andy123451**](https://github.com/Andy123451)
+- Energy - [**Ilyasistriggered**](https://github.com/Ilyasistriggered)
 - Momentum - [**ChiliWasp**](https://github.com/ChiliWasp)
 
 ## Credits
