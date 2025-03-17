@@ -14,13 +14,13 @@ import javafx.scene.control.Button;
  * @author theli
  */
 public class KinematicsFXMLController {
-    @FXML
-    Button btnBack;
-    
-    @FXML
-    public void initialize() {
-        btnBack.setOnAction(this::loadPrimaryScene);
-    }
+//    @FXML
+//    Button btnBack;
+//    
+//    @FXML
+//    public void initialize() {
+//        btnBack.setOnAction(this::loadPrimaryScene);
+//    }
 
     private void loadPrimaryScene(Event e) {
         MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
