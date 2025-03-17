@@ -55,7 +55,7 @@
             </Button>
          </children>
       </HBox>
-      <VBox layoutX="680.0" layoutY="551.0" prefHeight="200.0" prefWidth="155.0" translateX="-2.0" translateY="40.0">
+      <VBox layoutX="650.0" layoutY="550.0" prefHeight="200.0" prefWidth="155.0" translateX="-2.0" translateY="40.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="169.0" spacing="20.0">
                <children>
@@ -431,7 +431,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="474.0" layoutY="582.0" prefHeight="200.0" prefWidth="185.0" spacing="8.0" translateY="10.0">
+      <VBox layoutX="455.0" layoutY="586.0" prefHeight="200.0" prefWidth="185.0" spacing="8.0" translateY="10.0">
          <children>
             <CheckBox fx:id="cbDarkMode" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Dark mode">
                <font>
