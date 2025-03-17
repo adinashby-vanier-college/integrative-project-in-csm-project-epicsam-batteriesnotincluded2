@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -20,7 +24,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="818.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
       <Label layoutX="847.0" layoutY="527.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
          <font>
             <Font size="20.0" />
@@ -124,8 +128,8 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="550.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="810.0" />
-      <Pane fx:id="momRoot" layoutX="19.0" layoutY="39.0" prefHeight="544.0" prefWidth="810.0" translateY="2.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="548.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="794.0" />
+      <Pane fx:id="momRoot" layoutX="19.0" layoutY="39.0" prefHeight="542.0" prefWidth="794.0" translateY="2.0">
          <children>
             <Label fx:id="lbOne" layoutX="300.0" layoutY="90.0" mouseTransparent="true" text="1">
                <font>
@@ -156,12 +160,12 @@
          </children></Pane>
       <HBox layoutX="868.0" layoutY="70.0" prefHeight="30.0" prefWidth="330.0" spacing="90.0" translateY="5.0">
          <children>
-            <Label text="Positions:">
+            <Label text="Positions:" translateX="10.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="10.0" text="Momentum:">
+            <Label layoutX="10.0" layoutY="10.0" text="Momentum:" translateX="-2.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -545,5 +549,19 @@
             </VBox>
          </children>
       </HBox>
+      <LineChart layoutX="828.0" layoutY="556.0" prefHeight="227.0" prefWidth="351.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label layoutX="940.0" layoutY="766.0" text="Momentum vs time">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="915.0" layoutY="532.0" prefWidth="150.0" translateY="3.0" />
    </children>
 </Pane>

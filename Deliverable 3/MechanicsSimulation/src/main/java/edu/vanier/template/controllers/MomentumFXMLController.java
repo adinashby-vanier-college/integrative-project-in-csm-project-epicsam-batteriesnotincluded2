@@ -226,7 +226,8 @@ public class MomentumFXMLController {
     private void setUpSpinners(){
        balls = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1, 1);//min 1 ball, max 5 balls, adds 1 at a time
        spBalls.setValueFactory(balls);
-       
+       spBalls.getEditor().setStyle("-fx-font-size: 15px;");
+
        spBalls.valueProperty().addListener((event)->{
            switch (balls.getValue()) {
                case 1: 
@@ -250,6 +251,8 @@ public class MomentumFXMLController {
                    break;
            }
        });
+       
+       spPlayBack.getEditor().setStyle("-fx-font-size: 15px;");               
     }
     
     //to disable/enable UIs with flags based on how many balls there are
