@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.Group?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane">
+    
+    <!-- Top Menu Bar -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: lightgray; -fx-padding: 10;">
+            <Button text="Menu >" />
+            <Button fx:id="energyButton" text="Energy" onAction="#loadEnergyScene"/>
+            <Button fx:id="backButton" text="Back" onAction="#handleBack"/>
+            <Button fx:id="exitButton" text="Exit" onAction="#exitProgram"/>
+            <Pane HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+            <VBox>
+                <Label text="Speed" />
+                <Label text="0.0 m/s" fx:id="speedLabel" style="-fx-font-weight: bold;" />
+            </VBox>
+            <VBox>
+                <Label text="Chronometer" />
+                <HBox spacing="5">
+                    <Label fx:id="timerLabel" text="00:00:00"/>
+                    <Button text="▶" onAction="#startTimer"/>
+                    <Button text="⏸" onAction="#stopTimer"/>
+                    <Button text="🔄" onAction="#resetTimer"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </top>
+    
+    <!-- Center Simulation Panel -->
+    <center>
+        <Pane fx:id="simulationPane" style="-fx-background-color: lightblue;">
+            <!-- Background Graphics -->
+            <Rectangle x="50" y="300" width="600" height="150" fill="orange" stroke="black" />
+            
+            <!-- Skateboarder -->
+            <Group fx:id="skateboarder">
+                <Circle fx:id="head" centerX="300" centerY="200" radius="10" fill="white" stroke="black" />
+                <Line startX="300" startY="210" endX="300" endY="250" stroke="black" />
+                <Line startX="280" startY="230" endX="320" endY="230" stroke="black" />
+                <Line startX="300" startY="250" endX="290" endY="280" stroke="black" />
+                <Line startX="300" startY="250" endX="310" endY="280" stroke="black" />
+                <Rectangle fx:id="skateboard" x="270" y="280" width="60" height="10" fill="black" />
+                <Circle fx:id="leftWheel" centerX="280" centerY="290" radius="5" fill="white" stroke="black" />
+                <Circle fx:id="rightWheel" centerX="320" centerY="290" radius="5" fill="white" stroke="black" />
+                <Circle fx:id="movementHandle" centerX="300" centerY="295" radius="5" fill="red" />
+            </Group>
+        </Pane>
+    </center>
+  
+    <!-- Right Parameter Menu -->
+    <right>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            
+            <Label text="Path functions" />
+            <TextField fx:id="pathFunctionField" promptText="Enter function (e.g., x)" />
+            
+            <Label text="Friction" />
+            <Slider fx:id="frictionSlider" min="0" max="50" value="25" onMouseDragged="#updateFriction"/>
+            <Label fx:id="frictionLabel" text="25.0 N"/>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button fx:id="btnBack" layoutX="409.0" layoutY="75.0" mnemonicParsing="false" text="Back" />
-   </children>
-</Pane>
+            <Label text="Gravity" />
+            <Slider fx:id="gravitySlider" min="0" max="20" value="9.8" onMouseDragged="#updateGravity"/>
+            <Label fx:id="gravityLabel" text="9.8 m/s²" />
+            
+            <Label text="Mass" />
+            <Slider fx:id="massSlider" min="0" max="100" value="50" onMouseDragged="#updateMass" />
+            <Label fx:id="massLabel" text="50 kg" />
+            
+            <!-- Energy Levels Pie Chart -->
+            <PieChart fx:id="energyPieChart"/>
+        </VBox>
+    </right>
+</BorderPane>
