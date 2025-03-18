@@ -16,7 +16,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-<<<<<<< HEAD
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff50080" height="129.0" layoutX="320.0" layoutY="142.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
       <Button fx:id="btnMomentum" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="400.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="191.0" text="Momentum">
          <font>
@@ -39,33 +38,6 @@
          </font>
       </Button>
       <Label alignment="CENTER" layoutX="319.0" layoutY="182.0" prefHeight="53.0" prefWidth="563.0" text="Mechanics Simulation™" textAlignment="CENTER">
-=======
-      <HBox alignment="TOP_CENTER" layoutX="70.0" layoutY="120.0" prefHeight="174.0" prefWidth="1045.0" spacing="100.0">
-         <children>
-            <Button fx:id="btnMomentum" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="180.0" text="Momentum">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnForces" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="180.0" text="Forces">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnEnergy" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="180.0" text="Energy">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnKinematics" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="180.0" text="Kinematics">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <Label alignment="CENTER" layoutX="319.0" layoutY="444.0" prefHeight="53.0" prefWidth="563.0" text="Mechanics Simulation™">
->>>>>>> 6559d5a984156e7aa6b4a1612daeda9fb7c080a0
          <font>
             <Font size="36.0" />
          </font>
