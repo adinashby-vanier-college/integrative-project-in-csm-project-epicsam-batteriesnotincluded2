@@ -39,8 +39,8 @@
           </Menu>
             <Menu fx:id="menusub_back" mnemonicParsing="false" text="Back">
                <items>
-                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to menu" />
-                  <MenuItem fx:id="menuitem_exit" mnemonicParsing="false" text="Exit program" />
+                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to main menu" />
+                  <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close program" />
                </items>
             </Menu>
         </menus>
