@@ -4,9 +4,9 @@ For our integrative project, we have decided to do a Mechanics Simulation that w
 
 ## Who worked on what
 - Kinematics - [**ReactorFailure**](https://github.com/ReactorFailure)
-- Forces - [**Andy123451**](https://github.com/Andy123451)
+- Forces - [**ChiliWasp**](https://github.com/ChiliWasp)
 - Energy - [**Ilyasistriggered**](https://github.com/Ilyasistriggered)
-- Momentum - [**ChiliWasp**](https://github.com/ChiliWasp)
+- Momentum - [**Andy123451**](https://github.com/Andy123451)
 
 ## Credits
 The javafx template was made by [**FrostyBee**](https://github.com/frostybee). Link to template: https://github.com/frostybee/javafx-template
