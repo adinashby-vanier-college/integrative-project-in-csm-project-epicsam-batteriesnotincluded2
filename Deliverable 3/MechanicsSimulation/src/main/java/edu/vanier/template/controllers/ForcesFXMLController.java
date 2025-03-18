@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 
 /**
  *
- * @author theli
+ * @author ChiliWasp
  */
 public class ForcesFXMLController {
     @FXML
@@ -34,6 +34,7 @@ public class ForcesFXMLController {
     @FXML
     public void initialize() {
         mitBack.setOnAction(this::loadPrimaryScene);
+        btnBack.setVisible(false);
         btnBack.setOnAction(Event -> {btnBack.setText("GO TO HELP!");
         });
     }
