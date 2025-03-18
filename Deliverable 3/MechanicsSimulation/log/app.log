@@ -1,0 +1,1266 @@
+<<<<<<< HEAD
+16:23:02.851  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:23:03.671  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:25:45.088  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:25:45.915  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:26:12.002  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:26:12.860  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:28:21.070  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:28:21.953  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:30:00.980  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:30:01.785  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:30:34.694  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:30:35.502  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+=======
+15:16:40.322  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:16:41.177  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:20:20.824  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:20:21.631  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:31:07.995  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:31:08.891  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:45:12.035  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:45:12.838  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:49:54.884  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:49:55.673  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:50:38.292  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:50:39.134  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:58:20.078  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:58:20.894  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+15:59:16.547  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+15:59:17.428  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:00:12.620  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:00:13.410  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:01:42.052  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:01:42.977  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:02:39.882  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:02:40.775  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:04:15.855  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:04:16.681  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:06:36.313  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:06:37.103  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:14:19.195  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:14:20.126  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:16:20.714  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:16:21.560  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:18:01.344  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:18:02.194  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:19:26.659  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:19:27.504  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:20:23.457  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:20:24.268  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:20:47.469  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:20:48.311  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:21:16.107  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:21:16.890  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:21:26.535  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:21:27.391  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:21:52.639  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:21:53.441  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:22:05.468  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:22:06.260  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:22:28.828  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:22:29.700  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:23:32.466  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:23:33.233  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:35:11.534  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:35:12.414  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+16:35:51.400  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+16:35:52.210  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+19:49:38.391  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+19:49:39.231  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+21:11:26.568  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+21:11:27.359  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+21:11:29.676  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+javafx.fxml.LoadException: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2697)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:128)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:65)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$3(MainAppFXMLController.java:54)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@22.0.2/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@22.0.2/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2693)
+	... 51 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.Button.setOnAction(javafx.event.EventHandler)" because "this.btnBack" is null
+	at edu.vanier.template.controllers.KinematicsFXMLController.initialize(KinematicsFXMLController.java:22)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 58 common frames omitted
+21:11:30.231  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+javafx.fxml.LoadException: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2697)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:128)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:65)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$3(MainAppFXMLController.java:54)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@22.0.2/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@22.0.2/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2693)
+	... 51 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.Button.setOnAction(javafx.event.EventHandler)" because "this.btnBack" is null
+	at edu.vanier.template.controllers.KinematicsFXMLController.initialize(KinematicsFXMLController.java:22)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 58 common frames omitted
+21:11:30.373  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+javafx.fxml.LoadException: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2697)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:128)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:65)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$3(MainAppFXMLController.java:54)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@22.0.2/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@22.0.2/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2693)
+	... 51 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.Button.setOnAction(javafx.event.EventHandler)" because "this.btnBack" is null
+	at edu.vanier.template.controllers.KinematicsFXMLController.initialize(KinematicsFXMLController.java:22)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 58 common frames omitted
+21:12:35.640  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+21:12:36.403  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+21:12:39.976  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+javafx.fxml.LoadException: 
+/C:/Users/BrunoBunch/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Kinematics_layout.fxml
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2697)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:128)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:65)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$3(MainAppFXMLController.java:54)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@22.0.2/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@22.0.2/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2693)
+	... 51 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.Button.setOnAction(javafx.event.EventHandler)" because "this.btnBack" is null
+	at edu.vanier.template.controllers.KinematicsFXMLController.initialize(KinematicsFXMLController.java:22)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 58 common frames omitted
+21:17:22.146  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+21:17:23.001  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+>>>>>>> d564cb34dd64322ae785e36154bdcd565fdedeea
+23:46:37.296  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+23:46:38.568  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+23:49:52.106  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+23:49:53.148  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+<<<<<<< HEAD
+08:20:19.336  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:20:19.770  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:23:54.097  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:23:54.573  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:27:30.785  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:27:31.252  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:43:45.501  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:43:45.939  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:45:04.160  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:45:04.595  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:51:05.849  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:51:06.262  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:59:20.270  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:59:20.736  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:03:27.425  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:03:27.892  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:10:17.223  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:10:17.649  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:10:49.758  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:10:50.234  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:11:48.961  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:11:49.411  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:12:39.608  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:12:40.078  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:15:09.291  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:15:09.722  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:38:04.466  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:38:04.919  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:44:35.952  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:44:36.375  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:44:55.008  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:44:55.482  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:46:03.661  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:46:04.125  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:47:59.906  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:48:00.359  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:49:51.981  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:49:52.433  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:50:32.606  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:50:33.014  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:51:03.645  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:51:04.124  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:54:24.100  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:54:24.565  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:56:09.179  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:56:09.630  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:56:42.746  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:56:43.212  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:56:56.136  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:56:56.582  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+09:57:27.113  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+09:57:27.575  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:07:47.892  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:07:48.337  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:08:23.441  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:08:23.885  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:10:29.664  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:10:30.113  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:19:47.469  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:19:47.957  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:20:37.023  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:20:37.513  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:21:03.032  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:21:03.513  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:24:38.239  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:24:38.690  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:30:52.866  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:30:53.339  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:30:54.312  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/2376070/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Momentum_layout.fxml
+
+javafx.fxml.LoadException: 
+/C:/Users/2376070/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Momentum_layout.fxml
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2697)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:100)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:62)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$0(MainAppFXMLController.java:39)
+=======
+01:34:58.590  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+01:34:59.097  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+01:35:44.690  [ERROR] e.v.t.u.MainApp msg: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+javafx.fxml.LoadException: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2723)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2925)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2855)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+>>>>>>> e272e104de510d8b3b9b9952942f50f5d848e490
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+<<<<<<< HEAD
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@22.0.2/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@22.0.2/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2693)
+	... 51 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.Label.setVisible(boolean)" because "this.lbMomCalc3" is null
+	at edu.vanier.template.controllers.MomentumFXMLController.initSetup(MomentumFXMLController.java:195)
+	at edu.vanier.template.controllers.MomentumFXMLController.initialize(MomentumFXMLController.java:111)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 58 common frames omitted
+10:30:55.907  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/2376070/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Momentum_layout.fxml
+
+javafx.fxml.LoadException: 
+/C:/Users/2376070/Desktop/integrative-project-in-csm-project-epicsam-batteriesnotincluded2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Momentum_layout.fxml
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2697)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:100)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:62)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$0(MainAppFXMLController.java:39)
+=======
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+01:35:44.875  [ERROR] e.v.t.u.MainApp msg: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+javafx.fxml.LoadException: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2723)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2925)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2855)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+>>>>>>> e272e104de510d8b3b9b9952942f50f5d848e490
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+<<<<<<< HEAD
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:72)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base@22.0.2/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:270)
+	at javafx.fxml@22.0.2/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2693)
+	... 51 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.Label.setVisible(boolean)" because "this.lbMomCalc3" is null
+	at edu.vanier.template.controllers.MomentumFXMLController.initSetup(MomentumFXMLController.java:195)
+	at edu.vanier.template.controllers.MomentumFXMLController.initialize(MomentumFXMLController.java:111)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 58 common frames omitted
+10:31:21.660  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:31:22.114  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:33:22.349  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:33:22.776  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:36:58.280  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:36:58.750  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:37:28.993  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:37:29.427  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:39:24.980  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:39:25.440  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:39:51.948  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:39:52.398  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:42:57.102  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:42:57.581  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:43:33.966  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:43:34.433  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+10:44:48.842  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:44:49.307  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+=======
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+01:35:45.727  [ERROR] e.v.t.u.MainApp msg: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+javafx.fxml.LoadException: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2723)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2925)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2855)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+01:35:46.399  [ERROR] e.v.t.u.MainApp msg: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+javafx.fxml.LoadException: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2723)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2925)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2855)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+02:03:58.479  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+02:03:58.884  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+02:04:00.285  [ERROR] e.v.t.u.MainApp msg: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+javafx.fxml.LoadException: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:38
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2723)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2925)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2855)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+02:38:03.203  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+02:38:03.754  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+02:38:05.204  [ERROR] e.v.t.u.MainApp msg: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:40
+
+javafx.fxml.LoadException: Group is not a valid type.
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:40
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2723)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2925)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2855)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+02:46:21.530  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+02:46:21.969  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+02:46:23.385  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+javafx.fxml.LoadException: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1024)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:759)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2858)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: javafx.scene.chart.PieChart$Data.<init>()
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2930)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1022)
+	... 54 common frames omitted
+02:50:38.793  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+02:50:39.280  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+02:50:40.772  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+javafx.fxml.LoadException: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1024)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:759)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2858)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: javafx.scene.chart.PieChart$Data.<init>()
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2930)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1022)
+	... 54 common frames omitted
+02:53:16.955  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+02:53:17.475  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+02:53:18.806  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+javafx.fxml.LoadException: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1024)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:759)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2858)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: javafx.scene.chart.PieChart$Data.<init>()
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2930)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1022)
+	... 54 common frames omitted
+03:13:26.962  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+03:13:27.461  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+03:13:28.800  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+javafx.fxml.LoadException: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1024)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:759)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2858)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: javafx.scene.chart.PieChart$Data.<init>()
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2930)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1022)
+	... 54 common frames omitted
+03:31:16.164  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+03:31:16.659  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+03:31:18.356  [ERROR] e.v.t.u.MainApp msg: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+javafx.fxml.LoadException: 
+/C:/Users/ilyas/OneDrive/Documentos/NetBeansProjects/project_mechanics2/Deliverable%203/MechanicsSimulation/build/resources/main/fxml/Energy_layout.fxml:104
+
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2727)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1024)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:759)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2858)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2568)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2536)
+	at edu.vanier.template.helpers.FxUIHelper.loadFXML(FxUIHelper.java:50)
+	at edu.vanier.template.ui.MainApp.switchScene(MainApp.java:119)
+	at edu.vanier.template.controllers.MainAppFXMLController.loadSecondaryScene(MainAppFXMLController.java:64)
+	at edu.vanier.template.controllers.MainAppFXMLController.lambda$initialize$2(MainAppFXMLController.java:49)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Node.fireEvent(Node.java:8917)
+	at javafx.controls@22.0.2/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@22.0.2/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@22.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@22.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@22.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3985)
+	at javafx.graphics@22.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1891)
+	at javafx.graphics@22.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2709)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:430)
+	at javafx.graphics@22.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@22.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: javafx.scene.chart.PieChart$Data.<init>()
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2930)
+	at javafx.fxml@22.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.constructValue(FXMLLoader.java:1022)
+	... 54 common frames omitted
+03:45:50.605  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+03:45:51.082  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+03:50:21.013  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+03:50:21.490  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+07:51:18.566  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+07:51:19.097  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+07:58:24.739  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+07:58:25.573  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:28:00.896  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:28:01.518  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:29:23.924  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:29:24.573  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:30:42.054  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:30:42.952  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+08:32:13.765  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+08:32:14.240  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+<<<<<<< HEAD
+10:27:42.455  [INFO ] e.v.t.u.MainApp msg: Bootstrapping the application...
+10:27:42.982  [INFO ] e.v.t.c.MainAppFXMLController msg: Initializing MainAppController...
+=======
+>>>>>>> e272e104de510d8b3b9b9952942f50f5d848e490
+>>>>>>> 6559d5a984156e7aa6b4a1612daeda9fb7c080a0
