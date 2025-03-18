@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -24,26 +25,26 @@
    <children>
       <MenuBar layoutY="2.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="menusub_file" mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu fx:id="menusub_edit" mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="menusub_help" mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Tips" />
+              <MenuItem fx:id="menuitem_about" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="menuitem_tips" mnemonicParsing="false" text="Tips" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Back">
+            <Menu fx:id="menusub_back" mnemonicParsing="false" text="Back">
               <items>
-                <MenuItem mnemonicParsing="false" text="Back to menu" />
-                  <MenuItem mnemonicParsing="false" text="Exit program" />
+                <MenuItem fx:id="menuitem_back" mnemonicParsing="false" text="Back to menu" />
+                  <MenuItem fx:id="menuitem_exit" mnemonicParsing="false" text="Exit program" />
               </items>
             </Menu>
         </menus>
@@ -58,52 +59,52 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Angle of launch (degrees)" textAlignment="CENTER" wrappingWidth="359.13671875">
+            <Text fx:id="txt_1" strokeType="OUTSIDE" strokeWidth="0.0" text="Angle of launch (degrees)" textAlignment="CENTER" wrappingWidth="359.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
-                  <TextField editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider style="-fx-background-color: light-grey;" />
-                  <TextField prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="89" />
+                  <TextField fx:id="tf_11" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
+                  <Slider fx:id="slider_1" style="-fx-background-color: light-grey;" />
+                  <TextField fx:id="tf_21" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="89" />
                </children>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height of launch (m)" textAlignment="CENTER" wrappingWidth="359.13671875">
+            <Text fx:id="txt_2" strokeType="OUTSIDE" strokeWidth="0.0" text="Height of launch (m)" textAlignment="CENTER" wrappingWidth="359.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
-                  <TextField editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider />
-                  <TextField prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="100" />
+                  <TextField fx:id="tf_12" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
+                  <Slider fx:id="slider_2" />
+                  <TextField fx:id="tf_22" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="100" />
                </children>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Initial velocity (m/s)" textAlignment="CENTER" wrappingWidth="359.13671875">
+            <Text fx:id="txt_3" strokeType="OUTSIDE" strokeWidth="0.0" text="Initial velocity (m/s)" textAlignment="CENTER" wrappingWidth="359.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
-                  <TextField editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider />
-                  <TextField prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="100" />
+                  <TextField fx:id="tf_13" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
+                  <Slider fx:id="slider_3" />
+                  <TextField fx:id="tf_23" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="100" />
                </children>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gravitational acceleration (m/s^2)" textAlignment="CENTER" wrappingWidth="359.13671875">
+            <Text fx:id="txt_4" strokeType="OUTSIDE" strokeWidth="0.0" text="Gravitational acceleration (m/s^2)" textAlignment="CENTER" wrappingWidth="359.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
-                  <TextField editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider />
-                  <TextField prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="25" />
+                  <TextField fx:id="tf_14" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
+                  <Slider fx:id="slider_4" />
+                  <TextField fx:id="tf_24" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="25" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="361.0" spacing="10.0">
@@ -130,8 +131,11 @@
       </VBox>
       <VBox layoutX="839.0" layoutY="53.0" prefHeight="98.0" prefWidth="359.0" spacing="5.0">
          <children>
-            <RadioButton mnemonicParsing="false" prefHeight="36.0" prefWidth="248.0" selected="true" style="-fx-font-size: 20px;" text="Projectile Motion" />
-            <RadioButton mnemonicParsing="false" prefHeight="36.0" prefWidth="248.0" style="-fx-font-size: 20px;" text="1D Kinematics" />
+            <RadioButton fx:id="radio_projectile" mnemonicParsing="false" prefHeight="36.0" prefWidth="248.0" selected="true" style="-fx-font-size: 20px;" text="Projectile Motion">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tg_options" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="radio_kinematics" mnemonicParsing="false" prefHeight="36.0" prefWidth="248.0" style="-fx-font-size: 20px;" text="1D Kinematics" toggleGroup="$tg_options" />
          </children>
          <padding>
             <Insets left="15.0" top="10.0" />
