@@ -23,11 +23,11 @@ javafx {
 dependencies {
     // The following .jars are pulled from:
     // https://repo.maven.apache.org/maven2/org/openjfx/    
-    implementation "org.openjfx:javafx-base:$javafxVersion"
-    implementation "org.openjfx:javafx-controls:$javafxVersion"
-    implementation "org.openjfx:javafx-fxml:$javafxVersion"
-    implementation "org.openjfx:javafx-graphics:$javafxVersion"
-
+    compileOnly  "org.openjfx:javafx-base:$javafxVersion:sources"
+    compileOnly  "org.openjfx:javafx-controls:$javafxVersion:sources"
+    compileOnly  "org.openjfx:javafx-fxml:$javafxVersion:sources"
+    compileOnly  "org.openjfx:javafx-graphics:$javafxVersion:sources"
+    
     // Load the Javadoc for the specified JavaFX modules.
     compileOnly  "org.openjfx:javafx-base:$javafxVersion:javadoc"
     compileOnly  "org.openjfx:javafx-controls:$javafxVersion:javadoc"
@@ -51,7 +51,7 @@ dependencies {
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(22)
     }
 }
 application {       
