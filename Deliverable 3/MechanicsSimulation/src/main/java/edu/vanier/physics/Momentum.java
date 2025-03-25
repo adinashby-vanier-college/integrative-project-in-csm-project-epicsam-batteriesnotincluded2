@@ -44,7 +44,11 @@ public class Momentum extends Physics {
        return mass*velocity;
     }
     
-    public double calcImpulse() {
+    public double calcImpulse(){
        return Pf-Pi;
+    }
+    
+    public double calcEk(){
+       return 0.5*mass*velocity*velocity;
     }
 }
