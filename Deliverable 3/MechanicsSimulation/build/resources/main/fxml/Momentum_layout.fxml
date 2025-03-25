@@ -25,7 +25,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
-      <Label layoutX="847.0" layoutY="527.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
+      <Label layoutX="833.0" layoutY="494.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
          <font>
             <Font size="20.0" />
          </font>
@@ -574,7 +574,7 @@
             </VBox>
          </children>
       </HBox>
-      <LineChart layoutX="828.0" layoutY="556.0" prefHeight="227.0" prefWidth="351.0">
+      <LineChart layoutX="813.0" layoutY="523.0" prefHeight="262.0" prefWidth="374.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -587,6 +587,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox layoutX="915.0" layoutY="532.0" prefWidth="150.0" translateY="3.0" />
+      <ComboBox layoutX="899.0" layoutY="495.0" prefWidth="150.0" translateY="3.0" />
    </children>
 </Pane>

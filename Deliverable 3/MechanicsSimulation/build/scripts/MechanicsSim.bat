@@ -68,7 +68,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\MechanicsSim.jar;%APP_HOME%\lib\javafx-fxml-22.0.2-win.jar;%APP_HOME%\lib\javafx-fxml-22.0.2.jar;%APP_HOME%\lib\javafx-controls-22.0.2-win.jar;%APP_HOME%\lib\javafx-controls-22.0.2.jar;%APP_HOME%\lib\javafx-media-22.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-22.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-22.0.2.jar;%APP_HOME%\lib\javafx-base-22.0.2-win.jar;%APP_HOME%\lib\javafx-base-22.0.2.jar;%APP_HOME%\lib\logback-classic-1.4.11.jar;%APP_HOME%\lib\logback-core-1.4.11.jar;%APP_HOME%\lib\ikonli-fontawesome5-pack-12.3.1.jar;%APP_HOME%\lib\ikonli-javafx-12.3.1.jar;%APP_HOME%\lib\ikonli-materialdesign2-pack-12.3.1.jar;%APP_HOME%\lib\slf4j-api-2.0.7.jar;%APP_HOME%\lib\ikonli-core-12.3.1.jar
+set CLASSPATH=%APP_HOME%\lib\MechanicsSim.jar;%APP_HOME%\lib\javafx-fxml-22.0.2-win.jar;%APP_HOME%\lib\javafx-controls-22.0.2-win.jar;%APP_HOME%\lib\javafx-controls-22.0.2.jar;%APP_HOME%\lib\javafx-media-22.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-22.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-22.0.2.jar;%APP_HOME%\lib\javafx-base-22.0.2-win.jar;%APP_HOME%\lib\javafx-base-22.0.2.jar;%APP_HOME%\lib\logback-classic-1.4.11.jar;%APP_HOME%\lib\logback-core-1.4.11.jar;%APP_HOME%\lib\ikonli-fontawesome5-pack-12.3.1.jar;%APP_HOME%\lib\ikonli-javafx-12.3.1.jar;%APP_HOME%\lib\ikonli-materialdesign2-pack-12.3.1.jar;%APP_HOME%\lib\slf4j-api-2.0.7.jar;%APP_HOME%\lib\ikonli-core-12.3.1.jar
 
 
 @rem Execute MechanicsSim
