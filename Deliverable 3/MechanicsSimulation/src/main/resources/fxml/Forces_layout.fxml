@@ -16,8 +16,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="megaPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Rectangle fx:id="recBackground" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="774.0" layoutY="28.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="1200.0" />
       <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
         <menus>
@@ -45,23 +46,23 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Rectangle fx:id="box" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="137.0" layoutX="463.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+      <Rectangle fx:id="box" arcHeight="5.0" arcWidth="5.0" fill="#ba702b" height="137.0" layoutX="463.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
       <Rectangle fx:id="forceArrowsBox" arcHeight="5.0" arcWidth="5.0" fill="#91faff" height="98.0" layoutX="33.0" layoutY="679.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
       <Label layoutX="40.0" layoutY="686.0" text="Force Arrows Box   (drag to take arrows)" />
       <Label fx:id="lblArrowsLeft" layoutX="40.0" layoutY="752.0" text="Arrows left: 8" />
-      <StackPane layoutX="126.0" layoutY="691.0" prefHeight="82.0" prefWidth="252.0" rotate="-15.5" scaleX="0.8" scaleY="0.8" scaleZ="0.6">
+      <StackPane layoutX="177.0" layoutY="677.0" prefHeight="88.0" prefWidth="186.0" rotate="-15.5" scaleX="0.8" scaleY="0.8" scaleZ="0.6">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000000" height="24.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
             <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
          </children>
       </StackPane>
-      <StackPane layoutX="20.0" layoutY="572.0" prefHeight="82.0" prefWidth="252.0">
+      <StackPane fx:id="Arrow" layoutX="86.0" layoutY="572.0" prefHeight="88.0" prefWidth="186.0">
          <children>
             <Rectangle fill="#ff000000" height="26.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
             <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
          </children>
       </StackPane>
-      <StackPane layoutX="211.0" layoutY="708.0" prefHeight="82.0" prefWidth="252.0" scaleX="0.5" scaleY="0.5">
+      <StackPane layoutX="240.0" layoutY="708.0" prefHeight="88.0" prefWidth="194.0" scaleX="0.5" scaleY="0.5">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000000" height="25.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
             <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
@@ -109,5 +110,6 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="btnSummonVector" layoutX="274.0" layoutY="223.0" mnemonicParsing="false" text="/summon vector" />
    </children>
 </Pane>
