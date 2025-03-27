@@ -6,6 +6,7 @@ package edu.vanier.template.controllers;
 
 import edu.vanier.physics.Momentum;
 import edu.vanier.template.ui.MainApp;
+import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -103,6 +104,10 @@ public class MomentumFXMLController {
     
     int data = 1;//determines which ball's data to display
     
+    ArrayList<Circle> ballList = new ArrayList <Circle>();
+    
+    AnimationTimer timer;
+    
     public void setStage(Stage stage){
     this.stg = stage;
     }
@@ -115,10 +120,17 @@ public class MomentumFXMLController {
         setUpSliders();
         generateBalls();
         initSetup();
+        animation();
     }
     
     //all relevant variable setups to be initialized
     private void initSetup(){
+        ballList.add(c1);
+        ballList.add(c2);
+        ballList.add(c3);
+        ballList.add(c4);
+        ballList.add(c5);
+        
         btnB2.setDisable(true);//data buttons for all the balls
         btnB3.setDisable(true);
         btnB4.setDisable(true);
@@ -220,7 +232,8 @@ public class MomentumFXMLController {
         spC4.setLayoutY(b4.getPositionY());
         spC5.setLayoutX(b5.getPositionX());
         spC5.setLayoutY(b5.getPositionY());
-        c1.setCenterY(b1.getPositionY());/*
+        //c1.setCenterY(b1.getPositionY());
+        /*
         c2.setCenterX(b2.getPositionX());
         c2.setCenterY(b2.getPositionY());
         c3.setCenterX(b3.getPositionX());
@@ -277,31 +290,18 @@ public class MomentumFXMLController {
         public void handle(MouseEvent t) {
             double offsetX = t.getSceneX() - orgSceneX;//how much the mouse dragged away the ball
             double offsetY = t.getSceneY() - orgSceneY;
-
-            System.out.println(offsetY);
             
-            if(offsetX>0){ 
-                if(ogBallX + offsetX - 42 <= 750 && sp.getLayoutX() <= 750){sp.setLayoutX(ogBallX + offsetX -42);}
-            }
-            if(offsetX<0){
-                if(ogBallX -100 >= 0 && sp.getLayoutX() - 100 >= 0){sp.setLayoutX(ogBallX + offsetX -42);}
-            }
-               
-           // if(offsetY>0){ 
-                if(sp.getLayoutY() <= 542){
-                   // System.out.println("rrr");
-                    if(ogBallY + offsetY -16 <= 542)sp.setLayoutY(ogBallY + offsetY -57);
-                }
-           // }
-          //  if(offsetY<0){
-                //System.out.println("3424");
-                if(sp.getLayoutY() >= 0){
-                    if(ogBallY + offsetY - 16 >= 0)sp.setLayoutY(ogBallY + offsetY -57);
-                }
-         //   }
+            double moveX = ogBallX + offsetX - 42;//42 & 57 are the correction factor for when mouse moves a ball and it shifts
+            double moveY = ogBallY + offsetY - 57;
             
-           // sp.setLayoutY(ogBallY + offsetY -57);           
+            if(moveX<0){moveX = 0;}//if ball will move below 0, it will be capped at 0
+            else if(moveX>750){moveX = 750;}//if ball will move over 750, it will be capped at 750
             
+            if(moveY<0){moveY = 0;}//same logic here as above
+            else if(moveY>502){moveY = 502;}
+            
+            sp.setLayoutX(moveX);
+            sp.setLayoutY(moveY);
             
             switch(data){
                 case 1: showValues(1);break;
@@ -319,13 +319,28 @@ public class MomentumFXMLController {
 
     private void animation(){
         
-        AnimationTimer timer = new AnimationTimer(){
+         timer = new AnimationTimer(){
             @Override
             public void handle(long now) {
-
+               
+                for(int i=0; i<ballList.size(); i++){
+                  for(int j=i+1; j<ballList.size(); j++){
+                       checkCollision(ballList.get(i),ballList.get(j));
+                  }
+                }
+                
+                spC1.setTranslateX(spC1.getTranslateX()+5);//testing movement
+                spC1.setTranslateY(spC1.getTranslateY()+5);
             }
         
         };
+    }
+    
+    private void checkCollision(Circle ball1, Circle ball2){
+         if(ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent()))){
+             //System.out.println("das");
+             
+         }
     }
     
     private void initMenu(){//initializes the buttons in the menu bar
@@ -454,13 +469,17 @@ public class MomentumFXMLController {
     private void setUpButtons() {
        
        btnPlayPause.setOnAction((event)->{
-          if(PlayPause.equals("paused")){
+          if(PlayPause.equals("paused")){//when the animation is currently paused
              ivPlayPause.setImage(new Image("/Images/pause.png"));
              PlayPause = "playing";//now the animation is playing
+             
+             timer.start();
           }
-          else if(PlayPause.equals("playing")){
+          else if(PlayPause.equals("playing")){//when the animation is currently playing
              ivPlayPause.setImage(new Image("/Images/play.png"));
              PlayPause = "paused";//now the animation is paused
+             
+             timer.stop();
           }
        });
        

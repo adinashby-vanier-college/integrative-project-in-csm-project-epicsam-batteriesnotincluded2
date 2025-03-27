@@ -22,7 +22,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
       <Label layoutX="833.0" layoutY="494.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
@@ -129,43 +129,12 @@
         </menus>
       </MenuBar>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="548.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="794.0" />
-      <Pane fx:id="momRoot" layoutX="19.0" layoutY="39.0" prefHeight="542.0" prefWidth="794.0" translateY="2.0">
+      <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="545.0" prefWidth="794.0" translateY="2.0">
          <children>
-            <Label fx:id="lbTimePassed" layoutX="14.0" layoutY="6.0" text="Time passed: 00:00" />
             <StackPane fx:id="spC1" layoutX="562.0" layoutY="237.0" prefHeight="44.0" prefWidth="44.0">
                <children>
                   <Circle fx:id="c1" fill="#ff4000" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="lbOne" mouseTransparent="true" text="1">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC2" layoutX="220.0" layoutY="336.0" prefHeight="44.0" prefWidth="44.0">
-               <children>
-                  <Circle fx:id="c2" fill="#17c938" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne11" mouseTransparent="true" text="2">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC4" layoutX="335.0" layoutY="324.0" prefHeight="44.0" prefWidth="44.0">
-               <children>
-                  <Circle fx:id="c4" fill="#a16448" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne1111" mouseTransparent="true" text="4">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC3" layoutX="291.0" layoutY="356.0" prefHeight="44.0" prefWidth="44.0">
-               <children>
-                  <Circle fx:id="c3" fill="#215cff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne111" mouseTransparent="true" text="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -182,6 +151,37 @@
                   </Label>
                </children>
             </StackPane>
+            <StackPane fx:id="spC4" layoutX="335.0" layoutY="324.0" prefHeight="44.0" prefWidth="44.0">
+               <children>
+                  <Circle fx:id="c4" fill="#a16448" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="lbOne1111" mouseTransparent="true" text="4">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="spC2" layoutX="220.0" layoutY="336.0" prefHeight="44.0" prefWidth="44.0">
+               <children>
+                  <Circle fx:id="c2" fill="#17c938" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="lbOne11" mouseTransparent="true" text="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="spC3" layoutX="291.0" layoutY="356.0" prefHeight="44.0" prefWidth="44.0">
+               <children>
+                  <Circle fx:id="c3" fill="#215cff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="lbOne111" mouseTransparent="true" text="3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <Label fx:id="lbTimePassed" layoutX="14.0" layoutY="6.0" text="Time passed: 00:00" />
          </children></Pane>
       <HBox layoutX="850.0" layoutY="36.0" prefHeight="30.0" prefWidth="330.0" spacing="90.0" translateY="5.0">
          <children>
