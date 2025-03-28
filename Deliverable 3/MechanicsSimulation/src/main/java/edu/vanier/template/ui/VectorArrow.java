@@ -13,7 +13,9 @@ import javafx.scene.shape.*;
  *
  * @author ChiliWasp
  */
-public class VectorArrow extends StackPane{
+public class VectorArrow extends StackPane {
+    final public static double width=111;
+    final public static double height=26;
     boolean selected=false;
 
     public boolean getSelected() {
@@ -33,11 +35,12 @@ public class VectorArrow extends StackPane{
         VectorArrow.this.setLayoutY(y);
         
         VectorArrow.this.setAlignment(Pos.CENTER_RIGHT);
-        Rectangle stem=new Rectangle(10, 0, 111, 26);
+        Rectangle stem=new Rectangle(10, 0, width, height);
         stem.setTranslateX(-62);
         Polygon tip=new Polygon(0,28,66,-16,0,-60);
         tip.setScaleX(0.9);
         tip.setScaleY(0.7);
+        
         String color="";
         String point0=".0";
         
@@ -51,7 +54,7 @@ public class VectorArrow extends StackPane{
                 case "13": hxdml="d"; break;
                 case "14": hxdml="e"; break;
                 case "15": hxdml="f"; break;
-                case "16": hxdml="a"; break;
+                case "16": hxdml="f"; break;
                 default: break;
             }
             color=color+hxdml;
@@ -67,7 +70,7 @@ public class VectorArrow extends StackPane{
             color=color+"0";
         }
         color=color.trim();
-        System.out.println(color);
+       // System.out.println(color);
         stem.setFill(Paint.valueOf(color));
         tip.setFill(Paint.valueOf(color));
         

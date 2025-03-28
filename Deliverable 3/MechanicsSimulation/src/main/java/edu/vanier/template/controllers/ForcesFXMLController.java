@@ -36,6 +36,9 @@ public class ForcesFXMLController {
     Slider slMag,slDir;
     
     @FXML
+    Label lblMag,lblDir;
+    
+    @FXML
     PieChart pieForceDistribution;
     
     @FXML
@@ -45,33 +48,49 @@ public class ForcesFXMLController {
     StackPane Arrow;
     
     @FXML
-    Rectangle box,recBackground;
+    Rectangle box,recBackground,forceArrowBox;
     
-    int i=1;
     boolean selectingVector=false;
     
     @FXML
     public void initialize() {
         btnBack.setVisible(false);
-        
+        Arrow.setVisible(false);
         mitBack.setOnAction(this::loadPrimaryScene);
+        
+            // a temporary summon vector button since i havent gotten dragging yet
         btnSummonVector.setOnAction((event)->{
-        VectorArrow sp=new VectorArrow(btnSummonVector.getLayoutX(), btnSummonVector.getLayoutY());
+        VectorArrow sp=new VectorArrow(btnSummonVector.getLayoutX(), btnSummonVector.getLayoutY()+100);
         sp.setVisible(true);
         sp.setOnMouseDragged(onVectorDragged(sp));
         sp.setOnMousePressed(onVectorPressed(sp));
-        
          megaPane.getChildren().add(sp);
         });
-        int x=2;
-        while (x>0){
-            x=(int)Math.rint(Math.random()*16);
-            System.out.println(x);
-        }
         
-        slMag.valueProperty().addListener((event)->{
-        
+        slMag.setMax(100);
+        slMag.setMin(0);
+        slMag.valueProperty().setValue(50);
+        slMag.valueProperty().addListener((event)->{ // magnitude slider: changes length of selected vectors tail
+            lblMag.setText("Magnitude: "+Math.round(slMag.valueProperty().getValue())+"N");
+            
+            for (Node n:megaPane.getChildren()){
+                if (n instanceof VectorArrow){
+                    if (((VectorArrow) n).getSelected()){ // gets to the current selected vector
+                       // ((VectorArrow) n).setMaxWidth(slMag.valueProperty().getValue()*2.22+50);
+                    ((Rectangle)((VectorArrow) n).getChildren().get(0)).setWidth(slMag.valueProperty().getValue()*2.22);
+                    }
+                }
+            }
         });
+        
+        slDir.valueProperty().addListener((event)->{
+            // future deli put uh the direction of the selected arrow using the same tan angle and 180
+            // and make it spin around the box aswell, so you'll have to make a circle of radius r and then rotate about it
+            // good luck lol o7
+            
+            
+        });
+        
         btnDelete.setOnAction((event)->{
             for (Node n:megaPane.getChildren()){
                 if (n instanceof VectorArrow){
@@ -81,7 +100,8 @@ public class ForcesFXMLController {
             }
         });
         
-        for (Node n:megaPane.getChildren()) n.setOnMousePressed(onVectorPressed(n));
+        //for (Node n:megaPane.getChildren()) n.setOnMousePressed(onVectorPressed(n));
+        recBackground.setOnMousePressed(onVectorPressed(recBackground));
     }
     private void toggleSelectedVector(){
         if(selectingVector){
@@ -115,9 +135,10 @@ public class ForcesFXMLController {
                 ((VectorArrow) n).setSelected(true); 
                 selectingVector=true;
                 toggleSelectedVector();
-            } else {
+            } else if (n instanceof Rectangle){
+                if (((Rectangle) n).getId().equals(recBackground.getId())){
                 unselectAllVectors();
-                toggleSelectedVector();
+                toggleSelectedVector(); }
             }
         };
     };
@@ -140,7 +161,8 @@ public class ForcesFXMLController {
 //            System.out.println(boxCenterY);
             double rotate=Math.atan((boxCenterY-ArrowY)/(boxCenterX-ArrowX));
 //            System.out.println(rotate);
-            rotate=rotate/Math.PI*180;
+              rotate=Math.toDegrees(rotate);
+            //rotate=rotate/Math.PI*180;
             if (ArrowX<=boxCenterX)
             v.setRotate(rotate);
             else v.setRotate(rotate +180);
