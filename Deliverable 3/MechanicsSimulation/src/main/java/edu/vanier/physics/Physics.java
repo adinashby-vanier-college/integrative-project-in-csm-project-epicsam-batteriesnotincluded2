@@ -13,6 +13,10 @@ public class Physics {
     
     double velocity;
 
+    double velocityX;
+    
+    double velocityY;
+    
     double mass;
     
     public Physics (double velocity, double positionX, double positionY, double mass){

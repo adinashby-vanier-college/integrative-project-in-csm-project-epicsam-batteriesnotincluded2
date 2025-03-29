@@ -105,7 +105,9 @@ public class MomentumFXMLController {
     int data = 1;//determines which ball's data to display
     
     ArrayList<Circle> ballList = new ArrayList <Circle>();
-    
+    ArrayList<StackPane> spList = new ArrayList <StackPane>();
+    ArrayList<Momentum> momList = new ArrayList <Momentum>();
+
     AnimationTimer timer;
     
     public void setStage(Stage stage){
@@ -130,6 +132,18 @@ public class MomentumFXMLController {
         ballList.add(c3);
         ballList.add(c4);
         ballList.add(c5);
+        
+        spList.add(spC1);
+        spList.add(spC2);
+        spList.add(spC3);
+        spList.add(spC4);
+        spList.add(spC5);
+        
+        momList.add(b1);
+        momList.add(b2);
+        momList.add(b3);
+        momList.add(b4);
+        momList.add(b5);
         
         btnB2.setDisable(true);//data buttons for all the balls
         btnB3.setDisable(true);
@@ -218,11 +232,11 @@ public class MomentumFXMLController {
     
     
     private void generateBalls(){
-        b1 = new Momentum(30,60,5,5);//x, y, mass, velocity
-        b2 = new Momentum(400,400,5,5);
-        b3 = new Momentum(130,130,5,5);
-        b4 = new Momentum(180,180,5,5);
-        b5 = new Momentum(230,230,5,5);
+        b1 = new Momentum(30,60,5, slV1.getValue()/(Math.sqrt(2)), slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
+        b2 = new Momentum(100,60,5, slV2.getValue()/(Math.sqrt(2)), slV2.getValue()/(Math.sqrt(2)));
+        b3 = new Momentum(200,50,5, slV3.getValue()/(Math.sqrt(2)), slV3.getValue()/(Math.sqrt(2)));
+        b4 = new Momentum(50,100,5, slV4.getValue()/(Math.sqrt(2)), slV4.getValue()/(Math.sqrt(2)));
+        b5 = new Momentum(300,80,5, slV5.getValue()/(Math.sqrt(2)), slV5.getValue()/(Math.sqrt(2)));
         
         spC2.setLayoutX(b2.getPositionX());
         spC2.setLayoutY(b2.getPositionY());
@@ -322,20 +336,47 @@ public class MomentumFXMLController {
          timer = new AnimationTimer(){
             @Override
             public void handle(long now) {
-               
+        
+                //iterating all balls to check for collision with each other
                 for(int i=0; i<ballList.size(); i++){
                   for(int j=i+1; j<ballList.size(); j++){
                        checkCollision(ballList.get(i),ballList.get(j));
                   }
                 }
                 
-                spC1.setTranslateX(spC1.getTranslateX()+5);//testing movement
-                spC1.setTranslateY(spC1.getTranslateY()+5);
+                //iterating through all balls to check their boundaries with the pane
+                for(int i=0; i<ballList.size(); i++){
+                       checkBounds(ballList.get(i), momList.get(i));
+                  }
+                
+                //iterating through all balls to set their new movements corresponding to changing velocities
+                for(int i=0; i<momList.size(); i++){
+                       movingBalls(momList.get(i), spList.get(i));
+                }                
+                
             }
         
         };
     }
     
+    private void movingBalls(Momentum ball, StackPane sp){
+        sp.setTranslateX(sp.getTranslateX() + ball.getVelocityX());//moving the balls
+        sp.setTranslateY(sp.getTranslateY() + ball.getVelocityY());
+    }
+    
+    private void checkBounds(Circle c, Momentum b){
+        
+                //if x and y positions of balls are out of bounds, their directions are reversed
+                if(c.localToScene(c.getBoundsInParent()).getCenterX() >= 815 || c.localToScene(c.getBoundsInParent()).getCenterX() <= 62){
+                   b.setVelocityX(b.getVelocityX()*-1);
+                }
+
+                if(c.localToScene(c.getBoundsInParent()).getCenterY() >= 587 || c.localToScene(c.getBoundsInParent()).getCenterY() <= 79){
+                   b.setVelocityY(b.getVelocityY()*-1);
+                }
+    }
+    
+    //when they collide, they should bounce off each other
     private void checkCollision(Circle ball1, Circle ball2){
          if(ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent()))){
              //System.out.println("das");
@@ -534,31 +575,41 @@ public class MomentumFXMLController {
        
        slV1.valueProperty().addListener((event)->{          
         lbV1.setText(String.valueOf(Math.round(slV1.getValue()*10.0)/10.0));
-        b1.setVelocity(slV1.getValue());
+        b1.setVelocity(slV1.getValue());//setting the overall velocity
+        b1.setVelocityX(slV1.getValue()*Math.cos(b1.getAngle()));//setting the x & y velocities
+        b1.setVelocityY(slV1.getValue()*Math.sin(b1.getAngle()));
         showValues(1);
        });
        
        slV2.valueProperty().addListener((event)->{          
         lbV2.setText(String.valueOf(Math.round(slV2.getValue()*10.0)/10.0));
         b2.setVelocity(slV2.getValue());
+        b2.setVelocityX(slV2.getValue()*Math.cos(b2.getAngle()));
+        b2.setVelocityY(slV2.getValue()*Math.sin(b2.getAngle()));
         showValues(2);
        });
        
        slV3.valueProperty().addListener((event)->{          
         lbV3.setText(String.valueOf(Math.round(slV3.getValue()*10.0)/10.0));
         b3.setVelocity(slV3.getValue());
+        b3.setVelocityX(slV3.getValue()*Math.cos(b3.getAngle()));
+        b3.setVelocityY(slV3.getValue()*Math.sin(b3.getAngle()));
         showValues(3);
        });
        
        slV4.valueProperty().addListener((event)->{          
         lbV4.setText(String.valueOf(Math.round(slV4.getValue()*10.0)/10.0));
         b4.setVelocity(slV4.getValue());
+        b4.setVelocityX(slV4.getValue()*Math.cos(b4.getAngle()));
+        b4.setVelocityY(slV4.getValue()*Math.sin(b4.getAngle()));
         showValues(4);
        });
        
        slV5.valueProperty().addListener((event)->{          
         lbV5.setText(String.valueOf(Math.round(slV5.getValue()*10.0)/10.0));
         b5.setVelocity(slV5.getValue());
+        b5.setVelocityX(slV5.getValue()*Math.cos(b5.getAngle()));
+        b5.setVelocityY(slV5.getValue()*Math.sin(b5.getAngle()));
         showValues(5);
        });
     }

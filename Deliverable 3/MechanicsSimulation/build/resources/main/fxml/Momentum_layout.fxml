@@ -65,9 +65,9 @@
                <children>
                   <StackPane prefHeight="72.0" prefWidth="66.0">
                      <children>
-                        <Button fx:id="btnPlayPause" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="Button" />
+                        <Button fx:id="btnPlayPause" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" text="Button" />
                         <Circle fill="#d0d7dd" mouseTransparent="true" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
-                        <ImageView fx:id="ivPlayPause" fitHeight="39.0" fitWidth="35.0" mouseTransparent="true" preserveRatio="true">
+                        <ImageView fx:id="ivPlayPause" fitHeight="38.0" fitWidth="47.0" mouseTransparent="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/play.png" />
                            </image>
@@ -335,11 +335,11 @@
             </VBox>
             <VBox prefHeight="176.0" prefWidth="150.0" spacing="20.0" translateY="7.0">
                <children>
-                  <Slider fx:id="slV1" max="20.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slV2" layoutX="10.0" layoutY="40.0" max="20.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slV3" layoutX="10.0" layoutY="55.0" max="20.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slV4" layoutX="10.0" layoutY="69.0" max="20.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slV5" layoutX="10.0" layoutY="84.0" max="20.0" min="5.0" value="5.0" />
+                  <Slider fx:id="slV1" max="20.0" min="1.0" value="2.0" />
+                  <Slider fx:id="slV2" layoutX="10.0" layoutY="40.0" max="20.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV3" layoutX="10.0" layoutY="55.0" max="20.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV4" layoutX="10.0" layoutY="69.0" max="20.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV5" layoutX="10.0" layoutY="84.0" max="20.0" min="1.0" value="1.0" />
                </children>
             </VBox>
          </children>
