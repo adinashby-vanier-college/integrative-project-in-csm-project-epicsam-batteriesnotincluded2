@@ -131,6 +131,11 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="548.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="794.0" />
       <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="545.0" prefWidth="794.0" translateY="2.0">
          <children>
+            <ImageView fitHeight="78.0" fitWidth="82.0" layoutX="235.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/arrow.png" />
+               </image>
+            </ImageView>
             <StackPane fx:id="spC1" layoutX="562.0" layoutY="237.0" prefHeight="44.0" prefWidth="44.0">
                <children>
                   <Circle fx:id="c1" fill="#ff4000" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
@@ -171,7 +176,7 @@
                   </Label>
                </children>
             </StackPane>
-            <StackPane fx:id="spC3" layoutX="291.0" layoutY="356.0" prefHeight="44.0" prefWidth="44.0">
+            <StackPane fx:id="spC3" layoutX="313.0" layoutY="380.0" prefHeight="44.0" prefWidth="44.0">
                <children>
                   <Circle fx:id="c3" fill="#215cff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="lbOne111" mouseTransparent="true" text="3">
@@ -335,11 +340,11 @@
             </VBox>
             <VBox prefHeight="176.0" prefWidth="150.0" spacing="20.0" translateY="7.0">
                <children>
-                  <Slider fx:id="slV1" max="20.0" min="1.0" value="2.0" />
-                  <Slider fx:id="slV2" layoutX="10.0" layoutY="40.0" max="20.0" min="1.0" value="1.0" />
-                  <Slider fx:id="slV3" layoutX="10.0" layoutY="55.0" max="20.0" min="1.0" value="1.0" />
-                  <Slider fx:id="slV4" layoutX="10.0" layoutY="69.0" max="20.0" min="1.0" value="1.0" />
-                  <Slider fx:id="slV5" layoutX="10.0" layoutY="84.0" max="20.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV1" max="7.0" min="1.0" value="2.0" />
+                  <Slider fx:id="slV2" layoutX="10.0" layoutY="40.0" max="7.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV3" layoutX="10.0" layoutY="55.0" max="7.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV4" layoutX="10.0" layoutY="69.0" max="7.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV5" layoutX="10.0" layoutY="84.0" max="7.0" min="1.0" value="1.0" />
                </children>
             </VBox>
          </children>

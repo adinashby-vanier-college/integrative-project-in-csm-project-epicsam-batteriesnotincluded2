@@ -81,6 +81,9 @@ public class MomentumFXMLController {
     Label lbMomCalc1, lbMomCalc2, lbMomCalc3, lbImCalc1, lbImCalc2, lbImCalc3, lbEkCalc1, lbEkCalc2, lbEkCalc3;//the labels displaying the calculations
     
     @FXML
+    Label lbTimePassed;
+    
+    @FXML
     Slider slM1, slM2, slM3, slM4, slM5, slV1, slV2, slV3, slV4, slV5;//sliders for the mass & velocities of balls        
             
     @FXML
@@ -89,7 +92,7 @@ public class MomentumFXMLController {
     Stage stg;
     
     SpinnerValueFactory <Integer> balls;
-    
+
     SpinnerValueFactory <Double> speed;
 
     String PlayPause = "paused";//a flag for the play/pause button
@@ -103,6 +106,14 @@ public class MomentumFXMLController {
     double ogBallX, ogBallY;//original position of the dragged ball
     
     int data = 1;//determines which ball's data to display
+    
+    long min1, min2, sec1, sec2;//they make the digits in the timer 00:00
+    
+    double y1, y2, y3, y4, totalTime = 0;
+    
+    double timePerPixel = 0.015;//originally 0.01666667
+        
+    double timeRatio = 1;//playback speed
     
     ArrayList<Circle> ballList = new ArrayList <Circle>();
     ArrayList<StackPane> spList = new ArrayList <StackPane>();
@@ -317,6 +328,8 @@ public class MomentumFXMLController {
             sp.setLayoutX(moveX);
             sp.setLayoutY(moveY);
             
+            otherValues();
+            
             switch(data){
                 case 1: showValues(1);break;
                 case 2: showValues(2);break;
@@ -337,12 +350,27 @@ public class MomentumFXMLController {
             @Override
             public void handle(long now) {
         
-                //iterating all balls to check for collision with each other
-                for(int i=0; i<ballList.size(); i++){
+                timePerPixel = 0.015*timeRatio;//timeRatio changes as the user adjusts the speed of the simulation
+                otherValues();//always changing and displaying all the balls' positions and momentums
+                
+                //iterating all balls to check for collision with each other (0,1,2,3,4)
+               /* for(int i=0; i<ballList.size(); i++){
                   for(int j=i+1; j<ballList.size(); j++){
-                       checkCollision(ballList.get(i),ballList.get(j));
+                       checkCollision(ballList.get(i),ballList.get(j),momList.get(i),momList.get(j));
                   }
-                }
+                }*/
+                checkCollision(c1,c2,b1,b2);
+                checkCollision(c1,c3,b1,b3);
+                checkCollision(c1,c4,b1,b4);
+                checkCollision(c1,c5,b1,b5);
+                checkCollision(c2,c3,b2,b3);
+                checkCollision(c2,c4,b2,b4);
+                checkCollision(c2,c5,b2,b5);
+                checkCollision(c3,c4,b3,b4);
+                checkCollision(c3,c5,b3,b5);
+                checkCollision(c4,c5,b4,b5);
+
+                
                 
                 //iterating through all balls to check their boundaries with the pane
                 for(int i=0; i<ballList.size(); i++){
@@ -352,6 +380,32 @@ public class MomentumFXMLController {
                 //iterating through all balls to set their new movements corresponding to changing velocities
                 for(int i=0; i<momList.size(); i++){
                        movingBalls(momList.get(i), spList.get(i));
+                }
+
+                if(PlayPause.equals("playing")){//when the pause button isn't clicked yet i.e. when animation is currently playing
+                  HUD(y1,y2,y3,y4);   
+                  y1+=timePerPixel;
+                  y2+=timePerPixel;
+                  y3+=timePerPixel/60;
+                  y4+=timePerPixel;
+                  totalTime=totalTime+timePerPixel;
+                }
+                
+                if(y1>10){
+                y1=y1-10;
+                }
+                
+                if(y2>60){
+                y2=y2-60;
+                }
+
+                if(y3>10){
+                y3=y3-10;
+                }
+                //the maximum time the animation can run for is an hour
+                if(totalTime>3600){
+                Alert("Watch out","Time for a break","Car has ran out of fuel");
+                btnReset.fire();
                 }                
                 
             }
@@ -360,8 +414,8 @@ public class MomentumFXMLController {
     }
     
     private void movingBalls(Momentum ball, StackPane sp){
-        sp.setTranslateX(sp.getTranslateX() + ball.getVelocityX());//moving the balls
-        sp.setTranslateY(sp.getTranslateY() + ball.getVelocityY());
+        sp.setLayoutX(sp.getLayoutX() + ball.getVelocityX());//moving the balls
+        sp.setLayoutY(sp.getLayoutY() + ball.getVelocityY());
     }
     
     private void checkBounds(Circle c, Momentum b){
@@ -377,12 +431,106 @@ public class MomentumFXMLController {
     }
     
     //when they collide, they should bounce off each other
-    private void checkCollision(Circle ball1, Circle ball2){
+    private void checkCollision(Circle ball1, Circle ball2, Momentum m1, Momentum m2){
+
+        double x1 = ball1.getCenterX();
+        double x2 = ball2.getCenterX();
+        double y1 = ball1.getCenterY();
+        double y2 = ball2.getCenterY();
+        
+        double x = x1-x2;
+        double y = y1-y2;
+        double distance = Math.sqrt(x*x+y*y);
+        
+        //if(distance<=(ball1.getRadius() + ball2.getRadius())){
+       // setNewVelocities(m1,m2,ball1,ball2);
+        //}
+        
          if(ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent()))){
-             //System.out.println("das");
-             
+             setNewVelocities(m1,m2, ball1, ball2);
+            // System.out.println("collision");
          }
     }
+    
+    private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2){
+    
+        double m1 = ball1.getMass();
+        double m2 = ball2.getMass();
+        double x1 = ball1.getPositionX();
+        double x2 = ball2.getPositionX();
+        double y1 = ball1.getPositionY();
+        double y2 = ball2.getPositionY();
+        double vx1 = ball1.getVelocityX();
+        double vy1 = ball1.getVelocityY();
+        double vx2 = ball2.getVelocityX();
+        double vy2 = ball2.getVelocityY();
+        
+                
+        double x = x1-x2;
+        double y = y1-y2;
+        double distance = Math.sqrt(x*x+y*y);
+
+        double normx = x/distance;
+        double normy = y/distance;
+        
+        double tanx = -normy;
+        double tany = normx;
+        
+        double v1n = vx1*normx+vy1*normy;
+        double v1t = vx1*tanx+vy1*tany;
+        double v2n = vx2*normx+vy2*normy;
+        double v2t = vx2*tanx+vy2*tany;
+        
+        double v1nNew = (v1n*(m1-m2)+2*m2*v2n)/(m1+m2); 
+        double v2nNew = (v2n*(m2-m1)+2*m1*v1n)/(m1+m2);
+        
+        double vx1New = v1nNew*normx+v1t*tanx; 
+        double vy1New = v1nNew*normy+v1t*tany; 
+        double vx2New = v2nNew*normx+v2t*tanx; 
+        double vy2New = v2nNew*normy+v2t*tany;
+        
+        ball1.setVelocityX(vx1New);
+        ball1.setVelocityY(vy1New);
+        ball2.setVelocityX(vx2New);
+        ball2.setVelocityY(vy2New);
+        
+    }
+    
+    //manages the heads up display (current velocity, distance traveled, time passed)
+    private void HUD(double y1, double y2, double y3, double y4){
+              sec2=Math.round(y1)*100/100;
+              sec1=(Math.round(y2)*100/100)/10;
+              min2=(Math.round(y3-0.492)*100/100);
+              
+              if(y4>600&&y4<1200){
+              min1=1;
+              }
+              else if(y4>1200&&y4<1800){
+              min1=2;
+              }
+              else if(y4>1800&&y4<2400){
+              min1=3;
+              }
+              else if(y4>2400&&y4<3000){
+              min1=4;
+              }
+              else if(y4>3000&&y4<3600){
+              min1=5;
+              }
+              
+             String min2String = Double.toString(min2);
+             String min1String = Double.toString(min1);
+
+              if(sec2!=0 && sec2%10==0){
+                  sec2=0;
+              }
+              
+              if(sec1==6){
+                 sec1=0;         
+              }
+              
+    lbTimePassed.setText("Time passed: " + min1String.charAt(0) + min2String.charAt(0) + ":" + sec1 + sec2);
+    };
     
     private void initMenu(){//initializes the buttons in the menu bar
         //File
@@ -404,7 +552,6 @@ public class MomentumFXMLController {
        balls = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1, 1);//min 1 ball, max 5 balls, adds 1 at a time
        spBalls.setValueFactory(balls);
        spBalls.getEditor().setStyle("-fx-font-size: 15px;");
-
        spBalls.valueProperty().addListener((event)->{
            switch (balls.getValue()) {
                case 1: 
@@ -429,17 +576,35 @@ public class MomentumFXMLController {
            }
        });
        
-       spPlayBack.getEditor().setStyle("-fx-font-size: 15px;");               
+       speed = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 3, 1, 0.1);//min 0.1x times speed, max 3x speed, adds 0.1x at a time
+       spPlayBack.setValueFactory(speed);
+       spPlayBack.getEditor().setStyle("-fx-font-size: 15px;");    
+       spPlayBack.valueProperty().addListener((event)->{
+          timeRatio = spPlayBack.getValue();
+       });
+    }
+    
+    private void removeNode(StackPane sp, boolean flag){
+          if(flag==false){
+          momRoot.getChildren().remove(sp);
+          }
+          else if(flag==true){
+          momRoot.getChildren().add(sp);
+          }
     }
     
     //to disable/enable UIs with flags based on how many balls there are
     //c1 will always be visible
     private void setUIsVisible(boolean f2, boolean f3, boolean f4, boolean f5){
-        
+        //PROBLEM: when circles are invisible, the active ones can still collide with them
         spC2.setVisible(f2);
+        //removeNode(spC2,f2);
         spC3.setVisible(f3);
+        //removeNode(spC3,f3);
         spC4.setVisible(f4);
+       // removeNode(spC4,f4);
         spC5.setVisible(f5);
+       // removeNode(spC5,f5);
         
         //lbTwo.setVisible(f2);
         //lbThree.setVisible(f3);
@@ -643,8 +808,11 @@ public class MomentumFXMLController {
     
         lbEkCalc2.setText("E = ½(" + Math.round(b.getMass()*10.0)/10.0 + ")(" + Math.round(b.getVelocity()*10.0)/10.0 + ")²");
         lbEkCalc3.setText("E = " + Math.round(b.calcEk()*10.0)/10.0 + " J");
-        
-        //regardless of which ball is selected all their position & momentum will constantly be shown
+                
+    }
+    
+    //regardless of which ball is selected all their position & momentum will constantly be shown
+    public void otherValues(){
         lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
         lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
         lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
