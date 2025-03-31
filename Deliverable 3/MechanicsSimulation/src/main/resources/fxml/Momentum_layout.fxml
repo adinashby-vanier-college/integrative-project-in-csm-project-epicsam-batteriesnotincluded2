@@ -131,11 +131,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="548.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="794.0" />
       <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="545.0" prefWidth="794.0" translateY="2.0">
          <children>
-            <ImageView fitHeight="78.0" fitWidth="82.0" layoutX="235.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/arrow.png" />
-               </image>
-            </ImageView>
             <StackPane fx:id="spC1" layoutX="562.0" layoutY="237.0" prefHeight="44.0" prefWidth="44.0">
                <children>
                   <Circle fx:id="c1" fill="#ff4000" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
@@ -187,6 +182,31 @@
                </children>
             </StackPane>
             <Label fx:id="lbTimePassed" layoutX="14.0" layoutY="6.0" text="Time passed: 00:00" />
+            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="251.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="261.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="261.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="345.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="606.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/arrow.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <HBox layoutX="850.0" layoutY="36.0" prefHeight="30.0" prefWidth="330.0" spacing="90.0" translateY="5.0">
          <children>
@@ -195,7 +215,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="10.0" text="Momentum:" translateX="-2.0">
+            <Label layoutX="10.0" layoutY="10.0" text="Velocity" translateX="-2.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -341,10 +361,10 @@
             <VBox prefHeight="176.0" prefWidth="150.0" spacing="20.0" translateY="7.0">
                <children>
                   <Slider fx:id="slV1" max="7.0" min="1.0" value="2.0" />
-                  <Slider fx:id="slV2" layoutX="10.0" layoutY="40.0" max="7.0" min="1.0" value="1.0" />
-                  <Slider fx:id="slV3" layoutX="10.0" layoutY="55.0" max="7.0" min="1.0" value="1.0" />
-                  <Slider fx:id="slV4" layoutX="10.0" layoutY="69.0" max="7.0" min="1.0" value="1.0" />
-                  <Slider fx:id="slV5" layoutX="10.0" layoutY="84.0" max="7.0" min="1.0" value="1.0" />
+                  <Slider fx:id="slV2" layoutX="10.0" layoutY="40.0" max="7.0" min="1.0" value="2.0" />
+                  <Slider fx:id="slV3" layoutX="10.0" layoutY="55.0" max="7.0" min="1.0" value="2.0" />
+                  <Slider fx:id="slV4" layoutX="10.0" layoutY="69.0" max="7.0" min="1.0" value="2.0" />
+                  <Slider fx:id="slV5" layoutX="10.0" layoutY="84.0" max="7.0" min="1.0" value="2.0" />
                </children>
             </VBox>
          </children>
@@ -363,7 +383,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbX1" layoutX="10.0" layoutY="10.0" text="300">
+                  <Label fx:id="lbX1" layoutX="10.0" layoutY="10.0" text="300.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -426,32 +446,32 @@
             </VBox>
             <VBox prefHeight="187.0" prefWidth="81.0" spacing="5.0">
                <children>
-                  <Label text="P">
+                  <Label text="V">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbP1" layoutX="10.0" layoutY="10.0" text="0">
+                  <Label fx:id="lbv1" layoutX="10.0" layoutY="10.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbP2" layoutX="10.0" layoutY="37.0" text="0">
+                  <Label fx:id="lbv2" layoutX="10.0" layoutY="37.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbP3" layoutX="10.0" layoutY="64.0" text="0">
+                  <Label fx:id="lbv3" layoutX="10.0" layoutY="64.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbP4" layoutX="10.0" layoutY="91.0" text="0">
+                  <Label fx:id="lbv4" layoutX="10.0" layoutY="91.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbP5" layoutX="10.0" layoutY="138.0" text="0">
+                  <Label fx:id="lbv5" layoutX="10.0" layoutY="138.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -460,32 +480,32 @@
             </VBox>
             <VBox prefHeight="187.0" prefWidth="75.0" spacing="5.0">
                <children>
-                  <Label text="Px">
+                  <Label text="Vx">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPx1" layoutX="10.0" layoutY="10.0" text="300">
+                  <Label fx:id="lbVx1" layoutX="10.0" layoutY="10.0" text="300">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPx2" layoutX="10.0" layoutY="37.0" text="0">
+                  <Label fx:id="lbVx2" layoutX="10.0" layoutY="37.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPx3" layoutX="10.0" layoutY="64.0" text="0">
+                  <Label fx:id="lbVx3" layoutX="10.0" layoutY="64.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPx4" layoutX="10.0" layoutY="92.0" text="0">
+                  <Label fx:id="lbVx4" layoutX="10.0" layoutY="92.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPx5" layoutX="10.0" layoutY="119.0" text="0">
+                  <Label fx:id="lbVx5" layoutX="10.0" layoutY="119.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -494,32 +514,32 @@
             </VBox>
             <VBox prefHeight="187.0" prefWidth="72.0" spacing="5.0">
                <children>
-                  <Label text="Py">
+                  <Label text="Vx">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPy1" layoutX="10.0" layoutY="10.0" text="300">
+                  <Label fx:id="lbVy1" layoutX="10.0" layoutY="10.0" text="300">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPy2" layoutX="10.0" layoutY="37.0" text="0">
+                  <Label fx:id="lbVy2" layoutX="10.0" layoutY="37.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPy3" layoutX="10.0" layoutY="64.0" text="0">
+                  <Label fx:id="lbVy3" layoutX="10.0" layoutY="64.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPy4" layoutX="10.0" layoutY="92.0" text="0">
+                  <Label fx:id="lbVy4" layoutX="10.0" layoutY="92.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbPy5" layoutX="10.0" layoutY="119.0" text="0">
+                  <Label fx:id="lbVy5" layoutX="10.0" layoutY="119.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -528,7 +548,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox layoutX="834.0" layoutY="112.0" prefHeight="200.0" prefWidth="22.0" spacing="5.0" translateX="5.0" translateY="-3.0">
+      <VBox layoutX="834.0" layoutY="112.0" prefHeight="156.0" prefWidth="22.0" spacing="5.0" translateX="5.0" translateY="-3.0">
          <children>
             <Label fx:id="lb1" text="1)">
                <font>
@@ -590,7 +610,7 @@
          <children>
             <VBox prefHeight="109.0" prefWidth="124.0">
                <children>
-                  <Label text="Momentum:">
+                  <Label text="Momentum x:">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -638,7 +658,7 @@
             </VBox>
             <VBox prefHeight="109.0" prefWidth="126.0" spacing="4.0">
                <children>
-                  <Label text="Kinetic energy:">
+                  <Label text="Momentum y:">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -670,11 +690,11 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label layoutX="940.0" layoutY="766.0" text="Momentum vs time">
+      <Label fx:id="lbGraph" layoutX="940.0" layoutY="766.0" text="Momentum vs time">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox layoutX="899.0" layoutY="495.0" prefWidth="150.0" translateY="3.0" />
+      <ComboBox fx:id="cbGraph" layoutX="899.0" layoutY="495.0" prefWidth="150.0" promptText="Momentum" translateY="3.0" />
    </children>
 </Pane>

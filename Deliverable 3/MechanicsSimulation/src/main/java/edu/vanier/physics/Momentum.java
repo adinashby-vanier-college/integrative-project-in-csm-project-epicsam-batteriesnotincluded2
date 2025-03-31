@@ -4,6 +4,8 @@
  */
 package edu.vanier.physics;
 
+import edu.vanier.template.controllers.MomentumFXMLController;
+
 /**
  *
  * @author theli
@@ -45,6 +47,7 @@ public class Momentum extends Physics {
     public double getVelocityX(){
         return velocityX;
     }
+
     
     public double getAngle(){//returns the angle of the ball from the positive x axis counter clockwise
         return Math.atan2(velocityY,velocityX);
@@ -75,6 +78,8 @@ public class Momentum extends Physics {
     public double calcMomentum(){
        return mass*velocity;
     }
+    
+    
     
     public double calcImpulse(){
        return Pf-Pi;
