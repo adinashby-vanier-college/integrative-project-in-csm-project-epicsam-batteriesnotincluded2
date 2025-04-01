@@ -968,7 +968,10 @@ public class MomentumFXMLController {
     ArrayList<Double> MomTime = new ArrayList<>();
     Momentum b;
     XYChart.Series<Number,Number> series = new XYChart.Series<Number, Number>();
-    private void graph (){       
+
+    private void graph(){
+      
+       
        switch(data){
            case 1 -> b = b1;
            case 2 -> b = b2;
