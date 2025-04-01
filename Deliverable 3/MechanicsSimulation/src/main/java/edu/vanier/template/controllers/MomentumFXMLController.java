@@ -62,7 +62,7 @@ public class MomentumFXMLController {
     Spinner <Double> spPlayBack;
             
     @FXML
-    Button btnPlayPause, btnReset;    
+    Button btnPlayPause, btnReset, btnTwoXSpeed, btnPointFiveXSpeed;    
             
     @FXML
     Button btnB1, btnB2, btnB3, btnB4, btnB5;
@@ -134,7 +134,8 @@ public class MomentumFXMLController {
     ArrayList<Momentum> momList = new ArrayList <Momentum>();
     boolean [][] collideflags = new boolean [5][5];//checking collision between every 2 balls
     boolean [] collidable = new boolean [5];
-    
+    double [] listPi = new double [5];//store the initial and final momentum before & after collision for impulse calculation
+    double [] listPf = new double [5];
     
     AnimationTimer timer;
     
@@ -185,6 +186,14 @@ public class MomentumFXMLController {
                   for(int j=i+1; j<5; j++){
                        collideflags[i][j] = false;
                   }
+                }
+        
+        for(int i=0; i<4; i++){//setting initial momentum & final momentum to be zero
+                       listPi[i] = 0.0;
+                }
+        
+        for(int i=0; i<4; i++){
+                       listPf[i] = 0.0;
                 }
         
         btnB2.setDisable(true);//data buttons for all the balls
@@ -375,7 +384,14 @@ public class MomentumFXMLController {
             @Override
             public void handle(long now) {
         
-                timePerPixel = 0.015*timeRatio;//timeRatio changes as the user adjusts the speed of the simulation
+                for(int i = 0; i<momList.size(); i++){
+                   momList.get(i).setVelocity(momList.get(i).getVelocity()*timeRatio);
+                   momList.get(i).setVelocityX(momList.get(i).getVelocityX()*timeRatio);
+                   momList.get(i).setVelocityY(momList.get(i).getVelocityY()*timeRatio);
+                }
+                
+                
+                timePerPixel = 0.015 / timeRatio; //changes as the user adjusts the speed of the simulation
                 otherValues();//always changing and displaying all the balls' positions and momentums
                 showValues(data);
                 
@@ -388,7 +404,7 @@ public class MomentumFXMLController {
                 
                 if(totalTime-dataTimeCtr>1){//every one second a new data point is added
                 //addDataToGraph(dataTimeCtr);
-                graph();//displaying the graph
+               // graph();//displaying the graph
                 dataTimeCtr++;
                   //  System.out.println("dsd");
                 }
@@ -523,6 +539,15 @@ public class MomentumFXMLController {
         ball2.setVelocityX(vx2New);
         ball2.setVelocityY(vy2New);
         ball2.setVelocity(Math.sqrt(vx1New*vx1New + vy1New*vy1New));
+        
+        for(int z = 0; z<4; z++){//variable name is z because i is already taken
+           listPi[z] = listPf[z];
+        }
+        
+        for(int z = 0; z<4; z++){
+           listPf[z] = momList.get(z).calcMomentum();
+        }
+        
         collideflags[i][j] = true;
     }
     
@@ -623,6 +648,7 @@ public class MomentumFXMLController {
        spPlayBack.getEditor().setStyle("-fx-font-size: 15px;");    
        spPlayBack.valueProperty().addListener((event)->{
           timeRatio = spPlayBack.getValue();
+          
        });
     }
     
@@ -850,6 +876,8 @@ public class MomentumFXMLController {
        btnB4.setOnAction((event)->{data = 4; showValues(4);});//ball 4's data will now be displayed
        btnB5.setOnAction((event)->{data = 5; showValues(5);});//ball 5's data will now be displayed
 
+       btnTwoXSpeed.setOnAction((event)->{speed.setValue(2.0);});
+       btnPointFiveXSpeed.setOnAction((event)->{speed.setValue(0.5);});
     }
     
     private void setUpSliders() {
@@ -940,26 +968,30 @@ public class MomentumFXMLController {
     ArrayList<Double> MomTime = new ArrayList<>();
     Momentum b;
     XYChart.Series<Number,Number> series = new XYChart.Series<Number, Number>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1725e690d88a38f3a87386d581f398ad088f5f6e
     private void graph(){
       
        
        switch(data){
-           case 1: b = b1; break;
-           case 2: b = b2; break;
-           case 3: b = b3; break;
-           case 4: b = b4; break;
-           case 5: b = b5; break;
+           case 1 -> b = b1;
+           case 2 -> b = b2;
+           case 3 -> b = b3;
+           case 4 -> b = b4;
+           case 5 -> b = b5;
        }
        
       // for(int i = 0; i < Time.size(); i++){
-            series.getData().add(new XYChart.Data(dataTimeCtr, b.calcMomentum()));
+       series.getData().add(new XYChart.Data(dataTimeCtr, b.calcMomentum()));
           //}
        
-       lcGraph.getData().add(series);   
+              lcGraph.getData().add(series);
           
-          for(XYChart.Data<Number,Number> data: series.getData()){
-          data.getNode().setVisible(false);
-          }
+        //  for(XYChart.Data<Number,Number> data: series.getData()){
+       //   data.getNode().setVisible(false);
+         // }
     }
     
     ArrayList<Integer> Time = new ArrayList<>();//used to store time for graph in seconds

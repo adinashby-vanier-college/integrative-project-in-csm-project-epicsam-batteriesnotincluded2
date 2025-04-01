@@ -75,6 +75,10 @@ public class Momentum extends Physics {
         this.positionY = positionY;
     }
     
+    public void setMoveSpeed(){
+        
+    }
+    
     public double calcMomentum(){
        return mass*velocity;
     }
