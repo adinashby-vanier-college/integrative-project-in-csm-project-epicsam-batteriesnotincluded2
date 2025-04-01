@@ -7,6 +7,7 @@ package edu.vanier.template.controllers;
 import edu.vanier.template.ui.*;
 import javafx.event.*;
 import javafx.fxml.*;
+import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
@@ -36,7 +37,7 @@ public class ForcesFXMLController {
     Slider slMag,slDir;
     
     @FXML
-    Label lblMag,lblDir;
+    Label lbMag,lbDir;
     
     @FXML
     PieChart pieForceDistribution;
@@ -51,6 +52,18 @@ public class ForcesFXMLController {
     Rectangle box,recBackground,forceArrowBox;
     
     boolean selectingVector=false;
+    
+    public VectorArrow getSelectedVector(){
+        for (Node n:megaPane.getChildren()){
+            if (n instanceof VectorArrow){
+                if (((VectorArrow) n).getSelected()) {
+                    return ((VectorArrow) n);
+                }
+            }
+        }
+        return null;
+    }
+    
     
     @FXML
     public void initialize() {
@@ -71,8 +84,7 @@ public class ForcesFXMLController {
         slMag.setMin(0);
         slMag.valueProperty().setValue(50);
         slMag.valueProperty().addListener((event)->{ // magnitude slider: changes length of selected vectors tail
-            lblMag.setText("Magnitude: "+Math.round(slMag.valueProperty().getValue())+"N");
-            
+            lbMag.setText("Magnitude: "+Math.round(slMag.valueProperty().getValue())+"N");
             for (Node n:megaPane.getChildren()){
                 if (n instanceof VectorArrow){
                     if (((VectorArrow) n).getSelected()){ // gets to the current selected vector
@@ -83,11 +95,24 @@ public class ForcesFXMLController {
             }
         });
         
+        slDir.setMax(360);
+        slDir.setMin(0);
+        slDir.valueProperty().setValue(0);
         slDir.valueProperty().addListener((event)->{
-            // future deli put uh the direction of the selected arrow using the same tan angle and 180
-            // and make it spin around the box aswell, so you'll have to make a circle of radius r and then rotate about it
-            // good luck lol o7
-            
+            lbDir.setText("Direction: "+Math.round(slDir.valueProperty().getValue())+"°");
+            VectorArrow v=getSelectedVector();
+            v.setRotate(slDir.valueProperty().getValue()+180);
+            double ArrowX=v.getBoundsInParent().getCenterX();
+            double ArrowY=v.getBoundsInParent().getCenterY();
+            double boxCenterX=box.getBoundsInParent().getCenterX();
+            double boxCenterY=box.getBoundsInParent().getCenterY();
+            double x=ArrowX-boxCenterX;
+            double y=ArrowY-boxCenterY;                         // doesnt work properly (it has to be in rad)
+            double hyp=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
+            v.setLayoutX(hyp*Math.cos(v.getRotate()));
+            v.setLayoutY(hyp*Math.sin(v.getRotate()));
+            //  set the arrows position relative to the box, change angles to rad
+                
             
         });
         
