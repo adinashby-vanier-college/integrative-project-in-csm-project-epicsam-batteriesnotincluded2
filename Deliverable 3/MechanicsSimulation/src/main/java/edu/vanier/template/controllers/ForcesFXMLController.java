@@ -149,7 +149,7 @@ public class ForcesFXMLController {
      */
     private EventHandler<MouseEvent> onVectorDragged(VectorArrow v){
         return (MouseEvent t) -> {
-            v.setLayoutX(t.getSceneX()/*-(186/2)*/);
+            v.setLayoutX(t.getSceneX()-55);
             v.setLayoutY(t.getSceneY()-(88/2));
             double ArrowX=v.getBoundsInParent().getCenterX();
             double ArrowY=v.getBoundsInParent().getCenterY();
