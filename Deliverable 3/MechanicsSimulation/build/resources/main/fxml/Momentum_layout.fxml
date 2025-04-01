@@ -22,7 +22,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
       <Label layoutX="833.0" layoutY="494.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
@@ -514,7 +514,7 @@
             </VBox>
             <VBox prefHeight="187.0" prefWidth="72.0" spacing="5.0">
                <children>
-                  <Label text="Vx">
+                  <Label text="Vy">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -682,7 +682,7 @@
             </VBox>
          </children>
       </HBox>
-      <LineChart layoutX="813.0" layoutY="523.0" prefHeight="262.0" prefWidth="374.0">
+      <LineChart fx:id="lcGraph" layoutX="813.0" layoutY="523.0" prefHeight="262.0" prefWidth="374.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

@@ -15,6 +15,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -109,6 +111,9 @@ public class MomentumFXMLController {
     @FXML
     ComboBox cbGraph;        
             
+    @FXML
+    LineChart lcGraph;        
+            
     Momentum b1, b2, b3, b4, b5;//ball objects that correspond to every circle object
     
     double orgSceneX, orgSceneY;//original mouse click positions
@@ -127,7 +132,9 @@ public class MomentumFXMLController {
     ArrayList<Circle> ballList = new ArrayList <Circle>();
     ArrayList<StackPane> spList = new ArrayList <StackPane>();
     ArrayList<Momentum> momList = new ArrayList <Momentum>();
-    boolean [][] collideflags = new boolean [5][5];
+    boolean [][] collideflags = new boolean [5][5];//checking collision between every 2 balls
+    boolean [] collidable = new boolean [5];
+    
     
     AnimationTimer timer;
     
@@ -149,6 +156,13 @@ public class MomentumFXMLController {
     
     //all relevant variable setups to be initialized
     private void initSetup(){
+        
+        collidable[0] = true;//ball 1 is always on screen and collidable
+        collidable[1] = false;
+        collidable[2] = false;
+        collidable[3] = false;
+        collidable[4] = false;
+        
         ballList.add(c1);
         ballList.add(c2);
         ballList.add(c3);
@@ -348,13 +362,13 @@ public class MomentumFXMLController {
                 case 4: showValues(4);break;
                 case 5: showValues(5);break;
                 default: System.out.println("Something's wrong"); break;
-            }
-            
-           // setBallLabels();         
+            }            
         }
     };
     }
 
+    int dataTimeCtr = 0;//helps keep track of the passage of every second
+    
     private void animation(){
         
          timer = new AnimationTimer(){
@@ -371,17 +385,13 @@ public class MomentumFXMLController {
                        checkCollision(ballList.get(i),ballList.get(j),momList.get(i),momList.get(j), i, j);
                   }
                 }
-              /*checkCollision(c1,c2,b1,b2);
-                checkCollision(c1,c3,b1,b3);
-                checkCollision(c1,c4,b1,b4);
-                checkCollision(c1,c5,b1,b5);
-                checkCollision(c2,c3,b2,b3);
-                checkCollision(c2,c4,b2,b4);
-                checkCollision(c2,c5,b2,b5);
-                checkCollision(c3,c4,b3,b4);
-                checkCollision(c3,c5,b3,b5);
-                checkCollision(c4,c5,b4,b5);*/
-
+                
+                if(totalTime-dataTimeCtr>1){//every one second a new data point is added
+                //addDataToGraph(dataTimeCtr);
+                graph();//displaying the graph
+                dataTimeCtr++;
+                  //  System.out.println("dsd");
+                }
                 
                 
                 //iterating through all balls to check their boundaries with the pane
@@ -391,7 +401,7 @@ public class MomentumFXMLController {
                 
                 //iterating through all balls to set their new movements corresponding to changing velocities
                 for(int i=0; i<momList.size(); i++){
-                       movingBalls(momList.get(i), spList.get(i));
+                       movingBalls(i, momList.get(i), spList.get(i));
                 }
 
                 if(PlayPause.equals("playing")){//when the pause button isn't clicked yet i.e. when animation is currently playing
@@ -416,8 +426,9 @@ public class MomentumFXMLController {
                 }
                 //the maximum time the animation can run for is an hour
                 if(totalTime>3600){
-                Alert("Watch out","Time for a break","Car has ran out of fuel");
+                Alert("Watch out","You're getting kicked out","You've been staring at the pucks for an hour. What are you doing?");
                 btnReset.fire();
+                timer.stop();
                 }                
                 
             }
@@ -425,14 +436,14 @@ public class MomentumFXMLController {
         };
     }
     
-    private void movingBalls(Momentum ball, StackPane sp){
+    private void movingBalls(int i, Momentum ball, StackPane sp){
+        if(collidable[i] == true){//only moves when ball is collidable/enabled
         sp.setLayoutX(sp.getLayoutX() + ball.getVelocityX());//moving the balls
         sp.setLayoutY(sp.getLayoutY() + ball.getVelocityY());
-        
+        }
     }
     
-    private void checkBounds(Circle c, Momentum b){
-        
+    private void checkBounds(Circle c, Momentum b){        
                 //if x and y positions of balls are out of bounds, their directions are reversed
                 if(c.localToScene(c.getBoundsInParent()).getCenterX() >= 815 || c.localToScene(c.getBoundsInParent()).getCenterX() <= 62){
                    b.setVelocityX(b.getVelocityX()*-1);
@@ -460,12 +471,11 @@ public class MomentumFXMLController {
         
         if(!ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent()))){
            collideflags[i][j] = false;
-            //System.out.println("not colliding");
         }
         
          if(ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent())) && collideflags[i][j] == false){
            //  System.out.println((i+1) + " and " + (j+1));
-                 setNewVelocities(m1,m2, ball1, ball2, i, j);
+                 if(collidable[i] == true && collidable[j] == true){setNewVelocities(m1,m2, ball1, ball2, i, j);}
             // System.out.println("collision");
          }
     }
@@ -630,12 +640,16 @@ public class MomentumFXMLController {
     private void setUIsVisible(boolean f2, boolean f3, boolean f4, boolean f5){
         //PROBLEM: when circles are invisible, the active ones can still collide with them
         spC2.setVisible(f2);
+        collidable[1] = f2;
         //removeNode(spC2,f2);
         spC3.setVisible(f3);
+        collidable[2] = f3;
         //removeNode(spC3,f3);
         spC4.setVisible(f4);
+        collidable[3] = f4;
        // removeNode(spC4,f4);
         spC5.setVisible(f5);
+        collidable[4] = f5;
        // removeNode(spC5,f5);
         
         //lbTwo.setVisible(f2);
@@ -723,9 +737,15 @@ public class MomentumFXMLController {
        
        btnReset.setOnAction((event)->{
            
-           sec1=sec2=0;//setting time displayed as zero
-           min1=min2=0;
+          sec1=sec2=0;//setting time displayed as zero
+          min1=min2=0;
             
+          timePerPixel = 0.015;
+          y1=y2=y3=y4=0;
+          HUD(y1,y2,y3,y4);
+           
+          balls.setValue(1);
+          
           timer.stop();
           initSetup();
           
@@ -735,11 +755,11 @@ public class MomentumFXMLController {
                   }
                 }
         
-        c1.setVisible(false);
-        c2.setVisible(false);
-        c3.setVisible(false);
-        c4.setVisible(false);
-        c5.setVisible(false);
+        
+        spC2.setVisible(false);
+        spC3.setVisible(false);
+        spC4.setVisible(false);
+        spC5.setVisible(false);
         
         btnB2.setDisable(true);//data buttons for all the balls
         btnB3.setDisable(true);
@@ -915,6 +935,47 @@ public class MomentumFXMLController {
         b5.setVelocityY(slV5.getValue()*Math.sin(b5.getAngle()));
         showValues(5);
        });
+    }
+    
+    ArrayList<Double> MomTime = new ArrayList<>();
+    Momentum b;
+    XYChart.Series<Number,Number> series = new XYChart.Series<Number, Number>();
+    private void (){
+      
+       
+       switch(data){
+           case 1: b = b1; break;
+           case 2: b = b2; break;
+           case 3: b = b3; break;
+           case 4: b = b4; break;
+           case 5: b = b5; break;
+       }
+       
+      // for(int i = 0; i < Time.size(); i++){
+            series.getData().add(new XYChart.Data(dataTimeCtr, b.calcMomentum()));
+          //}
+       
+       lcGraph.getData().add(series);   
+          
+          for(XYChart.Data<Number,Number> data: series.getData()){
+          data.getNode().setVisible(false);
+          }
+    }
+    
+    ArrayList<Integer> Time = new ArrayList<>();//used to store time for graph in seconds
+    ArrayList<Double> MomTime1 = new ArrayList<>();//used to store momentum data points for graph in seconds
+    ArrayList<Double> MomTime2 = new ArrayList<>();
+    ArrayList<Double> MomTime3 = new ArrayList<>();
+    ArrayList<Double> MomTime4 = new ArrayList<>();
+    ArrayList<Double> MomTime5 = new ArrayList<>();
+    
+    private void addDataToGraph(int i){
+       Time.add(i);
+       MomTime1.add(b1.calcMomentum());
+       MomTime2.add(b2.calcMomentum());
+       MomTime3.add(b3.calcMomentum());
+       MomTime4.add(b4.calcMomentum());
+       MomTime5.add(b5.calcMomentum());
     }
     
     //int i only determines which ball's formulas are shown. All the balls' positions & momentums are shown at all times
