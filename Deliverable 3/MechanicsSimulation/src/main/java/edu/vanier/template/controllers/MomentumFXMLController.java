@@ -19,6 +19,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -92,10 +93,16 @@ public class MomentumFXMLController {
     Label lbTimePassed, lbGraph;
     
     @FXML
+    Label lbCalc;//the label that says "Calculations (ball1)"
+    
+    @FXML
     Slider slM1, slM2, slM3, slM4, slM5, slV1, slV2, slV3, slV4, slV5;//sliders for the mass & velocities of balls        
             
     @FXML
     StackPane spC1, spC2, spC3, spC4, spC5;       
+            
+    @FXML
+    CheckBox cbDarkMode, cbDir, cbHUD;    
             
     Stage stg;
     
@@ -141,12 +148,24 @@ public class MomentumFXMLController {
     
     XYChart.Series<Number,Number> series;//to make it easier to remove series when switching ball displays
     
-    XYChart.Series<Number,Number> series1;//series of data for momentum &
-    XYChart.Series<Number,Number> series2;
-    XYChart.Series<Number,Number> series3;
-    XYChart.Series<Number,Number> series4;
-    XYChart.Series<Number,Number> series5;
-            
+    XYChart.Series<Number,Number> s1p;//series of data for momentum 
+    XYChart.Series<Number,Number> s2p;
+    XYChart.Series<Number,Number> s3p;
+    XYChart.Series<Number,Number> s4p;
+    XYChart.Series<Number,Number> s5p;
+           
+    XYChart.Series<Number,Number> s1j;//series of data for impulse 
+    XYChart.Series<Number,Number> s2j;
+    XYChart.Series<Number,Number> s3j;
+    XYChart.Series<Number,Number> s4j;
+    XYChart.Series<Number,Number> s5j;
+    
+    XYChart.Series<Number,Number> s1k;//series of data for kinetic energy 
+    XYChart.Series<Number,Number> s2k;
+    XYChart.Series<Number,Number> s3k;
+    XYChart.Series<Number,Number> s4k;
+    XYChart.Series<Number,Number> s5k;
+    
     public void setStage(Stage stage){
     this.stg = stage;
     }
@@ -158,6 +177,7 @@ public class MomentumFXMLController {
         setUpSpinners();
         setUpButtons();
         setUpSliders();
+        setUpCheckBoxes();
         generateBalls();
         initSetup();
         animation();
@@ -165,19 +185,31 @@ public class MomentumFXMLController {
     
     //all relevant variable setups to be initialized
     private void initSetup(){
-
        
-        series1 = new XYChart.Series<>();
-        series2 = new XYChart.Series<>();
-        series3 = new XYChart.Series<>();
-        series4 = new XYChart.Series<>();
-        series5 = new XYChart.Series<>();
-        series = series1;
+        s1p = new XYChart.Series<>();
+        s2p = new XYChart.Series<>();
+        s3p = new XYChart.Series<>();
+        s4p = new XYChart.Series<>();
+        s5p = new XYChart.Series<>();
+        
+        s1j = new XYChart.Series<>();
+        s2j = new XYChart.Series<>();
+        s3j = new XYChart.Series<>();
+        s4j = new XYChart.Series<>();
+        s5j = new XYChart.Series<>();
+        
+        s1k = new XYChart.Series<>();
+        s2k = new XYChart.Series<>();
+        s3k = new XYChart.Series<>();
+        s4k = new XYChart.Series<>();
+        s5k = new XYChart.Series<>();
+        
+        series = s1p;
         lcGraph.getData().add(series); 
         lcGraph.setLegendVisible(false);
         lcGraph.setAnimated(false);
         
-        for(XYChart.Data<Number,Number> data: series1.getData()){
+        for(XYChart.Data<Number,Number> data: s1p.getData()){
           data.getNode().setVisible(false);
           }
         
@@ -211,13 +243,17 @@ public class MomentumFXMLController {
                   }
                 }
         
-        for(int i=0; i<4; i++){//setting initial momentum & final momentum to be zero
-                       listPi[i] = 0.0;
-                }
+        b1.setPi(0);
+        b2.setPi(0);
+        b3.setPi(0);
+        b4.setPi(0);
+        b5.setPi(0);
         
-        for(int i=0; i<4; i++){
-                       listPf[i] = 0.0;
-                }
+        b1.setPf(0);
+        b2.setPf(0);
+        b3.setPf(0);
+        b4.setPf(0);
+        b5.setPf(0);
         
         btnB2.setDisable(true);//data buttons for all the balls
         btnB3.setDisable(true);
@@ -310,7 +346,11 @@ public class MomentumFXMLController {
         lbImCalc2.setVisible(false);
         lbImCalc3.setVisible(false);
         lbEkCalc2.setVisible(false);
-        lbEkCalc3.setVisible(false);      
+        lbEkCalc3.setVisible(false);     
+        
+        cbGraph.setValue("Momentum");
+        
+        cbHUD.fire();//HUD is turned on to be visible by default
     }
     
     
@@ -568,13 +608,19 @@ public class MomentumFXMLController {
         ball2.setVelocityY(vy2New);
         ball2.setVelocity(Math.sqrt(vx1New*vx1New + vy1New*vy1New));
         
-        for(int z = 0; z<4; z++){//variable name is z because i is already taken
+        ball1.setPi(ball1.getPf());
+        ball2.setPi(ball2.getPf());
+        
+        ball1.setPf(ball1.calcMomentum());
+        ball2.setPf(ball2.calcMomentum());
+        
+        /*for(int z = 0; z<4; z++){//variable name is z because i is already taken
            listPi[z] = listPf[z];//for impulse: final & initial velocities
         }
         
         for(int z = 0; z<4; z++){
            listPf[z] = momList.get(z).calcMomentum();
-        }
+        }*/
         
         collideflags[i][j] = true;
     }
@@ -632,7 +678,7 @@ public class MomentumFXMLController {
     }
 
     private void setUpComboBox(){
-       cbGraph.getItems().addAll("Momentum", "Impulse");
+       cbGraph.getItems().addAll("Momentum", "Impulse", "Kinetic energy");
        cbGraph.setOnAction((event)->{
           if(cbGraph.getValue().equals("Momentum")){
              lbGraph.setText("Momentum(kgm/s) vs time(s)");
@@ -640,6 +686,38 @@ public class MomentumFXMLController {
           else if(cbGraph.getValue().equals("Impulse")){
              lbGraph.setText("Impulse(kgm/s) vs time(s)");
           }
+          
+          lcGraph.getData().remove(series);
+          
+          if(cbGraph.getValue().equals("Momentum")){
+             switch(data){
+                 case 1: series = s1p; break;
+                 case 2: series = s2p; break;
+                 case 3: series = s3p; break;
+                 case 4: series = s4p; break;
+                 case 5: series = s5p; break;
+             }
+          }
+          else if(cbGraph.getValue().equals("Impulse")){
+             switch(data){
+                 case 1: series = s1j; break;
+                 case 2: series = s2j; break;
+                 case 3: series = s3j; break;
+                 case 4: series = s4j; break;
+                 case 5: series = s5j; break;
+             }
+          }
+          else if(cbGraph.getValue().equals("Kinetic energy")){
+             switch(data){
+                 case 1: series = s1k; break;
+                 case 2: series = s2k; break;
+                 case 3: series = s3k; break;
+                 case 4: series = s4k; break;
+                 case 5: series = s5k; break;
+             }
+          }
+          
+          if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
        });
     }
     
@@ -680,13 +758,15 @@ public class MomentumFXMLController {
        });
     }
     
-    private void removeNode(StackPane sp, boolean flag){
-          if(flag==false){
-          momRoot.getChildren().remove(sp);
-          }
-          else if(flag==true){
-          momRoot.getChildren().add(sp);
-          }
+    private void setUpCheckBoxes(){
+       cbHUD.setOnAction((event)->{
+           if(cbHUD.isSelected()){
+             lbTimePassed.setVisible(true);
+           }
+           else{
+             lbTimePassed.setVisible(false);
+           }
+       });
     }
     
     //to disable/enable UIs with flags based on how many balls there are
@@ -695,22 +775,13 @@ public class MomentumFXMLController {
         //PROBLEM: when circles are invisible, the active ones can still collide with them
         spC2.setVisible(f2);
         collidable[1] = f2;
-        //removeNode(spC2,f2);
         spC3.setVisible(f3);
         collidable[2] = f3;
-        //removeNode(spC3,f3);
         spC4.setVisible(f4);
         collidable[3] = f4;
-       // removeNode(spC4,f4);
         spC5.setVisible(f5);
         collidable[4] = f5;
-       // removeNode(spC5,f5);
-        
-        //lbTwo.setVisible(f2);
-        //lbThree.setVisible(f3);
-        //lbFour.setVisible(f4);
-        //lbFive.setVisible(f5);
-        
+
         lb2.setVisible(f2);
         lb3.setVisible(f3);
         lb4.setVisible(f4);
@@ -900,9 +971,21 @@ public class MomentumFXMLController {
        
        btnB1.setOnAction((event)->{
            data = 1; 
+           lbCalc.setText("Calculations (ball 1)");
            showValues(1);
            lcGraph.getData().remove(series);
-           series = series1;
+           System.out.println(cbGraph.getValue());
+           
+           if(cbGraph.getValue().equals("Momentum")){
+           series = s1p;
+           }
+           else if(cbGraph.getValue().equals("Impulse")){
+           series = s1j;
+           }
+           else if(cbGraph.getValue().equals("Kinetic energy")){
+           series = s1k;
+           }
+           
            if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);//this is here because this same block in the animationtimer doesn't work when the animationtimer paused
@@ -911,9 +994,20 @@ public class MomentumFXMLController {
        });//ball 1's data will now be displayed
        btnB2.setOnAction((event)->{
            data = 2; 
+           lbCalc.setText("Calculations (ball 2)");
            showValues(2);
            lcGraph.getData().remove(series);
-           series = series2;
+           
+           if(cbGraph.getValue().equals("Momentum")){
+           series = s2p;
+           }
+           else if(cbGraph.getValue().equals("Impulse")){
+           series = s2j;
+           }
+           else if(cbGraph.getValue().equals("Kinetic energy")){
+           series = s2k;
+           }
+           
            if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);
@@ -922,9 +1016,20 @@ public class MomentumFXMLController {
        });//ball 2's data will now be displayed
        btnB3.setOnAction((event)->{
            data = 3; 
+           lbCalc.setText("Calculations (ball 3)");
            showValues(3);
            lcGraph.getData().remove(series);
-           series = series3;
+           
+           if(cbGraph.getValue().equals("Momentum")){
+           series = s3p;
+           }
+           else if(cbGraph.getValue().equals("Impulse")){
+           series = s3j;
+           }
+           else if(cbGraph.getValue().equals("Kinetic energy")){
+           series = s3k;
+           }
+           
            if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);
@@ -933,9 +1038,20 @@ public class MomentumFXMLController {
        });//ball 3's data will now be displayed
        btnB4.setOnAction((event)->{
            data = 4; 
+           lbCalc.setText("Calculations (ball 4)");
            showValues(4);
            lcGraph.getData().remove(series);
-           series = series4;
+           
+           if(cbGraph.getValue().equals("Momentum")){
+           series = s4p;
+           }
+           else if(cbGraph.getValue().equals("Impulse")){
+           series = s4j;
+           }
+           else if(cbGraph.getValue().equals("Kinetic energy")){
+           series = s4k;
+           }
+           
            if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);
@@ -944,9 +1060,20 @@ public class MomentumFXMLController {
        });//ball 4's data will now be displayed
        btnB5.setOnAction((event)->{
            data = 5; 
+           lbCalc.setText("Calculations (ball 5)");
            showValues(5);
            lcGraph.getData().remove(series);
-           series = series5;
+           
+           if(cbGraph.getValue().equals("Momentum")){
+           series = s5p;
+           }
+           else if(cbGraph.getValue().equals("Impulse")){
+           series = s5j;
+           }
+           else if(cbGraph.getValue().equals("Kinetic energy")){
+           series = s5k;
+           }
+           
            if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);
@@ -1048,14 +1175,23 @@ public class MomentumFXMLController {
     
     private void graph(){
        
-      // for(int i = 0; i < Time.size(); i++){
-       series1.getData().add(new XYChart.Data(dataTimeCtr, b1.calcMomentum()));
-       series2.getData().add(new XYChart.Data(dataTimeCtr, b2.calcMomentum()));
-       series3.getData().add(new XYChart.Data(dataTimeCtr, b3.calcMomentum()));
-       series4.getData().add(new XYChart.Data(dataTimeCtr, b4.calcMomentum()));
-       series5.getData().add(new XYChart.Data(dataTimeCtr, b5.calcMomentum()));
-          //}
+       s1p.getData().add(new XYChart.Data(dataTimeCtr, b1.calcMomentum()));
+       s2p.getData().add(new XYChart.Data(dataTimeCtr, b2.calcMomentum()));
+       s3p.getData().add(new XYChart.Data(dataTimeCtr, b3.calcMomentum()));
+       s4p.getData().add(new XYChart.Data(dataTimeCtr, b4.calcMomentum()));
+       s5p.getData().add(new XYChart.Data(dataTimeCtr, b5.calcMomentum()));
          
+       s1j.getData().add(new XYChart.Data(dataTimeCtr, b1.calcImpulse()));
+       s2j.getData().add(new XYChart.Data(dataTimeCtr, b2.calcImpulse()));
+       s3j.getData().add(new XYChart.Data(dataTimeCtr, b3.calcImpulse()));
+       s4j.getData().add(new XYChart.Data(dataTimeCtr, b4.calcImpulse()));
+       s5j.getData().add(new XYChart.Data(dataTimeCtr, b5.calcImpulse()));
+       
+       s1k.getData().add(new XYChart.Data(dataTimeCtr, b1.calcEk()));
+       s2k.getData().add(new XYChart.Data(dataTimeCtr, b2.calcEk()));
+       s3k.getData().add(new XYChart.Data(dataTimeCtr, b3.calcEk()));
+       s4k.getData().add(new XYChart.Data(dataTimeCtr, b4.calcEk()));
+       s5k.getData().add(new XYChart.Data(dataTimeCtr, b5.calcEk()));
     }
     
     ArrayList<Integer> Time = new ArrayList<>();//used to store time for graph in seconds
@@ -1101,6 +1237,9 @@ public class MomentumFXMLController {
         lbMomCalc2.setText("P = (" + Math.round(b.getMass()*10.0)/10.0 + ")(" + Math.round(b.getVelocity()*10.0)/10.0 + ")");
         lbMomCalc3.setText("P = " + Math.round(b.calcMomentum()*10.0)/10.0 + " kgm/s");
     
+        lbImCalc2.setText("J = " + Math.round(b.getPf()*10.0)/10.0 + " - " + Math.round(b.getPi()*10.0)/10.0);
+        lbImCalc3.setText("J = " + Math.round(b.calcImpulse()*10.0)/10.0 + "kgm/s");
+        
         lbEkCalc2.setText("E = ½(" + Math.round(b.getMass()*10.0)/10.0 + ")(" + Math.round(b.getVelocity()*10.0)/10.0 + ")²");
         lbEkCalc3.setText("E = " + Math.round(b.calcEk()*10.0)/10.0 + " J");
                 

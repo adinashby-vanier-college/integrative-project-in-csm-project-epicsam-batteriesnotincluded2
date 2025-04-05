@@ -83,7 +83,21 @@ public class Momentum extends Physics {
        return mass*velocity;
     }
     
+    public void setPi(double p){
+       this.Pi = p;
+    }
     
+    public void setPf(double p){
+       this.Pf = p;
+    }
+    
+    public double getPi(){
+       return Pi;
+    }
+    
+    public double getPf(){
+       return Pf;
+    }
     
     public double calcImpulse(){
        return Pf-Pi;

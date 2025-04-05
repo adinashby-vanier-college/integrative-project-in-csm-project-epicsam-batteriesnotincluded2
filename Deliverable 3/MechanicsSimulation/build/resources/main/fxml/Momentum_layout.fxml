@@ -100,7 +100,7 @@
             <Spinner fx:id="spBalls" prefHeight="56.0" prefWidth="149.0" />
          </children>
       </VBox>
-      <Label layoutX="851.0" layoutY="287.0" text="Calculations" translateY="-3.0">
+      <Label fx:id="lbCalc" layoutX="851.0" layoutY="287.0" text="Calculations (ball 1)" translateY="-3.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -181,26 +181,6 @@
                </children>
             </StackPane>
             <Label fx:id="lbTimePassed" layoutX="14.0" layoutY="6.0" text="Time passed: 00:00" />
-            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="251.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/arrow.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="261.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/arrow.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="261.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/arrow.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="345.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/arrow.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="78.0" fitWidth="43.0" layoutX="606.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/arrow.png" />
@@ -609,7 +589,7 @@
          <children>
             <VBox prefHeight="109.0" prefWidth="124.0">
                <children>
-                  <Label text="Momentum x:">
+                  <Label text="Momentum:">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -657,7 +637,7 @@
             </VBox>
             <VBox prefHeight="109.0" prefWidth="126.0" spacing="4.0">
                <children>
-                  <Label text="Momentum y:">
+                  <Label text="Kinetic energy:">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -681,7 +661,7 @@
             </VBox>
          </children>
       </HBox>
-      <LineChart fx:id="lcGraph" layoutX="813.0" layoutY="523.0" prefHeight="262.0" prefWidth="374.0">
+      <LineChart fx:id="lcGraph" layoutX="813.0" layoutY="547.0" prefHeight="262.0" prefWidth="374.0">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -689,7 +669,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label fx:id="lbGraph" layoutX="900.0" layoutY="770.0" text="Momentum(kgm/s) vs time(s)">
+      <Label fx:id="lbGraph" alignment="CENTER" layoutX="900.0" layoutY="530.0" text="Momentum(kgm/s) vs time(s)">
          <font>
             <Font size="18.0" />
          </font>
