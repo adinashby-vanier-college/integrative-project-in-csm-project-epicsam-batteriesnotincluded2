@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -22,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
       <Label layoutX="833.0" layoutY="494.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
@@ -684,13 +683,13 @@
       </HBox>
       <LineChart fx:id="lcGraph" layoutX="813.0" layoutY="523.0" prefHeight="262.0" prefWidth="374.0">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <NumberAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label fx:id="lbGraph" layoutX="940.0" layoutY="766.0" text="Momentum vs time">
+      <Label fx:id="lbGraph" layoutX="900.0" layoutY="770.0" text="Momentum(kgm/s) vs time(s)">
          <font>
             <Font size="18.0" />
          </font>
