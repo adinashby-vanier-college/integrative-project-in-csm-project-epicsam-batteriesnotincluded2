@@ -4,6 +4,7 @@
  */
 package edu.vanier.template.controllers;
 
+import edu.vanier.physics.Kinematics;
 import edu.vanier.template.ui.MainApp;
 import javafx.application.Platform;
 import javafx.event.Event;
@@ -84,12 +85,7 @@ public class KinematicsFXMLController {
             slider_1.setMax(100);
 
             txt_2.setText("Acceleration (m/s^2)");
-
-            txt_4.setVisible(false);
-            tf_14.setVisible(false);
-            tf_24.setVisible(false);
-            slider_4.setVisible(false);
-            lastHBox.setBackground(Background.fill(Paint.valueOf("#c0e8fa")));
+            txt_4.setText("Total time (s)");
 
             kinematics_curve.setVisible(false);
             y_axis.setVisible(false);
