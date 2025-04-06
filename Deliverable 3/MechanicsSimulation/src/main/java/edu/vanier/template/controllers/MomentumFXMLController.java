@@ -606,7 +606,7 @@ public class MomentumFXMLController {
         ball1.setVelocity(Math.sqrt(Math.abs(vx1New*vx1New + vy1New*vy1New)));
         ball2.setVelocityX(vx2New);
         ball2.setVelocityY(vy2New);
-        ball2.setVelocity(Math.sqrt(vx1New*vx1New + vy1New*vy1New));
+        ball2.setVelocity(Math.sqrt(vx2New*vx2New + vy2New*vy2New));
         
         ball1.setPi(ball1.getPf());
         ball2.setPi(ball2.getPf());
