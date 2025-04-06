@@ -67,7 +67,7 @@
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
                   <TextField fx:id="tf_11" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider fx:id="slider_1" max="89.0" style="-fx-background-color: light-grey;" />
+                  <Slider fx:id="slider_1" max="89.0" min="1.0" style="-fx-background-color: light-grey;" />
                   <TextField fx:id="tf_21" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="89" />
                </children>
             </HBox>
@@ -79,7 +79,7 @@
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
                   <TextField fx:id="tf_12" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider fx:id="slider_2" />
+                  <Slider fx:id="slider_2" min="1.0" />
                   <TextField fx:id="tf_22" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="100" />
                </children>
             </HBox>
@@ -91,7 +91,7 @@
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
                   <TextField fx:id="tf_13" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider fx:id="slider_3" />
+                  <Slider fx:id="slider_3" min="1.0" />
                   <TextField fx:id="tf_23" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="100" />
                </children>
             </HBox>
@@ -103,7 +103,7 @@
             <HBox fx:id="lastHBox" alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
                   <TextField fx:id="tf_14" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider fx:id="slider_4" max="25.0" />
+                  <Slider fx:id="slider_4" max="25.0" min="1.0" />
                   <TextField fx:id="tf_24" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="25" />
                </children>
             </HBox>
