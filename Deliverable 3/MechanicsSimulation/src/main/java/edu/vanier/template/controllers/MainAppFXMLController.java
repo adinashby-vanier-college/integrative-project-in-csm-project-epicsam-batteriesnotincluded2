@@ -81,6 +81,14 @@ public class MainAppFXMLController {
             }
         });
         
+        btnLogin.setOnAction((event)->{
+            try {
+                LoginFXMLController obj = new LoginFXMLController(lbWarning, "Log in to your account");
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
         addFontIcons();
     }
 

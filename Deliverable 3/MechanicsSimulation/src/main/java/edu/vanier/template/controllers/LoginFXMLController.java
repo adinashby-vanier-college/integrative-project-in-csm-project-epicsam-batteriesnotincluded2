@@ -1,0 +1,130 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package edu.vanier.template.controllers;
+
+import edu.vanier.template.ui.MainApp;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+/**
+ *
+ * @author theli
+ */
+public class LoginFXMLController extends Stage{
+    
+    @FXML
+    Pane root;
+    
+    @FXML
+    TextField txtUsername, txtPassword;
+    
+    @FXML
+    Label lbWarning1, lbWarning2;
+    
+    @FXML
+    Button btnCancel, btnConfirm;
+    
+    String username, password;
+    
+    Label lbWarning;
+    
+    LinkedHashMap<String, String> users = new LinkedHashMap<>();
+    
+    boolean userFlag = false;//only true when username is valid
+    boolean passwordFlag = false;//only true when password is valid
+    
+    public LoginFXMLController(Label lbWarn, String title) throws IOException{
+       initModality(Modality.APPLICATION_MODAL);
+       initStyle(StageStyle.UTILITY);
+       setTitle(title);
+       this.lbWarning = lbWarn;//to change label display on mainscreen after account has been created
+       form();
+    }
+    
+    @FXML
+    private void form() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login_layout.fxml"));
+        loader.setController(this);
+        root = loader.load();
+
+        Scene scene = new Scene(root);
+        setScene(scene);
+        setResizable(false);
+        show();
+        
+        lbWarning1.setVisible(false);
+        lbWarning2.setVisible(false);
+        
+        loadUsers();
+
+        btnCancel.setOnAction((event)->{close();});
+        
+         btnConfirm.setOnAction((event)->{           
+            username = txtUsername.getText().trim();
+            password = txtPassword.getText().trim();
+            
+            for(Map.Entry<String, String> val : users.entrySet()){
+               if(username.equals(val.getKey())){
+                 userFlag = true;
+                 lbWarning1.setVisible(false);
+                 
+                 if(password.equals(val.getValue())){
+                 passwordFlag = true;
+                 lbWarning2.setVisible(false);
+                };
+               };  
+            }
+            
+            if(userFlag == false){
+            lbWarning1.setVisible(true);
+            }
+            
+            if(passwordFlag == false){
+            lbWarning2.setVisible(true);
+            }
+            
+            if(userFlag == true && passwordFlag == true){
+            MainAppFXMLController.loggedIn = true;
+            MainAppFXMLController.user = username;
+            
+            lbWarning.setText("Welcome, " + username);
+            lbWarning.setStyle("-fx-text-fill: green;");
+            lbWarning.setVisible(true);
+            
+            close();
+            }
+         });
+    }
+    
+    //loads all usernames and passwords into a linkedhashmap
+    private void loadUsers() throws IOException{
+        
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/usernamespasswords/usernamespasswords.txt")));){
+         String line;
+        
+         while((line = br.readLine())!=null){      
+            String split[] = line.split(" ");//since the usernames and passwords are separated by a space, it splits there
+            if(split.length==2)users.put(split[0], split[1]);
+            else{System.out.println("noooo");}
+         }
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
