@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="129.0" layoutX="320.0" layoutY="142.0" stroke="BLACK" strokeType="INSIDE" width="563.0" />
       <Button fx:id="btnMomentum" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="400.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="191.0" text="Momentum">
@@ -99,5 +99,25 @@
       </Group>
       <QuadCurve fx:id="kinematics_curve" controlX="28.39533233642578" controlY="-191.52032470703125" endX="249.4076385498047" endY="-191.51348876953125" fill="#ffffff00" layoutX="919.0" layoutY="413.0" scaleX="0.4" scaleY="0.4" startX="-20.60141944885254" startY="6.58349609375" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
       <Ellipse fill="DODGERBLUE" layoutX="979.0" layoutY="373.0" radiusX="26.0" radiusY="26.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="lbWarning" layoutX="509.0" layoutY="619.0" prefHeight="51.0" prefWidth="238.0" text="Please log in first" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnLogin" layoutX="33.0" layoutY="32.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="92.0" text="Login">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnNewUser" layoutX="135.0" layoutY="32.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="134.0" text="New user">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnGuest" layoutX="281.0" layoutY="32.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="148.0" text="Guest user">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
