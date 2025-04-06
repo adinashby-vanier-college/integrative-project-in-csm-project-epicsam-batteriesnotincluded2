@@ -44,7 +44,7 @@ public class KinematicsFXMLController {
     Slider slider_1, slider_2, slider_3, slider_4;
 
     @FXML
-    Text txt_1, txt_2, txt_3, txt_4;
+    Text txt_1, txt_2, txt_3, txt_4, txt_y, txt_x;
 
     @FXML
     Button btn_play, btn_clear;
@@ -95,6 +95,9 @@ public class KinematicsFXMLController {
             y_axis.setVisible(false);
             x_axis.setVisible(false);
 
+            txt_y.setVisible(false);
+            txt_x.setVisible(false);
+
             kinematics_line.setVisible(true);
         });
 
@@ -110,10 +113,15 @@ public class KinematicsFXMLController {
             tf_14.setVisible(true);
             tf_24.setVisible(true);
             slider_4.setVisible(true);
+            lastHBox.setBackground(Background.fill(Paint.valueOf("#b7ddee")));
+
+            txt_y.setVisible(true);
+            txt_x.setVisible(true);
 
             kinematics_curve.setVisible(true);
             y_axis.setVisible(true);
             x_axis.setVisible(true);
+
             kinematics_line.setVisible(false);
         });
     }
