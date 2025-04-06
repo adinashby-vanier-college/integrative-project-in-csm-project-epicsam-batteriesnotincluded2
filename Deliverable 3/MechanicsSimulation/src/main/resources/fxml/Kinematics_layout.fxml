@@ -67,7 +67,7 @@
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
                   <TextField fx:id="tf_11" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider fx:id="slider_1" style="-fx-background-color: light-grey;" />
+                  <Slider fx:id="slider_1" max="89.0" style="-fx-background-color: light-grey;" />
                   <TextField fx:id="tf_21" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="89" />
                </children>
             </HBox>
@@ -100,29 +100,21 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
+            <HBox fx:id="lastHBox" alignment="CENTER" prefHeight="46.0" prefWidth="361.0" spacing="15.0" style="-fx-background-color: #b7ddee;">
                <children>
                   <TextField fx:id="tf_14" editable="false" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="0" />
-                  <Slider fx:id="slider_4" />
+                  <Slider fx:id="slider_4" max="25.0" />
                   <TextField fx:id="tf_24" prefHeight="25.0" prefWidth="35.0" style="-fx-alignment: center;" text="25" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="361.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Play" />
-                  <Button lineSpacing="10.0" mnemonicParsing="false" text="Stop" />
+                  <Button fx:id="btn_play" mnemonicParsing="false" text="Play" />
+                  <Button fx:id="btn_clear" mnemonicParsing="false" text="Clear" />
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="361.0" spacing="10.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Clear" />
-               </children>
                <padding>
                   <Insets top="10.0" />
                </padding>
@@ -149,8 +141,20 @@
             <Insets left="10.0" top="10.0" />
          </padding>
       </TextArea>
-      <QuadCurve fx:id="kinematics_curve" controlX="100.0" controlY="-213.0" endX="257.0" fill="#ffffff00" layoutX="217.0" layoutY="477.0" startX="-50.0" stroke="BLACK" strokeType="INSIDE" />
+      <QuadCurve fx:id="kinematics_curve" controlX="92.0" controlY="-248.0" endX="271.0" endY="25.0" fill="#ffffff00" layoutX="217.0" layoutY="477.0" startX="-76.0" startY="27.0" stroke="BLACK" strokeType="INSIDE" />
       <Line fx:id="kinematics_line" endX="261.0" layoutX="210.0" layoutY="477.0" startX="-40.0" visible="false" />
       <Ellipse fill="DODGERBLUE" layoutX="167.0" layoutY="478.0" radiusX="26.0" radiusY="26.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="y_axis" endX="-48.0" endY="-89.0" layoutX="189.0" layoutY="368.0" smooth="false" startX="-48.0" startY="135.0" strokeWidth="3.0" />
+      <Line endX="308.0" endY="135.0" layoutX="190.0" layoutY="368.0" startX="-48.0" startY="135.0" strokeWidth="3.0" fx:id="x_axis" />
+      <Text layoutX="488.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="118.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

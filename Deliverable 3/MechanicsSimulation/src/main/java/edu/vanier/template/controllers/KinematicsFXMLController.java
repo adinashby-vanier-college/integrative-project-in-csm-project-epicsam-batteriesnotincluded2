@@ -8,15 +8,14 @@ import edu.vanier.template.ui.MainApp;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.QuadCurve;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 public class KinematicsFXMLController {
 
@@ -33,7 +32,7 @@ public class KinematicsFXMLController {
     RadioButton radio_projectile, radio_kinematics;
 
     @FXML
-    Line kinematics_line;
+    Line kinematics_line, y_axis, x_axis;
 
     @FXML
     QuadCurve kinematics_curve;
@@ -47,11 +46,22 @@ public class KinematicsFXMLController {
     @FXML
     Text txt_1, txt_2, txt_3, txt_4;
 
+    @FXML
+    Button btn_play, btn_clear;
+
+    @FXML
+    HBox lastHBox;
+
 
     @FXML
     public void initialize() {
         menuBarFunctionality();
         radioButtonToggle();
+
+        tf_21.textProperty().bind(slider_1.valueProperty().asString("%.0f"));
+        tf_22.textProperty().bind(slider_2.valueProperty().asString("%.0f"));
+        tf_23.textProperty().bind(slider_3.valueProperty().asString("%.0f"));
+        tf_24.textProperty().bind(slider_4.valueProperty().asString("%.0f"));
     }
 
     private void menuBarFunctionality() {
@@ -71,7 +81,7 @@ public class KinematicsFXMLController {
         //Toggling to 1D kinematics mode
         radio_kinematics.setOnAction(event -> {
             txt_1.setText("Initial position (m)");
-            tf_21.setText("100");
+            slider_1.setMax(100);
 
             txt_2.setText("Acceleration (m/s^2)");
 
@@ -79,8 +89,12 @@ public class KinematicsFXMLController {
             tf_14.setVisible(false);
             tf_24.setVisible(false);
             slider_4.setVisible(false);
+            lastHBox.setBackground(Background.fill(Paint.valueOf("#c0e8fa")));
 
             kinematics_curve.setVisible(false);
+            y_axis.setVisible(false);
+            x_axis.setVisible(false);
+
             kinematics_line.setVisible(true);
         });
 
@@ -88,7 +102,7 @@ public class KinematicsFXMLController {
         radio_projectile.setOnAction(event -> {
 
             txt_1.setText("Angle of launch (degrees)");
-            tf_21.setText("89");
+            slider_1.setMax(89);
 
             txt_2.setText("Height of launch (m)");
 
@@ -98,6 +112,8 @@ public class KinematicsFXMLController {
             slider_4.setVisible(true);
 
             kinematics_curve.setVisible(true);
+            y_axis.setVisible(true);
+            x_axis.setVisible(true);
             kinematics_line.setVisible(false);
         });
     }
