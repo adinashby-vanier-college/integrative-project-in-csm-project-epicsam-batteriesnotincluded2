@@ -109,8 +109,8 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="37.0" prefWidth="361.0" spacing="10.0">
                <children>
-                  <Button fx:id="btn_play" mnemonicParsing="false" text="Play" />
-                  <Button fx:id="btn_clear" mnemonicParsing="false" text="Clear" />
+                  <Button fx:id="btn_play" mnemonicParsing="false" onAction="#playOnAction" text="Play" />
+                  <Button fx:id="btn_clear" mnemonicParsing="false" onAction="#clearOnAction" text="Clear" />
                </children>
                <VBox.margin>
                   <Insets />
