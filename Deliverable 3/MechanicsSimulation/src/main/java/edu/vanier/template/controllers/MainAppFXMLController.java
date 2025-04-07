@@ -75,7 +75,7 @@ public class MainAppFXMLController {
         
         btnNewUser.setOnAction((event)->{
             try {
-                NewUserFXMLController obj = new NewUserFXMLController(lbWarning, "Create an account");
+                NewUserFXMLController obj = new NewUserFXMLController(btnLogin, btnNewUser, btnGuest, lbWarning, "Create an account");
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -83,7 +83,7 @@ public class MainAppFXMLController {
         
         btnLogin.setOnAction((event)->{
             try {
-                LoginFXMLController obj = new LoginFXMLController(lbWarning, "Log in to your account");
+                LoginFXMLController obj = new LoginFXMLController(btnLogin, btnNewUser, btnGuest, lbWarning, "Log in to your account");
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -100,7 +100,7 @@ public class MainAppFXMLController {
             case 3:MainApp.switchScene(MainApp.priStage, MainApp.ENERGY_SCENE);break;
             case 4:MainApp.switchScene(MainApp.priStage, MainApp.KINEMATICS_SCENE);break;
             default:;
-         }
+         }  
         }
         else{
            lbWarning.setText("Please log in first");

@@ -14,9 +14,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,24 +34,44 @@ public class NewUserFXMLController extends Stage{
     Pane root;
     
     @FXML
-    Button btnCancel, btnConfirm;
+    Button btnCancel, btnConfirm, btnLogin, btnNewUser, btnGuest;
     
     @FXML
     TextField txtUsername, txtPassword1, txtPassword2;
     
     @FXML
-    Label lbWarning, lbWarning1, lbWarning2, lbWarning3;//lbWarning is passed from main page
+    PasswordField psPassword1, psPassword2;
     
-    String username, password;
+    @FXML
+    Label lbWarning, lbWarning1, lbWarning2, lbWarning3, lbPs2;//lbWarning is passed from main page
     
-    boolean flag = true;//only true when username and password are all correct
+    @FXML
+    CheckBox cbShow1;
     
-    public NewUserFXMLController(Label lbWarn, String title) throws IOException{
+    @FXML
+    VBox vbMain;//the main encrypted VBox      
+            
+    String username, password1, password2;
+    
+    boolean flag = false;//only true when username and password are all correct
+    
+    boolean userFlag = false;
+    boolean passwordFlag1 = false;
+    boolean passwordFlag2 = false;
+    
+    public NewUserFXMLController(Button Login, Button NewUser, Button Guest, Label lbWarn, String title) throws IOException{
        initModality(Modality.APPLICATION_MODAL);
        initStyle(StageStyle.UTILITY);
        setTitle(title);
        this.lbWarning = lbWarn;//to change label display on mainscreen after account has been created
+       this.btnLogin = Login;
+       this.btnGuest = Guest;
+       this.btnNewUser = NewUser;
        form();
+       CheckBoxes();
+       
+       txtPassword1.textProperty().bindBidirectional(psPassword1.textProperty());
+       txtPassword2.textProperty().bindBidirectional(psPassword2.textProperty());
     }
     
     @FXML
@@ -75,31 +98,57 @@ public class NewUserFXMLController extends Stage{
         btnConfirm.setOnAction((event)->{
             
             username = txtUsername.getText().trim();
-            password = txtPassword1.getText().trim();
-        
-           if(!txtPassword1.getText().equals(txtPassword2.getText())){
+            password1 = psPassword1.getText().trim();
+            password2 = psPassword2.getText().trim();
+            
+            if(username.contains(" ")){//can't include spaces in username
+              userFlag = false;
+              lbWarning1.setVisible(true);
+              lbWarning1.setText("Username can't include empty spaces");
+           }
+           if(username.length()<3){
+              userFlag = false;
+              lbWarning1.setVisible(true);
+              lbWarning1.setText("Username must be at least 3 characters");
+               System.out.println("ee");
+           }
+           
+           if(username.length()>=3 && !username.contains(" ")){
+              userFlag = true;
+              lbWarning1.setVisible(false);
+           }
+           
+           if(password1.contains(" ")){//can't include spaces in passwords
+              passwordFlag1 = false;
+              lbWarning2.setVisible(true);
+              lbWarning2.setText("Password can't include empty spaces");
+           }
+           
+           if(password1.length()<3){
+              passwordFlag1 = false;
+              lbWarning2.setVisible(true);
+              lbWarning2.setText("Password must be at least 3 characters");
+           }
+           
+           if(password1.length()>=3 && !password1.contains(" ")){
+              passwordFlag1 = true;
+              lbWarning2.setVisible(false);           
+           }
+           
+           if(!password1.equals(password2)){
+              passwordFlag2 = false;
               lbWarning3.setVisible(true);//when passwords don't match when confirming inputted password
               lbWarning3.setText("Passwords don't match");
            }
-           else if(username.contains(" ")){//can't include spaces in username
-              lbWarning1.setVisible(true);
-              lbWarning1.setText("Username includes empty spaces");
+           
+           if(password1.equals(password2)){
+              passwordFlag2 = true;
+              lbWarning3.setVisible(false);//when passwords don't match when confirming inputted password
            }
-           else if(password.contains(" ")){//can't include spaces in passwords
-              lbWarning1.setVisible(true);
-              lbWarning1.setText("Username includes empty spaces");
-           }
-           else if(username.length()<2){
-              lbWarning1.setVisible(true);
-              lbWarning1.setText("Username should be at least 3 characters");
-           }
-           else if(password.length()<2){
-              lbWarning2.setVisible(true);
-              lbWarning2.setText("Password should be at least 3 characters");
-           }
-           else{
+           
+           if(userFlag == true && passwordFlag1 == true && passwordFlag2 == true){
             try (FileWriter writer = new FileWriter(file, true)) {
-                        writer.write("\n" + username + " " + password);
+                        writer.write("\n" + username + " " + password1);
                         writer.flush();
                     } catch (IOException ex) {
                     Logger.getLogger(NewUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,9 +160,32 @@ public class NewUserFXMLController extends Stage{
             lbWarning.setText("Welcome, " + username);
             lbWarning.setStyle("-fx-text-fill: green;");
             lbWarning.setVisible(true);
-            
+            btnGuest.setDisable(true);
+            btnLogin.setDisable(true);
+            btnNewUser.setDisable(true);
             close();
            }
+        });
+
+    }
+    
+    private void CheckBoxes(){
+        cbShow1.setOnAction((event)->{
+          if(cbShow1.isSelected()){
+            psPassword1.setVisible(false);
+          //  psPassword1.setManaged(false);
+            psPassword2.setVisible(false);
+          //  psPassword2.setManaged(false);
+            lbPs2.setVisible(false);
+            vbMain.setMouseTransparent(true);
+          }
+          else{
+             psPassword1.setVisible(true);
+             psPassword1.setManaged(true);
+             psPassword2.setVisible(true);
+             psPassword2.setManaged(true);
+             lbPs2.setVisible(true);
+          }
         });
 
     }

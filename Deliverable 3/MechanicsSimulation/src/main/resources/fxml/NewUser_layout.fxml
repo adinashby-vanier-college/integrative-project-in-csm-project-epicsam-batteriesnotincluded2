@@ -1,65 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="47.0" layoutY="34.0" prefHeight="283.0" prefWidth="310.0">
+      <VBox layoutX="47.0" layoutY="34.0" prefHeight="283.0" prefWidth="318.0">
          <children>
-            <Label text="Create a username">
+            <Label>
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsername">
+            <TextField fx:id="txtUsername1">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label fx:id="lbWarning1" prefHeight="27.0" prefWidth="253.0" text="Username already taken" textFill="RED">
+            <Label fx:id="lbWarning11" prefHeight="27.0" prefWidth="324.0" textFill="RED">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="Create a password">
+            <HBox prefHeight="6.0" prefWidth="318.0">
+               <children>
+                  <Label>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TextField fx:id="txtPassword1" prefHeight="80.0" prefWidth="318.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Label fx:id="lbWarning21" textFill="RED">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtPassword1" prefHeight="40.0" prefWidth="181.0">
+            <HBox layoutX="10.0" layoutY="104.0" prefHeight="6.0" prefWidth="318.0">
+               <children>
+                  <Label text="Confirm password">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TextField fx:id="txtPassword2" layoutX="10.0" layoutY="132.0" prefHeight="80.0" prefWidth="318.0">
                <font>
                   <Font size="18.0" />
-               </font>
-            </TextField>
-            <Label fx:id="lbWarning2" text="Password must be at least 3 characters" textFill="RED">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="114.0" text="Confirm password">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtPassword2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <Label fx:id="lbWarning3" text="Passwords don't match" textFill="RED">
+               </font></TextField>
+            <Label fx:id="lbWarning31" prefHeight="27.0" prefWidth="336.0" textFill="RED">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <Button fx:id="btnConfirm" layoutX="326.0" layoutY="319.0" mnemonicParsing="false" text="Confirm" />
-      <Button fx:id="btnCancel" layoutX="21.0" layoutY="319.0" mnemonicParsing="false" text="Cancel" />
+      <VBox fx:id="vbMain" layoutX="47.0" layoutY="34.0" prefHeight="283.0" prefWidth="318.0">
+         <children>
+            <Label text="Create a username">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDummy" disable="true" maxHeight="-Infinity" minHeight="-Infinity" mouseTransparent="true" prefHeight="40.0" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lbWarning1" prefHeight="27.0" prefWidth="324.0" text="Username must be at least 3 characters" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="6.0" prefWidth="318.0">
+               <children>
+                  <Label text="Create a password">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <PasswordField fx:id="psPassword1" prefHeight="40.0" prefWidth="318.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="lbWarning2" text="Password must be at least 3 characters" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox layoutX="10.0" layoutY="104.0" prefHeight="6.0" prefWidth="318.0">
+               <children>
+                  <Label fx:id="lbPs2" text="Confirm password">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <PasswordField fx:id="psPassword2" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="318.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="lbWarning3" prefHeight="27.0" prefWidth="336.0" text="Passwords don't match" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox layoutX="19.0" layoutY="317.0" prefHeight="27.0" prefWidth="373.0" spacing="263.0" translateY="3.0">
+         <children>
+            <Button fx:id="btnCancel" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="btnConfirm" mnemonicParsing="false" text="Confirm" />
+         </children>
+      </HBox>
+      <CheckBox fx:id="cbShow1" layoutX="280.0" layoutY="126.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="Show">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="txtUsername" layoutX="47.0" layoutY="61.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="318.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </Pane>

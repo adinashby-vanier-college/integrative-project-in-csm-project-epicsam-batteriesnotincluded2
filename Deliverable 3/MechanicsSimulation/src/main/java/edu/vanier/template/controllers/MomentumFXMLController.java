@@ -35,6 +35,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -121,6 +122,9 @@ public class MomentumFXMLController {
     @FXML
     LineChart <Number, Number> lcGraph;        
             
+    @FXML
+    Rectangle recDark, recSim;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
+            
     Momentum b1, b2, b3, b4, b5;//ball objects that correspond to every circle object
     
     double orgSceneX, orgSceneY;//original mouse click positions
@@ -165,6 +169,12 @@ public class MomentumFXMLController {
     XYChart.Series<Number,Number> s3k;
     XYChart.Series<Number,Number> s4k;
     XYChart.Series<Number,Number> s5k;
+    
+    double b1X = 30; double b1Y = 100;//initial positions of the balls/stackpanes
+    double b2X = 90; double b2Y = 200;
+    double b3X = 150; double b3Y = 300;
+    double b4X = 210; double b4Y = 400;
+    double b5X = 270; double b5Y = 500;
     
     public void setStage(Stage stage){
     this.stg = stage;
@@ -213,6 +223,8 @@ public class MomentumFXMLController {
           data.getNode().setVisible(false);
           }
         
+        recDark.setVisible(false);//the background starts off in light mode
+        
         collidable[0] = true;//ball 1 is always on screen and collidable
         collidable[1] = false;
         collidable[2] = false;
@@ -243,13 +255,13 @@ public class MomentumFXMLController {
                   }
                 }
         
-        b1.setPi(0);
+        b1.setPi(0);//initial momentum start off as 0 not the 3.14 pi
         b2.setPi(0);
         b3.setPi(0);
         b4.setPi(0);
         b5.setPi(0);
         
-        b1.setPf(0);
+        b1.setPf(0);//final momentum start off as 0
         b2.setPf(0);
         b3.setPf(0);
         b4.setPf(0);
@@ -340,14 +352,8 @@ public class MomentumFXMLController {
         lbVy3.setText(String.valueOf(Math.round(((double) b3.getVelocityY())*10.0)/10.0));
         lbVy4.setText(String.valueOf(Math.round(((double) b4.getVelocityY())*10.0)/10.0));
         lbVy5.setText(String.valueOf(Math.round(((double) b5.getVelocityY())*10.0)/10.0));
-        
-        lbMomCalc2.setVisible(false);
-        lbMomCalc3.setVisible(false);
-        lbImCalc2.setVisible(false);
-        lbImCalc3.setVisible(false);
-        lbEkCalc2.setVisible(false);
-        lbEkCalc3.setVisible(false);     
-        
+
+        showValues(1);
         cbGraph.setValue("Momentum");
         
         cbHUD.fire();//HUD is turned on to be visible by default
@@ -356,12 +362,18 @@ public class MomentumFXMLController {
     
     
     private void generateBalls(){
-        b1 = new Momentum(30,60,5, slV1.getValue()/(Math.sqrt(2)), slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
-        b2 = new Momentum(100,60,5, slV2.getValue()/(Math.sqrt(2)), slV2.getValue()/(Math.sqrt(2)));
-        b3 = new Momentum(200,50,5, slV3.getValue()/(Math.sqrt(2)), slV3.getValue()/(Math.sqrt(2)));
-        b4 = new Momentum(50,100,5, slV4.getValue()/(Math.sqrt(2)), slV4.getValue()/(Math.sqrt(2)));
-        b5 = new Momentum(300,80,5, slV5.getValue()/(Math.sqrt(2)), slV5.getValue()/(Math.sqrt(2)));
-        System.out.println(slV1.getValue() + " " + slV1.getValue()/(Math.sqrt(2)));
+        b1 = new Momentum(b1X, b1Y, 5, slV1.getValue()/(Math.sqrt(2)), slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
+        b2 = new Momentum(b2X, b2Y, 5, slV2.getValue()/(Math.sqrt(2)), slV2.getValue()/(Math.sqrt(2)));
+        b3 = new Momentum(b3X, b3Y, 5, slV3.getValue()/(Math.sqrt(2)), slV3.getValue()/(Math.sqrt(2)));
+        b4 = new Momentum(b4X, b4Y, 5, slV4.getValue()/(Math.sqrt(2)), slV4.getValue()/(Math.sqrt(2)));
+        b5 = new Momentum(b5X, b5Y, 5, slV5.getValue()/(Math.sqrt(2)), slV5.getValue()/(Math.sqrt(2)));
+        
+        b1.setVelocity(slV1.getValue());
+        b2.setVelocity(slV2.getValue());
+        b3.setVelocity(slV3.getValue());
+        b4.setVelocity(slV4.getValue());
+        b5.setVelocity(slV5.getValue());
+        //System.out.println(slV1.getValue() + " " + slV1.getValue()/(Math.sqrt(2)));
         spC2.setLayoutX(b2.getPositionX());
         spC2.setLayoutY(b2.getPositionY());
         spC3.setLayoutX(b3.getPositionX());
@@ -538,7 +550,7 @@ public class MomentumFXMLController {
                 }
     }
     
-    //when they collide, they should bounce off each other
+    //when two balls collide, they should bounce off each other
     private void checkCollision(Circle ball1, Circle ball2, Momentum m1, Momentum m2, int i, int j){
                        //System.out.println(i + " " + j);
 
@@ -550,15 +562,12 @@ public class MomentumFXMLController {
         double x = x1-x2;
         double y = y1-y2;
         double distance = Math.sqrt(x*x+y*y);
-        
-      //  System.out.println("distance: " + distance + " radius: " + (ball1.getRadius() + ball2.getRadius()));
-        
+                
         if(!ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent()))){
            collideflags[i][j] = false;
         }
         
          if(ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent())) && collideflags[i][j] == false){
-           //  System.out.println((i+1) + " and " + (j+1));
                  if(collidable[i] == true && collidable[j] == true){setNewVelocities(m1,m2, ball1, ball2, i, j);}
             // System.out.println("collision");
          }
@@ -686,7 +695,9 @@ public class MomentumFXMLController {
           else if(cbGraph.getValue().equals("Impulse")){
              lbGraph.setText("Impulse(kgm/s) vs time(s)");
           }
-          
+          else if(cbGraph.getValue().equals("Kinetic energy")){
+             lbGraph.setText("Kinetic energy(J) vs time(s)");
+          }
           lcGraph.getData().remove(series);
           
           if(cbGraph.getValue().equals("Momentum")){
@@ -765,6 +776,17 @@ public class MomentumFXMLController {
            }
            else{
              lbTimePassed.setVisible(false);
+           }
+       });
+       
+       cbDarkMode.setOnAction((event)->{
+           if(cbDarkMode.isSelected()){
+             recDark.setVisible(true);
+             recSim.setFill(Color.web("#797979"));
+           }
+           else{
+             recDark.setVisible(false);
+             recSim.setFill(Color.web("#f7f7f7"));
            }
        });
     }
@@ -862,6 +884,26 @@ public class MomentumFXMLController {
        
        btnReset.setOnAction((event)->{
            
+          totalTime = 0;//resetting the time
+          dataTimeCtr = 0;//resetting the counter for adding a data point to the series every second
+          
+          b1.setPositionX(b1X); b1.setPositionY(b1Y);
+          b2.setPositionX(b2X); b2.setPositionY(b2Y);
+          b3.setPositionX(b3X); b3.setPositionY(b3Y);
+          b4.setPositionX(b4X); b4.setPositionY(b4Y);
+          b5.setPositionX(b5X); b5.setPositionY(b5Y);
+          
+          spC1.setLayoutX(b1.getPositionX());
+          spC1.setLayoutY(b1.getPositionY());
+          spC2.setLayoutX(b2.getPositionX());
+          spC2.setLayoutY(b2.getPositionY());
+          spC3.setLayoutX(b3.getPositionX());
+          spC3.setLayoutY(b3.getPositionY());
+          spC4.setLayoutX(b4.getPositionX());
+          spC4.setLayoutY(b4.getPositionY());
+          spC5.setLayoutX(b5.getPositionX());
+          spC5.setLayoutY(b5.getPositionY());
+        
           sec1=sec2=0;//setting time displayed as zero
           min1=min2=0;
             
@@ -872,7 +914,7 @@ public class MomentumFXMLController {
           balls.setValue(1);
           
           timer.stop();
-          initSetup();
+          //initSetup();
           
           for(int i=0; i<4; i++){
                   for(int j=i+1; j<5; j++){
@@ -880,6 +922,32 @@ public class MomentumFXMLController {
                   }
                 }
         
+        if(PlayPause.equals("playing")){//
+           btnPlayPause.fire();
+        }
+          
+        speed.setValue(1.0);//setting speed back to 1x
+        
+        lcGraph.getData().clear();
+        Time.clear();
+        s1p.getData().clear(); s1j.getData().clear(); s1k.getData().clear();//clears all series
+        s2p.getData().clear(); s2j.getData().clear(); s2k.getData().clear();
+        s3p.getData().clear(); s3j.getData().clear(); s3k.getData().clear();
+        s4p.getData().clear(); s4j.getData().clear(); s4k.getData().clear();
+        s5p.getData().clear(); s5j.getData().clear(); s5k.getData().clear();
+        
+        series = s1p;
+        lcGraph.getData().add(series); 
+        lcGraph.setLegendVisible(false);
+        lcGraph.setAnimated(false);
+        
+        for(XYChart.Data<Number,Number> data: s1p.getData()){
+          data.getNode().setVisible(false);
+          }
+        
+        if(!cbHUD.isSelected()){cbHUD.fire();}
+        
+        slV1.setValue(2); slM1.setValue(5);
         
         spC2.setVisible(false);
         spC3.setVisible(false);
@@ -1134,39 +1202,51 @@ public class MomentumFXMLController {
         b1.setVelocity(slV1.getValue());//setting the overall velocity
         b1.setVelocityX(slV1.getValue()*Math.cos(b1.getAngle()));//setting the x & y velocities
         b1.setVelocityY(slV1.getValue()*Math.sin(b1.getAngle()));
-        showValues(1);
+        if(data==1)showValues(1);
        });
        
        slV2.valueProperty().addListener((event)->{          
-        lbV2.setText(String.valueOf(Math.round(slV2.getValue()*10.0)/10.0));
-        b2.setVelocity(slV2.getValue());
-        b2.setVelocityX(slV2.getValue()*Math.cos(b2.getAngle()));
+        lbV2.setText(String.valueOf(Math.round(slV2.getValue()*10.0)/10.0));//the label next to the slider
+        lbv2.setText(String.valueOf(Math.round(slV2.getValue()*10.0)/10.0));//the label on the right top V
+        lbVx2.setText(String.valueOf(Math.round(((double) b2.getVelocityX())*10.0)/10.0));//the right top label Vx
+        lbVy2.setText(String.valueOf(Math.round(((double) b2.getVelocityY())*10.0)/10.0));
+        b2.setVelocity(slV2.getValue());//setting the overall velocity
+        b2.setVelocityX(slV2.getValue()*Math.cos(b2.getAngle()));//setting the x & y velocities
         b2.setVelocityY(slV2.getValue()*Math.sin(b2.getAngle()));
-        showValues(2);
+        if(data==2)showValues(2);
        });
        
        slV3.valueProperty().addListener((event)->{          
-        lbV3.setText(String.valueOf(Math.round(slV3.getValue()*10.0)/10.0));
-        b3.setVelocity(slV3.getValue());
-        b3.setVelocityX(slV3.getValue()*Math.cos(b3.getAngle()));
+        lbV3.setText(String.valueOf(Math.round(slV3.getValue()*10.0)/10.0));//the label next to the slider
+        lbv3.setText(String.valueOf(Math.round(slV3.getValue()*10.0)/10.0));//the label on the right top V
+        lbVx3.setText(String.valueOf(Math.round(((double) b3.getVelocityX())*10.0)/10.0));//the right top label Vx
+        lbVy3.setText(String.valueOf(Math.round(((double) b3.getVelocityY())*10.0)/10.0));
+        b3.setVelocity(slV3.getValue());//setting the overall velocity
+        b3.setVelocityX(slV3.getValue()*Math.cos(b3.getAngle()));//setting the x & y velocities
         b3.setVelocityY(slV3.getValue()*Math.sin(b3.getAngle()));
-        showValues(3);
+        if(data==3)showValues(3);
        });
        
        slV4.valueProperty().addListener((event)->{          
-        lbV4.setText(String.valueOf(Math.round(slV4.getValue()*10.0)/10.0));
-        b4.setVelocity(slV4.getValue());
-        b4.setVelocityX(slV4.getValue()*Math.cos(b4.getAngle()));
+        lbV4.setText(String.valueOf(Math.round(slV4.getValue()*10.0)/10.0));//the label next to the slider
+        lbv4.setText(String.valueOf(Math.round(slV4.getValue()*10.0)/10.0));//the label on the right top V
+        lbVx4.setText(String.valueOf(Math.round(((double) b4.getVelocityX())*10.0)/10.0));//the right top label Vx
+        lbVy4.setText(String.valueOf(Math.round(((double) b4.getVelocityY())*10.0)/10.0));
+        b4.setVelocity(slV4.getValue());//setting the overall velocity
+        b4.setVelocityX(slV4.getValue()*Math.cos(b4.getAngle()));//setting the x & y velocities
         b4.setVelocityY(slV4.getValue()*Math.sin(b4.getAngle()));
-        showValues(4);
+        if(data==4)showValues(4);
        });
        
        slV5.valueProperty().addListener((event)->{          
-        lbV5.setText(String.valueOf(Math.round(slV5.getValue()*10.0)/10.0));
-        b5.setVelocity(slV5.getValue());
-        b5.setVelocityX(slV5.getValue()*Math.cos(b5.getAngle()));
+        lbV5.setText(String.valueOf(Math.round(slV5.getValue()*10.0)/10.0));//the label next to the slider
+        lbv5.setText(String.valueOf(Math.round(slV5.getValue()*10.0)/10.0));//the label on the right top V
+        lbVx5.setText(String.valueOf(Math.round(((double) b5.getVelocityX())*10.0)/10.0));//the right top label Vx
+        lbVy5.setText(String.valueOf(Math.round(((double) b5.getVelocityY())*10.0)/10.0));
+        b5.setVelocity(slV5.getValue());//setting the overall velocity
+        b5.setVelocityX(slV5.getValue()*Math.cos(b5.getAngle()));//setting the x & y velocities
         b5.setVelocityY(slV5.getValue()*Math.sin(b5.getAngle()));
-        showValues(5);
+        if(data==5)showValues(5);
        });
     }
     
@@ -1212,7 +1292,7 @@ public class MomentumFXMLController {
     
     //int i only determines which ball's formulas are shown. All the balls' positions & momentums are shown at all times
     private void showValues(int i){
-       
+       // System.out.println(b1.getVelocity());
         Circle c = c1;
         Momentum b = b1;
         
