@@ -7,6 +7,7 @@ package edu.vanier.template.controllers;
 import edu.vanier.physics.Kinematics;
 import edu.vanier.template.ui.MainApp;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +18,8 @@ import javafx.scene.shape.QuadCurve;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
+import javafx.animation.PathTransition;
 
 public class KinematicsFXMLController {
 
@@ -120,5 +123,18 @@ public class KinematicsFXMLController {
 
             kinematics_line.setVisible(false);
         });
+    }
+
+    @FXML
+    void clearOnClear(ActionEvent event) {
+        slider_1.setValue(1);
+        slider_2.setValue(1);
+        slider_3.setValue(1);
+        slider_4.setValue(1);
+    }
+
+    @FXML
+    void playOnAction(ActionEvent event) {
+
     }
 }
