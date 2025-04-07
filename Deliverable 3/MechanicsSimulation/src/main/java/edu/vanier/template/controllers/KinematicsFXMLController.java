@@ -80,6 +80,7 @@ public class KinematicsFXMLController {
         MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
     }
 
+    boolean isProjectile; //Checks if it is in projectile mode or not (set to true)
     private void radioButtonToggle() {
 
         //Toggling to 1D kinematics mode
@@ -98,6 +99,13 @@ public class KinematicsFXMLController {
             txt_x.setVisible(false);
 
             kinematics_line.setVisible(true);
+
+            slider_1.setValue(1);
+            slider_2.setValue(1);
+            slider_3.setValue(1);
+            slider_4.setValue(1);
+
+            isProjectile = false; //Set to not in projectile mode
         });
 
         //Toggling to projectile motion mode
@@ -107,6 +115,7 @@ public class KinematicsFXMLController {
             slider_1.setMax(89);
 
             txt_2.setText("Height of launch (m)");
+            txt_4.setText("Gravitational acceleration (m/s^2)");
 
             txt_4.setVisible(true);
             tf_14.setVisible(true);
@@ -122,6 +131,14 @@ public class KinematicsFXMLController {
             x_axis.setVisible(true);
 
             kinematics_line.setVisible(false);
+
+            slider_1.setValue(1);
+            slider_2.setValue(1);
+            slider_3.setValue(1);
+            slider_4.setValue(1);
+
+
+            isProjectile = true; //Set to in projectile mode
         });
     }
 
@@ -135,6 +152,15 @@ public class KinematicsFXMLController {
 
     @FXML
     void playOnAction(ActionEvent event) {
+        if(isProjectile) {
+            double angle = Double.parseDouble(tf_21.getText());
+            double height = Double.parseDouble(tf_22.getText());
+            double initialVelocity = Double.parseDouble(tf_23.getText());
+            double gravAcceleration = Double.parseDouble(tf_24.getText());
 
+        } else {
+            double initialPosition = Double.parseDouble(tf_21.getText());
+            double acceleration = Double.parseDouble(tf_22.getText());
+        }
     }
 }
