@@ -126,7 +126,7 @@ public class KinematicsFXMLController {
     }
 
     @FXML
-    void clearOnClear(ActionEvent event) {
+    void clearOnAction(ActionEvent event) {
         slider_1.setValue(1);
         slider_2.setValue(1);
         slider_3.setValue(1);
