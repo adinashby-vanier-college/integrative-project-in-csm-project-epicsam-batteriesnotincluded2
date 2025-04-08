@@ -82,7 +82,7 @@ public class ForcesFXMLController {
         sp.setVisible(true);
         sp.setOnMouseDragged(onVectorDragged(sp));
         sp.setOnMousePressed(onVectorPressed(sp));
-         megaPane.getChildren().add(sp);
+        megaPane.getChildren().add(sp);
         });
         
         slMag.setMax(100);
@@ -114,11 +114,12 @@ public class ForcesFXMLController {
             double x=ArrowX-boxCenterX;
             double y=ArrowY-boxCenterY;                         // doesnt work properly (it has to be in rad)
             double hyp=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-            v.setLayoutX(hyp*Math.cos(Math.toRadians(v.getRotate())));
-            v.setLayoutY(hyp*Math.sin(Math.toRadians(v.getRotate())));
+            v.setLayoutX(hyp*Math.cos(Math.toRadians(v.getRotation())));
+            v.setLayoutY(hyp*Math.sin(Math.toRadians(v.getRotation())));
             //  set the arrows position relative to the box, change angles to rad
-                System.out.println(v.getLayoutX());
+            System.out.println(v.getLayoutX());
             System.out.println(v.getLayoutY());
+            
         });
         
         btnDelete.setOnAction((event)->{
@@ -132,6 +133,7 @@ public class ForcesFXMLController {
         
         //for (Node n:megaPane.getChildren()) n.setOnMousePressed(onVectorPressed(n));
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
+        
     }
     /**
      * this runs everything that must happen upon a vector getting selected (or unselected), such as: 
@@ -204,6 +206,7 @@ public class ForcesFXMLController {
             if (v.getRotate()<0)
                 v.setRotate(v.getRotate()+360);
             System.out.println(v.getRotate());
+            v.setRotation(v.getRotate());
         };
     }
     

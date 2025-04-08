@@ -37,7 +37,7 @@ public class LoginFXMLController extends Stage{
     Label lbWarning1, lbWarning2;
     
     @FXML
-    Button btnCancel, btnConfirm;
+    Button btnCancel, btnConfirm, btnLogin, btnNewUser, btnGuest;
     
     String username, password;
     
@@ -48,11 +48,14 @@ public class LoginFXMLController extends Stage{
     boolean userFlag = false;//only true when username is valid
     boolean passwordFlag = false;//only true when password is valid
     
-    public LoginFXMLController(Label lbWarn, String title) throws IOException{
+    public LoginFXMLController(Button Login, Button NewUser, Button Guest, Label lbWarn, String title) throws IOException{
        initModality(Modality.APPLICATION_MODAL);
        initStyle(StageStyle.UTILITY);
        setTitle(title);
        this.lbWarning = lbWarn;//to change label display on mainscreen after account has been created
+       this.btnLogin = Login;
+       this.btnGuest = Guest;
+       this.btnNewUser = NewUser;
        form();
     }
     
@@ -74,7 +77,10 @@ public class LoginFXMLController extends Stage{
 
         btnCancel.setOnAction((event)->{close();});
         
-         btnConfirm.setOnAction((event)->{           
+         btnConfirm.setOnAction((event)->{  
+             
+            userFlag = false;
+            passwordFlag = false;
             username = txtUsername.getText().trim();
             password = txtPassword.getText().trim();
             
@@ -92,9 +98,10 @@ public class LoginFXMLController extends Stage{
             
             if(userFlag == false){
             lbWarning1.setVisible(true);
+            lbWarning2.setVisible(false);
             }
             
-            if(passwordFlag == false){
+            if(userFlag == true && passwordFlag == false){
             lbWarning2.setVisible(true);
             }
             
@@ -105,7 +112,9 @@ public class LoginFXMLController extends Stage{
             lbWarning.setText("Welcome, " + username);
             lbWarning.setStyle("-fx-text-fill: green;");
             lbWarning.setVisible(true);
-            
+            btnGuest.setDisable(true);
+            btnLogin.setDisable(true);
+            btnNewUser.setDisable(true);
             close();
             }
          });
