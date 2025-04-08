@@ -24,7 +24,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="recDark" arcHeight="5.0" arcWidth="5.0" fill="#6a7a89" height="946.0" layoutX="-52.0" layoutY="-109.0" stroke="BLACK" strokeType="INSIDE" width="1271.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="557.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <Label layoutX="833.0" layoutY="494.0" prefHeight="34.0" prefWidth="57.0" text="Graph">
          <font>
             <Font size="20.0" />
@@ -128,65 +128,65 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Rectangle fx:id="recSim" arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="548.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="794.0" />
-      <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="545.0" prefWidth="794.0" translateY="2.0">
+      <Rectangle fx:id="recClip" arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="547.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="791.0" />
+      <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="544.0" prefWidth="794.0" translateY="2.0">
          <children>
-            <ImageView fitHeight="545.0" fitWidth="824.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivBackGround" fitHeight="545.0" fitWidth="824.0" layoutX="1.0" layoutY="-0.5" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/GrassField.png" />
                </image>
             </ImageView>
-            <StackPane fx:id="spC1" layoutX="562.0" layoutY="237.0" prefHeight="44.0" prefWidth="44.0">
+            <StackPane fx:id="spC1" layoutX="136.0" layoutY="74.0" prefHeight="38.0" prefWidth="0.0">
                <children>
-                  <Circle fx:id="c1" fill="#ff4000" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne" mouseTransparent="true" text="1">
+                  <Circle fill="#ff1f1f" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <StackPane fx:id="spC5" layoutX="388.0" layoutY="368.0" prefHeight="44.0" prefWidth="44.0">
+            <StackPane fx:id="spC2" layoutX="202.0" layoutY="96.0" prefHeight="38.0" prefWidth="0.0">
                <children>
-                  <Circle fx:id="c5" fill="#b61fff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne1112" mouseTransparent="true" text="5">
+                  <Circle fill="#1ed02a" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <StackPane fx:id="spC4" layoutX="335.0" layoutY="324.0" prefHeight="44.0" prefWidth="44.0">
+            <StackPane fx:id="spC3" layoutX="246.0" layoutY="175.0" prefHeight="38.0" prefWidth="0.0">
                <children>
-                  <Circle fx:id="c4" fill="#a16448" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne1111" mouseTransparent="true" text="4">
+                  <Circle fill="#5e55ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <StackPane fx:id="spC2" layoutX="220.0" layoutY="336.0" prefHeight="44.0" prefWidth="44.0">
+            <StackPane fx:id="spC4" layoutX="343.0" layoutY="145.0" prefHeight="38.0" prefWidth="0.0">
                <children>
-                  <Circle fx:id="c2" fill="#17c938" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne11" mouseTransparent="true" text="2">
+                  <Circle fill="#906262" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <StackPane fx:id="spC3" layoutX="313.0" layoutY="380.0" prefHeight="44.0" prefWidth="44.0">
+            <StackPane fx:id="spC5" layoutX="463.0" layoutY="175.0" prefHeight="38.0" prefWidth="0.0">
                <children>
-                  <Circle fx:id="c3" fill="#215cff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="lbOne111" mouseTransparent="true" text="3">
+                  <Circle fill="#df21ffbf" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="5">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <Label fx:id="lbTimePassed" layoutX="14.0" layoutY="6.0" text="Time passed: 00:00" />
+            <Label fx:id="lbTimePassed" layoutX="10.0" layoutY="6.0" prefHeight="17.0" prefWidth="126.0" text="Time passed: 00:00" />
          </children></Pane>
       <HBox layoutX="850.0" layoutY="36.0" prefHeight="30.0" prefWidth="330.0" spacing="90.0" translateY="5.0">
          <children>
