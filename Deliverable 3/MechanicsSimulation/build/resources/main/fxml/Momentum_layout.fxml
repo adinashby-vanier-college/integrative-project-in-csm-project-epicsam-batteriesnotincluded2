@@ -194,7 +194,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="10.0" text="Velocity" translateX="-2.0">
+            <Label layoutX="10.0" layoutY="10.0" text="Velocities:" translateX="-2.0">
                <font>
                   <Font size="18.0" />
                </font>

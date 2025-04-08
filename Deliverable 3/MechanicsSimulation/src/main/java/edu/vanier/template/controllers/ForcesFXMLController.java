@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
+import javafx.stage.Stage;
 
 /**
  * The class that controls the FXML elements of the Forces simulation
@@ -31,7 +32,7 @@ public class ForcesFXMLController {
     Menu menuHelp;
     
     @FXML
-    MenuItem mitBack;
+    MenuItem mitBack, mitClose;
     
     @FXML
     Slider slMag,slDir;
@@ -70,6 +71,10 @@ public class ForcesFXMLController {
         btnBack.setVisible(false);
         Arrow.setVisible(false);
         mitBack.setOnAction(this::loadPrimaryScene);
+        mitClose.setOnAction((event)->{
+            Stage s = (Stage)megaPane.getScene().getWindow();
+            s.close();
+        });
         
             // a temporary summon vector button since i havent gotten dragging yet
         btnSummonVector.setOnAction((event)->{
@@ -109,11 +114,11 @@ public class ForcesFXMLController {
             double x=ArrowX-boxCenterX;
             double y=ArrowY-boxCenterY;                         // doesnt work properly (it has to be in rad)
             double hyp=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-            v.setLayoutX(hyp*Math.cos(v.getRotate()));
-            v.setLayoutY(hyp*Math.sin(v.getRotate()));
+            v.setLayoutX(hyp*Math.cos(Math.toRadians(v.getRotate())));
+            v.setLayoutY(hyp*Math.sin(Math.toRadians(v.getRotate())));
             //  set the arrows position relative to the box, change angles to rad
-                
-            
+                System.out.println(v.getLayoutX());
+            System.out.println(v.getLayoutY());
         });
         
         btnDelete.setOnAction((event)->{
@@ -128,6 +133,11 @@ public class ForcesFXMLController {
         //for (Node n:megaPane.getChildren()) n.setOnMousePressed(onVectorPressed(n));
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
     }
+    /**
+     * this runs everything that must happen upon a vector getting selected (or unselected), such as: 
+     * marking it as (un)selected, enabling/disabling sliders and buttons, 
+     * 
+     */
     private void toggleSelectedVector(){
         if(selectingVector){
         slMag.setDisable(false);
@@ -191,6 +201,9 @@ public class ForcesFXMLController {
             if (ArrowX<=boxCenterX)
             v.setRotate(rotate);
             else v.setRotate(rotate +180);
+            if (v.getRotate()<0)
+                v.setRotate(v.getRotate()+360);
+            System.out.println(v.getRotate());
         };
     }
     
