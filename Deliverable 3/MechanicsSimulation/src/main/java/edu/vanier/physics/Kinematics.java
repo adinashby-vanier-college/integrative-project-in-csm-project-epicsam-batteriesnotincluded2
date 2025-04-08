@@ -127,4 +127,5 @@ public class Kinematics {
     public double kinematic_calcTotalDistance() {
         return Math.abs(kinematic_calcFinalPosition() - initialPosition);
     }
+    //test
 }

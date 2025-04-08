@@ -216,33 +216,33 @@ public class KinematicsFXMLController {
             // 1D motion animation setup
             double finalPosition = oneDimension.kinematic_calcFinalPosition();
 
-// Define the pixel scale factor (e.g., 10 pixels per meter)
+
             double scale = 10;
 
-// Convert real-world positions to pixels
+
             double startX = kinematics_line.getEndX() - initialPosition * scale;
             double endX = kinematics_line.getEndX() - finalPosition * scale;
 
-// Clamp positions to prevent going off-screen
+
             startX = Math.max(0, Math.min(800, startX));
             endX = Math.max(0, Math.min(800, endX));
 
-// Set initial position
+
             particle.setCenterX(startX);
             particle.setCenterY(kinematics_line.getStartY() - 10); // Y just above the line
 
-// Create animation path (just a straight line)
+
             Path path = new Path();
             path.getElements().add(new MoveTo(startX, particle.getCenterY()));
             path.getElements().add(new LineTo(endX, particle.getCenterY()));
 
-// Duration proportional to time input
+
             PathTransition transition = new PathTransition(Duration.seconds(time), path, particle);
             transition.setCycleCount(1);
             transition.setInterpolator(Interpolator.LINEAR);
             transition.play();
 
-// Display results
+
             ta_results.setText(
                     "Final position: " + String.format("%.2f", finalPosition) + " m\n" +
                             "Total distance: " + String.format("%.2f", oneDimension.kinematic_calcTotalDistance()) + " m\n" +
