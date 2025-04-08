@@ -14,12 +14,15 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurve;
 import javafx.scene.text.Text;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import javafx.animation.PathTransition;
+import javafx.scene.shape.Ellipse;
 
 public class KinematicsFXMLController {
 
@@ -51,10 +54,16 @@ public class KinematicsFXMLController {
     Text txt_1, txt_2, txt_3, txt_4, txt_y, txt_x;
 
     @FXML
+    TextArea ta_results;
+
+    @FXML
     Button btn_play, btn_clear;
 
     @FXML
     HBox lastHBox;
+
+    @FXML
+    Ellipse particle;
 
 
     @FXML
@@ -80,7 +89,7 @@ public class KinematicsFXMLController {
         MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
     }
 
-    boolean isProjectile; //Checks if it is in projectile mode or not (set to true)
+    boolean isProjectile = true; //Checks if it is in projectile mode or not (set to true)
     private void radioButtonToggle() {
 
         //Toggling to 1D kinematics mode
@@ -158,9 +167,39 @@ public class KinematicsFXMLController {
             double initialVelocity = Double.parseDouble(tf_23.getText());
             double gravAcceleration = Double.parseDouble(tf_24.getText());
 
+            //Object for projectile motion
+            Kinematics projectile = new Kinematics(angle, gravAcceleration, height, initialVelocity, 0,0);
+
+//            kinematics_curve.setEndX(projectile.proj_calcDistance() + y_axis.getEndX());
+//            kinematics_curve.setStartY(y_axis.getEndY() - projectile.getLaunchHeight());
+//            kinematics_curve.setControlX((kinematics_curve.getEndX()+kinematics_curve.getStartX())/2);
+//            kinematics_curve.setControlY(y_axis.getEndY()-projectile.proj_calcMaxHeight()-projectile.getLaunchHeight());
+
+            kinematics_curve.setEndX(projectile.proj_calcDistance()+y_axis.getLayoutX());
+            kinematics_curve.setStartY(y_axis.getEndY()-projectile.getLaunchHeight());
+            kinematics_curve.setControlX((kinematics_curve.getEndX()+kinematics_curve.getStartX())/2);
+            kinematics_curve.setControlY(y_axis.getEndY()-projectile.proj_calcMaxHeight());
+
+            if(kinematics_curve.getEndX() > 500) {
+                x_axis.setEndX(kinematics_curve.getEndX());
+            }
+
+            PathTransition transRights = new PathTransition(Duration.seconds(projectile.proj_calcTime()/5), kinematics_curve);
+            transRights.setNode(particle);
+            transRights.setCycleCount(1);
+            transRights.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+            transRights.play();
+
+            ta_results.setText("The object traveled a total distance of " + projectile.kinematic_calcTotalDistance() + " metres in " + projectile.proj_calcTime() + " seconds. The max height the object reached is " + projectile.proj_calcMaxHeight() + " seconds");
+
         } else {
             double initialPosition = Double.parseDouble(tf_21.getText());
             double acceleration = Double.parseDouble(tf_22.getText());
+            double initialVelocity = Double.parseDouble(tf_23.getText());
+            double time = Double.parseDouble(tf_24.getText());
+
+            Kinematics oneDimension = new Kinematics(0, acceleration, 0, initialVelocity, initialPosition, time);
+
         }
     }
 }
