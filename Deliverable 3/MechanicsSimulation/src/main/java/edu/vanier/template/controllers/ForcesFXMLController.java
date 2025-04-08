@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
+import javafx.stage.Stage;
 
 /**
  * The class that controls the FXML elements of the Forces simulation
@@ -31,7 +32,7 @@ public class ForcesFXMLController {
     Menu menuHelp;
     
     @FXML
-    MenuItem mitBack;
+    MenuItem mitBack, mitClose;
     
     @FXML
     Slider slMag,slDir;
@@ -70,6 +71,10 @@ public class ForcesFXMLController {
         btnBack.setVisible(false);
         Arrow.setVisible(false);
         mitBack.setOnAction(this::loadPrimaryScene);
+        mitClose.setOnAction((event)->{
+            Stage s = (Stage)megaPane.getScene().getWindow();
+            s.close();
+        });
         
             // a temporary summon vector button since i havent gotten dragging yet
         btnSummonVector.setOnAction((event)->{
@@ -77,7 +82,7 @@ public class ForcesFXMLController {
         sp.setVisible(true);
         sp.setOnMouseDragged(onVectorDragged(sp));
         sp.setOnMousePressed(onVectorPressed(sp));
-         megaPane.getChildren().add(sp);
+        megaPane.getChildren().add(sp);
         });
         
         slMag.setMax(100);
@@ -101,19 +106,24 @@ public class ForcesFXMLController {
         slDir.valueProperty().addListener((event)->{
             lbDir.setText("Direction: "+Math.round(slDir.valueProperty().getValue())+"°");
             VectorArrow v=getSelectedVector();
-            v.setRotate(slDir.valueProperty().getValue()+180);
-            double ArrowX=v.getBoundsInParent().getCenterX();
-            double ArrowY=v.getBoundsInParent().getCenterY();
-            double boxCenterX=box.getBoundsInParent().getCenterX();
-            double boxCenterY=box.getBoundsInParent().getCenterY();
-            double x=ArrowX-boxCenterX;
-            double y=ArrowY-boxCenterY;                         // doesnt work properly (it has to be in rad)
-            double hyp=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-            v.setLayoutX(hyp*Math.cos(v.getRotate()));
-            v.setLayoutY(hyp*Math.sin(v.getRotate()));
-            //  set the arrows position relative to the box, change angles to rad
-                
+            v.setRotate(-1*(slDir.valueProperty().getValue()));
+            v.setRotation(slDir.valueProperty().getValue()); // true rotation value
+            System.out.println(v.getLayoutX());
+            double vX=v.getLayoutX();
+            double vY=v.getLayoutY();
+            double boxX=box.getLayoutX();
+            double boxY=box.getLayoutY();
+            double X=vX-boxX; // x difference between vector and box
+            double Y=vY-boxY; // y dif of vector and box
+            double hyp=Math.sqrt(Math.pow(X, 2)+Math.pow(Y, 2));
+            double newX=hyp*Math.cos(Math.toRadians(v.getRotate()));
+            double newY=hyp*Math.sin(Math.toRadians(v.getRotate()));
+            v.setLayoutX(newX+boxX);
+            v.setLayoutY(newY+boxY);
             
+            System.out.println(v.getRotation());
+            System.out.println(v.getRotate());
+            v.setRotate(v.getRotate()+180);
         });
         
         btnDelete.setOnAction((event)->{
@@ -127,7 +137,13 @@ public class ForcesFXMLController {
         
         //for (Node n:megaPane.getChildren()) n.setOnMousePressed(onVectorPressed(n));
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
+        
     }
+    /**
+     * this runs everything that must happen upon a vector getting selected (or unselected), such as: 
+     * marking it as (un)selected, enabling/disabling sliders and buttons, 
+     * 
+     */
     private void toggleSelectedVector(){
         if(selectingVector){
         slMag.setDisable(false);
@@ -191,6 +207,10 @@ public class ForcesFXMLController {
             if (ArrowX<=boxCenterX)
             v.setRotate(rotate);
             else v.setRotate(rotate +180);
+            if (v.getRotate()<0)
+                v.setRotate(v.getRotate()+360);
+            System.out.println(v.getRotate());
+            v.setRotation(v.getRotate());
         };
     }
     

@@ -93,7 +93,7 @@ public class MainAppFXMLController {
     }
 
     private void loadSecondaryScene(Event e) {
-        if(loggedIn == true){
+        //if(loggedIn == true){
          switch(ctr){
             case 1:MainApp.switchScene(MainApp.priStage, MainApp.MOMENTUM_SCENE);break;
             case 2:MainApp.switchScene(MainApp.priStage, MainApp.FORCES_SCENE);break;
@@ -101,12 +101,12 @@ public class MainAppFXMLController {
             case 4:MainApp.switchScene(MainApp.priStage, MainApp.KINEMATICS_SCENE);break;
             default:;
          }  
-        }
-        else{
-           lbWarning.setText("Please log in first");
-           lbWarning.setStyle("-fx-text-fill: red;");
-           lbWarning.setVisible(true);
-        }
+       // }
+//        else{
+//           lbWarning.setText("Please log in first");
+//           lbWarning.setStyle("-fx-text-fill: red;");
+//           lbWarning.setVisible(true);
+//        }
         //logger.info("Loaded the secondary scene...");
     }
 

@@ -16,8 +16,17 @@ import javafx.scene.shape.*;
 public class VectorArrow extends StackPane {
     final public static double width=111;
     final public static double height=26;
+    double rotation=0;
     boolean selected=false;
+    
+    public double getRotation() {
+        return rotation;
+    }
 
+    public void setRotation(double rotation) {
+        this.rotation = rotation;
+    }
+    
     public boolean getSelected() {
         return selected;
     }
