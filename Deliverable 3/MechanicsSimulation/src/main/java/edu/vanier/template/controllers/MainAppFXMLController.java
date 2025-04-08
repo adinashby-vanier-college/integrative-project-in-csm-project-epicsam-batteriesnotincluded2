@@ -31,7 +31,7 @@ public class MainAppFXMLController {
     @FXML
     Button btnKinematics;
     @FXML
-    Button btnLogin, btnNewUser, btnGuest;         
+    Button btnLogin, btnNewUser, btnGuest, btnLogout;         
     @FXML
     Label lbWarning;
     
@@ -43,6 +43,8 @@ public class MainAppFXMLController {
     
     @FXML
     public void initialize() {
+        btnLogout.setDisable(true);
+        
         logger.info("Initializing MainAppController...");
         lbWarning.setVisible(false);
         
@@ -75,7 +77,7 @@ public class MainAppFXMLController {
         
         btnNewUser.setOnAction((event)->{
             try {
-                NewUserFXMLController obj = new NewUserFXMLController(btnLogin, btnNewUser, btnGuest, lbWarning, "Create an account");
+                NewUserFXMLController obj = new NewUserFXMLController(btnLogin, btnNewUser, btnGuest, btnLogout, lbWarning, "Create an account");
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -83,10 +85,21 @@ public class MainAppFXMLController {
         
         btnLogin.setOnAction((event)->{
             try {
-                LoginFXMLController obj = new LoginFXMLController(btnLogin, btnNewUser, btnGuest, lbWarning, "Log in to your account");
+                LoginFXMLController obj = new LoginFXMLController(btnLogin, btnNewUser, btnGuest, btnLogout, lbWarning, "Log in to your account");
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        });
+        
+        btnLogout.setOnAction((event)->{
+           btnLogout.setDisable(true);
+           btnLogin.setDisable(false);
+           btnNewUser.setDisable(false);
+           btnGuest.setDisable(false);
+           loggedIn = false;
+           lbWarning.setText("Logged out");
+           lbWarning.setStyle("-fx-text-fill: green;");
+           lbWarning.setVisible(true);
         });
         
         addFontIcons();

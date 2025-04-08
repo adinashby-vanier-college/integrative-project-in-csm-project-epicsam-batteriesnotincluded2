@@ -5,9 +5,14 @@
 package edu.vanier.template.controllers;
 
 import static edu.vanier.template.controllers.MainAppFXMLController.user;
+import edu.vanier.template.ui.MainApp;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -34,7 +39,7 @@ public class NewUserFXMLController extends Stage{
     Pane root;
     
     @FXML
-    Button btnCancel, btnConfirm, btnLogin, btnNewUser, btnGuest;
+    Button btnCancel, btnConfirm, btnLogin, btnNewUser, btnGuest, btnLogout;
     
     @FXML
     TextField txtUsername, txtPassword1, txtPassword2;
@@ -53,13 +58,16 @@ public class NewUserFXMLController extends Stage{
             
     String username, password1, password2;
     
+    ArrayList <String> users = new ArrayList<>();
+    
     boolean flag = false;//only true when username and password are all correct
     
     boolean userFlag = false;
+    boolean userExistsFlag = true;
     boolean passwordFlag1 = false;
     boolean passwordFlag2 = false;
     
-    public NewUserFXMLController(Button Login, Button NewUser, Button Guest, Label lbWarn, String title) throws IOException{
+    public NewUserFXMLController(Button Login, Button NewUser, Button Guest, Button Logout, Label lbWarn, String title) throws IOException{
        initModality(Modality.APPLICATION_MODAL);
        initStyle(StageStyle.UTILITY);
        setTitle(title);
@@ -67,10 +75,11 @@ public class NewUserFXMLController extends Stage{
        this.btnLogin = Login;
        this.btnGuest = Guest;
        this.btnNewUser = NewUser;
+       this.btnLogout = Logout;
        form();
        CheckBoxes();
        
-       txtPassword1.textProperty().bindBidirectional(psPassword1.textProperty());
+       txtPassword1.textProperty().bindBidirectional(psPassword1.textProperty());//syncing the fields
        txtPassword2.textProperty().bindBidirectional(psPassword2.textProperty());
     }
     
@@ -85,6 +94,7 @@ public class NewUserFXMLController extends Stage{
         setScene(scene);
         setResizable(false);
         show();
+        loadUsers();
         
         //path to the file that stores usernames and passwords
         File file = new File("src/main/resources/usernamespasswords/usernamespasswords.txt");
@@ -101,6 +111,8 @@ public class NewUserFXMLController extends Stage{
             password1 = psPassword1.getText().trim();
             password2 = psPassword2.getText().trim();
             
+            
+            
             if(username.contains(" ")){//can't include spaces in username
               userFlag = false;
               lbWarning1.setVisible(true);
@@ -113,7 +125,19 @@ public class NewUserFXMLController extends Stage{
                System.out.println("ee");
            }
            
-           if(username.length()>=3 && !username.contains(" ")){
+           for(String user: users){
+              if(user.toLowerCase().equals(username.toLowerCase())){
+                userExistsFlag = true;
+                lbWarning1.setVisible(true);
+                lbWarning1.setText("Username already exists");
+                break;
+              }
+              else{
+                userExistsFlag = false;
+              }
+           }
+           
+           if(username.length()>=3 && !username.contains(" ") && userExistsFlag == false){
               userFlag = true;
               lbWarning1.setVisible(false);
            }
@@ -163,6 +187,7 @@ public class NewUserFXMLController extends Stage{
             btnGuest.setDisable(true);
             btnLogin.setDisable(true);
             btnNewUser.setDisable(true);
+            btnLogout.setDisable(false);
             close();
            }
         });
@@ -188,5 +213,22 @@ public class NewUserFXMLController extends Stage{
           }
         });
 
+    }
+    
+    //loads all usernames into a linkedhashmap
+    private void loadUsers() throws IOException{
+        
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/usernamespasswords/usernamespasswords.txt")));){
+         String line;
+        
+         while((line = br.readLine())!=null){      
+            String split[] = line.split(" ");//since the usernames and passwords are separated by a space, it splits there
+            if(split.length==2)users.add(split[0]);
+            else{System.out.println("noooo");}
+         }
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

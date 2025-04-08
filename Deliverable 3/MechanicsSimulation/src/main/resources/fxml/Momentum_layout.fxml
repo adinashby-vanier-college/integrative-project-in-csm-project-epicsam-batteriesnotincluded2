@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="recDark" arcHeight="5.0" arcWidth="5.0" fill="#6a7a89" height="946.0" layoutX="-52.0" layoutY="-109.0" stroke="BLACK" strokeType="INSIDE" width="1271.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="559.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="805.0" />
@@ -131,6 +131,11 @@
       <Rectangle fx:id="recSim" arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="548.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="794.0" />
       <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="545.0" prefWidth="794.0" translateY="2.0">
          <children>
+            <ImageView fitHeight="545.0" fitWidth="824.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/GrassField.png" />
+               </image>
+            </ImageView>
             <StackPane fx:id="spC1" layoutX="562.0" layoutY="237.0" prefHeight="44.0" prefWidth="44.0">
                <children>
                   <Circle fx:id="c1" fill="#ff4000" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
