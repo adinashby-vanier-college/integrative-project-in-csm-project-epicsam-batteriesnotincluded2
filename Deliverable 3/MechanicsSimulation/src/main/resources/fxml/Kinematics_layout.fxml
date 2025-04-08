@@ -133,7 +133,7 @@
             <Insets left="15.0" top="10.0" />
          </padding>
       </VBox>
-      <TextArea editable="false" layoutX="29.0" layoutY="635.0" prefHeight="165.0" prefWidth="810.0" text="Calculated Results:&#10;Please the play button to start the simulation">
+      <TextArea fx:id="ta_results" editable="false" layoutX="29.0" layoutY="635.0" prefHeight="165.0" prefWidth="810.0" text="Calculated Results:&#10;Please the play button to start the simulation">
          <font>
             <Font size="15.0" />
          </font>
@@ -143,7 +143,7 @@
       </TextArea>
       <QuadCurve fx:id="kinematics_curve" controlX="92.0" controlY="-248.0" endX="271.0" endY="25.0" fill="#ffffff00" layoutX="217.0" layoutY="477.0" startX="-76.0" startY="27.0" stroke="BLACK" strokeType="INSIDE" />
       <Line fx:id="kinematics_line" endX="261.0" layoutX="210.0" layoutY="477.0" startX="-40.0" strokeWidth="3.0" visible="false" />
-      <Ellipse fill="DODGERBLUE" layoutX="167.0" layoutY="478.0" radiusX="26.0" radiusY="26.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="particle" fill="DODGERBLUE" layoutX="167.0" layoutY="478.0" radiusX="26.0" radiusY="26.0" stroke="BLACK" strokeType="INSIDE" />
       <Line fx:id="y_axis" endX="-48.0" endY="-89.0" layoutX="189.0" layoutY="368.0" smooth="false" startX="-48.0" startY="135.0" strokeWidth="3.0" />
       <Line endX="308.0" endY="135.0" layoutX="190.0" layoutY="368.0" startX="-48.0" startY="135.0" strokeWidth="3.0" fx:id="x_axis" />
       <Text fx:id="txt_x" layoutX="488.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x">

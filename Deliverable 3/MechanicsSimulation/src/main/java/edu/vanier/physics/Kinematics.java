@@ -8,12 +8,13 @@ public class Kinematics {
     private double initialPosition;
     private double time;
 
-    public Kinematics(double launchAngle, double acceleration, double launchHeight, double initialVelocity, double initialPosition) {
+    public Kinematics(double launchAngle, double acceleration, double launchHeight, double initialVelocity, double initialPosition, double time) {
         this.launchAngle = launchAngle;
         this.acceleration = acceleration;
         this.launchHeight = launchHeight;
         this.initialVelocity = initialVelocity;
         this.initialPosition = initialPosition;
+        this.time = time;
     }
 
     //Getters

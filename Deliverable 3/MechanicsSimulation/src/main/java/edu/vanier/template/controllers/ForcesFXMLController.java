@@ -106,20 +106,24 @@ public class ForcesFXMLController {
         slDir.valueProperty().addListener((event)->{
             lbDir.setText("Direction: "+Math.round(slDir.valueProperty().getValue())+"°");
             VectorArrow v=getSelectedVector();
-            v.setRotate(slDir.valueProperty().getValue()+180);
-            double ArrowX=v.getBoundsInParent().getCenterX();
-            double ArrowY=v.getBoundsInParent().getCenterY();
-            double boxCenterX=box.getBoundsInParent().getCenterX();
-            double boxCenterY=box.getBoundsInParent().getCenterY();
-            double x=ArrowX-boxCenterX;
-            double y=ArrowY-boxCenterY;                         // doesnt work properly (it has to be in rad)
-            double hyp=Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
-            v.setLayoutX(hyp*Math.cos(Math.toRadians(v.getRotation())));
-            v.setLayoutY(hyp*Math.sin(Math.toRadians(v.getRotation())));
-            //  set the arrows position relative to the box, change angles to rad
+            v.setRotate(-1*(slDir.valueProperty().getValue()));
+            v.setRotation(slDir.valueProperty().getValue()); // true rotation value
             System.out.println(v.getLayoutX());
-            System.out.println(v.getLayoutY());
+            double vX=v.getLayoutX();
+            double vY=v.getLayoutY();
+            double boxX=box.getLayoutX();
+            double boxY=box.getLayoutY();
+            double X=vX-boxX; // x difference between vector and box
+            double Y=vY-boxY; // y dif of vector and box
+            double hyp=Math.sqrt(Math.pow(X, 2)+Math.pow(Y, 2));
+            double newX=hyp*Math.cos(Math.toRadians(v.getRotate()));
+            double newY=hyp*Math.sin(Math.toRadians(v.getRotate()));
+            v.setLayoutX(newX+boxX);
+            v.setLayoutY(newY+boxY);
             
+            System.out.println(v.getRotation());
+            System.out.println(v.getRotate());
+            v.setRotate(v.getRotate()+180);
         });
         
         btnDelete.setOnAction((event)->{
