@@ -6,6 +6,7 @@ package edu.vanier.template.controllers;
 
 import edu.vanier.physics.Kinematics;
 import edu.vanier.template.ui.MainApp;
+import javafx.animation.Interpolator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -13,16 +14,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurve;
+import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import javafx.animation.PathTransition;
-import javafx.scene.shape.Ellipse;
 
 public class KinematicsFXMLController {
 
@@ -162,10 +160,10 @@ public class KinematicsFXMLController {
     @FXML
     void playOnAction(ActionEvent event) {
         if(isProjectile) {
-            double angle = Double.parseDouble(tf_21.getText());
-            double height = Double.parseDouble(tf_22.getText());
-            double initialVelocity = Double.parseDouble(tf_23.getText());
-            double gravAcceleration = Double.parseDouble(tf_24.getText());
+            double angle = slider_1.getValue();
+            double height = slider_2.getValue();
+            double initialVelocity = slider_3.getValue();
+            double gravAcceleration = slider_4.getValue();
 
             //Object for projectile motion
             Kinematics projectile = new Kinematics(angle, gravAcceleration, height, initialVelocity, 0,0);
@@ -180,17 +178,32 @@ public class KinematicsFXMLController {
             kinematics_curve.setControlX((kinematics_curve.getEndX()+kinematics_curve.getStartX())/2);
             kinematics_curve.setControlY(y_axis.getEndY()-projectile.proj_calcMaxHeight());
 
+//            kinematics_curve.setStartX(y_axis.getLayoutX());
+//            kinematics_curve.setStartY(y_axis.getEndY() - projectile.getLaunchHeight());
+//            kinematics_curve.setEndX(projectile.proj_calcDistance() + y_axis.getLayoutX());
+//            kinematics_curve.setEndY(y_axis.getEndY());
+//
+//            kinematics_curve.setControlX((kinematics_curve.getEndX() + kinematics_curve.getStartX()) / 2);
+//            kinematics_curve.setControlY(y_axis.getEndY() - projectile.proj_calcMaxHeight());
+
             if(kinematics_curve.getEndX() > 500) {
                 x_axis.setEndX(kinematics_curve.getEndX());
             }
 
-            PathTransition transRights = new PathTransition(Duration.seconds(projectile.proj_calcTime()/5), kinematics_curve);
+            Path path = new Path();
+            path.getElements().add(new MoveTo(kinematics_curve.getStartX(), kinematics_curve.getStartY()));
+            path.getElements().add(new QuadCurveTo(
+                    kinematics_curve.getControlX(), kinematics_curve.getControlY(),
+                    kinematics_curve.getEndX(), kinematics_curve.getEndY()
+            ));
+
+            PathTransition transRights = new PathTransition(Duration.seconds(projectile.proj_calcTime()/5), path);
             transRights.setNode(particle);
             transRights.setCycleCount(1);
             transRights.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
             transRights.play();
 
-            ta_results.setText("The object traveled a total distance of " + projectile.kinematic_calcTotalDistance() + " metres in " + projectile.proj_calcTime() + " seconds. The max height the object reached is " + projectile.proj_calcMaxHeight() + " seconds");
+            ta_results.setText("The object traveled a total distance of " + String.format("%.2f", projectile.proj_calcDistance()) + " metres in " + String.format("%.2f", projectile.proj_calcTime()) + " seconds. The max height the object reached is " + String.format("%.2f", projectile.proj_calcMaxHeight()) + " metres");
 
         } else {
             double initialPosition = Double.parseDouble(tf_21.getText());
@@ -200,6 +213,41 @@ public class KinematicsFXMLController {
 
             Kinematics oneDimension = new Kinematics(0, acceleration, 0, initialVelocity, initialPosition, time);
 
+            // 1D motion animation setup
+            double finalPosition = oneDimension.kinematic_calcFinalPosition();
+
+// Define the pixel scale factor (e.g., 10 pixels per meter)
+            double scale = 10;
+
+// Convert real-world positions to pixels
+            double startX = kinematics_line.getEndX() - initialPosition * scale;
+            double endX = kinematics_line.getEndX() - finalPosition * scale;
+
+// Clamp positions to prevent going off-screen
+            startX = Math.max(0, Math.min(800, startX));
+            endX = Math.max(0, Math.min(800, endX));
+
+// Set initial position
+            particle.setCenterX(startX);
+            particle.setCenterY(kinematics_line.getStartY() - 10); // Y just above the line
+
+// Create animation path (just a straight line)
+            Path path = new Path();
+            path.getElements().add(new MoveTo(startX, particle.getCenterY()));
+            path.getElements().add(new LineTo(endX, particle.getCenterY()));
+
+// Duration proportional to time input
+            PathTransition transition = new PathTransition(Duration.seconds(time), path, particle);
+            transition.setCycleCount(1);
+            transition.setInterpolator(Interpolator.LINEAR);
+            transition.play();
+
+// Display results
+            ta_results.setText(
+                    "Final position: " + String.format("%.2f", finalPosition) + " m\n" +
+                            "Total distance: " + String.format("%.2f", oneDimension.kinematic_calcTotalDistance()) + " m\n" +
+                            "Final velocity: " + String.format("%.2f", oneDimension.kinematic_calcFinalVelocity()) + " m/s"
+            );
         }
     }
 }

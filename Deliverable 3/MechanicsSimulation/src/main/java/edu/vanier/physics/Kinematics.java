@@ -84,36 +84,47 @@ public class Kinematics {
     //Kinematics methods
 
     //Projectile motion methods
-    //Calculating time taken of projectile
     public double proj_calcTime() {
-        //Calculating time taken of projectile and return :sunglasses:
-        return (viY+(Math.sqrt(viY*viY+2*a*yi)))/a;
+        double rads = Math.toRadians(launchAngle);
+        double viY = initialVelocity * Math.sin(rads);
+        double discriminant = viY * viY + 2 * acceleration * launchHeight;
+
+        if (discriminant < 0) return Double.NaN; // avoid sqrt of negative
+
+        return (viY + Math.sqrt(discriminant)) / acceleration;
     }
 
-    //Calculating max height of projectile
     public double proj_calcMaxHeight() {
-        return (yi+(viY*viY))/(2*a);
+        double rads = Math.toRadians(launchAngle);
+        double viY = initialVelocity * Math.sin(rads);
+        return (viY * viY) / (2 * acceleration);
     }
 
-    //Calculating total distance projectile travelled
     public double proj_calcDistance() {
-        return (viX*(viY+(Math.sqrt(viY*viY+2*a*yi))))/ a;
+        double rads = Math.toRadians(launchAngle);
+        double viY = initialVelocity * Math.sin(rads);
+        double viX = initialVelocity * Math.cos(rads);
+
+        double time = proj_calcTime();
+        if (Double.isNaN(time)) return Double.NaN;
+
+        return viX * time;
     }
 
 
     //1D kinematics methods
     //Calculating final velocity
     public double kinematic_calcFinalVelocity() {
-        return vi+a*t;
+        return initialVelocity + acceleration * time;
     }
 
     //Calculating final position
     public double kinematic_calcFinalPosition() {
-        return ((kinematic_calcFinalVelocity()+vi/2)/t)-xi;
+        return initialPosition + initialVelocity * time + 0.5 * acceleration * time * time;
     }
 
     //Calculating total distance
     public double kinematic_calcTotalDistance() {
-        return kinematic_calcFinalPosition()-xi;
+        return Math.abs(kinematic_calcFinalPosition() - initialPosition);
     }
 }
