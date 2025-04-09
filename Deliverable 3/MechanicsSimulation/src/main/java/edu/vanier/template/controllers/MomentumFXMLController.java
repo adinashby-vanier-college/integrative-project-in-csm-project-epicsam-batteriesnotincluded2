@@ -1058,7 +1058,7 @@ public class MomentumFXMLController {
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);//this is here because this same block in the animationtimer doesn't work when the animationtimer paused
            }
-           series.getNode().setStyle("-fx-stroke: orange;");     
+           series.getNode().setStyle("-fx-stroke: #ff4500;");     
        });//ball 1's data will now be displayed
        btnB2.setOnAction((event)->{
            data = 2; 
