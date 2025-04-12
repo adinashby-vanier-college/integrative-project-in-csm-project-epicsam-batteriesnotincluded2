@@ -15,11 +15,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.control.CheckBox;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -31,14 +34,23 @@ public class LoginFXMLController extends Stage{
     Pane root;
     
     @FXML
-    TextField txtUsername, txtPassword;
+    PasswordField psPassword;
+    
+    @FXML
+    TextField txtPassword, txtUsername;
     
     @FXML
     Label lbWarning1, lbWarning2;
     
     @FXML
-    Button btnCancel, btnConfirm, btnLogin, btnNewUser, btnGuest;
+    Button btnCancel, btnConfirm, btnLogin, btnNewUser, btnGuest, btnLogout;
     
+    @FXML
+    CheckBox cbShow;        
+            
+    @FXML
+    VBox vbMain;
+            
     String username, password;
     
     Label lbWarning;
@@ -48,7 +60,7 @@ public class LoginFXMLController extends Stage{
     boolean userFlag = false;//only true when username is valid
     boolean passwordFlag = false;//only true when password is valid
     
-    public LoginFXMLController(Button Login, Button NewUser, Button Guest, Label lbWarn, String title) throws IOException{
+    public LoginFXMLController(Button Login, Button NewUser, Button Guest, Button Logout, Label lbWarn, String title) throws IOException{
        initModality(Modality.APPLICATION_MODAL);
        initStyle(StageStyle.UTILITY);
        setTitle(title);
@@ -56,7 +68,9 @@ public class LoginFXMLController extends Stage{
        this.btnLogin = Login;
        this.btnGuest = Guest;
        this.btnNewUser = NewUser;
+       this.btnLogout = Logout;
        form();
+       CheckBoxes();
     }
     
     @FXML
@@ -73,6 +87,8 @@ public class LoginFXMLController extends Stage{
         lbWarning1.setVisible(false);
         lbWarning2.setVisible(false);
         
+        txtPassword.textProperty().bindBidirectional(psPassword.textProperty());//syncing the fields
+
         loadUsers();
 
         btnCancel.setOnAction((event)->{close();});
@@ -82,7 +98,7 @@ public class LoginFXMLController extends Stage{
             userFlag = false;
             passwordFlag = false;
             username = txtUsername.getText().trim();
-            password = txtPassword.getText().trim();
+            password = psPassword.getText().trim();
             
             for(Map.Entry<String, String> val : users.entrySet()){
                if(username.equals(val.getKey())){
@@ -115,9 +131,26 @@ public class LoginFXMLController extends Stage{
             btnGuest.setDisable(true);
             btnLogin.setDisable(true);
             btnNewUser.setDisable(true);
+            btnLogout.setDisable(false);
             close();
             }
          });
+    }
+    
+    private void CheckBoxes(){
+        cbShow.setOnAction((event)->{
+          if(cbShow.isSelected()){
+            psPassword.setVisible(false);   
+          //  lbPs2.setVisible(false);
+            vbMain.setMouseTransparent(true);
+          }
+          else{
+             psPassword.setVisible(true);
+             psPassword.setManaged(true);
+          
+          }
+        });
+
     }
     
     //loads all usernames and passwords into a linkedhashmap

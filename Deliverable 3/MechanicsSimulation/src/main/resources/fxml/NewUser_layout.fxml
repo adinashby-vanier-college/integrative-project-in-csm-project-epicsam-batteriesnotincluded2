@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="47.0" layoutY="34.0" prefHeight="283.0" prefWidth="318.0">
          <children>
@@ -124,9 +124,9 @@
             </Label>
          </children>
       </VBox>
-      <HBox layoutX="19.0" layoutY="317.0" prefHeight="27.0" prefWidth="373.0" spacing="263.0" translateY="3.0">
+      <HBox layoutX="19.0" layoutY="317.0" prefHeight="27.0" prefWidth="373.0" spacing="257.0" translateY="3.0">
          <children>
-            <Button fx:id="btnCancel" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Cancel" />
             <Button fx:id="btnConfirm" mnemonicParsing="false" text="Confirm" />
          </children>
       </HBox>
