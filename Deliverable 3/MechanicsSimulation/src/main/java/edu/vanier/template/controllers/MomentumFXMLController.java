@@ -324,16 +324,16 @@ public class MomentumFXMLController {
         lbV4.setText(String.valueOf(slV4.getValue()));
         lbV5.setText(String.valueOf(slV5.getValue()));
         
-        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
-        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
-        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
-        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+22)*10.0)/10.0));
-        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+22)*10.0)/10.0));
-        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+22)*10.0)/10.0));
-        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+22)*10.0)/10.0));
-        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+22)*10.0)/10.0));
-        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+22)*10.0)/10.0));
-        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+22)*10.0)/10.0));
+        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+c1.getRadius())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
+        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+c1.getRadius())*10.0)/10.0));
+        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+c2.getRadius())*10.0)/10.0));
+        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+c2.getRadius())*10.0)/10.0));
+        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+c3.getRadius())*10.0)/10.0));
+        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+c3.getRadius())*10.0)/10.0));
+        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+c4.getRadius())*10.0)/10.0));
+        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+c4.getRadius())*10.0)/10.0));
+        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+c5.getRadius())*10.0)/10.0));
+        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+c5.getRadius())*10.0)/10.0));
         
         lbv1.setText(String.valueOf(Math.round(((double) slV1.getValue())*10.0)/10.0));
         lbv2.setText(String.valueOf(Math.round(((double) slV2.getValue())*10.0)/10.0));
@@ -1011,16 +1011,16 @@ public class MomentumFXMLController {
         lbV4.setText(String.valueOf(slV4.getValue()));
         lbV5.setText(String.valueOf(slV5.getValue()));
         
-        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
-        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
-        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
-        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+22)*10.0)/10.0));
-        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+22)*10.0)/10.0));
-        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+22)*10.0)/10.0));
-        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+22)*10.0)/10.0));
-        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+22)*10.0)/10.0));
-        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+22)*10.0)/10.0));
-        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+22)*10.0)/10.0));
+        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+c1.getRadius())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
+        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+c1.getRadius())*10.0)/10.0));
+        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+c2.getRadius())*10.0)/10.0));
+        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+c2.getRadius())*10.0)/10.0));
+        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+c3.getRadius())*10.0)/10.0));
+        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+c3.getRadius())*10.0)/10.0));
+        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+c4.getRadius())*10.0)/10.0));
+        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+c4.getRadius())*10.0)/10.0));
+        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+c5.getRadius())*10.0)/10.0));
+        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+c5.getRadius())*10.0)/10.0));
         
         lbv1.setText(String.valueOf(Math.round(((double) b1.getVelocity())*10.0)/10.0));
         lbv2.setText(String.valueOf(Math.round(((double) b2.getVelocity())*10.0)/10.0));
@@ -1157,6 +1157,7 @@ public class MomentumFXMLController {
        slM1.valueProperty().addListener((event)->{          
         lbM1.setText(String.valueOf(Math.round(slM1.getValue()*10.0)/10.0));
         b1.setMass(slM1.getValue());//changing ball's mass
+        c1.setRadius(22 + slM1.getValue()*0.5);
         if(data==1){
         showValues(1);
         }
@@ -1327,16 +1328,16 @@ public class MomentumFXMLController {
     
     //regardless of which ball is selected all their position & momentum will constantly be shown
     public void otherValues(){
-        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
-        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
-        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
-        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+22)*10.0)/10.0));
-        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+22)*10.0)/10.0));
-        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+22)*10.0)/10.0));
-        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+22)*10.0)/10.0));
-        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+22)*10.0)/10.0));
-        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+22)*10.0)/10.0));
-        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+22)*10.0)/10.0));
+        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+c1.getRadius())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
+        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+c1.getRadius())*10.0)/10.0));
+        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+c2.getRadius())*10.0)/10.0));
+        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+c2.getRadius())*10.0)/10.0));
+        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+c3.getRadius())*10.0)/10.0));
+        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+c3.getRadius())*10.0)/10.0));
+        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+c4.getRadius())*10.0)/10.0));
+        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+c4.getRadius())*10.0)/10.0));
+        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+c5.getRadius())*10.0)/10.0));
+        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+c5.getRadius())*10.0)/10.0));
 
        // System.out.println(b1.calcMomentum());
         lbv1.setText(String.valueOf(Math.round(((double) b1.getVelocity())*10.0)/10.0));
