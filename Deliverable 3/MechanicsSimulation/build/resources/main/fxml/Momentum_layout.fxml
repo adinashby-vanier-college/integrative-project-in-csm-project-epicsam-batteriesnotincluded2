@@ -136,57 +136,12 @@
                   <Image url="@../Images/GrassField.png" />
                </image>
             </ImageView>
-            <StackPane fx:id="spC1" layoutX="96.0" layoutY="212.0" prefHeight="78.0" prefWidth="66.0">
-               <children>
-                  <Circle fx:id="c1" fill="#ff1f1f" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label text="1">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC2" layoutX="202.0" layoutY="96.0" prefHeight="38.0" prefWidth="0.0">
-               <children>
-                  <Circle fx:id="c2" fill="#1ed02a" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label text="2">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC3" layoutX="246.0" layoutY="175.0" prefHeight="38.0" prefWidth="0.0">
-               <children>
-                  <Circle fx:id="c3" fill="#5e55ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label text="3">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC4" layoutX="343.0" layoutY="145.0" prefHeight="38.0" prefWidth="0.0">
-               <children>
-                  <Circle fx:id="c4" fill="#906262" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label text="4">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
-            <StackPane fx:id="spC5" layoutX="463.0" layoutY="175.0" prefHeight="38.0" prefWidth="0.0">
-               <children>
-                  <Circle fx:id="c5" fill="#df21ffbf" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label text="5">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
+            <Circle fx:id="c1" centerX="300.0" centerY="50.0" fill="#ff1f1f" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="c2" centerX="90.0" centerY="200.0" fill="#1ed02a" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="c3" centerX="300.0" centerY="100.0" fill="#5e55ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="c4" centerX="200.0" centerY="50.0" fill="#906262" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
             <Label fx:id="lbTimePassed" layoutX="10.0" layoutY="6.0" prefHeight="17.0" prefWidth="126.0" text="Time passed: 00:00" />
+            <Circle fx:id="c5" centerX="270.0" centerY="500.0" fill="#c521ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
          </children></Pane>
       <HBox layoutX="850.0" layoutY="36.0" prefHeight="30.0" prefWidth="330.0" spacing="90.0" translateY="5.0">
          <children>
@@ -574,7 +529,7 @@
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <Button fx:id="btnTwoXSpeed" mnemonicParsing="false" prefHeight="33.0" prefWidth="99.0" text="x2 speed">
+            <Button fx:id="btnTwoXSpeed" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="x2 speed">
                <font>
                   <Font size="16.0" />
                </font>
