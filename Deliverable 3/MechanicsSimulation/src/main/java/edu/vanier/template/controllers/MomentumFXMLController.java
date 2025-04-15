@@ -13,6 +13,7 @@ import javafx.animation.AnimationTimer;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -66,6 +67,9 @@ public class MomentumFXMLController {
     Spinner <Double> spPlayBack;
             
     @FXML
+    Spinner <String> spBg;
+    
+    @FXML
     Button btnPlayPause, btnReset, btnTwoXSpeed, btnPointFiveXSpeed;    
             
     @FXML
@@ -113,6 +117,8 @@ public class MomentumFXMLController {
 
     SpinnerValueFactory <Double> speed;
 
+    SpinnerValueFactory <String> background;
+    
     String PlayPause = "paused";//a flag for the play/pause button
     
     @FXML
@@ -125,7 +131,10 @@ public class MomentumFXMLController {
     LineChart <Number, Number> lcGraph;        
             
     @FXML
-    Rectangle recDark, recSim;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
+    Rectangle recDark, recSim, recBg;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
+            
+    @FXML
+    ImageView ivBackGround;
             
     Momentum b1, b2, b3, b4, b5;//ball objects that correspond to every circle object
     
@@ -141,6 +150,8 @@ public class MomentumFXMLController {
     static public double timePerPixel = 0.015;//originally 0.01666667
         
     double timeRatio = 1;//playback speed
+    
+    ObservableList <String> bgs = FXCollections.observableArrayList("Blank", "Grass field", "Wooden floor", "Frozen lake");
     
     ArrayList<Circle> ballList = new ArrayList <Circle>();
    // ArrayList<StackPane> spList = new ArrayList <StackPane>();
@@ -192,6 +203,7 @@ public class MomentumFXMLController {
         setUpCheckBoxes();
         generateBalls();
         initSetup();
+        tapToChangeDirection();
         animation();
     }
     
@@ -789,6 +801,19 @@ public class MomentumFXMLController {
           timeRatio = spPlayBack.getValue();
           
        });
+       
+       background = new SpinnerValueFactory.ListSpinnerValueFactory<String>(bgs);      
+       spBg.getEditor().setStyle("-fx-font-size: 15px;");
+       spBg.setValueFactory(background);
+       spBg.valueProperty().addListener((event)->{
+          switch(background.getValue()){
+              case "Blank": ivBackGround.setVisible(false); break;
+              case "Grass field": ivBackGround.setVisible(true); ivBackGround.setImage(new Image("/Images/GrassField.png")); break;
+              case "Wooden floor": ivBackGround.setVisible(true); ivBackGround.setImage(new Image("/Images/WoodenFloor.png")); break;
+              case "Frozen lake": ivBackGround.setVisible(true); ivBackGround.setImage(new Image("/Images/FrozenLake.png")); break;
+          }
+       });
+       background.setValue("Grass field");
     }
     
     private void setUpCheckBoxes(){
@@ -804,11 +829,11 @@ public class MomentumFXMLController {
        cbDarkMode.setOnAction((event)->{
            if(cbDarkMode.isSelected()){
              recDark.setVisible(true);
-             recSim.setFill(Color.web("#797979"));
+             recBg.setFill(Color.web("#969a9e"));
            }
            else{
              recDark.setVisible(false);
-             recSim.setFill(Color.web("#f7f7f7"));
+             recBg.setFill(Color.web("#f7f7f7"));
            }
        });
     }
@@ -1188,6 +1213,7 @@ public class MomentumFXMLController {
        slM2.valueProperty().addListener((event)->{          
         lbM2.setText(String.valueOf(Math.round(slM2.getValue()*10.0)/10.0));
         b2.setMass(slM2.getValue());
+        c2.setRadius(22 + slM2.getValue()*0.5);
         if(data==2){
         showValues(2);
         }
@@ -1196,6 +1222,7 @@ public class MomentumFXMLController {
        slM3.valueProperty().addListener((event)->{          
         lbM3.setText(String.valueOf(Math.round(slM3.getValue()*10.0)/10.0));
         b3.setMass(slM3.getValue());
+        c3.setRadius(22 + slM3.getValue()*0.5);
         if(data==3){
         showValues(3);
         }
@@ -1204,6 +1231,7 @@ public class MomentumFXMLController {
        slM4.valueProperty().addListener((event)->{          
         lbM4.setText(String.valueOf(Math.round(slM4.getValue()*10.0)/10.0));
         b4.setMass(slM4.getValue());
+        c4.setRadius(22 + slM4.getValue()*0.5);
         if(data==4){
         showValues(4);
         }
@@ -1212,6 +1240,7 @@ public class MomentumFXMLController {
        slM5.valueProperty().addListener((event)->{          
         lbM5.setText(String.valueOf(Math.round(slM5.getValue()*10.0)/10.0));
         b5.setMass(slM5.getValue());
+        c5.setRadius(22 + slM5.getValue()*0.5);
         if(data==5){
         showValues(5);
         }
@@ -1311,6 +1340,78 @@ public class MomentumFXMLController {
        MomTime3.add(b3.calcMomentum());
        MomTime4.add(b4.calcMomentum());
        MomTime5.add(b5.calcMomentum());
+    }
+    
+    private void tapToChangeDirection(){
+       lbVx1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b1.setVelocityX(-b1.getVelocityX());
+           }
+       });
+       
+       lbVy1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b1.setVelocityY(-b1.getVelocityY());
+           }
+       });
+       
+       lbVx2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b2.setVelocityX(-b2.getVelocityX());
+           }
+       });
+       
+       lbVy2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b2.setVelocityY(-b2.getVelocityY());
+           }
+       });
+       
+       lbVx3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b3.setVelocityX(-b3.getVelocityX());
+           }
+       });
+       
+       lbVy3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b3.setVelocityY(-b3.getVelocityY());
+           }
+       });
+       
+       lbVx4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b4.setVelocityX(-b4.getVelocityX());
+           }
+       });
+       
+       lbVy4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b4.setVelocityY(-b4.getVelocityY());
+           }
+       });
+       
+       lbVx5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b5.setVelocityX(-b5.getVelocityX());
+           }
+       });
+       
+       lbVy5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b5.setVelocityY(-b5.getVelocityY());
+           }
+       });
     }
     
     //int i only determines which ball's formulas are shown. All the balls' positions & momentums are shown at all times
