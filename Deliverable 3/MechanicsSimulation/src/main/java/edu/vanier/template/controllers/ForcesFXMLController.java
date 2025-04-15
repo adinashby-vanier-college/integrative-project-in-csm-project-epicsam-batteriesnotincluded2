@@ -163,8 +163,11 @@ public class ForcesFXMLController {
     }
     private void updateDirection(){
         VectorArrow v=getSelectedVector();
-        lbDir.setText("Direction: "+(int)v.getRotation()+"°");
+        System.out.println(v.getRotate());
+        v.setRotation(v.getRotate());
+        lbDir.setText("Direction: "+(int)(v.getRotation()+180)+"°");
         slDir.valueProperty().getValue();                       // deli make this slider update accurately i forgot how and forgot my code
+                                                                // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa still doesnt work
     }
     
     /**

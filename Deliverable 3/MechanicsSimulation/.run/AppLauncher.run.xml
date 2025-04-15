@@ -10,7 +10,9 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="run" />
+          <option value="gradle" />
+          <option value="clean" />
+          <option value="build" />
         </list>
       </option>
       <option name="vmOptions" />
