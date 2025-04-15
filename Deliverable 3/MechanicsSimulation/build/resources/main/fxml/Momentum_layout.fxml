@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="recDark" arcHeight="5.0" arcWidth="5.0" fill="#6a7a89" height="946.0" layoutX="-52.0" layoutY="-109.0" stroke="BLACK" strokeType="INSIDE" width="1271.0" />
       <Rectangle fx:id="recSim" arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="557.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
@@ -52,16 +52,16 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnB5" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="5" textFill="#b41b83">
+            <Button fx:id="btnB5" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="5" textFill="#da189d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <VBox layoutX="650.0" layoutY="550.0" prefHeight="200.0" prefWidth="155.0" translateX="-2.0" translateY="40.0">
+      <VBox layoutX="648.0" layoutY="525.0" prefHeight="273.0" prefWidth="155.0" translateX="-2.0" translateY="33.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="169.0" spacing="20.0">
+            <HBox prefHeight="100.0" prefWidth="169.0" spacing="20.0" translateY="20.0">
                <children>
                   <StackPane prefHeight="72.0" prefWidth="66.0">
                      <children>
@@ -76,9 +76,9 @@
                   </StackPane>
                   <StackPane prefHeight="78.0" prefWidth="81.0">
                      <children>
-                        <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" text="Button" />
+                        <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="38.0" prefWidth="40.0" text="Button" />
                         <Circle fill="#d0d7dd" mouseTransparent="true" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
-                        <ImageView fitHeight="47.0" fitWidth="48.0" mouseTransparent="true" preserveRatio="true">
+                        <ImageView fitHeight="45.0" fitWidth="46.0" mouseTransparent="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/reloadArrow.png" />
                            </image>
@@ -87,18 +87,18 @@
                   </StackPane>
                </children>
             </HBox>
-            <Label prefHeight="30.0" prefWidth="155.0" text="Playback speed">
+            <Label prefHeight="30.0" prefWidth="155.0" text="Playback speed:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Spinner fx:id="spPlayBack" prefHeight="56.0" prefWidth="149.0" />
+            <Spinner fx:id="spPlayBack" prefHeight="39.0" prefWidth="149.0" />
             <Label text="Number of balls:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Spinner fx:id="spBalls" prefHeight="56.0" prefWidth="149.0" />
+            <Spinner fx:id="spBalls" prefHeight="40.0" prefWidth="149.0" />
          </children>
       </VBox>
       <Label fx:id="lbCalc" layoutX="851.0" layoutY="287.0" text="Calculations (ball 1)" translateY="-3.0">
@@ -131,17 +131,18 @@
       <Rectangle fx:id="recClip" arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="547.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" translateY="-6.0" width="791.0" />
       <Pane fx:id="momRoot" layoutX="19.0" layoutY="36.0" prefHeight="544.0" prefWidth="794.0" translateY="2.0">
          <children>
-            <ImageView fx:id="ivBackGround" fitHeight="545.0" fitWidth="824.0" layoutX="1.0" layoutY="-0.5" pickOnBounds="true" preserveRatio="true">
+            <Rectangle fx:id="recBg" arcHeight="5.0" arcWidth="5.0" fill="#ebe7e7" height="545.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
+            <ImageView fx:id="ivBackGround" fitHeight="548.0" fitWidth="789.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" translateX="0.1">
                <image>
-                  <Image url="@../Images/GrassField.png" />
+                  <Image url="@../Images/FrozenLake.png" />
                </image>
             </ImageView>
-            <Circle fx:id="c1" centerX="300.0" centerY="50.0" fill="#ff1f1f" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="c2" centerX="90.0" centerY="200.0" fill="#1ed02a" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="c3" centerX="300.0" centerY="100.0" fill="#5e55ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="c4" centerX="200.0" centerY="50.0" fill="#906262" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="lbTimePassed" layoutX="10.0" layoutY="6.0" prefHeight="17.0" prefWidth="126.0" text="Time passed: 00:00" />
+            <Circle fx:id="c1" centerX="300.0" centerY="50.0" fill="#ff1f1f" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="c3" centerX="300.0" centerY="100.0" fill="#5e55ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="c5" centerX="270.0" centerY="500.0" fill="#c521ff" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="c2" centerX="90.0" centerY="200.0" fill="#1ed02a" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="lbTimePassed" layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="126.0" text="Time passed: 00:00" />
          </children></Pane>
       <HBox layoutX="850.0" layoutY="36.0" prefHeight="30.0" prefWidth="330.0" spacing="90.0" translateY="5.0">
          <children>
@@ -219,16 +220,16 @@
             </VBox>
             <VBox prefHeight="176.0" prefWidth="150.0" spacing="20.0" translateY="7.0">
                <children>
-                  <Slider fx:id="slM1" max="80.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slM2" layoutX="10.0" layoutY="40.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slM3" layoutX="10.0" layoutY="55.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slM4" layoutX="10.0" layoutY="69.0" min="5.0" value="5.0" />
-                  <Slider fx:id="slM5" layoutX="10.0" layoutY="84.0" min="5.0" value="5.0" />
+                  <Slider fx:id="slM1" max="60.0" min="5.0" value="5.0" />
+                  <Slider fx:id="slM2" layoutX="10.0" layoutY="40.0" max="60.0" min="5.0" value="5.0" />
+                  <Slider fx:id="slM3" layoutX="10.0" layoutY="55.0" max="60.0" min="5.0" value="5.0" />
+                  <Slider fx:id="slM4" layoutX="10.0" layoutY="69.0" max="60.0" min="5.0" value="5.0" />
+                  <Slider fx:id="slM5" layoutX="10.0" layoutY="84.0" max="60.0" min="5.0" value="5.0" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="27.0" layoutY="600.0" text="Mass (5-80 kg)" translateX="30.0">
+      <Label layoutX="27.0" layoutY="600.0" text="Mass (5-60 kg)" translateX="30.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -485,60 +486,65 @@
       </HBox>
       <VBox layoutX="834.0" layoutY="112.0" prefHeight="156.0" prefWidth="22.0" spacing="5.0" translateX="5.0" translateY="-3.0">
          <children>
-            <Label fx:id="lb1" text="1)">
+            <Label fx:id="lb1" text="1)" textFill="RED">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lb2" layoutX="10.0" layoutY="10.0" text="2)">
+            <Label fx:id="lb2" layoutX="10.0" layoutY="10.0" text="2)" textFill="#00c32d">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lb3" layoutX="10.0" layoutY="37.0" text="3)">
+            <Label fx:id="lb3" layoutX="10.0" layoutY="37.0" text="3)" textFill="#3b2be4">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lb4" layoutX="10.0" layoutY="64.0" text="4)">
+            <Label fx:id="lb4" layoutX="10.0" layoutY="64.0" text="4)" textFill="#8d380d">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lb5" layoutX="10.0" layoutY="92.0" text="5)">
+            <Label fx:id="lb5" layoutX="10.0" layoutY="92.0" text="5)" textFill="#c718da">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="455.0" layoutY="586.0" prefHeight="200.0" prefWidth="185.0" spacing="8.0" translateY="10.0">
+      <VBox alignment="CENTER" layoutX="461.0" layoutY="579.0" prefHeight="216.0" prefWidth="185.0" translateY="10.0">
          <children>
-            <CheckBox fx:id="cbDarkMode" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Dark mode">
+            <CheckBox fx:id="cbDarkMode" mnemonicParsing="false" prefHeight="45.0" prefWidth="118.0" text="Dark mode" translateX="-34.0">
                <font>
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="cbDir" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Directional vectors">
+            <CheckBox fx:id="cbHUD" mnemonicParsing="false" prefHeight="45.0" prefWidth="155.0" text="Heads up display" translateX="-15.0">
                <font>
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="cbHUD" mnemonicParsing="false" prefHeight="45.0" prefWidth="258.0" text="Heads up display">
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="185.0" spacing="30.0">
+               <children>
+                  <Button fx:id="btnTwoXSpeed" mnemonicParsing="false" prefHeight="35.0" prefWidth="56.0" text="x2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPointFiveXSpeed" mnemonicParsing="false" prefHeight="35.0" prefWidth="55.0" text="x0.5 ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label text="Background:" translateX="-25.0" translateY="2.0">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
-            </CheckBox>
-            <Button fx:id="btnTwoXSpeed" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="x2 speed">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnPointFiveXSpeed" layoutX="10.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="x0.5 speed">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
+            </Label>
+            <Spinner fx:id="spBg" prefHeight="37.0" prefWidth="149.0" />
          </children>
       </VBox>
       <HBox layoutX="836.0" layoutY="368.0" prefHeight="109.0" prefWidth="374.0" translateX="-10.0">
