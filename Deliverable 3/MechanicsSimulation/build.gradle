@@ -45,9 +45,8 @@ dependencies {
     implementation group: 'org.kordamp.ikonli', name: 'ikonli-javafx', version: '12.3.1'    
     implementation 'org.kordamp.ikonli:ikonli-materialdesign2-pack:12.3.1'
 
-    //Junit 5.8.1 for test driven development
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //Junit 5.12.2 for test driven development
+    testImplementation "org.junit.jupiter:junit-jupiter:5.12.2"
 
 }
 
@@ -59,6 +58,7 @@ java {
 }
 test {
     useJUnitPlatform()
+    testLogging.showStandardStreams = true
 }
 application {       
    // TODO: Specify the fully-qualified name of the class 
