@@ -7,20 +7,19 @@ package edu.vanier.template.controllers;
 import edu.vanier.physics.Kinematics;
 import edu.vanier.template.ui.MainApp;
 import javafx.animation.Interpolator;
+import javafx.animation.PathTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.util.Duration;
-import javafx.animation.PathTransition;
 
 public class KinematicsFXMLController {
 
@@ -62,6 +61,9 @@ public class KinematicsFXMLController {
 
     @FXML
     Ellipse particle;
+
+    @FXML
+    LineChart <Number, Number> lg_position, lg_velocity, lg_acceleration;
 
 
     @FXML
