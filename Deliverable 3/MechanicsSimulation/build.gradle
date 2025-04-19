@@ -45,11 +45,9 @@ dependencies {
     implementation group: 'org.kordamp.ikonli', name: 'ikonli-javafx', version: '12.3.1'    
     implementation 'org.kordamp.ikonli:ikonli-materialdesign2-pack:12.3.1'
 
-    //Junit 5.12.2 for test driven development
-    testImplementation "org.junit.jupiter:junit-jupiter:5.12.2"
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.12.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.12.2'
-    //test
+
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
