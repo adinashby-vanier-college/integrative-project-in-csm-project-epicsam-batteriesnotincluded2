@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.Group?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- Top Menu Bar -->
+    <top>
+        <MenuBar fx:id="menuBar">
+            
+            <menus>
+                <Menu fx:id="menuFile" mnemonicParsing="false" text="File" />
+                <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" onAction="#delete"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="mitAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" text="Back"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="menuBack" mnemonicParsing="false" text="Back">
+                    <items>
+                        <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" onAction="#handleBack"/>
+                        <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close the simulation" onAction="#exitProgram"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    
+    <!-- Center Simulation Panel -->
+    <center>
+        <Pane fx:id="simulationPane" style="-fx-background-color: lightblue;" prefHeight="400.0" prefWidth="600.0">
+            <!-- Function Path is added in code -->
+
+            <!-- Skateboarder -->
+            <Group fx:id="skateboarder">
+                <Circle fx:id="head" centerX="300" centerY="200" radius="10" fill="white" stroke="black" />
+                <Line startX="300" startY="210" endX="300" endY="250" stroke="black" />
+                <Line startX="280" startY="230" endX="320" endY="230" stroke="black" />
+                <Line startX="300" startY="250" endX="290" endY="280" stroke="black" />
+                <Line startX="300" startY="250" endX="310" endY="280" stroke="black" />
+                <Rectangle fx:id="skateboard" x="270" y="280" width="60" height="10" fill="black" />
+                <Circle fx:id="leftWheel" centerX="280" centerY="290" radius="5" fill="white" stroke="black" />
+                <Circle fx:id="rightWheel" centerX="320" centerY="290" radius="5" fill="white" stroke="black" />
+                <Circle fx:id="movementHandle" centerX="300" centerY="295" radius="5" fill="red"
+                        onMousePressed="#handleSkaterPress"
+                        onMouseDragged="#handleSkaterDrag"
+                        onMouseReleased="#handleSkaterRelease"/>
+            </Group>
+        </Pane>
+    </center>
+
+    <!-- Right Parameter Menu -->
+    <right>
+        <VBox spacing="10" style="-fx-padding: 10;">
+
+            <Label text="Path functions" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="pathFunctionField" promptText="Enter function (e.g., x)" onAction="#handleFunctionEnter" />
+            <Label fx:id="functionErrorLabel"
+                   text=""
+                   style="-fx-text-fill: red; -fx-padding: 4 8 4 8; -fx-background-color: #ffe6e6; -fx-background-radius: 8; -fx-border-color: red; -fx-border-radius: 8;"
+                   visible="false" />
+
+            <Label text="Friction" style="-fx-font-weight: bold;"/>
+            <Slider fx:id="frictionSlider" min="0" max="50" value="25" onMouseDragged="#updateFriction"/>
+            <Label fx:id="frictionLabel" text="25.0 N"/>
+
+            <Label text="Gravity" style="-fx-font-weight: bold;"/>
+            <Slider fx:id="gravitySlider" min="0" max="20" value="9.8" onMouseDragged="#updateGravity"/>
+            <Label fx:id="gravityLabel" text="9.8 m/s²" />
+
+            <Label text="Mass" style="-fx-font-weight: bold;"/>
+            <Slider fx:id="massSlider" min="0" max="100" value="50" onMouseDragged="#updateMass" />
+            <Label fx:id="massLabel" text="50.0 kg" />
+
+            <PieChart fx:id="energyPieChart" prefHeight="300" prefWidth="300"/>
+
+            <!-- Custom Legend -->
+            <VBox spacing="5">
+                <Label text="Legend" style="-fx-font-weight: bold;" />
+                <HBox spacing="10">
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="12" height="12" fill="blue" stroke="black"/>
+                        <Label text="Potential Energy"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="12" height="12" fill="green" stroke="black"/>
+                        <Label text="Kinetic Energy"/>
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="12" height="12" fill="red" stroke="black"/>
+                        <Label text="Friction Energy"/>
+                    </HBox>
+                </HBox>
+            </VBox>
+
+            <!-- Spacer to push controls to bottom -->
+            <Pane VBox.vgrow="ALWAYS"/>
+
+            <!-- Speed and Chronometer (aligned horizontally at bottom) -->
+            <VBox spacing="8">
+                <Label text="Speed" style="-fx-font-weight: bold;"/>
+                <Label fx:id="speedLabel" text="0.0 m/s" />
+
+                <Label text="Chronometer" style="-fx-font-weight: bold;"/>
+                <HBox spacing="5">
+                    <Label fx:id="timerLabel" text="00:00:000" />
+                    <Button text="▶" onAction="#startTimer" />
+                    <Button text="⏸" onAction="#stopTimer" />
+                    <Button text="🔄" onAction="#resetScene" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </right>
+</BorderPane>
