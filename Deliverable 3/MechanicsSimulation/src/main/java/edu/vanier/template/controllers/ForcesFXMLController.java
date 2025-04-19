@@ -90,14 +90,9 @@ public class ForcesFXMLController {
         slMag.valueProperty().setValue(50);
         slMag.valueProperty().addListener((event)->{ // magnitude slider: changes length of selected vectors tail
             lbMag.setText("Magnitude: "+Math.round(slMag.valueProperty().getValue())+"N");
-            for (Node n:megaPane.getChildren()){
-                if (n instanceof VectorArrow){
-                    if (((VectorArrow) n).getSelected()){ // gets to the current selected vector
-                       // ((VectorArrow) n).setMaxWidth(slMag.valueProperty().getValue()*2.22+50);
-                    ((Rectangle)((VectorArrow) n).getChildren().get(0)).setWidth(slMag.valueProperty().getValue()*2.22);
-                    }
-                }
-            }
+            VectorArrow v=getSelectedVector();
+            ((Rectangle)((VectorArrow) v).getChildren().get(0)).setWidth(slMag.valueProperty().getValue()*2.22);
+            v.setMagnitude(slMag.valueProperty().getValue());
         });
         
         slDir.setMax(360);
@@ -107,8 +102,7 @@ public class ForcesFXMLController {
             lbDir.setText("Direction: "+Math.round(slDir.valueProperty().getValue())+"°");
             VectorArrow v=getSelectedVector();
             v.setRotate(-1*(slDir.valueProperty().getValue()));
-            v.setRotation(slDir.valueProperty().getValue()); // true rotation value
-            System.out.println(v.getLayoutX());
+            v.setRotation(slDir.valueProperty().getValue()); // real life rotation value
             double vX=v.getLayoutX();
             double vY=v.getLayoutY();
             double boxX=box.getLayoutX();
@@ -127,15 +121,13 @@ public class ForcesFXMLController {
         });
         
         btnDelete.setOnAction((event)->{
-            for (Node n:megaPane.getChildren()){
-                if (n instanceof VectorArrow){
-                    if (((VectorArrow) n).getSelected()){
-                        megaPane.getChildren().remove(n); break;}
-                }
-            }
+            VectorArrow v=getSelectedVector();
+            megaPane.getChildren().remove(v);
+        });
+        btnIgnore.setOnAction((event)->{
+            getSelectedVector();
         });
         
-        //for (Node n:megaPane.getChildren()) n.setOnMousePressed(onVectorPressed(n));
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
         
     }
@@ -164,10 +156,24 @@ public class ForcesFXMLController {
         selectingVector=false;
     }
     
+    private void updateMagnitude(){
+        VectorArrow v=getSelectedVector();
+        slMag.valueProperty().setValue(v.getMagnitude());
+        lbMag.setText("Magnitude: "+(int)v.getMagnitude()+"N");
+    }
+    private void updateDirection(){
+        VectorArrow v=getSelectedVector();
+        System.out.println(v.getRotate());
+        v.setRotation(v.getRotate());
+        lbDir.setText("Direction: "+(int)(v.getRotation()+180)+"°");
+        slDir.valueProperty().getValue();                       // deli make this slider update accurately i forgot how and forgot my code
+                                                                // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa still doesnt work
+    }
+    
     /**
      * Handles clicking of a vector arrow.
      * @param v The vector arrow clicked
-     * @return the stats clicked, bro.
+     * @return the event of the vector arrow being clicked
      */
     private EventHandler<MouseEvent> onVectorPressed(Node n){
         return (MouseEvent t) -> {
@@ -176,6 +182,7 @@ public class ForcesFXMLController {
                 ((VectorArrow) n).setSelected(true); 
                 selectingVector=true;
                 toggleSelectedVector();
+                updateMagnitude();
             } else if (n instanceof Rectangle){
                 if (((Rectangle) n).getId().equals(recBackground.getId())){
                 unselectAllVectors();
@@ -190,8 +197,8 @@ public class ForcesFXMLController {
      */
     private EventHandler<MouseEvent> onVectorDragged(VectorArrow v){
         return (MouseEvent t) -> {
-            v.setLayoutX(t.getSceneX()-55);
-            v.setLayoutY(t.getSceneY()-(88/2));
+            v.setLayoutX(t.getSceneX()-v.getWidth()/2);
+            v.setLayoutY(t.getSceneY()-v.getHeight()/2);
             double ArrowX=v.getBoundsInParent().getCenterX();
             double ArrowY=v.getBoundsInParent().getCenterY();
             double boxCenterX=box.getBoundsInParent().getCenterX();
@@ -209,8 +216,9 @@ public class ForcesFXMLController {
             else v.setRotate(rotate +180);
             if (v.getRotate()<0)
                 v.setRotate(v.getRotate()+360);
-            System.out.println(v.getRotate());
+            //System.out.println(v.getRotate());
             v.setRotation(v.getRotate());
+            updateDirection();
         };
     }
     

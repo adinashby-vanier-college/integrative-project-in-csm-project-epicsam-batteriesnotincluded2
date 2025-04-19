@@ -8,10 +8,13 @@ import edu.vanier.physics.Momentum;
 import edu.vanier.template.ui.MainApp;
 import static java.lang.Math.sqrt;
 import java.util.ArrayList;
+import java.util.ListIterator;
 import javafx.animation.AnimationTimer;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -64,6 +67,9 @@ public class MomentumFXMLController {
     Spinner <Double> spPlayBack;
             
     @FXML
+    Spinner <String> spBg;
+    
+    @FXML
     Button btnPlayPause, btnReset, btnTwoXSpeed, btnPointFiveXSpeed;    
             
     @FXML
@@ -99,8 +105,8 @@ public class MomentumFXMLController {
     @FXML
     Slider slM1, slM2, slM3, slM4, slM5, slV1, slV2, slV3, slV4, slV5;//sliders for the mass & velocities of balls        
             
-    @FXML
-    StackPane spC1, spC2, spC3, spC4, spC5;       
+   // @FXML
+   // StackPane spC1, spC2, spC3, spC4, spC5;       
             
     @FXML
     CheckBox cbDarkMode, cbDir, cbHUD;    
@@ -111,6 +117,8 @@ public class MomentumFXMLController {
 
     SpinnerValueFactory <Double> speed;
 
+    SpinnerValueFactory <String> background;
+    
     String PlayPause = "paused";//a flag for the play/pause button
     
     @FXML
@@ -123,7 +131,10 @@ public class MomentumFXMLController {
     LineChart <Number, Number> lcGraph;        
             
     @FXML
-    Rectangle recDark, recSim;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
+    Rectangle recDark, recSim, recBg;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
+            
+    @FXML
+    ImageView ivBackGround;
             
     Momentum b1, b2, b3, b4, b5;//ball objects that correspond to every circle object
     
@@ -140,8 +151,10 @@ public class MomentumFXMLController {
         
     double timeRatio = 1;//playback speed
     
+    ObservableList <String> bgs = FXCollections.observableArrayList("Blank", "Grass field", "Wooden floor", "Frozen lake");
+    
     ArrayList<Circle> ballList = new ArrayList <Circle>();
-    ArrayList<StackPane> spList = new ArrayList <StackPane>();
+   // ArrayList<StackPane> spList = new ArrayList <StackPane>();
     ArrayList<Momentum> momList = new ArrayList <Momentum>();
     boolean [][] collideflags = new boolean [5][5];//checking collision between every 2 balls
     boolean [] collidable = new boolean [5];
@@ -190,6 +203,7 @@ public class MomentumFXMLController {
         setUpCheckBoxes();
         generateBalls();
         initSetup();
+        tapToChangeDirection();
         animation();
     }
     
@@ -237,11 +251,11 @@ public class MomentumFXMLController {
         ballList.add(c4);
         ballList.add(c5);
         
-        spList.add(spC1);
+       /* spList.add(spC1);
         spList.add(spC2);
         spList.add(spC3);
         spList.add(spC4);
-        spList.add(spC5);
+        spList.add(spC5);*/
         
         momList.add(b1);
         momList.add(b2);
@@ -324,16 +338,16 @@ public class MomentumFXMLController {
         lbV4.setText(String.valueOf(slV4.getValue()));
         lbV5.setText(String.valueOf(slV5.getValue()));
         
-        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
-        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
-        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
-        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+22)*10.0)/10.0));
-        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+22)*10.0)/10.0));
-        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+22)*10.0)/10.0));
-        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+22)*10.0)/10.0));
-        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+22)*10.0)/10.0));
-        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+22)*10.0)/10.0));
-        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+22)*10.0)/10.0));
+        lbX1.setText(String.valueOf(Math.round((c1.getCenterX())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
+        lbY1.setText(String.valueOf(Math.round((c1.getCenterY())*10.0)/10.0));
+        lbX2.setText(String.valueOf(Math.round((c2.getCenterX())*10.0)/10.0));
+        lbY2.setText(String.valueOf(Math.round((c2.getCenterY())*10.0)/10.0));
+        lbX3.setText(String.valueOf(Math.round((c3.getCenterX())*10.0)/10.0));
+        lbY3.setText(String.valueOf(Math.round((c3.getCenterY())*10.0)/10.0));
+        lbX4.setText(String.valueOf(Math.round((c4.getCenterX())*10.0)/10.0));
+        lbY4.setText(String.valueOf(Math.round((c4.getCenterY())*10.0)/10.0));
+        lbX5.setText(String.valueOf(Math.round((c5.getCenterX())*10.0)/10.0));
+        lbY5.setText(String.valueOf(Math.round((c5.getCenterY())*10.0)/10.0));
         
         lbv1.setText(String.valueOf(Math.round(((double) slV1.getValue())*10.0)/10.0));
         lbv2.setText(String.valueOf(Math.round(((double) slV2.getValue())*10.0)/10.0));
@@ -374,68 +388,70 @@ public class MomentumFXMLController {
         b4.setVelocity(slV4.getValue());
         b5.setVelocity(slV5.getValue());
         //System.out.println(slV1.getValue() + " " + slV1.getValue()/(Math.sqrt(2)));
-        spC2.setLayoutX(b2.getPositionX());
-        spC2.setLayoutY(b2.getPositionY());
-        spC3.setLayoutX(b3.getPositionX());
-        spC3.setLayoutY(b3.getPositionY());
-        spC4.setLayoutX(b4.getPositionX());
-        spC4.setLayoutY(b4.getPositionY());
-        spC5.setLayoutX(b5.getPositionX());
-        spC5.setLayoutY(b5.getPositionY());
-    
-        spC1.setOnMouseDragged(circleOnMousePressedEventHandler(spC1));
-        spC1.setOnMouseDragged(circleOnMouseDraggedEventHandler(spC1));
-        
-        spC2.setOnMouseDragged(circleOnMousePressedEventHandler(spC2));
-        spC2.setOnMouseDragged(circleOnMouseDraggedEventHandler(spC2));
-        
-        spC3.setOnMouseDragged(circleOnMousePressedEventHandler(spC3));
-        spC3.setOnMouseDragged(circleOnMouseDraggedEventHandler(spC3));
-        
-        spC4.setOnMouseDragged(circleOnMousePressedEventHandler(spC4));
-        spC4.setOnMouseDragged(circleOnMouseDraggedEventHandler(spC4)); 
-        
-        spC5.setOnMouseDragged(circleOnMousePressedEventHandler(spC5));
-        spC5.setOnMouseDragged(circleOnMouseDraggedEventHandler(spC5));
+        c2.setCenterX(b2.getPositionX());
+        c2.setCenterY(b2.getPositionY());
+                System.out.println(c2.getCenterX() + " " + c2.getCenterY());
 
-        spC2.setVisible(false);
-        spC3.setVisible(false);
-        spC4.setVisible(false);
-        spC5.setVisible(false);
+        c3.setCenterX(b3.getPositionX());
+        c3.setCenterY(b3.getPositionY());
+        c4.setCenterX(b4.getPositionX());
+        c4.setCenterY(b4.getPositionY());
+        c5.setCenterX(b5.getPositionX());
+        c5.setCenterY(b5.getPositionY());
+    
+        c1.setOnMousePressed(circleOnMousePressedEventHandler(c1));
+        c1.setOnMouseDragged(circleOnMouseDraggedEventHandler(c1));
+        
+        c2.setOnMousePressed(circleOnMousePressedEventHandler(c2));
+        c2.setOnMouseDragged(circleOnMouseDraggedEventHandler(c2));
+        
+        c3.setOnMousePressed(circleOnMousePressedEventHandler(c3));
+        c3.setOnMouseDragged(circleOnMouseDraggedEventHandler(c3));
+        
+        c4.setOnMousePressed(circleOnMousePressedEventHandler(c4));
+        c4.setOnMouseDragged(circleOnMouseDraggedEventHandler(c4)); 
+        
+        c5.setOnMousePressed(circleOnMousePressedEventHandler(c5));
+        c5.setOnMouseDragged(circleOnMouseDraggedEventHandler(c5));
+
+        c2.setVisible(false);
+        c3.setVisible(false);
+        c4.setVisible(false);
+        c5.setVisible(false);
 
     }
 
     
-    private EventHandler<MouseEvent> circleOnMousePressedEventHandler(StackPane sp){
+    private EventHandler<MouseEvent> circleOnMousePressedEventHandler(Circle c){
     return new EventHandler<MouseEvent>(){
     @Override
         public void handle(MouseEvent t) {
             orgSceneX = t.getSceneX();//mouse click x position
             orgSceneY = t.getSceneY();//mouse click y position
-            ogBallX = sp.getLayoutX();//records ball's starting position
-            ogBallY = sp.getLayoutY();//top left corner
+            ogBallX = c.getCenterX();//records ball's starting position
+            ogBallY = c.getCenterY();//top left corner
         }
     };
     }
     
-    private EventHandler<MouseEvent> circleOnMouseDraggedEventHandler(StackPane sp){    
+    private EventHandler<MouseEvent> circleOnMouseDraggedEventHandler(Circle c){    
         return new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent t) {
             double offsetX = t.getSceneX() - orgSceneX;//how much the mouse dragged away the ball
             double offsetY = t.getSceneY() - orgSceneY;
             
-            double moveX = ogBallX + offsetX - 42;//42 & 57 are the correction factor for when mouse moves a ball and it shifts
-            double moveY = ogBallY + offsetY - 57;
+            double moveX = ogBallX + offsetX;//42 & 57 are the correction factor for when mouse moves a ball and it shifts
+            double moveY = ogBallY + offsetY;
             
-            if(moveX<0){moveX = 0;}//if ball will move below 0, it will be capped at 0
-            else if(moveX>750){moveX = 750;}//if ball will move over 750, it will be capped at 750
+            if(moveX < 0){moveX = c.getRadius();}//if ball will move below 0, it will be capped at 0
+            else if(moveX > 750){moveX = 750 + c.getRadius();}//if ball will move over 750, it will be capped at 750
             
-            if(moveY<0){moveY = 0;}//same logic here as above
-            else if(moveY>502){moveY = 502;}
+            if(moveY < 0){moveY = c.getRadius();}//same logic here as above
+            else if(moveY > 502){moveY = 502 + c.getRadius();}
             
-            sp.setLayoutX(moveX);
-            sp.setLayoutY(moveY);
+            c.setCenterX(moveX);
+            c.setCenterY(moveY);
             
             otherValues();
             
@@ -472,11 +488,12 @@ public class MomentumFXMLController {
                 showValues(data);
                 
                 //iterating all balls to check for collision with each other (0,1,2,3,4)
-                for(int i=0; i<ballList.size(); i++){
+                /*for(int i=0; i<ballList.size(); i++){
                   for(int j=i+1; j<ballList.size(); j++){
                        checkCollision(ballList.get(i),ballList.get(j),momList.get(i),momList.get(j), i, j);
                   }
-                }
+                }*/
+                
                 
                 if(totalTime-dataTimeCtr>1){//every one second a new data point is added
                 addDataToGraph(dataTimeCtr);
@@ -495,9 +512,11 @@ public class MomentumFXMLController {
                        checkBounds(ballList.get(i), momList.get(i));
                   }
                 
+                checkCollision();
                 //iterating through all balls to set their new movements corresponding to changing velocities
                 for(int i=0; i<momList.size(); i++){
-                       movingBalls(i, momList.get(i), spList.get(i));
+                       movingBalls(i, momList.get(i), ballList.get(i));
+                       
                 }
 
                 if(PlayPause.equals("playing")){//when the pause button isn't clicked yet i.e. when animation is currently playing
@@ -532,47 +551,62 @@ public class MomentumFXMLController {
         };
     }
     
-    private void movingBalls(int i, Momentum ball, StackPane sp){
+    private void movingBalls(int i, Momentum ball, Circle c){
         if(collidable[i] == true){//only moves when ball is collidable/enabled
-        sp.setLayoutX(sp.getLayoutX() + ball.getVelocityX()*timeRatio);//moving the balls, their movement speed(not velocity) change proportional to the playback speed
-        sp.setLayoutY(sp.getLayoutY() + ball.getVelocityY()*timeRatio);
+        c.setCenterX(c.getCenterX() + ball.getVelocityX()*timeRatio);//moving the balls, their movement speed(not velocity) change proportional to the playback speed
+        c.setCenterY(c.getCenterY() + ball.getVelocityY()*timeRatio);
+            //System.out.println(c1.localToScene(c1.getBoundsInParent()).getCenterX());
         }
     }
     
     private void checkBounds(Circle c, Momentum b){        
                 //if x and y positions of balls are out of bounds, their directions are reversed
-                if(c.localToScene(c.getBoundsInParent()).getCenterX() >= 815 || c.localToScene(c.getBoundsInParent()).getCenterX() <= 62){
+                if(c.getCenterX() + c.getRadius() >= 794 || c.getCenterX() - c.getRadius() <= 0){
                    b.setVelocityX(b.getVelocityX()*-1);
                 }
 
-                if(c.localToScene(c.getBoundsInParent()).getCenterY() >= 587 || c.localToScene(c.getBoundsInParent()).getCenterY() <= 79){
+                if(c.getCenterY() + c.getRadius() >= 544 || c.getCenterY() - c.getRadius() <= 0){
                    b.setVelocityY(b.getVelocityY()*-1);
                 }
     }
-    
-    //when two balls collide, they should bounce off each other
-    private void checkCollision(Circle ball1, Circle ball2, Momentum m1, Momentum m2, int i, int j){
-                       //System.out.println(i + " " + j);
 
-        double x1 = ball1.localToScene(ball1.getBoundsInParent()).getCenterX();
-        double x2 = ball2.localToScene(ball2.getBoundsInParent()).getCenterX();
-        double y1 = ball1.localToScene(ball1.getBoundsInParent()).getCenterY();
-        double y2 = ball2.localToScene(ball2.getBoundsInParent()).getCenterY();
+    //when two balls collide, they should bounce off each other
+    private void checkCollision(){
+        Circle B1;
+        Circle B2;
         
-        double x = x1-x2;
-        double y = y1-y2;
-        double distance = Math.sqrt(x*x+y*y);
-                
-        if(!ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent()))){
+        for(int i=0; i<ballList.size(); i++){
+            B1 = ballList.get(i);
+            double x1 = B1.localToScene(B1.getBoundsInParent()).getCenterX();
+            double y1 = B1.localToScene(B1.getBoundsInParent()).getCenterY();
+
+            for(int j=i+1; j<ballList.size(); j++){
+                B2 = ballList.get(j);
+                 double x2 = B2.localToScene(B2.getBoundsInParent()).getCenterX();
+                 double y2 = B2.localToScene(B2.getBoundsInParent()).getCenterY();
+                 
+                 double x = x1-x2;
+                 double y = y1-y2;
+                 
+                 double radSum = B1.getRadius() + B2.getRadius();
+        if (x*x + y*y <= radSum*radSum) {
+           // if (x*(momList.get(j).getVelocityX() - momList.get(i).getVelocityX()) + y*(momList.get(j).getVelocityY() - momList.get(i).getVelocityY()) < 0) {
+               if(collideflags[i][j] == false){
+                 if(collidable[i] == true && collidable[j] == true){
+                     
+                     setNewVelocities(momList.get(i),momList.get(j), B1, B2, i, j);
+                 }
+            // System.out.println("collision");
+      //   }
+            }
+        }
+        if(x*x + y*y > radSum*radSum){
            collideflags[i][j] = false;
         }
-        
-         if(ball1.localToScene(ball1.getBoundsInParent()).intersects(ball2.localToScene(ball2.getBoundsInParent())) && collideflags[i][j] == false){
-                 if(collidable[i] == true && collidable[j] == true){setNewVelocities(m1,m2, ball1, ball2, i, j);}
-            // System.out.println("collision");
-         }
+                  }
+                }
     }
-   
+
     private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2, int i, int j){
     
         double m1 = ball1.getMass();
@@ -767,6 +801,19 @@ public class MomentumFXMLController {
           timeRatio = spPlayBack.getValue();
           
        });
+       
+       background = new SpinnerValueFactory.ListSpinnerValueFactory<String>(bgs);      
+       spBg.getEditor().setStyle("-fx-font-size: 15px;");
+       spBg.setValueFactory(background);
+       spBg.valueProperty().addListener((event)->{
+          switch(background.getValue()){
+              case "Blank": ivBackGround.setVisible(false); break;
+              case "Grass field": ivBackGround.setVisible(true); ivBackGround.setImage(new Image("/Images/GrassField.png")); break;
+              case "Wooden floor": ivBackGround.setVisible(true); ivBackGround.setImage(new Image("/Images/WoodenFloor.png")); break;
+              case "Frozen lake": ivBackGround.setVisible(true); ivBackGround.setImage(new Image("/Images/FrozenLake.png")); break;
+          }
+       });
+       background.setValue("Grass field");
     }
     
     private void setUpCheckBoxes(){
@@ -782,11 +829,11 @@ public class MomentumFXMLController {
        cbDarkMode.setOnAction((event)->{
            if(cbDarkMode.isSelected()){
              recDark.setVisible(true);
-             recSim.setFill(Color.web("#797979"));
+             recBg.setFill(Color.web("#969a9e"));
            }
            else{
              recDark.setVisible(false);
-             recSim.setFill(Color.web("#f7f7f7"));
+             recBg.setFill(Color.web("#f7f7f7"));
            }
        });
     }
@@ -795,13 +842,13 @@ public class MomentumFXMLController {
     //c1 will always be visible
     private void setUIsVisible(boolean f2, boolean f3, boolean f4, boolean f5){
         //PROBLEM: when circles are invisible, the active ones can still collide with them
-        spC2.setVisible(f2);
+        c2.setVisible(f2);
         collidable[1] = f2;
-        spC3.setVisible(f3);
+        c3.setVisible(f3);
         collidable[2] = f3;
-        spC4.setVisible(f4);
+        c4.setVisible(f4);
         collidable[3] = f4;
-        spC5.setVisible(f5);
+        c5.setVisible(f5);
         collidable[4] = f5;
 
         lb2.setVisible(f2);
@@ -893,16 +940,16 @@ public class MomentumFXMLController {
           b4.setPositionX(b4X); b4.setPositionY(b4Y);
           b5.setPositionX(b5X); b5.setPositionY(b5Y);
           
-          spC1.setLayoutX(b1.getPositionX());
-          spC1.setLayoutY(b1.getPositionY());
-          spC2.setLayoutX(b2.getPositionX());
-          spC2.setLayoutY(b2.getPositionY());
-          spC3.setLayoutX(b3.getPositionX());
-          spC3.setLayoutY(b3.getPositionY());
-          spC4.setLayoutX(b4.getPositionX());
-          spC4.setLayoutY(b4.getPositionY());
-          spC5.setLayoutX(b5.getPositionX());
-          spC5.setLayoutY(b5.getPositionY());
+          c1.setCenterX(b1.getPositionX());
+          c1.setCenterY(b1.getPositionY());
+          c2.setCenterX(b2.getPositionX());
+          c2.setCenterY(b2.getPositionY());
+          c3.setCenterX(b3.getPositionX());
+          c3.setCenterY(b3.getPositionY());
+          c4.setCenterX(b4.getPositionX());
+          c4.setCenterY(b4.getPositionY());
+          c5.setCenterX(b5.getPositionX());
+          c5.setCenterY(b5.getPositionY());
         
           sec1=sec2=0;//setting time displayed as zero
           min1=min2=0;
@@ -949,10 +996,10 @@ public class MomentumFXMLController {
         
         slV1.setValue(2); slM1.setValue(5);
         
-        spC2.setVisible(false);
-        spC3.setVisible(false);
-        spC4.setVisible(false);
-        spC5.setVisible(false);
+        c2.setVisible(false);
+        c3.setVisible(false);
+        c4.setVisible(false);
+        c5.setVisible(false);
         
         btnB2.setDisable(true);//data buttons for all the balls
         btnB3.setDisable(true);
@@ -1011,16 +1058,16 @@ public class MomentumFXMLController {
         lbV4.setText(String.valueOf(slV4.getValue()));
         lbV5.setText(String.valueOf(slV5.getValue()));
         
-        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
-        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
-        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
-        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+22)*10.0)/10.0));
-        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+22)*10.0)/10.0));
-        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+22)*10.0)/10.0));
-        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+22)*10.0)/10.0));
-        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+22)*10.0)/10.0));
-        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+22)*10.0)/10.0));
-        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+22)*10.0)/10.0));
+        lbX1.setText(String.valueOf(Math.round((c1.getCenterX())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
+        lbY1.setText(String.valueOf(Math.round((c1.getCenterY())*10.0)/10.0));
+        lbX2.setText(String.valueOf(Math.round((c2.getCenterX())*10.0)/10.0));
+        lbY2.setText(String.valueOf(Math.round((c2.getCenterY())*10.0)/10.0));
+        lbX3.setText(String.valueOf(Math.round((c3.getCenterX())*10.0)/10.0));
+        lbY3.setText(String.valueOf(Math.round((c3.getCenterY())*10.0)/10.0));
+        lbX4.setText(String.valueOf(Math.round((c4.getCenterX())*10.0)/10.0));
+        lbY4.setText(String.valueOf(Math.round((c4.getCenterY())*10.0)/10.0));
+        lbX5.setText(String.valueOf(Math.round((c5.getCenterX())*10.0)/10.0));
+        lbY5.setText(String.valueOf(Math.round((c5.getCenterY())*10.0)/10.0));
         
         lbv1.setText(String.valueOf(Math.round(((double) b1.getVelocity())*10.0)/10.0));
         lbv2.setText(String.valueOf(Math.round(((double) b2.getVelocity())*10.0)/10.0));
@@ -1058,7 +1105,7 @@ public class MomentumFXMLController {
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);//this is here because this same block in the animationtimer doesn't work when the animationtimer paused
            }
-           series.getNode().setStyle("-fx-stroke: orange;");     
+           series.getNode().setStyle("-fx-stroke: #ff4500;");     
        });//ball 1's data will now be displayed
        btnB2.setOnAction((event)->{
            data = 2; 
@@ -1157,6 +1204,7 @@ public class MomentumFXMLController {
        slM1.valueProperty().addListener((event)->{          
         lbM1.setText(String.valueOf(Math.round(slM1.getValue()*10.0)/10.0));
         b1.setMass(slM1.getValue());//changing ball's mass
+        c1.setRadius(22 + slM1.getValue()*0.5);
         if(data==1){
         showValues(1);
         }
@@ -1165,6 +1213,7 @@ public class MomentumFXMLController {
        slM2.valueProperty().addListener((event)->{          
         lbM2.setText(String.valueOf(Math.round(slM2.getValue()*10.0)/10.0));
         b2.setMass(slM2.getValue());
+        c2.setRadius(22 + slM2.getValue()*0.5);
         if(data==2){
         showValues(2);
         }
@@ -1173,6 +1222,7 @@ public class MomentumFXMLController {
        slM3.valueProperty().addListener((event)->{          
         lbM3.setText(String.valueOf(Math.round(slM3.getValue()*10.0)/10.0));
         b3.setMass(slM3.getValue());
+        c3.setRadius(22 + slM3.getValue()*0.5);
         if(data==3){
         showValues(3);
         }
@@ -1181,6 +1231,7 @@ public class MomentumFXMLController {
        slM4.valueProperty().addListener((event)->{          
         lbM4.setText(String.valueOf(Math.round(slM4.getValue()*10.0)/10.0));
         b4.setMass(slM4.getValue());
+        c4.setRadius(22 + slM4.getValue()*0.5);
         if(data==4){
         showValues(4);
         }
@@ -1189,6 +1240,7 @@ public class MomentumFXMLController {
        slM5.valueProperty().addListener((event)->{          
         lbM5.setText(String.valueOf(Math.round(slM5.getValue()*10.0)/10.0));
         b5.setMass(slM5.getValue());
+        c5.setRadius(22 + slM5.getValue()*0.5);
         if(data==5){
         showValues(5);
         }
@@ -1290,6 +1342,78 @@ public class MomentumFXMLController {
        MomTime5.add(b5.calcMomentum());
     }
     
+    private void tapToChangeDirection(){
+       lbVx1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b1.setVelocityX(-b1.getVelocityX());
+           }
+       });
+       
+       lbVy1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b1.setVelocityY(-b1.getVelocityY());
+           }
+       });
+       
+       lbVx2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b2.setVelocityX(-b2.getVelocityX());
+           }
+       });
+       
+       lbVy2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b2.setVelocityY(-b2.getVelocityY());
+           }
+       });
+       
+       lbVx3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b3.setVelocityX(-b3.getVelocityX());
+           }
+       });
+       
+       lbVy3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b3.setVelocityY(-b3.getVelocityY());
+           }
+       });
+       
+       lbVx4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b4.setVelocityX(-b4.getVelocityX());
+           }
+       });
+       
+       lbVy4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b4.setVelocityY(-b4.getVelocityY());
+           }
+       });
+       
+       lbVx5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b5.setVelocityX(-b5.getVelocityX());
+           }
+       });
+       
+       lbVy5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+              b5.setVelocityY(-b5.getVelocityY());
+           }
+       });
+    }
+    
     //int i only determines which ball's formulas are shown. All the balls' positions & momentums are shown at all times
     private void showValues(int i){
        // System.out.println(b1.getVelocity());
@@ -1327,16 +1451,17 @@ public class MomentumFXMLController {
     
     //regardless of which ball is selected all their position & momentum will constantly be shown
     public void otherValues(){
-        lbX1.setText(String.valueOf(Math.round((spC1.getLayoutX()+22)*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
-        lbY1.setText(String.valueOf(Math.round((spC1.getLayoutY()+22)*10.0)/10.0));
-        lbX2.setText(String.valueOf(Math.round((spC2.getLayoutX()+22)*10.0)/10.0));
-        lbY2.setText(String.valueOf(Math.round((spC2.getLayoutY()+22)*10.0)/10.0));
-        lbX3.setText(String.valueOf(Math.round((spC3.getLayoutX()+22)*10.0)/10.0));
-        lbY3.setText(String.valueOf(Math.round((spC3.getLayoutY()+22)*10.0)/10.0));
-        lbX4.setText(String.valueOf(Math.round((spC4.getLayoutX()+22)*10.0)/10.0));
-        lbY4.setText(String.valueOf(Math.round((spC4.getLayoutY()+22)*10.0)/10.0));
-        lbX5.setText(String.valueOf(Math.round((spC5.getLayoutX()+22)*10.0)/10.0));
-        lbY5.setText(String.valueOf(Math.round((spC5.getLayoutY()+22)*10.0)/10.0));
+        lbX1.setText(String.valueOf(Math.round((c1.getCenterX())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
+        lbY1.setText(String.valueOf(Math.round((c1.getCenterY())*10.0)/10.0));
+        lbX2.setText(String.valueOf(Math.round((c2.getCenterX())*10.0)/10.0));
+        lbY2.setText(String.valueOf(Math.round((c2.getCenterY())*10.0)/10.0));
+        lbX3.setText(String.valueOf(Math.round((c3.getCenterX())*10.0)/10.0));
+        lbY3.setText(String.valueOf(Math.round((c3.getCenterY())*10.0)/10.0));
+        lbX4.setText(String.valueOf(Math.round((c4.getCenterX())*10.0)/10.0));
+        lbY4.setText(String.valueOf(Math.round((c4.getCenterY())*10.0)/10.0));
+        lbX5.setText(String.valueOf(Math.round((c5.getCenterX())*10.0)/10.0));
+        lbY5.setText(String.valueOf(Math.round((c5.getCenterY())*10.0)/10.0));
+
 
        // System.out.println(b1.calcMomentum());
         lbv1.setText(String.valueOf(Math.round(((double) b1.getVelocity())*10.0)/10.0));

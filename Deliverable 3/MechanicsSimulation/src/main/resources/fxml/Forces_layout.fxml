@@ -73,7 +73,7 @@
       <Label fx:id="lblSelectedVector" layoutX="970.0" layoutY="42.0" prefHeight="17.0" prefWidth="137.0" text="Selected Vector: none" />
       <Slider fx:id="slMag" disable="true" layoutX="970.0" layoutY="101.0" prefHeight="14.0" prefWidth="205.0" />
       <Slider fx:id="slDir" disable="true" layoutX="970.0" layoutY="170.0" prefHeight="14.0" prefWidth="205.0" />
-      <Label fx:id="lbMag" layoutX="972.0" layoutY="72.0" prefHeight="17.0" prefWidth="154.0" text="Magnitude: 0N" />
+      <Label fx:id="lbMag" layoutX="972.0" layoutY="72.0" prefHeight="17.0" prefWidth="154.0" text="Magnitude: 50N" />
       <Label fx:id="lbDir" layoutX="969.0" layoutY="143.0" prefHeight="17.0" prefWidth="154.0" text="Direction: 0°" />
       <Button fx:id="btnIgnore" disable="true" layoutX="969.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Ignore Vector" />
       <Button fx:id="btnDelete" disable="true" layoutX="1086.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Delete Vector" />
