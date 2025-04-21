@@ -95,6 +95,13 @@ public class KinematicsFXMLController {
 
         //Toggling to 1D kinematics mode
         radio_kinematics.setOnAction(event -> {
+            particle.setLayoutX(88);
+            particle.setLayoutY(477);
+            particle.setTranslateX(0);
+            particle.setTranslateY(0);
+            particle.setCenterX(0);
+            particle.setCenterY(0);
+
             txt_1.setText("Initial position (m)");
             slider_1.setMax(100);
 
@@ -120,6 +127,21 @@ public class KinematicsFXMLController {
 
         //Toggling to projectile motion mode
         radio_projectile.setOnAction(event -> {
+            particle.setLayoutX(88);
+            particle.setLayoutY(477);
+            particle.setTranslateX(0);
+            particle.setTranslateY(0);
+            particle.setCenterX(0);
+            particle.setCenterY(0);
+
+            kinematics_curve.setLayoutX(139);
+            kinematics_curve.setLayoutY(478);
+            kinematics_curve.setStartX(-76);
+            kinematics_curve.setStartY(27);
+            kinematics_curve.setEndX(271);
+            kinematics_curve.setEndY(25);
+            kinematics_curve.setControlX(92);
+            kinematics_curve.setControlY(-248);
 
             txt_1.setText("Angle of launch (degrees)");
             slider_1.setMax(89);
@@ -143,10 +165,9 @@ public class KinematicsFXMLController {
             kinematics_line.setVisible(false);
 
             slider_1.setValue(1);
-            slider_2.setValue(1);
+            slider_2.setValue(0);
             slider_3.setValue(1);
             slider_4.setValue(1);
-
 
             isProjectile = true; //Set to in projectile mode
         });
@@ -163,6 +184,31 @@ public class KinematicsFXMLController {
         lg_position.getData().forEach(series -> series.getData().clear());
         lg_velocity.getData().forEach(series -> series.getData().clear());
         lg_acceleration.getData().forEach(series -> series.getData().clear());
+
+        if(isProjectile) {
+            particle.setLayoutX(88);
+            particle.setLayoutY(477);
+            particle.setTranslateX(0);
+            particle.setTranslateY(0);
+            particle.setCenterX(0);
+            particle.setCenterY(0);
+
+            kinematics_curve.setLayoutX(139);
+            kinematics_curve.setLayoutY(478);
+            kinematics_curve.setStartX(-76);
+            kinematics_curve.setStartY(27);
+            kinematics_curve.setEndX(271);
+            kinematics_curve.setEndY(25);
+            kinematics_curve.setControlX(92);
+            kinematics_curve.setControlY(-248);
+        } else {
+            particle.setLayoutX(88);
+            particle.setLayoutY(477);
+            particle.setTranslateX(0);
+            particle.setTranslateY(0);
+            particle.setCenterX(0);
+            particle.setCenterY(0);
+        }
     }
 
     @FXML
@@ -182,14 +228,30 @@ public class KinematicsFXMLController {
             //Object for projectile motion
             Kinematics projectile = new Kinematics(angle, gravAcceleration, height, initialVelocity, 0,0);
 
-            kinematics_curve.setEndX(projectile.proj_calcDistance()+y_axis.getLayoutX());
-            kinematics_curve.setStartY(y_axis.getEndY()-projectile.getLaunchHeight());
-            kinematics_curve.setControlX((kinematics_curve.getEndX()+kinematics_curve.getStartX())/2);
-            kinematics_curve.setControlY(y_axis.getEndY()-projectile.proj_calcMaxHeight());
+            double totalTime = projectile.proj_calcTime();
+            double totalDistance = projectile.proj_calcDistance();
+            double maxHeight = projectile.proj_calcMaxHeight();
 
-            if(kinematics_curve.getEndX() > 500) {
+            kinematics_curve.setStartX(y_axis.getLayoutX());
+            kinematics_curve.setStartY(y_axis.getEndY() - projectile.getLaunchHeight());
+            kinematics_curve.setEndX(y_axis.getLayoutX() + totalDistance);
+            kinematics_curve.setEndY(y_axis.getLayoutY());
+
+            kinematics_curve.setControlX(kinematics_curve.getStartX()+totalDistance/2);
+            kinematics_curve.setControlY(y_axis.getLayoutY()-maxHeight-projectile.getLaunchHeight());
+
+            if(kinematics_curve.getEndX() > x_axis.getEndX()) {
                 x_axis.setEndX(kinematics_curve.getEndX());
             }
+
+//            kinematics_curve.setEndX(projectile.proj_calcDistance()+y_axis.getLayoutX());
+//            kinematics_curve.setStartY(y_axis.getEndY()-projectile.getLaunchHeight());
+//            kinematics_curve.setControlX((kinematics_curve.getEndX()+kinematics_curve.getStartX())/2);
+//            kinematics_curve.setControlY(y_axis.getEndY()-projectile.proj_calcMaxHeight());
+//
+//            if(kinematics_curve.getEndX() > 500) {
+//                x_axis.setEndX(kinematics_curve.getEndX());
+//            }
 
             Path path = new Path();
             path.getElements().add(new MoveTo(kinematics_curve.getStartX(), kinematics_curve.getStartY()));
@@ -198,21 +260,21 @@ public class KinematicsFXMLController {
                     kinematics_curve.getEndX(), kinematics_curve.getEndY()
             ));
 
-            PathTransition transRights = new PathTransition(Duration.seconds(projectile.proj_calcTime()/5), path);
+//            PathTransition transRights = new PathTransition(Duration.seconds(projectile.proj_calcTime()/5), path);
+            PathTransition transRights = new PathTransition(Duration.seconds(totalTime), path);
             transRights.setNode(particle);
             transRights.setCycleCount(1);
             transRights.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
             transRights.play();
 
-            ta_results.setText("The object traveled a total distance of " + String.format("%.2f", projectile.proj_calcDistance()) + " m\n Total time: " + String.format("%.2f", projectile.proj_calcTime()) + " s \n. The max height the object reached is " + String.format("%.2f", projectile.proj_calcMaxHeight()) + " m");
+            ta_results.setText("The object traveled a total distance of " + String.format("%.2f", projectile.proj_calcDistance()) + " m\nTotal time: " + String.format("%.2f", projectile.proj_calcTime()) + " s.\nThe max height the object reached is " + String.format("%.2f", projectile.proj_calcMaxHeight()) + " m");
 
             //Adding points for projectile line chart
             XYChart.Series<Number, Number> positionSeries = new XYChart.Series<>();
             XYChart.Series<Number, Number> velocitySeries = new XYChart.Series<>();
             XYChart.Series<Number, Number> accelerationSeries = new XYChart.Series<>();
 
-            double totalTime = projectile.proj_calcTime();
-            for(double i = 0; i <= totalTime; i+=totalTime/100.0) {
+            for(double i = 0; i <= totalTime; i+=totalTime/100.0) { //Make 100 points
                 double x = projectile.proj_calcHorizontalPosition(i); //x-component of position
                 double y = projectile.proj_calcVerticalPosition(i); //y-component of position
                 double vx = projectile.proj_calHorizontalVelocity(); //x-component of velocity
@@ -270,7 +332,7 @@ public class KinematicsFXMLController {
             XYChart.Series<Number, Number> velocitySeries = new XYChart.Series<>();
             XYChart.Series<Number, Number> accelerationSeries = new XYChart.Series<>();
 
-            for(double i = 0; i <= time; i += time/100.0) {
+            for(double i = 0; i <= time; i += time/100.0) { //Make 100 points
                 double x = oneDimension.kinematic_calcWhatPosition(i); //Position of ball
                 double v = oneDimension.kinematic_calcWhatVelocity(i); //Velocity of ball
                 double a = oneDimension.getAcceleration(); //Acceleration of ball
