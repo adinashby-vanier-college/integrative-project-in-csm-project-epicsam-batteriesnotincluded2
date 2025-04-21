@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -22,7 +21,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+
 <!--test-->
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="2.0">
@@ -159,28 +160,28 @@
       </Text>
       <VBox layoutX="550.0" layoutY="-1.0" prefHeight="800.0" prefWidth="282.0">
          <children>
-            <LineChart fx:id="lg_position" prefHeight="267.0" prefWidth="291.0" title="Position (m) vs. Time(s)">
+            <LineChart fx:id="lg_position" legendVisible="false" prefHeight="267.0" prefWidth="291.0" title="Position (m) vs. Time(s)">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <NumberAxis label="time (s)" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis label="position" side="LEFT" />
+                <NumberAxis label="position (m)" side="LEFT" />
               </yAxis>
             </LineChart>
-            <LineChart fx:id="lg_velocity" prefHeight="267.0" prefWidth="291.0" title="Velocity (m/s) vs. Time (s)">
+            <LineChart fx:id="lg_velocity" legendVisible="false" prefHeight="267.0" prefWidth="291.0" title="Velocity (m/s) vs. Time (s)">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <NumberAxis label="time (s)" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis label="velocity" side="LEFT" />
+                  <NumberAxis label="velocity (m/s)" side="LEFT" />
                </yAxis>
             </LineChart>
-            <LineChart fx:id="lg_acceleration" prefHeight="267.0" prefWidth="291.0" title="Acceleration (m/s^2) vs. Time (s)">
+            <LineChart fx:id="lg_acceleration" legendVisible="false" prefHeight="267.0" prefWidth="291.0" title="Acceleration (m/s^2) vs. Time (s)">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <NumberAxis label="time (s)" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis label="acceleration" side="LEFT" />
+                  <NumberAxis label="acceleration (m/s^2)" side="LEFT" />
                </yAxis>
             </LineChart>
          </children>
