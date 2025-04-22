@@ -5,6 +5,7 @@
 package edu.vanier.template.controllers;
 
 import edu.vanier.template.ui.*;
+import edu.vanier.template.tests.*;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.geometry.*;
@@ -44,7 +45,7 @@ public class ForcesFXMLController {
     PieChart pieForceDistribution;
     
     @FXML
-    Pane megaPane;
+    public Pane megaPane;
     
     @FXML
     StackPane Arrow;
@@ -54,20 +55,10 @@ public class ForcesFXMLController {
     
     boolean selectingVector=false;
     
-    public VectorArrow getSelectedVector(){
-        for (Node n:megaPane.getChildren()){
-            if (n instanceof VectorArrow){
-                if (((VectorArrow) n).getSelected()) {
-                    return ((VectorArrow) n);
-                }
-            }
-        }
-        return null;
-    }
-    
-    
     @FXML
     public void initialize() {
+        
+        
         btnBack.setVisible(false);
         Arrow.setVisible(false);
         mitBack.setOnAction(this::loadPrimaryScene);
@@ -102,7 +93,8 @@ public class ForcesFXMLController {
             lbDir.setText("Direction: "+Math.round(slDir.valueProperty().getValue())+"°");
             VectorArrow v=getSelectedVector();
             v.setRotate(-1*(slDir.valueProperty().getValue()));
-            v.setRotation(slDir.valueProperty().getValue()); // real life rotation value
+            v.setRotation(slDir.valueProperty().getValue()); // real life rotation value for math reasons
+            
             double vX=v.getLayoutX();
             double vY=v.getLayoutY();
             double boxX=box.getLayoutX();
@@ -113,10 +105,8 @@ public class ForcesFXMLController {
             double newX=hyp*Math.cos(Math.toRadians(v.getRotate()));
             double newY=hyp*Math.sin(Math.toRadians(v.getRotate()));
             v.setLayoutX(newX+boxX);
-            v.setLayoutY(newY+boxY);
+            v.setLayoutY(newY+boxY); // moves the vector along a radius around the box
             
-            System.out.println(v.getRotation());
-            System.out.println(v.getRotate());
             v.setRotate(v.getRotate()+180);
         });
         
@@ -131,59 +121,118 @@ public class ForcesFXMLController {
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
         
     }
+    
+    /**
+     * Runs through every child of the pane and gets the VectorArrow selected.
+     * @return the selected VectorArrow
+     */
+    public VectorArrow getSelectedVector(){
+        for (Node n:megaPane.getChildren()){
+            if (n instanceof VectorArrow){
+                if (((VectorArrow) n).getSelected()) {
+                    return ((VectorArrow) n);
+                }
+            }
+        }
+        return null;
+    }
+    
+    
     /**
      * this runs everything that must happen upon a vector getting selected (or unselected), such as: 
-     * marking it as (un)selected, enabling/disabling sliders and buttons, 
+     * marking it as (un)selected and enabling/disabling sliders and buttons.
      * 
      */
     private void toggleSelectedVector(){
-        if(selectingVector){
-        slMag.setDisable(false);
-        slDir.setDisable(false);
-        btnIgnore.setDisable(false);
-        btnDelete.setDisable(false);
+        
+        if(selectingVector==true){
+            slMag.setDisable(false);
+            slDir.setDisable(false);
+            btnIgnore.setDisable(false);
+            btnDelete.setDisable(false);
+            
             
         }
         else {
-        slMag.setDisable(true);
-        slDir.setDisable(true);
-        btnIgnore.setDisable(true);
-        btnDelete.setDisable(true);
+            slMag.setDisable(true);
+            slDir.setDisable(true);
+            btnIgnore.setDisable(true);
+            btnDelete.setDisable(true);
         }
     }
+    /**
+     * Unselects all currently selected vectors. Sets ALL vectors to unselected and un-outlines them. 
+     * There should only be 1 selected vector at a time, so it would only unselect that selected vector.
+     */
     private void unselectAllVectors(){
-        for (Node v:megaPane.getChildren()) if (v instanceof VectorArrow) ((VectorArrow)v).setSelected(false);
-        selectingVector=false;
+        for (Node v:megaPane.getChildren())
+            if (v instanceof VectorArrow){ // gets all VectorArrows
+                for (int i=0;i<((VectorArrow) v).getChildren().size();i++){
+                    Shape s=(Shape)((VectorArrow) v).getChildren().get(i); // gets the parts of a vector arrow
+                    s.setStrokeWidth(0); // sets them to un-outlined
+                }
+                ((VectorArrow)v).setSelected(false); // unselects that vector (even if it's already unselected)
+            }
+        
+        selectingVector=false; // 
     }
     
+    /**
+     * Updates the magnitude slider to match the currently selected vector's magnitude.
+     */
     private void updateMagnitude(){
         VectorArrow v=getSelectedVector();
         slMag.valueProperty().setValue(v.getMagnitude());
         lbMag.setText("Magnitude: "+(int)v.getMagnitude()+"N");
     }
+    /**
+     * Updates the direction slider to match the currently selected vector's direction.
+     */
     private void updateDirection(){
         VectorArrow v=getSelectedVector();
-        System.out.println(v.getRotate());
-        v.setRotation(v.getRotate());
-        lbDir.setText("Direction: "+(int)(v.getRotation()+180)+"°");
-        slDir.valueProperty().getValue();                       // deli make this slider update accurately i forgot how and forgot my code
-                                                                // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa still doesnt work
+        double rotate=v.getRotate()*-1+180;
+        if (rotate<0)
+            rotate+=360;
+        slDir.valueProperty().setValue(rotate);
+    }
+    
+    public double combineMagnitudeX(){
+        double totalX=0;
+        for (Node n:megaPane.getChildren()){ // checks all children of the pane
+            if (n instanceof VectorArrow){ // makes sure we're only dealing with VectorArrows
+                VectorArrow v=(VectorArrow)n;
+                double mag=v.getMagnitude();
+                double ang=v.getRotation();
+                
+            }
+            
+        }
+        return 0;
     }
     
     /**
-     * Handles clicking of a vector arrow.
+     * Handles the clicking of a vector arrow. Selects the vector you click.
      * @param v The vector arrow clicked
      * @return the event of the vector arrow being clicked
      */
     private EventHandler<MouseEvent> onVectorPressed(Node n){
         return (MouseEvent t) -> {
-            if (n instanceof VectorArrow){
-                unselectAllVectors();
-                ((VectorArrow) n).setSelected(true); 
-                selectingVector=true;
+            if (n instanceof VectorArrow){ // if you pressed a VectorArrow
+                unselectAllVectors(); //unselects all previously selected vectors
+                
+                ((VectorArrow) n).setSelected(true); // sets the vector being clicked to selected
+                for (int i=0;i<((VectorArrow) n).getChildren().size();i++){
+                    Shape s=(Shape)((VectorArrow) n).getChildren().get(i); // gets the parts of a vector arrow
+                    s.setStrokeWidth(1.5); // sets them to outlined
+                    System.out.println();
+                }
+                
+                selectingVector=true; // so that the program knows a vector is selected right now
                 toggleSelectedVector();
+                
                 updateMagnitude();
-            } else if (n instanceof Rectangle){
+                updateDirection();
+            } else if (n instanceof Rectangle){ // if you pressed on the background (to unselect the vector)
                 if (((Rectangle) n).getId().equals(recBackground.getId())){
                 unselectAllVectors();
                 toggleSelectedVector(); }
@@ -191,7 +240,7 @@ public class ForcesFXMLController {
         };
     };
     /**
-     * Moves the selected vector to the mouse (you can drag the vector around)
+     * Handles dragging a vector around. Moves the vector arrow being dragged to your mouse.
      * @param v The vector arrow being dragged
      * @return the new position of the vector arrow
      */
@@ -203,26 +252,23 @@ public class ForcesFXMLController {
             double ArrowY=v.getBoundsInParent().getCenterY();
             double boxCenterX=box.getBoundsInParent().getCenterX();
             double boxCenterY=box.getBoundsInParent().getCenterY();
-//            System.out.println(ArrowX);
-//            System.out.println(boxCenterX);
-//            System.out.println(ArrowY);
-//            System.out.println(boxCenterY);
             double rotate=Math.atan((boxCenterY-ArrowY)/(boxCenterX-ArrowX));
-//            System.out.println(rotate);
               rotate=Math.toDegrees(rotate);
-            //rotate=rotate/Math.PI*180;
+              
             if (ArrowX<=boxCenterX)
-            v.setRotate(rotate);
-            else v.setRotate(rotate +180);
+                v.setRotate(rotate);
+            else v.setRotate(rotate+180);
             if (v.getRotate()<0)
                 v.setRotate(v.getRotate()+360);
-            //System.out.println(v.getRotate());
+            
             v.setRotation(v.getRotate());
             updateDirection();
         };
     }
     
-
+/**
+ * loads the main menu scene.
+ */
     private void loadPrimaryScene(Event e) {
         MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
     }

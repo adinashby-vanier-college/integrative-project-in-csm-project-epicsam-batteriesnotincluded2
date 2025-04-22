@@ -6,8 +6,18 @@ package edu.vanier.physics;
 
 /**
  *
- * @author theli
+ * @author ChiliWasp
  */
 public class Forces {
+    
+    public double ForceX(double magnitude, double angle){
+        angle=Math.toRadians(angle);
+        return Math.cos(angle)*magnitude;
+    }
+    
+    public double ForceY(double magnitude, double angle){
+        angle=Math.toRadians(angle);
+        return Math.sin(angle)*magnitude;
+    }
     
 }
