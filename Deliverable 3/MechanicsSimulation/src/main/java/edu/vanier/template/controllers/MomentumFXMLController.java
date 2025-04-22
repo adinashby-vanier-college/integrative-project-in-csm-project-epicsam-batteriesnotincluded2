@@ -87,7 +87,7 @@ public class MomentumFXMLController {
     Label lbMomCalc1, lbMomCalc2, lbMomCalc3, lbImCalc1, lbImCalc2, lbImCalc3, lbEkCalc1, lbEkCalc2, lbEkCalc3;//the labels displaying the calculations
     
     @FXML
-    Label lbTimePassed, lbGraph;
+    Label lbTimePassed, lbGraph, lbV;
     
     @FXML
     Label lbCalc;//the label that says "Calculations (ball1)"
@@ -169,11 +169,11 @@ public class MomentumFXMLController {
     XYChart.Series<Number,Number> s4k;
     XYChart.Series<Number,Number> s5k;
     
-    double b1X = 30; double b1Y = 100;//initial positions of the balls/stackpanes
+    double b1X = 200; double b1Y = 100;//initial positions of the balls/stackpanes
     double b2X = 90; double b2Y = 200;
-    double b3X = 150; double b3Y = 300;
+    double b3X = 300; double b3Y = 300;
     double b4X = 210; double b4Y = 400;
-    double b5X = 270; double b5Y = 500;
+    double b5X = 400; double b5Y = 500;
     
     public void setStage(Stage stage){
     this.stg = stage;
@@ -367,11 +367,11 @@ public class MomentumFXMLController {
         b3.setVelocity(slV3.getValue());
         b4.setVelocity(slV4.getValue());
         b5.setVelocity(slV5.getValue());
-        //System.out.println(slV1.getValue() + " " + slV1.getValue()/(Math.sqrt(2)));
+
+        c1.setCenterX(b1.getPositionX());
+        c1.setCenterY(b1.getPositionY());
         c2.setCenterX(b2.getPositionX());
         c2.setCenterY(b2.getPositionY());
-                System.out.println(c2.getCenterX() + " " + c2.getCenterY());
-
         c3.setCenterX(b3.getPositionX());
         c3.setCenterY(b3.getPositionY());
         c4.setCenterX(b4.getPositionX());
@@ -452,7 +452,7 @@ public class MomentumFXMLController {
          timer = new AnimationTimer(){
             @Override
             public void handle(long now) {
-
+                lbV.setText("Apply velocity (m/s)");
                 
                 for(int i = 0; i<momList.size(); i++){
                    momList.get(i).setVelocity(momList.get(i).getVelocity());
@@ -529,12 +529,18 @@ public class MomentumFXMLController {
     private void checkBounds(Circle c, Momentum b){        
                 //if x and y positions of balls are out of bounds, their directions are reversed
                 if(c.getCenterX() + c.getRadius() >= 794 || c.getCenterX() - c.getRadius() <= 0){
+                   if(c.getCenterX() + c.getRadius() >= 794)c.setCenterX(794-c.getRadius()-1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
+                   if(c.getCenterX() - c.getRadius() <= 0)c.setCenterX(0+c.getRadius()+1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
                    b.setVelocityX(b.getVelocityX()*-1);
                 }
 
                 if(c.getCenterY() + c.getRadius() >= 544 || c.getCenterY() - c.getRadius() <= 0){
+                   if(c.getCenterY() + c.getRadius() >= 544)c.setCenterY(544-c.getRadius()-1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
+                   if(c.getCenterY() - c.getRadius() <= 0)c.setCenterY(0+c.getRadius()+1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
                    b.setVelocityY(b.getVelocityY()*-1);
                 }
+                
+               // if(c.getCenterX() + c.getRadius())
     }
 
     //when two balls collide, they should bounce off each other
@@ -666,17 +672,28 @@ public class MomentumFXMLController {
     
     private void initMenu(){//initializes the buttons in the menu bar
         //File
-        mitBack.setOnAction(this::loadPrimaryScene);
+        mitBack.setOnAction((event)->{
+            loadPrimaryScene(event);
+            btnReset.fire();
+           }              
+        );
+        
         mitClose.setOnAction((event)->{
         stg.close();
         });
         //Edit
         //Help
         mitAbout.setOnAction((event)->{
-        Alert("Momentum simulation","s","s");
+        Alert("Momentum simulation","Momentum & collision","When two moving objects collide, a momentum transfer occurs. In the real world, friction would be"
+        + "constantly eating away some energy, but the purpose of this simulation is to demonstrate only the concept of momentum transfer through collisions, "
+        + "so we assume perfectly elastic collisions with no loss of energy through friction or any other means."
+        );
         });
         mitTips.setOnAction((event)->{
-        Alert("Some tips","Here's my tips","That's right");
+        Alert("Some tips","Some features","Welcome to momentum simulation \n\nTapping on the x and y velocity components on the right side when the animation" 
+                + " is running will change its direction. \n\nChanging the mass of the balls will change their size.\n\n"
+           + "At any point during the simulation, you can manually apply an external velocity on any of the balls with the sliders."
+        );
         });
     }
 
@@ -890,7 +907,7 @@ public class MomentumFXMLController {
        });
        
        btnReset.setOnAction((event)->{
-           
+          lbV.setText("Initial velocity (m/s)");
           totalTime = 0;//resetting the time
           dataTimeCtr = 0;//resetting the counter for adding a data point to the series every second
           
@@ -1048,7 +1065,6 @@ public class MomentumFXMLController {
            lbCalc.setText("Calculations (ball 1)");
            showValues(1);
            lcGraph.getData().remove(series);
-           System.out.println(cbGraph.getValue());
            
            if(cbGraph.getValue().equals("Momentum")){
            series = s1p;

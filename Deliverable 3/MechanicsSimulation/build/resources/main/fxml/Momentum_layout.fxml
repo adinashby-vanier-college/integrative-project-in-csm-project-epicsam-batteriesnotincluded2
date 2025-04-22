@@ -305,7 +305,7 @@
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="289.0" layoutY="600.0" text="Velocity (m/s)" translateX="15.0">
+      <Label fx:id="lbV" layoutX="280.0" layoutY="600.0" text="Initial velocity (m/s)" translateX="15.0">
          <font>
             <Font size="18.0" />
          </font>

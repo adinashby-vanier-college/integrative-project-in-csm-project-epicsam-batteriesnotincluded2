@@ -67,6 +67,7 @@ public class MainApp extends Application {
             // already-opened windows upon launching the app.
             primaryStage.setAlwaysOnTop(true);
             primaryStage.show();
+            primaryStage.setResizable(false);
             primaryStage.setAlwaysOnTop(false);
         } catch (IOException ex) {
             logger.error(ex.getMessage(), ex);

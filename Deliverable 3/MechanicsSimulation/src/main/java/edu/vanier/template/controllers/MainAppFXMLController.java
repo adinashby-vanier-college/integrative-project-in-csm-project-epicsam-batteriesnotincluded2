@@ -1,7 +1,9 @@
 package edu.vanier.template.controllers;
 
 import edu.vanier.template.ui.MainApp;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -85,6 +87,19 @@ public class MainAppFXMLController {
         
         btnLogin.setOnAction((event)->{
             try {
+                try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/usernamespasswords/usernamespasswords.txt")));){
+         String line;
+        
+         while((line = br.readLine())!=null){      
+            String split[] = line.split(" ");//since the usernames and passwords are separated by a space, it splits there
+            if(split.length==2){System.out.println(split[0] + " " + split[1]);}
+            else{System.out.println("noooo");}
+         }
+                    System.out.println(" ");
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
                 LoginFXMLController obj = new LoginFXMLController(btnLogin, btnNewUser, btnGuest, btnLogout, lbWarning, "Log in to your account");
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
