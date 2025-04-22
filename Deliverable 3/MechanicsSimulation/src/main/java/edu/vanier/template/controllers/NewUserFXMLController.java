@@ -173,6 +173,7 @@ public class NewUserFXMLController extends Stage{
            if(userFlag == true && passwordFlag1 == true && passwordFlag2 == true){
             try (FileWriter writer = new FileWriter(file, true)) {
                         writer.write("\n" + username + " " + password1);
+                       // System.out.println(username + " " + password1);
                         writer.flush();
                     } catch (IOException ex) {
                     Logger.getLogger(NewUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -180,6 +181,25 @@ public class NewUserFXMLController extends Stage{
             
             MainAppFXMLController.loggedIn = true;
             MainAppFXMLController.user = username;
+            
+            try {
+                try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/usernamespasswords/usernamespasswords.txt")));){
+         String line;
+        
+         while((line = br.readLine())!=null){      
+            String split[] = line.split(" ");//since the usernames and passwords are separated by a space, it splits there
+            if(split.length==2){System.out.println(split[0] + " " + split[1]);}
+            else{System.out.println("noooo");}
+         }
+                    System.out.println(" ");
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+                LoginFXMLController obj = new LoginFXMLController(btnLogin, btnNewUser, btnGuest, btnLogout, lbWarning, "Log in to your account");
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             lbWarning.setText("Welcome, " + username);
             lbWarning.setStyle("-fx-text-fill: green;");

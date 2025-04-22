@@ -57,6 +57,8 @@ public class LoginFXMLController extends Stage{
     
     LinkedHashMap<String, String> users = new LinkedHashMap<>();
     
+    String path = "/usernamespasswords/usernamespasswords.txt";
+    
     boolean userFlag = false;//only true when username is valid
     boolean passwordFlag = false;//only true when password is valid
     
@@ -156,12 +158,12 @@ public class LoginFXMLController extends Stage{
     //loads all usernames and passwords into a linkedhashmap
     private void loadUsers() throws IOException{
         
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/usernamespasswords/usernamespasswords.txt")));){
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(path)));){
          String line;
         
          while((line = br.readLine())!=null){      
             String split[] = line.split(" ");//since the usernames and passwords are separated by a space, it splits there
-            if(split.length==2)users.put(split[0], split[1]);
+            if(split.length==2){users.put(split[0], split[1]);System.out.println(split[0] + " " + split[1]);}
             else{System.out.println("noooo");}
          }
         }
