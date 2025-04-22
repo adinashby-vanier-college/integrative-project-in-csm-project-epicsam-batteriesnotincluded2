@@ -6,13 +6,8 @@ package edu.vanier.template.controllers;
 
 import edu.vanier.physics.Momentum;
 import edu.vanier.template.ui.MainApp;
-import static java.lang.Math.sqrt;
 import java.util.ArrayList;
-import java.util.ListIterator;
 import javafx.animation.AnimationTimer;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.ReadOnlyDoubleWrapper;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -35,12 +30,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /**
  *
@@ -87,9 +80,6 @@ public class MomentumFXMLController {
     @FXML
     Label lb1, lb2, lb3, lb4, lb5, lbv1, lbv2, lbv3, lbv4, lbv5, lbVx1, lbVx2, lbVx3, lbVx4, lbVx5, lbVy1, lbVy2, lbVy3, lbVy4, lbVy5;//to display the momentum of all balls   
     
-   // @FXML
-   // Label lbOne, lbTwo, lbThree, lbFour, lbFive;//the labels on top of the balls so it's easier to tell which ball's number what
-    
     @FXML
     Label lbM1, lbM2, lbM3, lbM4, lbM5, lbV1, lbV2, lbV3, lbV4, lbV5;
     
@@ -104,9 +94,6 @@ public class MomentumFXMLController {
     
     @FXML
     Slider slM1, slM2, slM3, slM4, slM5, slV1, slV2, slV3, slV4, slV5;//sliders for the mass & velocities of balls        
-            
-   // @FXML
-   // StackPane spC1, spC2, spC3, spC4, spC5;       
             
     @FXML
     CheckBox cbDarkMode, cbDir, cbHUD;    
@@ -154,7 +141,6 @@ public class MomentumFXMLController {
     ObservableList <String> bgs = FXCollections.observableArrayList("Blank", "Grass field", "Wooden floor", "Frozen lake");
     
     ArrayList<Circle> ballList = new ArrayList <Circle>();
-   // ArrayList<StackPane> spList = new ArrayList <StackPane>();
     ArrayList<Momentum> momList = new ArrayList <Momentum>();
     boolean [][] collideflags = new boolean [5][5];//checking collision between every 2 balls
     boolean [] collidable = new boolean [5];
@@ -250,13 +236,7 @@ public class MomentumFXMLController {
         ballList.add(c3);
         ballList.add(c4);
         ballList.add(c5);
-        
-       /* spList.add(spC1);
-        spList.add(spC2);
-        spList.add(spC3);
-        spList.add(spC4);
-        spList.add(spC5);*/
-        
+
         momList.add(b1);
         momList.add(b2);
         momList.add(b3);
@@ -418,10 +398,8 @@ public class MomentumFXMLController {
         c3.setVisible(false);
         c4.setVisible(false);
         c5.setVisible(false);
-
     }
 
-    
     private EventHandler<MouseEvent> circleOnMousePressedEventHandler(Circle c){
     return new EventHandler<MouseEvent>(){
     @Override
@@ -486,20 +464,11 @@ public class MomentumFXMLController {
                 timePerPixel = 0.015 * timeRatio; //changes as the user adjusts the speed of the simulation
                 otherValues();//always changing and displaying all the balls' positions and momentums
                 showValues(data);
-                
-                //iterating all balls to check for collision with each other (0,1,2,3,4)
-                /*for(int i=0; i<ballList.size(); i++){
-                  for(int j=i+1; j<ballList.size(); j++){
-                       checkCollision(ballList.get(i),ballList.get(j),momList.get(i),momList.get(j), i, j);
-                  }
-                }*/
-                
-                
+
                 if(totalTime-dataTimeCtr>1){//every one second a new data point is added
                 addDataToGraph(dataTimeCtr);
                 graph();//displaying the graph
                 dataTimeCtr++;
-                  //  System.out.println("dsd");
                 }
 
                 //constantly removing the data point labels on the graph to make the lines look more smooth
@@ -516,7 +485,6 @@ public class MomentumFXMLController {
                 //iterating through all balls to set their new movements corresponding to changing velocities
                 for(int i=0; i<momList.size(); i++){
                        movingBalls(i, momList.get(i), ballList.get(i));
-                       
                 }
 
                 if(PlayPause.equals("playing")){//when the pause button isn't clicked yet i.e. when animation is currently playing
@@ -555,7 +523,6 @@ public class MomentumFXMLController {
         if(collidable[i] == true){//only moves when ball is collidable/enabled
         c.setCenterX(c.getCenterX() + ball.getVelocityX()*timeRatio);//moving the balls, their movement speed(not velocity) change proportional to the playback speed
         c.setCenterY(c.getCenterY() + ball.getVelocityY()*timeRatio);
-            //System.out.println(c1.localToScene(c1.getBoundsInParent()).getCenterX());
         }
     }
     
@@ -577,32 +544,34 @@ public class MomentumFXMLController {
         
         for(int i=0; i<ballList.size(); i++){
             B1 = ballList.get(i);
-            double x1 = B1.localToScene(B1.getBoundsInParent()).getCenterX();
-            double y1 = B1.localToScene(B1.getBoundsInParent()).getCenterY();
+            double x1 = B1.getCenterX();
+            double y1 = B1.getCenterY();
 
             for(int j=i+1; j<ballList.size(); j++){
                 B2 = ballList.get(j);
-                 double x2 = B2.localToScene(B2.getBoundsInParent()).getCenterX();
-                 double y2 = B2.localToScene(B2.getBoundsInParent()).getCenterY();
+                 double x2 = B2.getCenterX();
+                 double y2 = B2.getCenterY();
                  
-                 double x = x1-x2;
-                 double y = y1-y2;
+                 double x = Math.abs(x1-x2);
+                 double y = Math.abs(y1-y2);
                  
                  double radSum = B1.getRadius() + B2.getRadius();
-        if (x*x + y*y <= radSum*radSum) {
-           // if (x*(momList.get(j).getVelocityX() - momList.get(i).getVelocityX()) + y*(momList.get(j).getVelocityY() - momList.get(i).getVelocityY()) < 0) {
-               if(collideflags[i][j] == false){
+               
+        if (x*x + y*y <= radSum*radSum && B1.intersects(B2.getBoundsInParent())) {
+            if(collideflags[i][j] == false){
                  if(collidable[i] == true && collidable[j] == true){
                      
                      setNewVelocities(momList.get(i),momList.get(j), B1, B2, i, j);
+                     collideflags[i][j] = true;
+
                  }
-            // System.out.println("collision");
-      //   }
             }
-        }
-        if(x*x + y*y > radSum*radSum){
+            
+            }
+        else{
            collideflags[i][j] = false;
         }
+        
                   }
                 }
     }
@@ -619,12 +588,12 @@ public class MomentumFXMLController {
         double vy1 = ball1.getVelocityY();
         double vx2 = ball2.getVelocityX();
         double vy2 = ball2.getVelocityY();
-        
-                
+                    
         double x = x1-x2;
         double y = y1-y2;
         double distance = Math.sqrt(x*x+y*y);
 
+        
         double normx = x/distance;
         double normy = y/distance;
         
@@ -651,21 +620,12 @@ public class MomentumFXMLController {
         ball2.setVelocityY(vy2New);
         ball2.setVelocity(Math.sqrt(vx2New*vx2New + vy2New*vy2New));
         
+        
         ball1.setPi(ball1.getPf());
         ball2.setPi(ball2.getPf());
         
         ball1.setPf(ball1.calcMomentum());
         ball2.setPf(ball2.calcMomentum());
-        
-        /*for(int z = 0; z<4; z++){//variable name is z because i is already taken
-           listPi[z] = listPf[z];//for impulse: final & initial velocities
-        }
-        
-        for(int z = 0; z<4; z++){
-           listPf[z] = momList.get(z).calcMomentum();
-        }*/
-        
-        collideflags[i][j] = true;
     }
     
     //manages the heads up display (current velocity, distance traveled, time passed)
@@ -961,7 +921,6 @@ public class MomentumFXMLController {
           balls.setValue(1);
           
           timer.stop();
-          //initSetup();
           
           for(int i=0; i<4; i++){
                   for(int j=i+1; j<5; j++){
@@ -1462,8 +1421,6 @@ public class MomentumFXMLController {
         lbX5.setText(String.valueOf(Math.round((c5.getCenterX())*10.0)/10.0));
         lbY5.setText(String.valueOf(Math.round((c5.getCenterY())*10.0)/10.0));
 
-
-       // System.out.println(b1.calcMomentum());
         lbv1.setText(String.valueOf(Math.round(((double) b1.getVelocity())*10.0)/10.0));
         lbv2.setText(String.valueOf(Math.round(((double) b2.getVelocity())*10.0)/10.0));
         lbv3.setText(String.valueOf(Math.round(((double) b3.getVelocity())*10.0)/10.0));
@@ -1494,7 +1451,4 @@ public class MomentumFXMLController {
     private void loadPrimaryScene(Event e) {
         MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
     }
-
-    
-
 }

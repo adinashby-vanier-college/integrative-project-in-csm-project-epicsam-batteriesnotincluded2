@@ -106,6 +106,5 @@ public class Momentum extends Physics {
     public double calcEk(){
        return 0.5*mass*velocity*velocity;
     }
-    
-    
+
 }

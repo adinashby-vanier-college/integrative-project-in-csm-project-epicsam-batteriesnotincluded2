@@ -539,7 +539,7 @@
                   </Button>
                </children>
             </HBox>
-            <Label text="Background:" translateX="-25.0" translateY="2.0">
+            <Label text="Background:" translateX="-25.0" translateY="1.0">
                <font>
                   <Font size="18.0" />
                </font>
