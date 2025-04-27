@@ -8,6 +8,7 @@ import static edu.vanier.template.controllers.MainAppFXMLController.user;
 import edu.vanier.template.ui.MainApp;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -193,13 +194,12 @@ public class NewUserFXMLController extends Stage{
          }
                     System.out.println(" ");
         }
+            }
         catch(IOException e){
             System.out.println(e.getMessage());
         }
-                LoginFXMLController obj = new LoginFXMLController(btnLogin, btnNewUser, btnGuest, btnLogout, lbWarning, "Log in to your account");
-            } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(MainAppFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+              
+            
             
             lbWarning.setText("Welcome, " + username);
             lbWarning.setStyle("-fx-text-fill: green;");
@@ -238,7 +238,9 @@ public class NewUserFXMLController extends Stage{
     //loads all usernames into a linkedhashmap
     private void loadUsers() throws IOException{
         
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/usernamespasswords/usernamespasswords.txt")));){
+        File file = new File ("src/main/resources/usernamespasswords/usernamespasswords.txt");
+
+        try(BufferedReader br = new BufferedReader(new FileReader(file));){
          String line;
         
          while((line = br.readLine())!=null){      

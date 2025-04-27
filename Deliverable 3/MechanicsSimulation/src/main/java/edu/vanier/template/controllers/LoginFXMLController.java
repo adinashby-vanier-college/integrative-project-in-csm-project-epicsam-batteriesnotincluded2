@@ -6,6 +6,8 @@ package edu.vanier.template.controllers;
 
 import edu.vanier.template.ui.MainApp;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedHashMap;
@@ -158,7 +160,9 @@ public class LoginFXMLController extends Stage{
     //loads all usernames and passwords into a linkedhashmap
     private void loadUsers() throws IOException{
         
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream(path)));){
+        File file = new File ("src/main/resources/usernamespasswords/usernamespasswords.txt");
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(file));){
          String line;
         
          while((line = br.readLine())!=null){      
