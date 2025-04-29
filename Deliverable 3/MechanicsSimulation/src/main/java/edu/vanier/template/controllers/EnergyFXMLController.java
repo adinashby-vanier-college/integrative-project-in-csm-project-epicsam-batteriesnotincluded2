@@ -10,6 +10,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -48,6 +49,9 @@ public class EnergyFXMLController {
     @FXML private Label functionErrorLabel;
     private Polyline functionPath;
 
+    @FXML
+    MenuItem mitBack;
+    
     private Timeline timeline;
     private int milliseconds = 0;
     private boolean draggingSkater = false;
@@ -58,6 +62,7 @@ public class EnergyFXMLController {
 
     @FXML
     private void initialize() {
+        mitBack.setOnAction(this::loadPrimaryScene);
         setupPieChart();
         setupSliderKeyEvents(frictionSlider, frictionLabel, "%.1f N");
         setupSliderKeyEvents(gravitySlider, gravityLabel, "%.1f m/s²");
@@ -72,6 +77,10 @@ public class EnergyFXMLController {
         resetScene();
     }
 
+    private void loadPrimaryScene(Event e) {
+        MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
+    }
+    
     @FXML
     public void resetScene() {
         resetTimer();
@@ -91,10 +100,10 @@ public class EnergyFXMLController {
         playing = false;
     }
     
-    @FXML
+   /* @FXML
     public void goBack() {
         handleBack(new ActionEvent());
-    }
+    }*/
     
     @FXML
     public void handleBack(ActionEvent event) {
@@ -348,8 +357,8 @@ public class EnergyFXMLController {
         resetScene();
     }
     
-    @FXML
+   /* @FXML
     private void backOneStep(ActionEvent event) {
         goBack(); 
-    }
+    }*/
 }

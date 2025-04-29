@@ -246,6 +246,8 @@ public class MomentumFXMLController {
         for(int i=0; i<4; i++){
                   for(int j=i+1; j<5; j++){
                        collideflags[i][j] = false;
+                       System.out.println(i + " " + j);
+                       
                   }
                 }
         
@@ -520,7 +522,7 @@ public class MomentumFXMLController {
     }
     
     private void movingBalls(int i, Momentum ball, Circle c){
-        if(collidable[i] == true){//only moves when ball is collidable/enabled
+        if(collidable[i] == true){//only moves when ball is collidable/enabled i.e. if you only activate 3 balls, the rest 2 won't move
         c.setCenterX(c.getCenterX() + ball.getVelocityX()*timeRatio);//moving the balls, their movement speed(not velocity) change proportional to the playback speed
         c.setCenterY(c.getCenterY() + ball.getVelocityY()*timeRatio);
         }
@@ -558,16 +560,20 @@ public class MomentumFXMLController {
                  double x2 = B2.getCenterX();
                  double y2 = B2.getCenterY();
                  
-                 double x = Math.abs(x1-x2);
-                 double y = Math.abs(y1-y2);
+                 double x = x1-x2;
+                 double y = y1-y2;
                  
                  double radSum = B1.getRadius() + B2.getRadius();
                
-        if (x*x + y*y <= radSum*radSum && B1.intersects(B2.getBoundsInParent())) {
+                if (c1.intersects(c2.getBoundsInParent())) {
+                   
+                }
+                 
+        if (x*x + y*y <= radSum*radSum + 50 && B1.intersects(B2.getBoundsInParent())) {
             if(collideflags[i][j] == false){
-                 if(collidable[i] == true && collidable[j] == true){
-                     
-                     setNewVelocities(momList.get(i),momList.get(j), B1, B2, i, j);
+                 if(collidable[i] == true && collidable[j] == true){                    
+                     setNewVelocities(momList.get(i),momList.get(j), B1, B2, i, j);                
+
                      collideflags[i][j] = true;
 
                  }
@@ -586,10 +592,10 @@ public class MomentumFXMLController {
     
         double m1 = ball1.getMass();
         double m2 = ball2.getMass();
-        double x1 = ball1.getPositionX();
-        double x2 = ball2.getPositionX();
-        double y1 = ball1.getPositionY();
-        double y2 = ball2.getPositionY();
+        double x1 = c1.getCenterX();
+        double x2 = c2.getCenterX();
+        double y1 = c1.getCenterY();
+        double y2 = c2.getCenterY();
         double vx1 = ball1.getVelocityX();
         double vy1 = ball1.getVelocityY();
         double vx2 = ball2.getVelocityX();
