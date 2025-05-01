@@ -9,6 +9,7 @@ import edu.vanier.template.controllers.MomentumFXMLController;
 /**
  *
  * @author theli
+ * The class that controls all the calculations relating to the momentum simulation
  */
 public class Momentum extends Physics {
     
@@ -31,11 +32,7 @@ public class Momentum extends Physics {
     public double getPositionX() {
         return positionX;
     }
-
-    public void setPositionX(double positionX) {
-        this.positionX = positionX;
-    }
-
+   
     public double getPositionY() {
         return positionY;
     }
@@ -52,6 +49,14 @@ public class Momentum extends Physics {
     public double getAngle(){//returns the angle of the ball from the positive x axis counter clockwise
         return Math.atan2(velocityY,velocityX);
     } 
+    
+    public double getPi(){
+       return Pi;
+    }
+    
+    public double getPf(){
+       return Pf;
+    }
     
     @Override
     public void setMass(double m){
@@ -75,12 +80,8 @@ public class Momentum extends Physics {
         this.positionY = positionY;
     }
     
-    public void setMoveSpeed(){
-        
-    }
-    
-    public double calcMomentum(){
-       return mass*velocity;
+    public void setPositionX(double positionX) {
+        this.positionX = positionX;
     }
     
     public void setPi(double p){
@@ -89,14 +90,10 @@ public class Momentum extends Physics {
     
     public void setPf(double p){
        this.Pf = p;
-    }
+    } 
     
-    public double getPi(){
-       return Pi;
-    }
-    
-    public double getPf(){
-       return Pf;
+    public double calcMomentum(){
+       return mass*velocity;
     }
     
     public double calcImpulse(){
@@ -106,5 +103,4 @@ public class Momentum extends Physics {
     public double calcEk(){
        return 0.5*mass*velocity*velocity;
     }
-
 }

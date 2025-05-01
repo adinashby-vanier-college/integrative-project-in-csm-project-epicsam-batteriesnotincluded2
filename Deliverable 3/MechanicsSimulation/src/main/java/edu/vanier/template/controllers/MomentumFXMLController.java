@@ -38,6 +38,7 @@ import javafx.stage.Stage;
 /**
  *
  * @author theli
+ * The class that controls everything in the momentum simulation
  */
 public class MomentumFXMLController {
 
@@ -193,7 +194,8 @@ public class MomentumFXMLController {
         animation();
     }
     
-    //all relevant variable setups to be initialized
+    /*All relevant variable setups to be initialized
+    */
     private void initSetup(){
        
         s1p = new XYChart.Series<>();
@@ -245,9 +247,7 @@ public class MomentumFXMLController {
         
         for(int i=0; i<4; i++){
                   for(int j=i+1; j<5; j++){
-                       collideflags[i][j] = false;
-                       System.out.println(i + " " + j);
-                       
+                       collideflags[i][j] = false;//at first, none of the balls have collided yet                     
                   }
                 }
         
@@ -353,10 +353,12 @@ public class MomentumFXMLController {
         cbGraph.setValue("Momentum");
         
         cbHUD.fire();//HUD is turned on to be visible by default
-    }
+    }  
     
-    
-    
+    /*
+    Creating instances of the Momentum class to be associated with each ball, with the Momentum instances keeping a record
+    of the balls' positions, mass and speed
+    */
     private void generateBalls(){
         b1 = new Momentum(b1X, b1Y, 5, slV1.getValue()/(Math.sqrt(2)), slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
         b2 = new Momentum(b2X, b2Y, 5, slV2.getValue()/(Math.sqrt(2)), slV2.getValue()/(Math.sqrt(2)));
@@ -402,6 +404,9 @@ public class MomentumFXMLController {
         c5.setVisible(false);
     }
 
+    /*
+    When balls are pressed, their positions are recorded. This block was inspired by online sources
+    */
     private EventHandler<MouseEvent> circleOnMousePressedEventHandler(Circle c){
     return new EventHandler<MouseEvent>(){
     @Override
@@ -414,6 +419,9 @@ public class MomentumFXMLController {
     };
     }
     
+    /*
+    When a ball is dragged, they are moved. This block was inspired by online sources
+    */
     private EventHandler<MouseEvent> circleOnMouseDraggedEventHandler(Circle c){    
         return new EventHandler<MouseEvent>() {
         @Override
@@ -449,6 +457,9 @@ public class MomentumFXMLController {
 
     int dataTimeCtr = 0;//helps keep track of the passage of every second
     
+    /*
+    Handles the animation and updates all values
+    */
     private void animation(){
         
          timer = new AnimationTimer(){
@@ -521,6 +532,9 @@ public class MomentumFXMLController {
         };
     }
     
+    /*
+    When balls are not disabled, they're being moved
+    */
     private void movingBalls(int i, Momentum ball, Circle c){
         if(collidable[i] == true){//only moves when ball is collidable/enabled i.e. if you only activate 3 balls, the rest 2 won't move
         c.setCenterX(c.getCenterX() + ball.getVelocityX()*timeRatio);//moving the balls, their movement speed(not velocity) change proportional to the playback speed
@@ -528,8 +542,10 @@ public class MomentumFXMLController {
         }
     }
     
+    /*
+    if x and y positions of balls are out of bounds, their directions are reversed
+    */
     private void checkBounds(Circle c, Momentum b){        
-                //if x and y positions of balls are out of bounds, their directions are reversed
                 if(c.getCenterX() + c.getRadius() >= 794 || c.getCenterX() - c.getRadius() <= 0){
                    if(c.getCenterX() + c.getRadius() >= 794)c.setCenterX(794-c.getRadius()-1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
                    if(c.getCenterX() - c.getRadius() <= 0)c.setCenterX(0+c.getRadius()+1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
@@ -540,16 +556,15 @@ public class MomentumFXMLController {
                    if(c.getCenterY() + c.getRadius() >= 544)c.setCenterY(544-c.getRadius()-1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
                    if(c.getCenterY() - c.getRadius() <= 0)c.setCenterY(0+c.getRadius()+1);//forcibly moves ball back onto the pane so it doesn't get stuck outside
                    b.setVelocityY(b.getVelocityY()*-1);
-                }
-                
-               // if(c.getCenterX() + c.getRadius())
+                }                
     }
 
-    //when two balls collide, they should bounce off each other
+    /*
+    Constantly iterating through all the pairs of balls to check collision between them
+    */
     private void checkCollision(){
         Circle B1;
         Circle B2;
-        
         for(int i=0; i<ballList.size(); i++){
             B1 = ballList.get(i);
             double x1 = B1.getCenterX();
@@ -564,18 +579,12 @@ public class MomentumFXMLController {
                  double y = y1-y2;
                  
                  double radSum = B1.getRadius() + B2.getRadius();
-               
-                if (c1.intersects(c2.getBoundsInParent())) {
-                   
-                }
-                 
+
         if (x*x + y*y <= radSum*radSum + 50 && B1.intersects(B2.getBoundsInParent())) {
             if(collideflags[i][j] == false){
                  if(collidable[i] == true && collidable[j] == true){                    
                      setNewVelocities(momList.get(i),momList.get(j), B1, B2, i, j);                
-
                      collideflags[i][j] = true;
-
                  }
             }
             
@@ -588,6 +597,16 @@ public class MomentumFXMLController {
                 }
     }
 
+    /*
+    Momentum transferring method:
+    First, finds the delta x & y and distance
+    Then, calculates the unit vector of the normal
+    Then takes the tangent vectors to the normal
+    Then calculates the original normal & tangent vector components on the moment of collision
+    Then calculates the new normal vector components after the collision by rearranging the momentum transfer formula, mx1vx1+my1vy1= mx2vx2+my2vy2
+    Then adds the new normal vectors to the old tangent vector components
+    This block was inspired by online sources
+    */
     private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2, int i, int j){
     
         double m1 = ball1.getMass();
@@ -601,9 +620,9 @@ public class MomentumFXMLController {
         double vx2 = ball2.getVelocityX();
         double vy2 = ball2.getVelocityY();
                     
-        double x = x1-x2;
-        double y = y1-y2;
-        double distance = Math.sqrt(x*x+y*y);
+        double x = x1 - x2;
+        double y = y1 - y2;
+        double distance = Math.sqrt(x*x + y*y);
 
         
         double normx = x/distance;
@@ -612,18 +631,18 @@ public class MomentumFXMLController {
         double tanx = -normy;
         double tany = normx;
         
-        double v1n = vx1*normx+vy1*normy;
-        double v1t = vx1*tanx+vy1*tany;
-        double v2n = vx2*normx+vy2*normy;
-        double v2t = vx2*tanx+vy2*tany;
+        double v1n = vx1*normx + vy1*normy;
+        double v1t = vx1*tanx + vy1*tany;
+        double v2n = vx2*normx + vy2*normy;
+        double v2t = vx2*tanx + vy2*tany;
         
-        double v1nNew = (v1n*(m1-m2)+2*m2*v2n)/(m1+m2); 
-        double v2nNew = (v2n*(m2-m1)+2*m1*v1n)/(m1+m2);
+        double v1nNew = (v1n*(m1-m2) + 2*m2*v2n)/(m1 + m2); 
+        double v2nNew = (v2n*(m2-m1) + 2*m1*v1n)/(m1 + m2);
         
-        double vx1New = v1nNew*normx+v1t*tanx; 
-        double vy1New = v1nNew*normy+v1t*tany; 
-        double vx2New = v2nNew*normx+v2t*tanx; 
-        double vy2New = v2nNew*normy+v2t*tany;
+        double vx1New = v1nNew*normx + v1t*tanx; 
+        double vy1New = v1nNew*normy + v1t*tany; 
+        double vx2New = v2nNew*normx + v2t*tanx; 
+        double vy2New = v2nNew*normy + v2t*tany;
         
         ball1.setVelocityX(vx1New);
         ball1.setVelocityY(vy1New);
@@ -640,7 +659,9 @@ public class MomentumFXMLController {
         ball2.setPf(ball2.calcMomentum());
     }
     
-    //manages the heads up display (current velocity, distance traveled, time passed)
+    /*
+    Manages the heads up display (current velocity, distance traveled, time passed)
+    */
     private void HUD(double y1, double y2, double y3, double y4){
               sec2=Math.round(y1)*100/100;
               sec1=(Math.round(y2)*100/100)/10;
@@ -676,6 +697,9 @@ public class MomentumFXMLController {
     lbTimePassed.setText("Time passed: " + min1String.charAt(0) + min2String.charAt(0) + ":" + sec1 + sec2);
     };
     
+    /*
+    Manages all menu bar things
+    */
     private void initMenu(){//initializes the buttons in the menu bar
         //File
         mitBack.setOnAction((event)->{
@@ -703,6 +727,9 @@ public class MomentumFXMLController {
         });
     }
 
+    /*
+    Combo boxes
+    */
     private void setUpComboBox(){
        cbGraph.getItems().addAll("Momentum", "Impulse", "Kinetic energy");
        cbGraph.setOnAction((event)->{
@@ -749,6 +776,9 @@ public class MomentumFXMLController {
        });
     }
     
+    /*
+    Spinners
+    */
     private void setUpSpinners(){
        balls = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1, 1);//min 1 ball, max 5 balls, adds 1 at a time
        spBalls.setValueFactory(balls);
@@ -799,6 +829,9 @@ public class MomentumFXMLController {
        background.setValue("Grass field");
     }
     
+    /*
+    Checkboxes
+    */
     private void setUpCheckBoxes(){
        cbHUD.setOnAction((event)->{
            if(cbHUD.isSelected()){
@@ -820,9 +853,11 @@ public class MomentumFXMLController {
            }
        });
     }
-    
-    //to disable/enable UIs with flags based on how many balls there are
-    //c1 will always be visible
+      
+    /*
+    To disable/enable UIs with flags based on how many balls there are
+    c1 will always be visible
+    */
     private void setUIsVisible(boolean f2, boolean f3, boolean f4, boolean f5){
         //PROBLEM: when circles are invisible, the active ones can still collide with them
         c2.setVisible(f2);
@@ -895,6 +930,9 @@ public class MomentumFXMLController {
         slV5.setDisable(rev5);
     }
     
+    /*
+    Buttons
+    */
     private void setUpButtons() {
        
        btnPlayPause.setOnAction((event)->{
@@ -1181,6 +1219,9 @@ public class MomentumFXMLController {
        btnPointFiveXSpeed.setOnAction((event)->{speed.setValue(0.5);});
     }
     
+    /*
+    Sliders
+    */
     private void setUpSliders() {
        slM1.valueProperty().addListener((event)->{          
         lbM1.setText(String.valueOf(Math.round(slM1.getValue()*10.0)/10.0));
@@ -1286,8 +1327,10 @@ public class MomentumFXMLController {
     ArrayList<Double> MomTime = new ArrayList<>();
     Momentum b;   
     
-    private void graph(){
-       
+    /*
+    Graphs
+    */
+    private void graph(){      
        s1p.getData().add(new XYChart.Data(dataTimeCtr, b1.calcMomentum()));
        s2p.getData().add(new XYChart.Data(dataTimeCtr, b2.calcMomentum()));
        s3p.getData().add(new XYChart.Data(dataTimeCtr, b3.calcMomentum()));
@@ -1314,6 +1357,9 @@ public class MomentumFXMLController {
     ArrayList<Double> MomTime4 = new ArrayList<>();
     ArrayList<Double> MomTime5 = new ArrayList<>();
     
+    /*
+    Constantly adding new data points to graphs
+    */
     private void addDataToGraph(int i){
        Time.add(i);//adds one data point every second
        MomTime1.add(b1.calcMomentum());//always adding points to all the balls' lists
@@ -1323,6 +1369,9 @@ public class MomentumFXMLController {
        MomTime5.add(b5.calcMomentum());
     }
     
+    /*
+    When you tap on the velocities, their directions will change
+    */
     private void tapToChangeDirection(){
        lbVx1.setOnMouseClicked(new EventHandler<MouseEvent>() {
            @Override
@@ -1395,9 +1444,9 @@ public class MomentumFXMLController {
        });
     }
     
-    //int i only determines which ball's formulas are shown. All the balls' positions & momentums are shown at all times
+    /*int i only determines which ball's formulas are shown. All the balls' positions & momentums are shown at all times
+     */
     private void showValues(int i){
-       // System.out.println(b1.getVelocity());
         Circle c = c1;
         Momentum b = b1;
         
@@ -1430,7 +1479,8 @@ public class MomentumFXMLController {
                 
     }
     
-    //regardless of which ball is selected all their position & momentum will constantly be shown
+    /*Regardless of which ball is selected all their position & momentum will constantly be shown
+    */
     public void otherValues(){
         lbX1.setText(String.valueOf(Math.round((c1.getCenterX())*10.0)/10.0));//22 is correction factor for the coordinates of the center of the ball
         lbY1.setText(String.valueOf(Math.round((c1.getCenterY())*10.0)/10.0));
@@ -1462,6 +1512,9 @@ public class MomentumFXMLController {
         lbVy5.setText(String.valueOf(Math.round(((double) b5.getVelocityY())*10.0)/10.0));
     }
     
+    /*
+    Popup alert
+    */
     private static void Alert(String title, String header, String content){
        Alert alert = new Alert(Alert.AlertType.INFORMATION);
        alert.setTitle(title);
