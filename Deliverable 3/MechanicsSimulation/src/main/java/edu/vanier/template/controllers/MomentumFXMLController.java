@@ -598,7 +598,7 @@ public class MomentumFXMLController {
         if (x*x + y*y <= radSum*radSum + 50 && B1.intersects(B2.getBoundsInParent())) {
             if(collideflags[i][j] == false){
                  if(collidable[i] == true && collidable[j] == true){                    
-                     setNewVelocities(momList.get(i),momList.get(j), B1, B2, i, j);                
+                     setNewVelocities(momList.get(i),momList.get(j), B1, B2);                
                      collideflags[i][j] = true;
                  }
             }
@@ -622,7 +622,7 @@ public class MomentumFXMLController {
     Then adds the new normal vectors to the old tangent vector components
     This block was inspired by online sources
     */
-    private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2, int i, int j){
+    private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2){
     
         double m1 = ball1.getMass();
         double m2 = ball2.getMass();
@@ -721,6 +721,7 @@ public class MomentumFXMLController {
             loadPrimaryScene(event);
             if(save==false){
                 btnReset.fire();
+                background.setValue("Grass field");
             }
             else{
                 if(PlayPause.equals("playing")){
@@ -995,6 +996,18 @@ public class MomentumFXMLController {
           b3.setPositionX(b3X); b3.setPositionY(b3Y);
           b4.setPositionX(b4X); b4.setPositionY(b4Y);
           b5.setPositionX(b5X); b5.setPositionY(b5Y);
+          
+          slV1.setValue(2);
+          slV2.setValue(2);
+          slV3.setValue(2);
+          slV4.setValue(2);
+          slV5.setValue(2);
+          
+          slM1.setValue(5);
+          slM2.setValue(5);
+          slM3.setValue(5);
+          slM4.setValue(5);
+          slM5.setValue(5);
           
           b1.setVelocity(slV1.getValue());
           b2.setVelocity(slV2.getValue());
