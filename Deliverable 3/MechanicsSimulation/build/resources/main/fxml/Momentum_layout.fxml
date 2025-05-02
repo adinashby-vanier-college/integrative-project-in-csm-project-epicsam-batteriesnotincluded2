@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="recDark" arcHeight="5.0" arcWidth="5.0" fill="#6a7a89" height="946.0" layoutX="-52.0" layoutY="-109.0" stroke="BLACK" strokeType="INSIDE" width="1271.0" />
       <Rectangle fx:id="recSim" arcHeight="5.0" arcWidth="5.0" fill="#afb8c1" height="557.0" layoutX="15.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
@@ -108,10 +108,15 @@
       </Label>
       <MenuBar fx:id="menuBar" layoutY="1.0">
         <menus>
-          <Menu fx:id="menuFile" mnemonicParsing="false" text="File" />
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="mitSaveOn" mnemonicParsing="false" text="Autosave on" />
+                  <MenuItem fx:id="mitSaveOff" mnemonicParsing="false" text="Autosave off" />
+               </items></Menu>
           <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="mitDark" mnemonicParsing="false" text="Dark mode" />
+                  <MenuItem fx:id="mitLight" mnemonicParsing="false" text="Light mode" />
             </items>
           </Menu>
           <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
@@ -513,13 +518,8 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="461.0" layoutY="579.0" prefHeight="216.0" prefWidth="185.0" translateY="10.0">
+      <VBox alignment="CENTER" layoutX="461.0" layoutY="592.0" prefHeight="216.0" prefWidth="185.0" spacing="10.0" translateY="5.0">
          <children>
-            <CheckBox fx:id="cbDarkMode" mnemonicParsing="false" prefHeight="45.0" prefWidth="118.0" text="Dark mode" translateX="-34.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </CheckBox>
             <CheckBox fx:id="cbHUD" mnemonicParsing="false" prefHeight="45.0" prefWidth="155.0" text="Heads up display" translateX="-15.0">
                <font>
                   <Font size="16.0" />

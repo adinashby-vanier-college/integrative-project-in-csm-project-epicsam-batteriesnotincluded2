@@ -33,6 +33,7 @@ import javafx.stage.StageStyle;
 /**
  *
  * @author theli
+ * Controls the new user window
  */
 public class NewUserFXMLController extends Stage{
     
@@ -80,7 +81,7 @@ public class NewUserFXMLController extends Stage{
        form();
        CheckBoxes();
        
-       txtPassword1.textProperty().bindBidirectional(psPassword1.textProperty());//syncing the fields
+       txtPassword1.textProperty().bindBidirectional(psPassword1.textProperty());//synchronizing the fields
        txtPassword2.textProperty().bindBidirectional(psPassword2.textProperty());
     }
     
@@ -110,9 +111,7 @@ public class NewUserFXMLController extends Stage{
             
             username = txtUsername.getText().trim();
             password1 = psPassword1.getText().trim();
-            password2 = psPassword2.getText().trim();
-            
-            
+            password2 = psPassword2.getText().trim();     
             
             if(username.contains(" ")){//can't include spaces in username
               userFlag = false;

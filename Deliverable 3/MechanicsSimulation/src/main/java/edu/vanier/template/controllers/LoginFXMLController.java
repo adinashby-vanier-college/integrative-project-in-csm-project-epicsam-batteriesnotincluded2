@@ -29,6 +29,7 @@ import javafx.scene.layout.VBox;
 /**
  *
  * @author theli
+ * Controls the login window
  */
 public class LoginFXMLController extends Stage{
     
@@ -105,7 +106,7 @@ public class LoginFXMLController extends Stage{
             password = psPassword.getText().trim();
             
             for(Map.Entry<String, String> val : users.entrySet()){
-               if(username.equals(val.getKey())){
+               if(username.equals(val.getKey())){//if user exists, then checks password
                  userFlag = true;
                  lbWarning1.setVisible(false);
                  
@@ -145,7 +146,6 @@ public class LoginFXMLController extends Stage{
         cbShow.setOnAction((event)->{
           if(cbShow.isSelected()){
             psPassword.setVisible(false);   
-          //  lbPs2.setVisible(false);
             vbMain.setMouseTransparent(true);
           }
           else{

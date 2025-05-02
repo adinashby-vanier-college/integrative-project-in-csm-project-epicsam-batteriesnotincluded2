@@ -28,6 +28,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -53,6 +54,12 @@ public class MomentumFXMLController {
         
     @FXML
     MenuItem mitAbout, mitTips;
+    
+    @FXML
+    MenuItem mitDark, mitLight;
+    
+    @FXML
+    MenuItem mitSaveOn, mitSaveOff;
     
     @FXML
     Spinner <Integer> spBalls;
@@ -97,7 +104,7 @@ public class MomentumFXMLController {
     Slider slM1, slM2, slM3, slM4, slM5, slV1, slV2, slV3, slV4, slV5;//sliders for the mass & velocities of balls        
             
     @FXML
-    CheckBox cbDarkMode, cbDir, cbHUD;    
+    CheckBox cbDir, cbHUD;    
             
     Stage stg;
     
@@ -123,7 +130,7 @@ public class MomentumFXMLController {
             
     @FXML
     ImageView ivBackGround;
-            
+    
     Momentum b1, b2, b3, b4, b5;//ball objects that correspond to every circle object
     
     double orgSceneX, orgSceneY;//original mouse click positions
@@ -141,10 +148,14 @@ public class MomentumFXMLController {
     
     ObservableList <String> bgs = FXCollections.observableArrayList("Blank", "Grass field", "Wooden floor", "Frozen lake");
     
-    ArrayList<Circle> ballList = new ArrayList <Circle>();
+    ArrayList<Circle> ballList = new ArrayList <Circle>();//to store all the circle and momentum objects
     ArrayList<Momentum> momList = new ArrayList <Momentum>();
+    
     boolean [][] collideflags = new boolean [5][5];//checking collision between every 2 balls
     boolean [] collidable = new boolean [5];
+    
+    boolean save = false;//indicates if autosave is on
+    
     double [] listPi = new double [5];//store the initial and final momentum before & after collision for impulse calculation
     double [] listPf = new double [5];
     
@@ -170,7 +181,7 @@ public class MomentumFXMLController {
     XYChart.Series<Number,Number> s4k;
     XYChart.Series<Number,Number> s5k;
     
-    double b1X = 200; double b1Y = 100;//initial positions of the balls/stackpanes
+    double b1X = 200; double b1Y = 100;//initial positions of the balls
     double b2X = 90; double b2Y = 200;
     double b3X = 300; double b3Y = 300;
     double b4X = 210; double b4Y = 400;
@@ -198,6 +209,8 @@ public class MomentumFXMLController {
     */
     private void initSetup(){
        
+        mitSaveOff.setDisable(true);//the simulation is not saved by default
+        
         s1p = new XYChart.Series<>();
         s2p = new XYChart.Series<>();
         s3p = new XYChart.Series<>();
@@ -360,11 +373,13 @@ public class MomentumFXMLController {
     of the balls' positions, mass and speed
     */
     private void generateBalls(){
-        b1 = new Momentum(b1X, b1Y, 5, slV1.getValue()/(Math.sqrt(2)), slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
-        b2 = new Momentum(b2X, b2Y, 5, slV2.getValue()/(Math.sqrt(2)), slV2.getValue()/(Math.sqrt(2)));
-        b3 = new Momentum(b3X, b3Y, 5, slV3.getValue()/(Math.sqrt(2)), slV3.getValue()/(Math.sqrt(2)));
-        b4 = new Momentum(b4X, b4Y, 5, slV4.getValue()/(Math.sqrt(2)), slV4.getValue()/(Math.sqrt(2)));
-        b5 = new Momentum(b5X, b5Y, 5, slV5.getValue()/(Math.sqrt(2)), slV5.getValue()/(Math.sqrt(2)));
+        
+        double r = Math.random();
+        b1 = new Momentum(b1X, b1Y, 5, r*slV1.getValue()/(Math.sqrt(2)), (1-r)*slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
+        b2 = new Momentum(b2X, b2Y, 5, r*slV2.getValue()/(Math.sqrt(2)), (1-r)*slV2.getValue()/(Math.sqrt(2)));
+        b3 = new Momentum(b3X, b3Y, 5, r*slV3.getValue()/(Math.sqrt(2)), (1-r)*slV3.getValue()/(Math.sqrt(2)));
+        b4 = new Momentum(b4X, b4Y, 5, r*slV4.getValue()/(Math.sqrt(2)), (1-r)*slV4.getValue()/(Math.sqrt(2)));
+        b5 = new Momentum(b5X, b5Y, 5, r*slV5.getValue()/(Math.sqrt(2)), (1-r)*slV5.getValue()/(Math.sqrt(2)));
         
         b1.setVelocity(slV1.getValue());
         b2.setVelocity(slV2.getValue());
@@ -704,7 +719,14 @@ public class MomentumFXMLController {
         //File
         mitBack.setOnAction((event)->{
             loadPrimaryScene(event);
-            btnReset.fire();
+            if(save==false){
+                btnReset.fire();
+            }
+            else{
+                if(PlayPause.equals("playing")){
+                   btnPlayPause.fire();
+                }
+            }
            }              
         );
         
@@ -719,11 +741,34 @@ public class MomentumFXMLController {
         + "so we assume perfectly elastic collisions with no loss of energy through friction or any other means."
         );
         });
+        
         mitTips.setOnAction((event)->{
-        Alert("Some tips","Some features","Welcome to momentum simulation \n\nTapping on the x and y velocity components on the right side when the animation" 
-                + " is running will change its direction. \n\nChanging the mass of the balls will change their size.\n\n"
+        Alert("Some tips","Some features","1) Tapping on the x and y velocity components on the right side when the animation" 
+                + " is running will change its direction. \n2) Changing the mass of the balls will change their size.\n3) "
            + "At any point during the simulation, you can manually apply an external velocity on any of the balls with the sliders."
         );
+        });
+        
+        mitDark.setOnAction((event)->{
+             recDark.setVisible(true);
+             recBg.setFill(Color.web("#969a9e"));
+        });
+        
+        mitLight.setOnAction((event)->{
+             recDark.setVisible(false);
+             recBg.setFill(Color.web("#f7f7f7"));
+        });
+        
+        mitSaveOn.setOnAction((event)->{
+           save = true;
+           mitSaveOn.setDisable(true);
+           mitSaveOff.setDisable(false);
+        });
+        
+        mitSaveOff.setOnAction((event)->{
+           save = false;
+           mitSaveOn.setDisable(false);
+           mitSaveOff.setDisable(true);
         });
     }
 
@@ -841,17 +886,7 @@ public class MomentumFXMLController {
              lbTimePassed.setVisible(false);
            }
        });
-       
-       cbDarkMode.setOnAction((event)->{
-           if(cbDarkMode.isSelected()){
-             recDark.setVisible(true);
-             recBg.setFill(Color.web("#969a9e"));
-           }
-           else{
-             recDark.setVisible(false);
-             recBg.setFill(Color.web("#f7f7f7"));
-           }
-       });
+
     }
       
     /*
@@ -960,6 +995,12 @@ public class MomentumFXMLController {
           b3.setPositionX(b3X); b3.setPositionY(b3Y);
           b4.setPositionX(b4X); b4.setPositionY(b4Y);
           b5.setPositionX(b5X); b5.setPositionY(b5Y);
+          
+          b1.setVelocity(slV1.getValue());
+          b2.setVelocity(slV2.getValue());
+          b3.setVelocity(slV3.getValue());
+          b4.setVelocity(slV4.getValue());
+          b5.setVelocity(slV5.getValue());
           
           c1.setCenterX(b1.getPositionX());
           c1.setCenterY(b1.getPositionY());

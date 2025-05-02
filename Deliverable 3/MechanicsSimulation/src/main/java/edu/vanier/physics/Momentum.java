@@ -92,14 +92,21 @@ public class Momentum extends Physics {
        this.Pf = p;
     } 
     
+    /*
+    P = mV
+    */
     public double calcMomentum(){
        return mass*velocity;
     }
-    
+    /*
+    J = Pf-Pi
+    */
     public double calcImpulse(){
        return Pf-Pi;
     }
-    
+    /*
+    Ek = 1/2mv^2
+    */
     public double calcEk(){
        return 0.5*mass*velocity*velocity;
     }

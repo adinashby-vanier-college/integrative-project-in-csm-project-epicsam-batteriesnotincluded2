@@ -106,7 +106,7 @@ public class MainAppFXMLController {
         
         addFontIcons();
     }
-
+    //loads simulation depending on which button is pressed
     private void loadSecondaryScene(Event e) {
         if(loggedIn == true){
          switch(ctr){
@@ -133,7 +133,5 @@ public class MainAppFXMLController {
         // @see: https://kordamp.org/ikonli/cheat-sheet-medicons.html
         //FontIcon searchIcon = new FontIcon(MaterialDesignA.ATOM);
         FontIcon switchIcon = new FontIcon(MaterialDesignA.ATOM);
-       // btnSwitchScene.setGraphic(switchIcon);
-        //btnSwitchScene.setStyle("-fx-font-size: 16px;");
     }
 }
