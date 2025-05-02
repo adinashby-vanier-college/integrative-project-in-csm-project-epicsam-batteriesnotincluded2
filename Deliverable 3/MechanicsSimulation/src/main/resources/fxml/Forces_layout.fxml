@@ -22,26 +22,28 @@
       <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem fx:id="mitExport" mnemonicParsing="false" text="Export" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem fx:id="mitOldBack" mnemonicParsing="false" text="Back" />
-            </items>
-          </Menu>
-            <Menu fx:id="menusub_back" mnemonicParsing="false" text="Back">
+            <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to main menu" />
-                  <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close program" />
+                  <MenuItem fx:id="mitSaveOn" mnemonicParsing="false" text="Autosave on" />
+                  <MenuItem fx:id="mitSaveOff" mnemonicParsing="false" text="Autosave off" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem fx:id="mitDark" mnemonicParsing="false" text="Dark mode" />
+                  <MenuItem fx:id="mitLight" mnemonicParsing="false" text="Light mode" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuHelp1" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="mitAbout" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="mitTips" mnemonicParsing="false" text="Tips" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuBack" mnemonicParsing="false" text="Back">
+               <items>
+                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
+                  <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close the simulation" />
                </items>
             </Menu>
         </menus>

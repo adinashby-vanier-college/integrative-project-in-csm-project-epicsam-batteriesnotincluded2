@@ -5,6 +5,7 @@
 package edu.vanier.template.controllers;
 
 import edu.vanier.template.ui.*;
+import edu.vanier.physics.*;
 import edu.vanier.template.tests.*;
 import javafx.event.*;
 import javafx.fxml.*;
@@ -33,13 +34,13 @@ public class ForcesFXMLController {
     Menu menuHelp;
     
     @FXML
-    MenuItem mitBack, mitClose;
+    MenuItem mitBack, mitClose, mitAbout, mitTips, mitDark, mitLight, mitSaveOn, mitSaveOff;
     
     @FXML
     Slider slMag,slDir;
     
     @FXML
-    Label lbMag,lbDir;
+    Label lbMag,lbDir,lblNetForce,lblNetDir;
     
     @FXML
     PieChart pieForceDistribution;
@@ -139,7 +140,7 @@ public class ForcesFXMLController {
     
     
     /**
-     * this runs everything that must happen upon a vector getting selected (or unselected), such as: 
+     * Runs everything that must happen upon a vector getting selected (or unselected), such as: 
      * marking it as (un)selected and enabling/disabling sliders and buttons.
      * 
      */
@@ -196,20 +197,57 @@ public class ForcesFXMLController {
         slDir.valueProperty().setValue(rotate);
     }
     
-    public double combineMagnitudeX(){
+    private double updateNetForce(){
+        double mX=addMagnitudeX();
+        double mY=addMagnitudeY();
+        double mNet=Math.sqrt( Math.pow(mX, 2)+Math.pow(mY, 2) ); // finds magnitude of net vector
+        mNet=Math.round(mNet*10.0)/10.0;
+        lblNetForce.setText("Net Force: "+mNet+"N");
+        return mNet;
+    }
+    
+    private double updateNetDir(){ // deli: create the net vector and have it point in the direction of netDir
+        double mX=addMagnitudeX();
+        double mY=addMagnitudeY();
+        double angNet=Math.atan2(mY, mX);
+        angNet=Math.toDegrees(angNet);
+        if (angNet<0) angNet+=360;
+        angNet=Math.round((angNet)*10.0)/10.0; // finds angle of direction of net vector
+        lblNetDir.setText("Direction: "+angNet+"°");
+        return angNet;
+    }
+    
+    
+    public double addMagnitudeX(){
         double totalX=0;
-        for (Node n:megaPane.getChildren()){ // checks all children of the pane
+        Forces sumX=new Forces();
+        for (Node n:megaPane.getChildren()){ // checks every children of the pane
             if (n instanceof VectorArrow){ // makes sure we're only dealing with VectorArrows
                 VectorArrow v=(VectorArrow)n;
                 double mag=v.getMagnitude();
-                double ang=v.getRotation();
-                
+                double ang=v.getRotation()+180; // since vectors point TOWARDS the center, not outward from it.
+                totalX+=sumX.ForceX(mag, ang);
             }
-            
         }
-        return 0;
+        System.out.println(totalX);
+        return totalX;
     }
     
+    public double addMagnitudeY(){
+        double totalY=0;
+        Forces sumY=new Forces();
+        for (Node n:megaPane.getChildren()){
+            if (n instanceof VectorArrow){
+                VectorArrow v=(VectorArrow)n;
+                double mag=v.getMagnitude();
+                double ang=v.getRotation()+180;
+                totalY+=sumY.ForceY(mag, ang);
+            }
+        }
+        System.out.println(totalY);
+        return totalY;
+    }
+
     /**
      * Handles the clicking of a vector arrow. Selects the vector you click.
      * @param v The vector arrow clicked
@@ -232,6 +270,8 @@ public class ForcesFXMLController {
                 
                 updateMagnitude();
                 updateDirection();
+                updateNetForce();
+                updateNetDir();
             } else if (n instanceof Rectangle){ // if you pressed on the background (to unselect the vector)
                 if (((Rectangle) n).getId().equals(recBackground.getId())){
                 unselectAllVectors();
@@ -263,6 +303,8 @@ public class ForcesFXMLController {
             
             v.setRotation(v.getRotate());
             updateDirection();
+            updateNetForce();
+            updateNetDir();
         };
     }
     
