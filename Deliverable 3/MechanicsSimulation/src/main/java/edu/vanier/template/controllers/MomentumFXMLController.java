@@ -819,6 +819,22 @@ public class MomentumFXMLController {
           }
           
           if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
+          
+          if(series == s1p || series == s1j || series == s1k){
+             series.getNode().setStyle("-fx-stroke: #ff4500;"); 
+          }
+          else if(series == s2p || series == s2j || series == s2k){
+             series.getNode().setStyle("-fx-stroke: green;"); 
+          }
+          else if(series == s3p || series == s3j || series == s3k){
+             series.getNode().setStyle("-fx-stroke: blue;"); 
+          }
+          else if(series == s4p || series == s4j || series == s4k){
+             series.getNode().setStyle("-fx-stroke: brown;"); 
+          }
+          else if(series == s5p || series == s5j || series == s5k){
+             series.getNode().setStyle("-fx-stroke: purple;"); 
+          }
        });
     }
     
@@ -1180,6 +1196,7 @@ public class MomentumFXMLController {
            }
            series.getNode().setStyle("-fx-stroke: #ff4500;");     
        });//ball 1's data will now be displayed
+       
        btnB2.setOnAction((event)->{
            data = 2; 
            lbCalc.setText("Calculations (ball 2)");
@@ -1200,8 +1217,9 @@ public class MomentumFXMLController {
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);
            }
-           series.getNode().setStyle("-fx-stroke: green;");   
+           series.getNode().setStyle("-fx-stroke: green;");          
        });//ball 2's data will now be displayed
+       
        btnB3.setOnAction((event)->{
            data = 3; 
            lbCalc.setText("Calculations (ball 3)");
@@ -1221,9 +1239,10 @@ public class MomentumFXMLController {
            if(lcGraph.getData().isEmpty())lcGraph.getData().add(series);
            for(XYChart.Data<Number,Number> data: series.getData()){
            data.getNode().setVisible(false);
-           }
-           series.getNode().setStyle("-fx-stroke: blue;");   
+           }        
+           series.getNode().setStyle("-fx-stroke: blue;"); 
        });//ball 3's data will now be displayed
+       
        btnB4.setOnAction((event)->{
            data = 4; 
            lbCalc.setText("Calculations (ball 4)");
@@ -1246,6 +1265,7 @@ public class MomentumFXMLController {
            }
            series.getNode().setStyle("-fx-stroke: brown;");   
        });//ball 4's data will now be displayed
+       
        btnB5.setOnAction((event)->{
            data = 5; 
            lbCalc.setText("Calculations (ball 5)");
