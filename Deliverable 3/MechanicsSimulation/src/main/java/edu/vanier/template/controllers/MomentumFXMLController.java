@@ -42,13 +42,6 @@ import javafx.stage.Stage;
  * The class that controls everything in the momentum simulation
  */
 public class MomentumFXMLController {
-
-    @FXML
-    MenuBar menuBar;
-    
-    @FXML
-    Menu menuFile, menuEdit, menuHelp, menuBack;
-    
     @FXML
     MenuItem mitBack, mitClose;    
         
@@ -78,10 +71,7 @@ public class MomentumFXMLController {
     
     @FXML
     ImageView ivPlayPause;        
-            
-    @FXML
-    Pane momRoot;//the momentum root pane where the animation is taking place
-            
+             
     @FXML
     Label lbX1, lbX2, lbX3, lbX4, lbX5, lbY1, lbY2, lbY3, lbY4, lbY5;//to display the positions of all balls     
     
@@ -92,7 +82,7 @@ public class MomentumFXMLController {
     Label lbM1, lbM2, lbM3, lbM4, lbM5, lbV1, lbV2, lbV3, lbV4, lbV5;
     
     @FXML
-    Label lbMomCalc1, lbMomCalc2, lbMomCalc3, lbImCalc1, lbImCalc2, lbImCalc3, lbEkCalc1, lbEkCalc2, lbEkCalc3;//the labels displaying the calculations
+    Label lbMomCalc2, lbMomCalc3, lbImCalc2, lbImCalc3, lbEkCalc2, lbEkCalc3;//the labels displaying the calculations
     
     @FXML
     Label lbTimePassed, lbGraph, lbV;
@@ -104,7 +94,7 @@ public class MomentumFXMLController {
     Slider slM1, slM2, slM3, slM4, slM5, slV1, slV2, slV3, slV4, slV5;//sliders for the mass & velocities of balls        
             
     @FXML
-    CheckBox cbDir, cbHUD;    
+    CheckBox cbHUD;    
             
     Stage stg;
     
@@ -126,7 +116,7 @@ public class MomentumFXMLController {
     LineChart <Number, Number> lcGraph;        
             
     @FXML
-    Rectangle recDark, recSim, recBg;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
+    Rectangle recDark, recBg;//set this to visible for dark mode, invisible for light mode. recSim is the rectangle that covers up the simulation
             
     @FXML
     ImageView ivBackGround;
@@ -207,8 +197,7 @@ public class MomentumFXMLController {
     
     /*All relevant variable setups to be initialized
     */
-    private void initSetup(){
-       
+    private void initSetup(){      
         mitSaveOff.setDisable(true);//the simulation is not saved by default
         
         s1p = new XYChart.Series<>();
@@ -372,14 +361,31 @@ public class MomentumFXMLController {
     Creating instances of the Momentum class to be associated with each ball, with the Momentum instances keeping a record
     of the balls' positions, mass and speed
     */
-    private void generateBalls(){
+    private void generateBalls(){      
+        double k = Math.random();
+          double f = Math.random();
         
-        double r = Math.random();
-        b1 = new Momentum(b1X, b1Y, 5, r*slV1.getValue()/(Math.sqrt(2)), (1-r)*slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
-        b2 = new Momentum(b2X, b2Y, 5, r*slV2.getValue()/(Math.sqrt(2)), (1-r)*slV2.getValue()/(Math.sqrt(2)));
-        b3 = new Momentum(b3X, b3Y, 5, r*slV3.getValue()/(Math.sqrt(2)), (1-r)*slV3.getValue()/(Math.sqrt(2)));
-        b4 = new Momentum(b4X, b4Y, 5, r*slV4.getValue()/(Math.sqrt(2)), (1-r)*slV4.getValue()/(Math.sqrt(2)));
-        b5 = new Momentum(b5X, b5Y, 5, r*slV5.getValue()/(Math.sqrt(2)), (1-r)*slV5.getValue()/(Math.sqrt(2)));
+          double r1, r2 = 0;
+        
+          if(k < 0.5){
+           r1=-1;           
+          }
+          else{
+           r1=1;
+          }
+          
+          if(f < 0.5){
+           r2=1;           
+          }
+          else{
+           r2=-1;
+          }
+        
+        b1 = new Momentum(b1X, b1Y, 5, r1*slV1.getValue()/(Math.sqrt(2)), r2*slV1.getValue()/(Math.sqrt(2)));//x, y, mass, velocityX, velocityY
+        b2 = new Momentum(b2X, b2Y, 5, r2*slV2.getValue()/(Math.sqrt(2)), r1*slV2.getValue()/(Math.sqrt(2)));
+        b3 = new Momentum(b3X, b3Y, 5, r1*slV3.getValue()/(Math.sqrt(2)), r2*slV3.getValue()/(Math.sqrt(2)));
+        b4 = new Momentum(b4X, b4Y, 5, r2*slV4.getValue()/(Math.sqrt(2)), r1*slV4.getValue()/(Math.sqrt(2)));
+        b5 = new Momentum(b5X, b5Y, 5, r1*slV5.getValue()/(Math.sqrt(2)), r2*slV5.getValue()/(Math.sqrt(2)));
         
         b1.setVelocity(slV1.getValue());
         b2.setVelocity(slV2.getValue());
@@ -486,8 +492,7 @@ public class MomentumFXMLController {
                    momList.get(i).setVelocity(momList.get(i).getVelocity());
                    momList.get(i).setVelocityX(momList.get(i).getVelocityX());
                    momList.get(i).setVelocityY(momList.get(i).getVelocityY());
-                }
-                
+                }               
                 
                 timePerPixel = 0.015 * timeRatio; //changes as the user adjusts the speed of the simulation
                 otherValues();//always changing and displaying all the balls' positions and momentums
@@ -540,10 +545,8 @@ public class MomentumFXMLController {
                 Alert("Watch out","You're getting kicked out","You've been staring at the pucks for an hour. What are you doing?");
                 btnReset.fire();
                 timer.stop();
-                }                
-                
-            }
-        
+                }                               
+            }      
         };
     }
     
@@ -591,8 +594,7 @@ public class MomentumFXMLController {
                  double y2 = B2.getCenterY();
                  
                  double x = x1-x2;
-                 double y = y1-y2;
-                 
+                 double y = y1-y2;                
                  double radSum = B1.getRadius() + B2.getRadius();
 
         if (x*x + y*y <= radSum*radSum + 50 && B1.intersects(B2.getBoundsInParent())) {
@@ -606,8 +608,7 @@ public class MomentumFXMLController {
             }
         else{
            collideflags[i][j] = false;
-        }
-        
+        }     
                   }
                 }
     }
@@ -622,8 +623,7 @@ public class MomentumFXMLController {
     Then adds the new normal vectors to the old tangent vector components
     This block was inspired by online sources
     */
-    private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2){
-    
+    private void setNewVelocities(Momentum ball1, Momentum ball2, Circle c1, Circle c2){   
         double m1 = ball1.getMass();
         double m2 = ball2.getMass();
         double x1 = c1.getCenterX();
@@ -638,7 +638,6 @@ public class MomentumFXMLController {
         double x = x1 - x2;
         double y = y1 - y2;
         double distance = Math.sqrt(x*x + y*y);
-
         
         double normx = x/distance;
         double normy = y/distance;
@@ -665,8 +664,7 @@ public class MomentumFXMLController {
         ball2.setVelocityX(vx2New);
         ball2.setVelocityY(vy2New);
         ball2.setVelocity(Math.sqrt(vx2New*vx2New + vy2New*vy2New));
-        
-        
+              
         ball1.setPi(ball1.getPf());
         ball2.setPi(ball2.getPf());
         
@@ -873,8 +871,7 @@ public class MomentumFXMLController {
        spPlayBack.setValueFactory(speed);
        spPlayBack.getEditor().setStyle("-fx-font-size: 15px;");    
        spPlayBack.valueProperty().addListener((event)->{
-          timeRatio = spPlayBack.getValue();
-          
+          timeRatio = spPlayBack.getValue();         
        });
        
        background = new SpinnerValueFactory.ListSpinnerValueFactory<String>(bgs);      
@@ -903,7 +900,6 @@ public class MomentumFXMLController {
              lbTimePassed.setVisible(false);
            }
        });
-
     }
       
     /*
@@ -1025,11 +1021,42 @@ public class MomentumFXMLController {
           slM4.setValue(5);
           slM5.setValue(5);
           
+          double k = Math.random();
+          double f = Math.random();
+        
+          double r1, r2 = 0;
+        
+          if(k < 0.5){
+           r1=-1;           
+          }
+          else{
+           r1=1;
+          }
+          
+          if(f < 0.5){
+           r2=1;           
+          }
+          else{
+           r2=-1;
+          }
+        
           b1.setVelocity(slV1.getValue());
+          b1.setVelocityX(r1*(slV1.getValue()/Math.sqrt(2)));
+          b1.setVelocityY(r2*(slV1.getValue()/Math.sqrt(2)));
           b2.setVelocity(slV2.getValue());
+          b2.setVelocityX(r2*slV2.getValue()/Math.sqrt(2));
+          b2.setVelocityY(r1*slV2.getValue()/Math.sqrt(2));
           b3.setVelocity(slV3.getValue());
+          b3.setVelocityX(r1*slV3.getValue()/Math.sqrt(2));
+          b3.setVelocityY(r2*slV3.getValue()/Math.sqrt(2));
           b4.setVelocity(slV4.getValue());
+          b4.setVelocityX(r2*slV4.getValue()/Math.sqrt(2));
+          b4.setVelocityY(r1*slV4.getValue()/Math.sqrt(2));
           b5.setVelocity(slV5.getValue());
+          b5.setVelocityX(r1*slV5.getValue()/Math.sqrt(2));
+          b5.setVelocityY(r2*slV5.getValue()/Math.sqrt(2));
+          
+          otherValues();
           
           c1.setCenterX(b1.getPositionX());
           c1.setCenterY(b1.getPositionY());
