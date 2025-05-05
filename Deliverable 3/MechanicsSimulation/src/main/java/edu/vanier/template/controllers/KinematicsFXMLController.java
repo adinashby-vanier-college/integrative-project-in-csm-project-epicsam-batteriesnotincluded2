@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Scale;
 import javafx.util.Duration;
 
 public class KinematicsFXMLController {
@@ -37,6 +38,9 @@ public class KinematicsFXMLController {
 
     @FXML
     QuadCurve kinematics_curve;
+
+    @FXML
+    Rectangle simScene;
 
     @FXML
     TextField tf_11, tf_12, tf_13, tf_14, tf_21, tf_22, tf_23, tf_24;
@@ -211,6 +215,10 @@ public class KinematicsFXMLController {
         }
     }
 
+    private double forceCoordinateRange(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
     @FXML
     void playOnAction(ActionEvent event) {
 
@@ -225,49 +233,63 @@ public class KinematicsFXMLController {
             double initialVelocity = slider_3.getValue();
             double gravAcceleration = slider_4.getValue();
 
-            //Object for projectile motion
-            Kinematics projectile = new Kinematics(angle, gravAcceleration, height, initialVelocity, 0,0);
-
+            Kinematics projectile = new Kinematics(angle, gravAcceleration, height, initialVelocity, 0, 0);
             double totalTime = projectile.proj_calcTime();
             double totalDistance = projectile.proj_calcDistance();
             double maxHeight = projectile.proj_calcMaxHeight();
 
-            kinematics_curve.setStartX(y_axis.getLayoutX());
-            kinematics_curve.setStartY(y_axis.getEndY() - projectile.getLaunchHeight());
-            kinematics_curve.setEndX(y_axis.getLayoutX() + totalDistance);
-            kinematics_curve.setEndY(y_axis.getLayoutY());
+            //Getting sizes of x and y axis and border so the ball doesnt fly off the rectangle
+            double originX = y_axis.getLayoutX()+y_axis.getStartX();
+            double originY = y_axis.getLayoutY() + y_axis.getStartY();
 
-            kinematics_curve.setControlX(kinematics_curve.getStartX()+totalDistance/2);
-            kinematics_curve.setControlY(y_axis.getLayoutY()-maxHeight-projectile.getLaunchHeight());
+            double sceneLeft = simScene.getLayoutX();
+            double sceneTop = simScene.getLayoutY();
+            double sceneWidth = simScene.getWidth();
+            double sceneHeight = simScene.getHeight();
+            double availableSceneX = sceneLeft + sceneWidth - originX - 10; //10 is the margin
+            double availableSceneY = originY - (sceneTop + 10);
 
-            if(kinematics_curve.getEndX() > x_axis.getEndX()) {
-                x_axis.setEndX(kinematics_curve.getEndX());
-            }
+            double scale = Math.min(availableSceneX/totalDistance, availableSceneY/(height+maxHeight));
 
-//            kinematics_curve.setEndX(projectile.proj_calcDistance()+y_axis.getLayoutX());
-//            kinematics_curve.setStartY(y_axis.getEndY()-projectile.getLaunchHeight());
-//            kinematics_curve.setControlX((kinematics_curve.getEndX()+kinematics_curve.getStartX())/2);
-//            kinematics_curve.setControlY(y_axis.getEndY()-projectile.proj_calcMaxHeight());
-//
-//            if(kinematics_curve.getEndX() > 500) {
-//                x_axis.setEndX(kinematics_curve.getEndX());
-//            }
+            double relative_curveStartY = originY-height*scale;
+            double relative_curveControlX = originX + (totalDistance/2)*scale;
+            double relative_curveControlY = originY - (height+maxHeight)*scale;
+            double relative_curveEndX = originX+totalDistance*scale;
 
-            Path path = new Path();
-            path.getElements().add(new MoveTo(kinematics_curve.getStartX(), kinematics_curve.getStartY()));
-            path.getElements().add(new QuadCurveTo(
-                    kinematics_curve.getControlX(), kinematics_curve.getControlY(),
-                    kinematics_curve.getEndX(), kinematics_curve.getEndY()
-            ));
+            //Setting up the curve whenever the user changes the values
+            kinematics_curve.getTransforms().clear();
+            kinematics_curve.setLayoutX(0);
+            kinematics_curve.setLayoutY(0);
+            kinematics_curve.setStartX(originX);
+            kinematics_curve.setStartY(relative_curveStartY);
+            kinematics_curve.setControlX(relative_curveControlX);
+            kinematics_curve.setControlY(relative_curveControlY);
+            kinematics_curve.setEndX(relative_curveEndX);
+            kinematics_curve.setEndY(originY);
+            kinematics_curve.setStrokeWidth(2);
 
-//            PathTransition transRights = new PathTransition(Duration.seconds(projectile.proj_calcTime()/5), path);
-            PathTransition transRights = new PathTransition(Duration.seconds(totalTime), path);
-            transRights.setNode(particle);
-            transRights.setCycleCount(1);
+            //Setting up a path for the ball to go through
+            Path path = new Path(
+                    new MoveTo(originX, relative_curveStartY),
+                    new QuadCurveTo(relative_curveControlX, relative_curveControlY, relative_curveEndX, originY)
+            );
+
+            particle.toFront();
+            particle.getTransforms().clear();
+            particle.setTranslateX(0);
+            particle.setTranslateY(0);
+            particle.setLayoutX(0);
+            particle.setLayoutY(0);
+            particle.setCenterX(originX);
+            particle.setCenterY(relative_curveStartY);
+
+            PathTransition transRights = new PathTransition(Duration.seconds(totalTime), path, particle);
             transRights.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+            transRights.setCycleCount(1);
             transRights.play();
 
             ta_results.setText("The object traveled a total distance of " + String.format("%.2f", projectile.proj_calcDistance()) + " m\nTotal time: " + String.format("%.2f", projectile.proj_calcTime()) + " s.\nThe max height the object reached is " + String.format("%.2f", projectile.proj_calcMaxHeight()) + " m");
+
 
             //Adding points for projectile line chart
             XYChart.Series<Number, Number> positionSeries = new XYChart.Series<>();

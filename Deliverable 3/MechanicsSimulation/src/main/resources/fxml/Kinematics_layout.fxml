@@ -50,7 +50,7 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="584.0" layoutX="14.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="531.0" />
+      <Rectangle fx:id="simScene" arcHeight="5.0" arcWidth="5.0" fill="#f7f7f7" height="584.0" layoutX="14.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="531.0" />
       <VBox alignment="TOP_CENTER" layoutX="833.0" layoutY="98.0" prefHeight="404.0" prefWidth="360.0" spacing="5.0" style="-fx-background-color: #c0e8fa; -fx-border-color: black; -fx-border-width: 3px;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Parameter Menu" textAlignment="CENTER" wrappingWidth="339.13671875">
