@@ -1003,6 +1003,18 @@ public class MomentumFXMLController {
           totalTime = 0;//resetting the time
           dataTimeCtr = 0;//resetting the counter for adding a data point to the series every second
           
+          b1.setPi(0);//initial momentum start off as 0 not the 3.14 pi
+        b2.setPi(0);
+        b3.setPi(0);
+        b4.setPi(0);
+        b5.setPi(0);
+        
+        b1.setPf(0);//final momentum start off as 0
+        b2.setPf(0);
+        b3.setPf(0);
+        b4.setPf(0);
+        b5.setPf(0);
+        
           b1.setPositionX(b1X); b1.setPositionY(b1Y);
           b2.setPositionX(b2X); b2.setPositionY(b2Y);
           b3.setPositionX(b3X); b3.setPositionY(b3Y);
