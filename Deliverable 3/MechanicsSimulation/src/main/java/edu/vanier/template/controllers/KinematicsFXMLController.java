@@ -2,8 +2,7 @@ package edu.vanier.template.controllers;
 
 import edu.vanier.physics.Kinematics;
 import edu.vanier.template.ui.MainApp;
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -13,25 +12,24 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Scale;
 import javafx.util.Duration;
+import javafx.scene.control.Alert;
 
 public class KinematicsFXMLController {
 
     @FXML
-    MenuBar menuBar;
+    Pane mainPane;
 
     @FXML
-    Menu menusub_file, menusub_edit, menusub_help, menusub_back;
+    MenuItem menuitem_about, menuitem_tips, menuitem_dark, menuitem_light, menuitem_back, menuitem_exit;
 
     @FXML
-    MenuItem menuitem_about, menuitem_tips, menuitem_back, menuitem_exit;
-
-    @FXML
-    RadioButton radio_projectile, radio_kinematics;
+    RadioButton radio_projectile, radio_kinematics, radio_light, radio_dark;
 
     @FXML
     Line kinematics_line, y_axis, x_axis;
@@ -55,7 +53,7 @@ public class KinematicsFXMLController {
     TextArea ta_results;
 
     @FXML
-    Button btn_play, btn_clear;
+    Button btn_play, btn_clear, btn_back, btn_exit;
 
     @FXML
     HBox lastHBox;
@@ -71,6 +69,7 @@ public class KinematicsFXMLController {
     public void initialize() {
         menuBarFunctionality();
         radioButtonToggle();
+        themeRadioToggle();
 
         tf_21.textProperty().bind(slider_1.valueProperty().asString("%.0f"));
         tf_22.textProperty().bind(slider_2.valueProperty().asString("%.0f"));
@@ -82,16 +81,70 @@ public class KinematicsFXMLController {
         lg_acceleration.getData().add(new XYChart.Series<>());
     }
 
+    private static void Alert(String title, String header, String content){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
+
     private void menuBarFunctionality() {
         menuitem_back.setOnAction(this::loadPrimaryScene);
 
         menuitem_exit.setOnAction((event) -> {
             Platform.exit();
         });
+
+        menuitem_tips.setOnAction((event) -> {
+            Alert("John Mechanic Sim's tip", "Simulation features", "You can change how the blue ball moves by changing the parameters on the sliders");
+        });
+
+        menuitem_about.setOnAction((event -> {
+            Alert("Kinematics Simulation", "Projectile and 1D motion", "In the real world, when an object is being thrown at a certain angle; the object will follow a quadratic curve as it is falling down as gravity affects its trajectory.");
+        }));
+
+        menuitem_dark.setOnAction((event -> {
+            mainPane.setBackground(Background.fill(Paint.valueOf("#969a9e")));
+            simScene.setFill(Color.web("#c2c0ba"));
+
+            radio_light.setSelected(false);
+            radio_dark.setSelected(true);
+        }));
+
+        menuitem_light.setOnAction((event -> {
+            mainPane.setBackground(Background.fill(Paint.valueOf("#f7f7f7")));
+            simScene.setFill(Color.web("#f7f7f7"));
+
+            radio_light.setSelected(true);
+            radio_dark.setSelected(false);
+        }));
     }
 
     private void loadPrimaryScene(Event e) {
         MainApp.switchScene(MainApp.priStage, MainApp.MAINAPP_SCENE);
+    }
+
+    private void themeRadioToggle() {
+        radio_dark.setOnAction(event -> {
+            mainPane.setBackground(Background.fill(Paint.valueOf("#969a9e")));
+            simScene.setFill(Color.web("#c2c0ba"));
+        });
+
+        radio_light.setOnAction(event -> {
+            mainPane.setBackground(Background.fill(Paint.valueOf("#f7f7f7")));
+            simScene.setFill(Color.web("#f7f7f7"));
+        });
+    }
+
+    @FXML
+    void backOnAction(ActionEvent event) {
+        loadPrimaryScene(event);
+    }
+
+    @FXML
+    void exitOnAction(ActionEvent event) {
+        Platform.exit();
     }
 
     boolean isProjectile = true; //Checks if it is in projectile mode or not (set to true)
@@ -215,10 +268,6 @@ public class KinematicsFXMLController {
         }
     }
 
-    private double forceCoordinateRange(double value, double min, double max) {
-        return Math.max(min, Math.min(max, value));
-    }
-
     @FXML
     void playOnAction(ActionEvent event) {
 
@@ -299,7 +348,7 @@ public class KinematicsFXMLController {
             for(double i = 0; i <= totalTime; i+=totalTime/100.0) { //Make 100 points
                 double x = projectile.proj_calcHorizontalPosition(i); //x-component of position
                 double y = projectile.proj_calcVerticalPosition(i); //y-component of position
-                double vx = projectile.proj_calHorizontalVelocity(); //x-component of velocity
+                double vx = projectile.proj_calcHorizontalVelocity(); //x-component of velocity
                 double vy = projectile.proj_calcVerticalVelocity(i); //y-component of velocity
                 double ax = 0; //x-component of acceleration (zero bc there is no horizontal acceleration in projectile motion)
                 double ay = projectile.getAcceleration(); //y-component of acceleration
@@ -323,21 +372,30 @@ public class KinematicsFXMLController {
 
             // 1D motion animation setup
             double finalPosition = oneDimension.kinematic_calcFinalPosition();
+            double lineStartX = kinematics_line.getStartX() + kinematics_line.getLayoutX();
+            double lineEndX = kinematics_line.getEndX() + kinematics_line.getLayoutX();
+            double lineY = kinematics_line.getStartY() + kinematics_line.getLayoutY();
+            double lineLength = Math.abs(lineEndX - lineStartX);
+            double maxDistance = Math.max(Math.abs(initialPosition), Math.abs(finalPosition));
+            double lengthMetres = lineLength / (2 * maxDistance + 1); // add 1 to avoid divide-by-zero
 
-            double scale = 10;
+            double centerX = (lineStartX + lineEndX) / 2; // middle of the line
+            double startX = centerX + initialPosition * lengthMetres;
+            double endX = centerX + finalPosition * lengthMetres;
+            double particleY = lineY - particle.getRadiusY();
 
-            double startX = kinematics_line.getEndX() - initialPosition * scale;
-            double endX = kinematics_line.getEndX() - finalPosition * scale;
-
-            startX = Math.max(0, Math.min(800, startX));
-            endX = Math.max(0, Math.min(800, endX));
-
+            particle.toFront();
+            particle.getTransforms();
+            particle.setTranslateX(0);
+            particle.setTranslateY(0);
+            particle.setLayoutX(0);
+            particle.setLayoutY(0);
             particle.setCenterX(startX);
-            particle.setCenterY(kinematics_line.getStartY() - 10); // Y just above the line
+            particle.setCenterY(particleY); // Y just above the line
 
             Path path = new Path();
-            path.getElements().add(new MoveTo(startX, particle.getCenterY()));
-            path.getElements().add(new LineTo(endX, particle.getCenterY()));
+            path.getElements().add(new MoveTo(startX, particleY));
+            path.getElements().add(new LineTo(endX, particleY));
 
             PathTransition transition = new PathTransition(Duration.seconds(time), path, particle);
             transition.setCycleCount(1);
@@ -363,6 +421,10 @@ public class KinematicsFXMLController {
                 velocitySeries.getData().add(new XYChart.Data<>(i, v));
                 accelerationSeries.getData().add(new XYChart.Data<>(i, a));
             }
+
+            lg_position.getData().add(positionSeries);
+            lg_velocity.getData().add(velocitySeries);
+            lg_acceleration.getData().add(accelerationSeries);
         }
     }
 }

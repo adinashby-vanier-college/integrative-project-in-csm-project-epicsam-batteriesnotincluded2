@@ -18,51 +18,101 @@ public class Kinematics {
     }
 
     //Getters
+
+    /**
+     * Gets the value of launch angle
+     * @return launchAngle
+     */
     public double getLaunchAngle() {
         return launchAngle;
     }
 
+    /**
+     * Gets the value of acceleration
+     * @return acceleration
+     */
     public double getAcceleration() {
         return acceleration;
     }
 
+    /**
+     * Gets the value of launch height
+     * @return launchHeight
+     */
     public double getLaunchHeight() {
         return launchHeight;
     }
 
+    /**
+     * Gets the value of initial velocity
+     * @return initialVelocity
+     */
     public double getInitialVelocity() {
         return initialVelocity;
     }
 
+    /**
+     * Gets the value of initial position
+     * @return initialPosition
+     */
     public double getInitialPosition() {
         return initialPosition;
     }
 
+    /**
+     * Gets the value of time
+     * @return time
+     */
     public double getTime() {
         return time;
     }
 
     //Setters
+
+    /**
+     * Sets the launch angle
+     * @param angle angle of launch
+     */
     public void setLaunchAngle(double angle) {
         this.launchAngle = angle;
     }
 
+    /**
+     * Sets the acceleration
+     * @param a acceleration
+     */
     public void setAcceleration(double a) {
         this.acceleration = a;
     }
 
+    /**
+     * Sets the launch height
+     * @param yi launch height
+     */
     public void setLaunchHeight(double yi) {
         this.launchHeight = yi;
     }
 
+    /**
+     * Sets the initial velocity
+     * @param vi initial velocity
+     */
     public void setInitialVelocity(double vi) {
         this.initialVelocity = vi;
     }
 
+    /**
+     * Sets the initial position
+     * @param xi initial position
+     */
     public void setInitialPosition(double xi) {
         this.initialPosition = xi;
     }
 
+    /**
+     * Sets the time
+     * @param t time
+     */
     public void setTime(double t) {
         this.time = t;
     }
@@ -84,6 +134,11 @@ public class Kinematics {
     //Kinematics methods
 
     //Projectile motion methods
+
+    /**
+     * Calculates the time taken in projectile motion
+     * @return projectile time
+     */
     public double proj_calcTime() {
         double rads = Math.toRadians(launchAngle);
         double viY = initialVelocity * Math.sin(rads);
@@ -94,12 +149,20 @@ public class Kinematics {
         return (viY + Math.sqrt(discriminant)) / acceleration;
     }
 
+    /**
+     * Calculates the max height in projectile motion
+     * @return projectile max height
+     */
     public double proj_calcMaxHeight() {
         double rads = Math.toRadians(launchAngle);
         double viY = initialVelocity * Math.sin(rads);
         return (viY * viY) / (2 * acceleration);
     }
 
+    /**
+     * Calculates the distance of projectile motion
+     * @return projectile distance
+     */
     public double proj_calcDistance() {
         double rads = Math.toRadians(launchAngle);
         double viY = initialVelocity * Math.sin(rads);
@@ -111,45 +174,82 @@ public class Kinematics {
         return viX * time;
     }
 
+    /**
+     * Calculates the horizontal position of projectile motion
+     * @param time projectile time
+     * @return projectile horizontal position
+     */
     public double proj_calcHorizontalPosition(double time) {
         return viX*time;
     }
 
+    /**
+     * Calculates the vertical position of projectile motion
+     * @param time projectile time
+     * @return projectile vertical position
+     */
     public double proj_calcVerticalPosition(double time) {
         return yi + viY * time + 0.5 * acceleration * time * time * -1; //-1 bc gravity is downward
     }
 
-    public double proj_calHorizontalVelocity() {
+    /**
+     * Calculates the horizontal velocity of projectile motion
+     * @return projectile horizontal velocity
+     */
+    public double proj_calcHorizontalVelocity() {
         return viX;
     }
 
+    /**
+     * Calculates the vertical velocity of projectile motion
+     * @param time projectile time
+     * @return projectile vertical velocity
+     */
     public double proj_calcVerticalVelocity(double time) {
         return viY + acceleration * time * -1; //-1 bc gravity again
     }
 
 
     //1D kinematics methods
-    //Calculating final velocity
+
+    /**
+     * Calculates final velocity of 1D kinematics
+     * @return 1D kinematics final velocity
+     */
     public double kinematic_calcFinalVelocity() {
         return initialVelocity + acceleration * time;
     }
 
-    //Calculating final position
+    /**
+     * Calculates final position of 1D kinematics
+     * @return 1D kinematics final position
+     */
     public double kinematic_calcFinalPosition() {
         return initialPosition + initialVelocity * time + 0.5 * acceleration * time * time;
     }
 
-    //Calculating total distance
+    /**
+     * Calculates total distance of 1D kinematics
+     * @return kinematics total distance
+     */
     public double kinematic_calcTotalDistance() {
         return Math.abs(kinematic_calcFinalPosition() - initialPosition);
     }
 
-    //Calculating the position of the ball during something time
+    /**
+     * Calculates what position the ball is in 1D kinematics
+     * @param time time
+     * @return position of ball
+     */
     public double kinematic_calcWhatPosition(double time) {
         return initialPosition + initialVelocity * time + 0.5 * acceleration * time * time;
     }
 
-    //Calculating the velocity of the ball during something time
+    /**
+     * Calculates what velocity the ball is in 1D kinematics
+     * @param time time
+     * @return velocity of ball
+     */
     public double kinematic_calcWhatVelocity(double time) {
         return initialVelocity + acceleration * time;
     }
