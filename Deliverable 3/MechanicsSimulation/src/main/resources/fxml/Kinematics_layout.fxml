@@ -22,19 +22,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="2.0">
         <menus>
-          <Menu fx:id="menusub_file" mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
+          <Menu fx:id="menusub_file" mnemonicParsing="false" text="File" />
           <Menu fx:id="menusub_edit" mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
+               <items>
+                  <MenuItem fx:id="menuitem_dark" mnemonicParsing="false" text="Dark mode" />
+                  <MenuItem fx:id="menuitem_light" mnemonicParsing="false" text="Light mode" />
+               </items>
           </Menu>
           <Menu fx:id="menusub_help" mnemonicParsing="false" text="Help">
             <items>
@@ -181,5 +178,43 @@
             <Font size="17.0" />
          </font>
       </TextArea>
+      <VBox alignment="TOP_CENTER" layoutX="833.0" layoutY="572.0" prefHeight="165.0" prefWidth="366.0" spacing="5.0" style="-fx-background-color: #5dfccf; -fx-border-color: black; -fx-border-width: 3px;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-background-color: black;" text="Quick Settings for the Lazy" textAlignment="CENTER" wrappingWidth="357.1171875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="360.0" spacing="10.0" style="-fx-background-color: #59f0c5;">
+               <children>
+                  <RadioButton fx:id="radio_light" mnemonicParsing="false" selected="true" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Light Mode">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="tg_themes" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radio_dark" mnemonicParsing="false" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Dark Mode" toggleGroup="$tg_themes">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="360.0" spacing="10.0">
+               <children>
+                  <Button fx:id="btn_back" mnemonicParsing="false" onAction="#backOnAction" text="Back to menu" />
+                  <Button fx:id="btn_exit" mnemonicParsing="false" onAction="#exitOnAction" text="Exit Program" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </Pane>
