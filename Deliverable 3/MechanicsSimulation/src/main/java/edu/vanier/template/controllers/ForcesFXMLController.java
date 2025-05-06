@@ -54,10 +54,16 @@ public class ForcesFXMLController {
     @FXML
     Rectangle box,recBackground,forceArrowBox;
     
+    VectorArrow netVector;
+    
     boolean selectingVector=false;
     
     @FXML
     public void initialize() {
+        netVector=new VectorArrow(box.getBoundsInParent().getMinX(), box.getBoundsInParent().getMinY());
+        netVector.setNet(true);
+        netVector.setColorYellow();
+        megaPane.getChildren().add(netVector);
         
         
         btnBack.setVisible(false);
@@ -80,10 +86,9 @@ public class ForcesFXMLController {
         slMag.setMax(100);
         slMag.setMin(0);
         slMag.valueProperty().setValue(50);
-        slMag.valueProperty().addListener((event)->{ // magnitude slider: changes length of selected vectors tail
+        slMag.valueProperty().addListener((event)->{ // magnitude slider: changes length of selected vectors taile
             lbMag.setText("Magnitude: "+Math.round(slMag.valueProperty().getValue())+"N");
             VectorArrow v=getSelectedVector();
-            ((Rectangle)((VectorArrow) v).getChildren().get(0)).setWidth(slMag.valueProperty().getValue()*2.22);
             v.setMagnitude(slMag.valueProperty().getValue());
         });
         
@@ -114,9 +119,12 @@ public class ForcesFXMLController {
         btnDelete.setOnAction((event)->{
             VectorArrow v=getSelectedVector();
             megaPane.getChildren().remove(v);
+            updateNetVector();
+            selectingVector=false; toggleSelectedVector();
         });
         btnIgnore.setOnAction((event)->{
-            getSelectedVector();
+            VectorArrow v=getSelectedVector();
+            v.setIgnore(!v.getIgnore());
         });
         
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
@@ -203,6 +211,7 @@ public class ForcesFXMLController {
         double mNet=Math.sqrt( Math.pow(mX, 2)+Math.pow(mY, 2) ); // finds magnitude of net vector
         mNet=Math.round(mNet*10.0)/10.0;
         lblNetForce.setText("Net Force: "+mNet+"N");
+        netVector.setMagnitude(mNet);
         return mNet;
     }
     
@@ -217,6 +226,13 @@ public class ForcesFXMLController {
         return angNet;
     }
     
+    private void updateNetVector(){
+         netVector.setMagnitude(updateNetForce());
+         netVector.setRotate(-1*updateNetDir());
+         if (netVector.getMagnitude()<=5) netVector.setVisible(false);
+         else netVector.setVisible(true);
+    }
+    
     
     public double addMagnitudeX(){
         double totalX=0;
@@ -224,27 +240,28 @@ public class ForcesFXMLController {
         for (Node n:megaPane.getChildren()){ // checks every children of the pane
             if (n instanceof VectorArrow){ // makes sure we're only dealing with VectorArrows
                 VectorArrow v=(VectorArrow)n;
+                if (v.getNet()==false&&v.getIgnore()==false) { // if the vector is not the net vector and not being ignored
                 double mag=v.getMagnitude();
-                double ang=v.getRotation()+180; // since vectors point TOWARDS the center, not outward from it.
-                totalX+=sumX.ForceX(mag, ang);
+                double ang=v.getRotation()+180; // since vectors must point TOWARDS the center, not outward from it.
+                
+                totalX+=sumX.ForceX(mag, ang);}
             }
         }
-        System.out.println(totalX);
         return totalX;
     }
     
-    public double addMagnitudeY(){
-        double totalY=0;
+    public double addMagnitudeY(){ // same thing as x but with Y components  
+       double totalY=0;
         Forces sumY=new Forces();
         for (Node n:megaPane.getChildren()){
             if (n instanceof VectorArrow){
                 VectorArrow v=(VectorArrow)n;
+                if (v.getNet()==false&&v.getIgnore()==false) {
                 double mag=v.getMagnitude();
                 double ang=v.getRotation()+180;
-                totalY+=sumY.ForceY(mag, ang);
+                totalY+=sumY.ForceY(mag, ang);}
             }
         }
-        System.out.println(totalY);
         return totalY;
     }
 
@@ -262,7 +279,6 @@ public class ForcesFXMLController {
                 for (int i=0;i<((VectorArrow) n).getChildren().size();i++){
                     Shape s=(Shape)((VectorArrow) n).getChildren().get(i); // gets the parts of a vector arrow
                     s.setStrokeWidth(1.5); // sets them to outlined
-                    System.out.println();
                 }
                 
                 selectingVector=true; // so that the program knows a vector is selected right now
@@ -305,6 +321,7 @@ public class ForcesFXMLController {
             updateDirection();
             updateNetForce();
             updateNetDir();
+            updateNetVector();
         };
     }
     

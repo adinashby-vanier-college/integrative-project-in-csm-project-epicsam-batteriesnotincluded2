@@ -90,11 +90,11 @@
       </MenuButton>
       <VBox layoutX="956.0" layoutY="359.0" prefHeight="200.0" prefWidth="238.0" spacing="25.0">
          <children>
-            <Label text="Fx=ma" />
-            <Label text="100+2+3+40+5-6-7+8=ma" />
-            <Label text="a" />
-            <Label prefWidth="28.0" text="b" />
-            <Label text="c" />
+            <Label fx:id="fma1" text="Fx=ma" />
+            <Label fx:id="fma2" text="100+2+3+40+5-6-7+8=ma" />
+            <Label fx:id="fma3" text="a" />
+            <Label fx:id="fma4" prefWidth="28.0" text="b" />
+            <Label fx:id="fma5" text="c" />
          </children>
       </VBox>
       <Label layoutX="976.0" layoutY="616.0" prefHeight="98.0" prefWidth="186.0" text="Pie chart here">

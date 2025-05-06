@@ -28,6 +28,42 @@ public class VectorArrow extends StackPane {
     double magnitude=50;
     double rotation=0;
     boolean selected=false;
+    boolean net=false;
+    boolean ignore=false;
+
+    /**
+     * purely used to make the net vector yellow.
+     */
+    public void setColorYellow(){
+        ((Shape)this.getChildren().getFirst()).setFill(Color.GOLD);
+        ((Shape)this.getChildren().getLast()).setFill(Color.GOLD);
+    }
+    
+    public boolean getIgnore() {
+        return ignore;
+    }
+
+    public void setIgnore(boolean ignore) {
+        this.ignore = ignore;
+        if (this.ignore==true) this.setOpacity(0.5);
+        else this.setOpacity(1);
+    }
+    
+    /**
+     * sets if a vector is the net vector (in most cases, it is not.)
+     * @param net if it is the net vector, yes or no.
+     */
+    public void setNet(boolean net){
+        this.net=net;
+    }
+    
+    /**
+     *gets if this vector is the net vector. there should only be 1 ever. by default, this is false.
+     * @return the net-ness of a vector.
+     */
+    public boolean getNet(){
+        return net;
+    }
     
     /**
      * gets the magnitude of the vector, in newtons.
@@ -38,10 +74,11 @@ public class VectorArrow extends StackPane {
     }
     
     /**
-     * sets the magnitude of the vector, in newtons.
+     * sets the magnitude of the vector, in newtons. also updates the vector's length to correspond with the magnitude
      * @param magnitude the magnitude you wish to set it as
      */
     public void setMagnitude(double magnitude) {
+        ((Rectangle) this.getChildren().get(0)).setWidth(magnitude*2.22);
         this.magnitude = magnitude;
     }
     
@@ -79,7 +116,11 @@ public class VectorArrow extends StackPane {
         this.selected = selected;
     }
     
-    
+    /**
+     * creates a vector arrow at a certain location with a default magnitude 
+     * @param x the x spawn coordinate
+     * @param y the y spawn coordinate
+     */
     public VectorArrow(double x, double y){
         VectorArrow.this.setWidth(186);
         VectorArrow.this.setHeight(88);

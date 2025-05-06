@@ -16,7 +16,7 @@ public class ForcesTest {
         VectorArrow test=new VectorArrow(0, 0);
         ForcesFXMLController fc=new ForcesFXMLController();
         fc.megaPane.getChildren().add(test);
-        double actual=fc.combineMagnitudeX();
+        double actual=fc.addMagnitudeX();
         
         assertEquals(expected, actual);
         
