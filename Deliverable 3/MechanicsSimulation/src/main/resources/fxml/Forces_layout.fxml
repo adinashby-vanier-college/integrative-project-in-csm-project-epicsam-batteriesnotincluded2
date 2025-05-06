@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="megaPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle fx:id="recBackground" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="774.0" layoutY="28.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="949.0" />
+      <Rectangle fx:id="recxtraBg" arcHeight="5.0" arcWidth="0.0" fill="TRANSPARENT" height="774.0" layoutX="949.0" layoutY="28.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
+        <menus>
+            <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="mitSaveOn" mnemonicParsing="false" text="Autosave on" />
+                  <MenuItem fx:id="mitSaveOff" mnemonicParsing="false" text="Autosave off" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem fx:id="mitDark" mnemonicParsing="false" text="Dark mode" />
+                  <MenuItem fx:id="mitLight" mnemonicParsing="false" text="Light mode" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuHelp1" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="mitAbout" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="mitTips" mnemonicParsing="false" text="Tips" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuBack" mnemonicParsing="false" text="Back">
+               <items>
+                  <MenuItem fx:id="mitBack" mnemonicParsing="false" text="Back to home page" />
+                  <MenuItem fx:id="mitClose" mnemonicParsing="false" text="Close the simulation" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Rectangle fx:id="box" arcHeight="5.0" arcWidth="5.0" fill="#ba702b" height="137.0" layoutX="463.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+      <Rectangle fx:id="forceArrowBox" arcHeight="5.0" arcWidth="5.0" fill="#91faff" height="98.0" layoutX="33.0" layoutY="679.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Label layoutX="40.0" layoutY="686.0" text="Force Arrows Box   (click to spawn arrows)" />
+      <StackPane layoutX="177.0" layoutY="677.0" prefHeight="88.0" prefWidth="186.0" rotate="-15.5" scaleX="0.8" scaleY="0.8" scaleZ="0.6">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000000" height="24.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
+            <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
+         </children>
+      </StackPane>
+      <StackPane fx:id="Arrow" layoutX="86.0" layoutY="572.0" prefHeight="88.0" prefWidth="186.0">
+         <children>
+            <Rectangle fill="#ff000000" height="26.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
+            <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="240.0" layoutY="708.0" prefHeight="88.0" prefWidth="194.0" scaleX="0.5" scaleY="0.5">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000000" height="25.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
+            <Polygon fill="#ff000000" points="0.0, 28.0, 66.0, -16.0, 0.0, -60.0" scaleX="0.9" scaleY="0.7" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_RIGHT" />
+         </children>
+      </StackPane>
+      <Line endX="-52.0" endY="759.0" layoutX="1002.0" layoutY="42.0" startX="-52.0" startY="-14.0" />
+      <Rectangle fx:id="selectedVectorBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="963.0" layoutY="35.0" stroke="RED" strokeType="INSIDE" width="225.0" />
+      <Rectangle fx:id="forceDragArea" arcHeight="5.0" arcWidth="5.0" fill="#91faff" height="98.0" layoutX="33.0" layoutY="679.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Label fx:id="lblSelectedVector" layoutX="970.0" layoutY="42.0" prefHeight="17.0" prefWidth="137.0" text="Selected Vector" />
+      <Slider fx:id="slMag" disable="true" layoutX="970.0" layoutY="101.0" prefHeight="14.0" prefWidth="205.0" />
+      <Slider fx:id="slDir" disable="true" layoutX="970.0" layoutY="170.0" prefHeight="14.0" prefWidth="205.0" />
+      <Label fx:id="lbMag" layoutX="972.0" layoutY="72.0" prefHeight="17.0" prefWidth="154.0" text="Magnitude: 50N" />
+      <Label fx:id="lbDir" layoutX="969.0" layoutY="143.0" prefHeight="17.0" prefWidth="154.0" text="Direction: 0°" />
+      <Button fx:id="btnIgnore" disable="true" layoutX="969.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Ignore Vector" />
+      <Button fx:id="btnDelete" disable="true" layoutX="1086.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Delete Vector" />
+      <Slider fx:id="slMass" layoutX="960.0" layoutY="271.0" />
+      <Label fx:id="lbMass" layoutX="958.0" layoutY="247.0" text="Mass of box: 10 kg" />
+      <PieChart fx:id="pieForceDistribution" layoutX="946.0" layoutY="563.0" legendSide="TOP" prefHeight="220.0" prefWidth="255.0" title="Force Distribution" />
+      <MenuButton fx:id="showCalcs" layoutX="965.0" layoutY="320.0" mnemonicParsing="false" text="Show Calculations">
+        <items>
+          <MenuItem fx:id="calcFx" mnemonicParsing="false" text="Calculate Fx" />
+          <MenuItem fx:id="calcFy" mnemonicParsing="false" text="Calculate Fy" />
+        </items>
+      </MenuButton>
+      <VBox layoutX="956.0" layoutY="359.0" prefHeight="200.0" prefWidth="238.0" spacing="25.0">
+         <children>
+            <Label fx:id="fma1" text="" />
+            <Label fx:id="fma2" text="" />
+            <Label fx:id="fma3" text="" />
+            <Label fx:id="fma4" text="" />
+            <Label fx:id="fma5" text="" />
+         </children>
+      </VBox>
+      <Label fx:id="lbNetForce" layoutX="830.0" layoutY="34.0" prefHeight="17.0" prefWidth="111.0" text="Net Force: 0N">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNetDir" layoutX="830.0" layoutY="64.0" text="Direction: 0°">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSummonVector" layoutX="274.0" layoutY="223.0" mnemonicParsing="false" text="/summon vector" />
+   </children>
+</Pane>
