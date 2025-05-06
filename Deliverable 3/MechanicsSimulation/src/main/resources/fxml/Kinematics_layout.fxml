@@ -180,7 +180,7 @@
       </TextArea>
       <VBox alignment="TOP_CENTER" layoutX="833.0" layoutY="572.0" prefHeight="165.0" prefWidth="366.0" spacing="5.0" style="-fx-background-color: #5dfccf; -fx-border-color: black; -fx-border-width: 3px;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-background-color: black;" text="Quick Settings for the Lazy" textAlignment="CENTER" wrappingWidth="357.1171875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-background-color: black;" text="Quick Settings" textAlignment="CENTER" wrappingWidth="357.1171875">
                <font>
                   <Font size="22.0" />
                </font>

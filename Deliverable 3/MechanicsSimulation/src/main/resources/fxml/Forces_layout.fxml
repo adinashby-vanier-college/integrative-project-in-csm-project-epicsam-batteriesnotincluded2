@@ -19,6 +19,7 @@
 <Pane fx:id="megaPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="recBackground" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="774.0" layoutY="28.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="949.0" />
+      <Rectangle fx:id="recxtraBg" arcHeight="5.0" arcWidth="0.0" fill="TRANSPARENT" height="774.0" layoutX="949.0" layoutY="28.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
       <Button fx:id="btnBack" layoutX="1080.0" layoutY="757.0" mnemonicParsing="false" text="Back" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1200.0">
         <menus>
@@ -50,8 +51,7 @@
       </MenuBar>
       <Rectangle fx:id="box" arcHeight="5.0" arcWidth="5.0" fill="#ba702b" height="137.0" layoutX="463.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
       <Rectangle fx:id="forceArrowBox" arcHeight="5.0" arcWidth="5.0" fill="#91faff" height="98.0" layoutX="33.0" layoutY="679.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
-      <Label layoutX="40.0" layoutY="686.0" text="Force Arrows Box   (drag to take arrows)" />
-      <Label fx:id="lblArrowsLeft" layoutX="40.0" layoutY="752.0" text="Arrows left: 8" />
+      <Label layoutX="40.0" layoutY="686.0" text="Force Arrows Box   (click to spawn arrows)" />
       <StackPane layoutX="177.0" layoutY="677.0" prefHeight="88.0" prefWidth="186.0" rotate="-15.5" scaleX="0.8" scaleY="0.8" scaleZ="0.6">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000000" height="24.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" translateX="-62.0" width="111.0" x="10.0" StackPane.alignment="CENTER_RIGHT" />
@@ -71,43 +71,39 @@
          </children>
       </StackPane>
       <Line endX="-52.0" endY="759.0" layoutX="1002.0" layoutY="42.0" startX="-52.0" startY="-14.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="963.0" layoutY="35.0" stroke="RED" strokeType="INSIDE" width="225.0" />
-      <Label fx:id="lblSelectedVector" layoutX="970.0" layoutY="42.0" prefHeight="17.0" prefWidth="137.0" text="Selected Vector: none" />
+      <Rectangle fx:id="selectedVectorBox" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="200.0" layoutX="963.0" layoutY="35.0" stroke="RED" strokeType="INSIDE" width="225.0" />
+      <Rectangle fx:id="forceDragArea" arcHeight="5.0" arcWidth="5.0" fill="#91faff" height="98.0" layoutX="33.0" layoutY="679.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Label fx:id="lblSelectedVector" layoutX="970.0" layoutY="42.0" prefHeight="17.0" prefWidth="137.0" text="Selected Vector" />
       <Slider fx:id="slMag" disable="true" layoutX="970.0" layoutY="101.0" prefHeight="14.0" prefWidth="205.0" />
       <Slider fx:id="slDir" disable="true" layoutX="970.0" layoutY="170.0" prefHeight="14.0" prefWidth="205.0" />
       <Label fx:id="lbMag" layoutX="972.0" layoutY="72.0" prefHeight="17.0" prefWidth="154.0" text="Magnitude: 50N" />
       <Label fx:id="lbDir" layoutX="969.0" layoutY="143.0" prefHeight="17.0" prefWidth="154.0" text="Direction: 0°" />
       <Button fx:id="btnIgnore" disable="true" layoutX="969.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Ignore Vector" />
       <Button fx:id="btnDelete" disable="true" layoutX="1086.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Delete Vector" />
-      <Slider layoutX="960.0" layoutY="271.0" />
-      <Label layoutX="958.0" layoutY="247.0" text="Mass of object: 10 kg" />
-      <PieChart fx:id="pieForceDistribution" layoutX="966.0" layoutY="563.0" legendSide="TOP" prefHeight="182.0" prefWidth="205.0" title="Force Distribution" />
-      <MenuButton layoutX="965.0" layoutY="320.0" mnemonicParsing="false" text="Show Calculations">
+      <Slider fx:id="slMass" layoutX="960.0" layoutY="271.0" />
+      <Label fx:id="lbMass" layoutX="958.0" layoutY="247.0" text="Mass of box: 10 kg" />
+      <PieChart fx:id="pieForceDistribution" layoutX="946.0" layoutY="563.0" legendSide="TOP" prefHeight="220.0" prefWidth="255.0" title="Force Distribution" />
+      <MenuButton fx:id="showCalcs" layoutX="965.0" layoutY="320.0" mnemonicParsing="false" text="Show Calculations">
         <items>
-          <MenuItem mnemonicParsing="false" text="Calculate Fx" />
-          <MenuItem mnemonicParsing="false" text="Calculate Fy" />
+          <MenuItem fx:id="calcFx" mnemonicParsing="false" text="Calculate Fx" />
+          <MenuItem fx:id="calcFy" mnemonicParsing="false" text="Calculate Fy" />
         </items>
       </MenuButton>
       <VBox layoutX="956.0" layoutY="359.0" prefHeight="200.0" prefWidth="238.0" spacing="25.0">
          <children>
-            <Label fx:id="fma1" text="Fx=ma" />
-            <Label fx:id="fma2" text="100+2+3+40+5-6-7+8=ma" />
-            <Label fx:id="fma3" text="a" />
-            <Label fx:id="fma4" prefWidth="28.0" text="b" />
-            <Label fx:id="fma5" text="c" />
+            <Label fx:id="fma1" text="" />
+            <Label fx:id="fma2" text="" />
+            <Label fx:id="fma3" text="" />
+            <Label fx:id="fma4" text="" />
+            <Label fx:id="fma5" text="" />
          </children>
       </VBox>
-      <Label layoutX="976.0" layoutY="616.0" prefHeight="98.0" prefWidth="186.0" text="Pie chart here">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblNetForce" layoutX="830.0" layoutY="34.0" prefHeight="17.0" prefWidth="111.0" text="Net Force: 0N">
+      <Label fx:id="lbNetForce" layoutX="830.0" layoutY="34.0" prefHeight="17.0" prefWidth="111.0" text="Net Force: 0N">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblNetDir" layoutX="830.0" layoutY="64.0" text="Direction: 0°">
+      <Label fx:id="lbNetDir" layoutX="830.0" layoutY="64.0" text="Direction: 0°">
          <font>
             <Font size="14.0" />
          </font>

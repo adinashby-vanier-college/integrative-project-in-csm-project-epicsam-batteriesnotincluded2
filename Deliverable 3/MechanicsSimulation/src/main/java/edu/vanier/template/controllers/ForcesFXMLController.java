@@ -7,6 +7,8 @@ package edu.vanier.template.controllers;
 import edu.vanier.template.ui.*;
 import edu.vanier.physics.*;
 import edu.vanier.template.tests.*;
+import java.util.*;
+import javafx.collections.*;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.geometry.*;
@@ -16,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
+import javafx.scene.paint.*;
 import javafx.stage.Stage;
 
 /**
@@ -25,22 +28,28 @@ import javafx.stage.Stage;
 public class ForcesFXMLController {
     
     @FXML
-    Button btnBack, btnIgnore, btnDelete, btnSummonVector;
+    Button btnBack, btnIgnore, btnDelete, btnSummonVector; // various buttons
     
     @FXML
     MenuBar menuBar;
     
     @FXML
+    MenuButton showCalcs;
+    
+    @FXML
     Menu menuHelp;
     
     @FXML
-    MenuItem mitBack, mitClose, mitAbout, mitTips, mitDark, mitLight, mitSaveOn, mitSaveOff;
+    MenuItem mitBack, mitClose, mitAbout, mitTips, mitDark, mitLight, mitSaveOn, mitSaveOff, calcFx, calcFy; // the menu items in the menu bar
     
     @FXML
-    Slider slMag,slDir;
+    Slider slMag,slDir,slMass; // the sliders
     
     @FXML
-    Label lbMag,lbDir,lblNetForce,lblNetDir;
+    Label lbMag,lbDir,lbMass,lbNetForce,lbNetDir; // the sliders' labels and other labels
+    
+    @FXML
+    Label fma1,fma2,fma3,fma4,fma5; // the 5 equation lines
     
     @FXML
     PieChart pieForceDistribution;
@@ -52,36 +61,103 @@ public class ForcesFXMLController {
     StackPane Arrow;
     
     @FXML
-    Rectangle box,recBackground,forceArrowBox;
+    Rectangle box,recBackground,forceDragArea,recxtraBg,selectedVectorBox; // the box, the force drag area, and the backgrounds
     
     VectorArrow netVector;
     
     boolean selectingVector=false;
+    public static boolean autosave=false;
     
     @FXML
     public void initialize() {
         netVector=new VectorArrow(box.getBoundsInParent().getMinX(), box.getBoundsInParent().getMinY());
         netVector.setNet(true);
         netVector.setColorYellow();
+        netVector.setMagnitude(0);
+        updateNetVector();
+        selectedVectorBox.setFill(Color.GOLD);
+        selectedVectorBox.setStroke(Color.DARKGOLDENROD);
+        selectedVectorBox.setOpacity(0.5);
+        recxtraBg.setVisible(true);
+        recxtraBg.setOpacity(0.6);
+        recxtraBg.setFill(Color.LIGHTGREEN);
+        
         megaPane.getChildren().add(netVector);
+        
+        forceDragArea.setOpacity(0);
+        forceDragArea.setOnMousePressed((event)->{
+            btnSummonVector.fire();
+        });
         
         
         btnBack.setVisible(false);
         Arrow.setVisible(false);
+        pieForceDistribution.setVisible(true);
         mitBack.setOnAction(this::loadPrimaryScene);
         mitClose.setOnAction((event)->{
             Stage s = (Stage)megaPane.getScene().getWindow();
             s.close();
         });
         
-            // a temporary summon vector button since i havent gotten dragging yet
+        mitDark.setOnAction((event)->{
+            recBackground.setFill(Color.GRAY);
+            recBackground.setOpacity(0.6);
+            recBackground.setVisible(true);
+            recxtraBg.setVisible(true);
+            recxtraBg.setFill(Color.GRAY);
+            recxtraBg.setOpacity(0.6);
+            
+        });
+        
+        mitLight.setOnAction((event)->{
+            recBackground.setOpacity(0);
+            recxtraBg.setFill(Color.LIGHTGREEN);
+        });
+        
+        mitSaveOff.setOnAction((event)->{
+            autosave=false;
+        });
+        mitSaveOn.setOnAction((event)->{
+            autosave=true;
+        });
+        mitAbout.setOnAction((event)->{
+            Alert("Forces Simulation",
+                    "Summation of vectors",
+                    "You can add up vectors to see the magnitude and direction \nof the resultant vector.");
+        });
+        mitTips.setOnAction((event)->{
+            Alert("Some Tips",
+                    "Did you know?",
+                    "- If the resultant magnitude is too small, it won't show.\n"
+                            + "- You can use as many vectors as you want. There is no limit.\n"
+                            + "- All vector colors are randomly generated.");
+        });
+        
+        
+            // a temporary summon vector button 
         btnSummonVector.setOnAction((event)->{
-        VectorArrow sp=new VectorArrow(btnSummonVector.getLayoutX(), btnSummonVector.getLayoutY()+100);
+        VectorArrow sp=new VectorArrow(forceDragArea.getLayoutX()+forceDragArea.getWidth()/2-20, forceDragArea.getLayoutY());
         sp.setVisible(true);
         sp.setOnMouseDragged(onVectorDragged(sp));
         sp.setOnMousePressed(onVectorPressed(sp));
         megaPane.getChildren().add(sp);
+        double ArrowX=sp.getBoundsInParent().getCenterX();
+            double ArrowY=sp.getBoundsInParent().getCenterY();
+            double boxCenterX=box.getBoundsInParent().getCenterX();
+            double boxCenterY=box.getBoundsInParent().getCenterY();
+            double rotate=Math.atan((boxCenterY-ArrowY)/(boxCenterX-ArrowX));
+              rotate=Math.toDegrees(rotate);
+              
+            if (ArrowX<=boxCenterX)
+                sp.setRotate(rotate);
+            else sp.setRotate(rotate+180);
+            if (sp.getRotate()<0)
+                sp.setRotate(sp.getRotate()+360);
+            
+            sp.setRotation(sp.getRotate());
+        
         });
+        btnSummonVector.setVisible(false);
         
         slMag.setMax(100);
         slMag.setMin(0);
@@ -90,6 +166,8 @@ public class ForcesFXMLController {
             lbMag.setText("Magnitude: "+Math.round(slMag.valueProperty().getValue())+"N");
             VectorArrow v=getSelectedVector();
             v.setMagnitude(slMag.valueProperty().getValue());
+            updateMagnitude();
+            updateNetVector();
         });
         
         slDir.setMax(360);
@@ -114,6 +192,14 @@ public class ForcesFXMLController {
             v.setLayoutY(newY+boxY); // moves the vector along a radius around the box
             
             v.setRotate(v.getRotate()+180);
+            updateNetVector();
+        });
+        
+        slMass.setMax(100);
+        slMass.setMin(1);
+        slMass.valueProperty().setValue(10);
+        slMass.valueProperty().addListener((event)->{
+            lbMass.setText("Mass of box: "+Math.round(slMass.valueProperty().getValue()*10.0)/10.0+"kg");
         });
         
         btnDelete.setOnAction((event)->{
@@ -125,11 +211,83 @@ public class ForcesFXMLController {
         btnIgnore.setOnAction((event)->{
             VectorArrow v=getSelectedVector();
             v.setIgnore(!v.getIgnore());
+            updateNetVector();
         });
-        
         recBackground.setOnMousePressed(onVectorPressed(recBackground));
         
+        calcFx.setOnAction((event)->{
+            String sma2="";
+            String sma3="";
+            String sma4="";
+            String sma5="";
+            double sum=0;
+            for (Node n:megaPane.getChildren()){ // checks every children of the pane
+            if (n instanceof VectorArrow){ // makes sure we're only dealing with VectorArrows
+                VectorArrow v=(VectorArrow)n;
+                if (v.getNet()==false&&v.getIgnore()==false) { // if the vector is not the net vector and not being ignored
+                 sma2+=" "+slMass.valueProperty().getValue()+"*"+(Math.round(v.getMagnitude()*10.0)/10.0)+"cos"+(Math.round(v.getRotation()*10.0)/10.0)+" +";
+                 sma3+=" "+slMass.valueProperty().getValue()+"*"+(Math.round(v.getMagnitude()*Math.cos(Math.toRadians(v.getRotation()))*10.0)/10.0)+" +";
+                 sma4+=" "+( Math.round(slMass.valueProperty().getValue()*v.getMagnitude()*Math.cos(Math.toRadians(v.getRotation())*100.0))/100.0)+" +";
+                }
+            }
+        }
+            
+            fma1.setText("Fx=ma");
+            sma2=sma2.trim();
+            sma3=sma3.trim();
+            sma4=sma4.trim();
+            sma5="Fx = "+(Math.round(addMagnitudeX()*10.0)/10.0);
+            fma2.setText(sma2.substring(0,sma2.length()-1));
+            fma3.setText(sma3.substring(0,sma3.length()-1));
+            fma4.setText(sma4.substring(0, sma4.length()-1));
+            fma5.setText(sma5);
+        });
+        
+        calcFy.setOnAction((event)->{
+         String sma2="";
+            String sma3="";
+            String sma4="";
+            String sma5="";
+            double sum=0;
+            for (Node n:megaPane.getChildren()){ // checks every children of the pane
+            if (n instanceof VectorArrow){ // makes sure we're only dealing with VectorArrows
+                VectorArrow v=(VectorArrow)n;
+                if (v.getNet()==false&&v.getIgnore()==false) { // if the vector is not the net vector and not being ignored
+                 sma2+=" "+slMass.valueProperty().getValue()+"*"+(Math.round(v.getMagnitude()*10.0)/10.0)+"sin"+(Math.round(v.getRotation()*10.0)/10.0)+" +";
+                 sma3+=" "+slMass.valueProperty().getValue()+"*"+(Math.round(v.getMagnitude()*Math.sin(Math.toRadians(v.getRotation()))*10.0)/10.0)+" +";
+                 sma4+=" "+( Math.round(slMass.valueProperty().getValue()*v.getMagnitude()*Math.sin(Math.toRadians(v.getRotation())*100.0))/100.0)+" +";
+                }
+            }
+        }
+            
+            fma1.setText("Fy=ma");
+            sma2=sma2.trim();
+            sma3=sma3.trim();
+            sma4=sma4.trim();
+            sma5="Fy = "+(Math.round(addMagnitudeY()*10.0)/10.0);
+            fma2.setText(sma2.substring(0,sma2.length()-1));
+            fma3.setText(sma3.substring(0,sma3.length()-1));
+            fma4.setText(sma4.substring(0, sma4.length()-1));
+            fma5.setText(sma5);
+        });
+        
+        
+    }// initialize method
+    
+    public ObservableList<PieChart.Data> magToPie(){
+        ArrayList<PieChart.Data> pieArray=new ArrayList<>();
+        for (Node n:megaPane.getChildren()){ // checks every children of the pane
+            if (n instanceof VectorArrow){ // makes sure we're only dealing with VectorArrows
+                VectorArrow v=(VectorArrow)n;
+                if (v.getNet()==false&&v.getIgnore()==false) { // if the vector is not the net vector and not being ignored
+                    pieArray.add(new PieChart.Data(v.getColor(),v.getMagnitude()));
+                }
+            }
+        }
+       return FXCollections.observableArrayList(pieArray);
     }
+    
+    
     
     /**
      * Runs through every child of the pane and gets the VectorArrow selected.
@@ -193,6 +351,10 @@ public class ForcesFXMLController {
         VectorArrow v=getSelectedVector();
         slMag.valueProperty().setValue(v.getMagnitude());
         lbMag.setText("Magnitude: "+(int)v.getMagnitude()+"N");
+        pieForceDistribution.setData(magToPie());
+        pieForceDistribution.setVisible(true);
+        pieForceDistribution.setAnimated(false);
+        pieForceDistribution.setLabelsVisible(true);
     }
     /**
      * Updates the direction slider to match the currently selected vector's direction.
@@ -204,28 +366,37 @@ public class ForcesFXMLController {
             rotate+=360;
         slDir.valueProperty().setValue(rotate);
     }
-    
+    /**
+     * calculates and updates the net force of all vectors on the box, and updates the "Net force" label.
+     * @return the net magnitude of all active vectors on the box
+     */
     private double updateNetForce(){
         double mX=addMagnitudeX();
         double mY=addMagnitudeY();
         double mNet=Math.sqrt( Math.pow(mX, 2)+Math.pow(mY, 2) ); // finds magnitude of net vector
         mNet=Math.round(mNet*10.0)/10.0;
-        lblNetForce.setText("Net Force: "+mNet+"N");
+        lbNetForce.setText("Net Force: "+mNet+"N");
         netVector.setMagnitude(mNet);
         return mNet;
     }
-    
-    private double updateNetDir(){ // deli: create the net vector and have it point in the direction of netDir
+    /**
+     * calculates and updates the net direction of alle the vectors on the box, and updates the "direction" label.
+     * @return the net direction of the resultant vector
+     */
+    private double updateNetDir(){
         double mX=addMagnitudeX();
         double mY=addMagnitudeY();
         double angNet=Math.atan2(mY, mX);
         angNet=Math.toDegrees(angNet);
         if (angNet<0) angNet+=360;
         angNet=Math.round((angNet)*10.0)/10.0; // finds angle of direction of net vector
-        lblNetDir.setText("Direction: "+angNet+"°");
+        lbNetDir.setText("Direction: "+angNet+"°");
         return angNet;
     }
     
+    /**
+     * updates the magnitude and direction of the resultant vector. the vector will disappear if the resulting magnitude is too small.
+     */
     private void updateNetVector(){
          netVector.setMagnitude(updateNetForce());
          netVector.setRotate(-1*updateNetDir());
@@ -288,6 +459,7 @@ public class ForcesFXMLController {
                 updateDirection();
                 updateNetForce();
                 updateNetDir();
+                updateNetVector();
             } else if (n instanceof Rectangle){ // if you pressed on the background (to unselect the vector)
                 if (((Rectangle) n).getId().equals(recBackground.getId())){
                 unselectAllVectors();
@@ -324,6 +496,16 @@ public class ForcesFXMLController {
             updateNetVector();
         };
     }
+    
+    
+    private static void Alert(String title, String header, String content){
+       Alert alert = new Alert(Alert.AlertType.INFORMATION);
+       alert.setTitle(title);
+       alert.setHeaderText(header);
+       alert.setContentText(content);
+       alert.show();
+    }
+    
     
 /**
  * loads the main menu scene.

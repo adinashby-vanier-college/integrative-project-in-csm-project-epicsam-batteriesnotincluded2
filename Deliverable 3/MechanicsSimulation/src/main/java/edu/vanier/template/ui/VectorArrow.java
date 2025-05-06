@@ -39,6 +39,15 @@ public class VectorArrow extends StackPane {
         ((Shape)this.getChildren().getLast()).setFill(Color.GOLD);
     }
     
+    /**
+     * gets the color of the vector
+     * @return the color of the vector
+     */
+    public String getColor(){
+        return ((Shape)this.getChildren().getFirst()).getFill().toString().substring(2);
+        
+    }
+    
     public boolean getIgnore() {
         return ignore;
     }

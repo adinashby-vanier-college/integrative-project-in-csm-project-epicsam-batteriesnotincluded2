@@ -16,17 +16,15 @@ public class ForcesTest {
         VectorArrow test=new VectorArrow(0, 0);
         ForcesFXMLController fc=new ForcesFXMLController();
         fc.megaPane.getChildren().add(test);
-<<<<<<< HEAD
         double actual=fc.addMagnitudeX();
         
         assertEquals(expected, actual);
         
-=======
 //        double actual=fc.combineMagnitudeX();
 
 //        assertEquals(expected, actual);
 
->>>>>>> 56b2e52be7f26aafac269213c7df41b141af047a
+
     }
 
 }

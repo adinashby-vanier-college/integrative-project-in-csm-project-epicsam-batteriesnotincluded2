@@ -106,7 +106,12 @@ public class MainApp extends Application {
                     break;
 
                 case FORCES_SCENE:
-                    if (!sceneController.sceneExists(fxmlFileName)) {
+                    if (sceneController.sceneExists(fxmlFileName)&&ForcesFXMLController.autosave!=true) {
+                        sceneController.removeScene(fxmlFileName);
+                        ForcesFXMLController controller = new ForcesFXMLController();
+                        Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
+                        sceneController.addScene(FORCES_SCENE, root);
+                    } else {
                         ForcesFXMLController controller = new ForcesFXMLController();
                         Parent root = FxUIHelper.loadFXML(fxmlFileName, controller);
                         sceneController.addScene(FORCES_SCENE, root);
